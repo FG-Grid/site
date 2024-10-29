@@ -300,9 +300,7 @@ api > name {
       const path = dataTarget.replace(/\/docs/g, '');
       const url = '/docs/pages' + (path || 'main' ) + '.html';
 
-      fetch(url, {
-        method: 'POST'
-      }).then(response => {
+      fetch(url).then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

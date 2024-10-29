@@ -338,7 +338,7 @@ api > name {
   function onUpdateDocInfo() {
       var dataTarget = location.pathname,
         el = $("[href='"+location.pathname+"']" ),
-          path = dataTarget.replace(/\/api/g, '');
+          path = dataTarget.replace(/\/docs/g, '');
 
         if(el[0] && el[0].innerHTML){
           elText = el[0].innerHTML + ' | Docs';
@@ -349,7 +349,7 @@ api > name {
         }
 
 
-        const url = '/docs/pages' + (path || 'main' ) + '.html';
+        const url = '/docs/pages' + (path || '/main' ) + '.html';
         fetch(url)
           .then(response => {
             if (!response.ok) {

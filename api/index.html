@@ -1148,7 +1148,7 @@ li {
         path = '/main';
       }
 
-      const url = '/api/pages' + (path || 'main' ) + '.html';
+      const url = '/api/pages' + (path || '/main' ) + '.html';
       fetch(url)
         .then(response => {
           if (!response.ok) {

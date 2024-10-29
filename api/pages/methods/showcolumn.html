@@ -1,0 +1,21 @@
+<h3>showColumn<sup>(column: Object, animate?: boolean)</sup></h3>
+<p>
+  Show column<br>
+  If column was hidden before over property <code class="js">hidden</code> or over method <code class="js">hideColumn</code> or manually,<br>
+  it is possible to show it manually or over method <code class="js">showColumn</code>.<br>
+  Hiding columns could be done with animation.<br>
+  By default animate is <code class="js">false</code>.
+</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+const columns = [...];
+
+const grid = new Grid({
+  ...
+  columns,
+  ...
+
+grid.showColumn(columns[1], true);
+</code></pre>
+

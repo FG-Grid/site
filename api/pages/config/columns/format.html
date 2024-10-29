@@ -1,0 +1,42 @@
+<h3>format</h3>
+<code class="type">Function</code>
+
+<p>It formats value before render.</p>
+<p>Formatting is used for currency column.</p>
+
+<p><b>Examples</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  format(params) {
+    const value = params.value;
+    const minDecimal = params.minDecimal || 0;
+    const maxDecimal = params.maxDecimal || minDecimal || 0;
+    const currency = params.currency || 'USD';
+    let region = 'en-US';
+
+    if (isNaN(value) || value === '' || value === null) {
+      return '';
+    }
+
+    if (params.region) {
+      region = params.region;
+    } else if (Fancy.format.CURRENCY_REGIONS[params.currency]) {
+      region = Fancy.format.CURRENCY_REGIONS[params.currency];
+    }
+
+    return new Intl.NumberFormat(region, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: minDecimal,
+      maximumFractionDigits: maxDecimal
+    }).format(value);
+  }
+},{
+...
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+undefined
+</code></pre>

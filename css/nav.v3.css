@@ -1,0 +1,306 @@
+main > hd {
+    height: 55px;
+    padding:0;
+    top:0;
+    left:0;
+    width: 100%;
+    position:fixed;
+    -webkit-box-shadow: 0 1px 4px rgba(30,30,30,0.3);
+    -moz-box-shadow: 0 1px 4px rgba(30,30,30,0.3);
+    box-shadow: 0 1px 4px rgba(30,30,30,0.3);
+    margin:0;
+    background:#1e8fc6;
+    z-index: 100;
+}
+
+main > bd {
+    margin-top:55px;
+}
+
+@media (min-width: 768px) {
+    .scroll-track main > hd:not(.clone) {
+        background: transparent;
+        position: absolute;
+    }
+
+    .scroll-track main > hd.clone {
+        top: -55px;
+        -webkit-transition: top 150ms ease-out;
+        -moz-transition: top 150ms ease-out;
+        -o-transition: top 150ms ease-out;
+        -ms-transition: top 150ms ease-out;
+        transition: top 150ms ease-out;
+    }
+
+    .scroll-track.scrolled main > hd.clone {
+        top: 0;
+    }
+
+    .scroll-track main > bd {
+        margin-top: 0;
+    }
+}
+main > hd > nav {
+    display: block;
+    width: 100%;
+    height: 55px;
+    margin: 0 auto;
+    max-width: 970px;
+    padding: 0 10px;
+    white-space:nowrap;
+    overflow:visible;
+}
+
+main.fluid > hd > nav {
+    max-width: 100%;
+    padding: 0 10px;
+}
+
+nav > btn {
+    display: none;
+    float: right;
+    height: 55px;
+    width:55px;
+    text-align:center;
+    line-height:55px;
+    color: #1e8fc6;
+    background: #fff;
+    border-radius: 0;
+    border-width:0;
+    padding:0;
+    cursor:pointer;
+}
+
+nav > btn:after, nav > btn:before {
+    font-size: 30px;
+    font-family: 'entypo', sans-serif;
+    font-style: normal;
+    vertical-align: top;
+    line-height: 56px;
+    font-weight:200;
+    text-decoration:none;
+    display:block;
+}
+
+nav > btn:after {
+    content: "\2630";
+}
+
+nav > btn:before {
+    content: "\2715";
+    display:none;
+}
+
+nav > brand {
+    float: left;
+    height:55px;
+    line-height: 55px;
+    position:relative;
+    padding-left:6px;
+    top:-1px;
+}
+
+main.centered nav > brand {
+    padding-left:0;
+    margin-left:-8px;
+}
+
+nav > brand > a {
+    display:block;
+    height:55px;
+    line-height: 53px;
+}
+
+nav > brand > a img {
+    vertical-align:middle;
+}
+
+nav > bd > ul {
+    display:table;
+    float: right;
+    margin:0;
+    padding: 0;
+    list-style:none;
+}
+
+nav > bd > ul > li {
+    display:table-cell;
+    list-style-type:none;
+    vertical-align:top;
+    height: 55px;
+    margin:0;
+    padding: 0;
+}
+
+nav > bd > ul > li > a:not(.btn) {
+    display:block;
+    padding: 0 25px 0;
+    margin-top:10px;
+    height: 36px;
+    line-height:36px;
+    font-size: 16px;
+    font-weight:500;
+    text-decoration:none;
+    color: rgba(255,255,255,.85);
+    border-radius:3px;
+    overflow:hidden;
+    min-width: 85px;
+    text-align: center;
+}
+
+main.centered nav > bd > ul > li > a:not(.btn) {
+    padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+    main.centered nav > bd > ul > li > a:not(.btn) {
+        padding: 0 10px;
+        font-size:14px;
+        min-width:54px;
+    }
+}
+
+nav > bd > ul > li > a:hover{
+    text-decoration:none;
+    background: rgba(255,255,255,.1);
+    color: #fff;
+}
+
+
+nav > bd > ul > li > a:focus,
+nav > bd > ul > li > a:active:focus,
+nav > bd > ul > li > a.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+nav > bd > ul > li > a:active,
+nav > bd > ul > li > a.active {
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+nav > bd > ul > li > a.open {
+    background: #fff;
+    border-radius: 3px 3px 0 0;
+    color: #1e8fc6;
+}
+
+nav > bd > ul > li > .btn {
+    display:block;
+    padding: 0 12px;
+    margin: 9px 8px 9px 20px;
+    height: 37px;
+    line-height:37px;
+    font-size:15px;
+    background: #23a2e0;
+    border-color: #23a2e0;
+    box-shadow:none;
+    font-weight:500;
+}
+
+
+@media (min-width: 990px) {
+    main.centered > hd > nav {
+        padding: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    #body hd nav {
+        padding-right:0;
+    }
+
+    #body nav > bd {
+        visibility:hidden;
+        position:fixed;
+        left:0;
+        top:55px;
+        width: 100%;
+        float:none;
+        z-index:99;
+        background: #fff;
+        margin:0;
+        border-top: 1px solid #ccc;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.25);
+        padding-top:2px;
+    }
+
+    #body nav > btn {
+        display:block;
+    }
+
+    #body nav > btn.open {
+        background: #fff;
+        height: 56px;
+        z-index: 101;
+        position: relative;
+        box-shadow: -2px -2px 2px rgba(30,30,30,.3);
+        color: #1e8fc6;
+    }
+
+    #body nav > btn.open:before {
+        display:block;
+    }
+
+    #body nav > btn.open:after {
+        display:none;
+    }
+
+    #body nav > bd.open {
+        visibility:visible;
+    }
+
+    #body nav > bd > ul {
+        float:none !important;
+        margin: 0 !important;
+        width:100%;
+        display:block;
+    }
+
+    #body nav > bd > ul > li {
+        display:block;
+        height:auto;
+        border-bottom: 1px solid #eee;
+    }
+
+    #body nav > bd > ul:not(:first-of-type) > li:first-child {
+        border-top: 1px solid #eee;
+    }
+
+    #body nav > bd > ul > li:last-of-type {
+        border-bottom-width:0;
+    }
+
+    #body nav > bd > ul > li > a:not(.btn) {
+        width:100%;
+        text-align:center;
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration:none;
+        color: #1e8fc6;
+        margin-top:0;
+        line-height:55px;
+        height:55px;
+    }
+
+    #body nav > bd > ul > li > .btn {
+        display:block;
+        margin: 8px !important;
+        height: auto;
+        line-height:1.5;
+        padding: 10px 0 ;
+        font-size: 18px;
+        width:auto;
+        text-align:center;
+    }
+
+    #body nav > bd > ul > li > .btn:not(.green) {
+        background-color: #1e8fc6;
+    }
+}
+

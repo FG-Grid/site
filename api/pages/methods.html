@@ -1,0 +1,37 @@
+<h1>Methods</h1>
+
+<p>
+<pre><code class="js">
+const columns = [...];
+
+const grid = new Grid({
+  ...
+});
+...
+grid.hideColumn(column[1]);
+</code></pre>
+
+</p>
+
+<p class="tip">
+  To get link on grid widget from any place there is method <code class="js">Fancy.get</code>
+</p>
+
+<p>
+If it was set renderTo property than use <code class="js">Fancy.get('my-grid')</code><br>
+<pre>
+<code class="js">
+new FancyGrid({
+  id: 'my-grid',
+  renderTo: 'myGridReport',
+  ...
+});
+
+function updateGridTitle(){
+  const grid = Fancy.get('my-grid');
+
+  grid.setData([...]);
+}
+</code>
+</pre>
+</p>

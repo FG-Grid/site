@@ -1,0 +1,43 @@
+<h3>menu</h3>
+<code class="type">Mixed</code>
+
+<p>Enable column menu.</p>
+<h6>Screencast</h6>
+<p class="tip">
+ You can study this section over <a href="https://scrimba.com/p/pbWvaSa/c3GGdZTb">screencast</a>.
+</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+menu: true,
+</code></pre>
+
+<p><b>Example: Custom Default menu</b><p>
+<pre><code class="js">
+menu: ['size', '-', 'sort', '-', 'columns', '-', 'lock'],
+</code></pre>
+
+<p><b>Example: Custom menu</b><p>
+<pre><code class="js">
+menu: ['columns', '-', {
+  text: 'Hi',
+  handler: function(){
+	alert('Hi');
+  }
+}],
+</code></pre>
+
+<p><b>Example: One menu with columns only</b><p>
+<pre><code class="js">
+menu: 'columns',
+</code></pre>
+
+<p><b>Example: One menu with auto sizing items</b><p>
+<pre><code class="js">
+menu: 'size',
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+false
+</code></pre>

@@ -1,0 +1,49 @@
+<h3>renderTo</h3>
+<code class="type">Mixed</code>
+
+<p>Dom/id, where to render grid.</p>
+
+<p><b>Example: String</b><p>
+<pre><code class="js">
+&lt;div id="container">&lt;/div>
+...
+
+new FancyGrid({
+  renderTo: 'container',
+  width: 690,
+  height: 350,
+  ...
+</code></pre>
+
+<p><b>Example: Dom</b><p>
+<pre><code class="js">
+&lt;div id="container">&lt;/div>
+...
+
+new Grid({
+  renderTo: document.querySelector('#container'),
+  width: 700,
+  height: 350,
+  ...
+</code></pre>
+
+<p><b>Example: Argument</b><p>
+<p>
+  It is possible do not define renderTo property and provide dom element as first argument.
+</p>
+
+<pre><code class="js">
+&lt;div id="container">&lt;/div>
+...
+
+new Grid(document.querySelector('#container'), {
+  width: 700,
+  height: 350,
+  ...
+</code></pre>
+
+
+<p><b>Default</b><p>
+<pre><code class="js">
+undefined
+</code></pre>

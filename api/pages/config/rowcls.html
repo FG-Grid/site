@@ -1,0 +1,21 @@
+<h3>rowCls</h3>
+<code class="type">Function</code>
+
+<p>One of the way to style.</p>
+<p>It returns row css classnames based on params</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+new Grid({
+   rowCls(params){
+     if(params.item.price > 75000){
+       return ['high-price'];
+     }
+   },
+...
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+28
+</code></pre>

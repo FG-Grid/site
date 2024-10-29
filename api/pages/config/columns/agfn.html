@@ -1,0 +1,29 @@
+<h3>agFn</h3>
+<code class="type">String | Function</code>
+
+<p>Aggregation for row grouping.</p>
+<p>There 2 ways of usage - predefined values and custom function</p>
+<p>
+  'sum' - for summary group values<br>
+  'avg' - average value<br>
+  'min' - min value<br>
+  'max' - max value<br>
+</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  filter: true,
+  agFn: 'sum',
+  type: 'currency'
+</code></pre>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  filter: true,
+  agFn(values) => values.reduce((sum, value) => sum + value, 0),
+  type: 'currency'
+</code></pre>

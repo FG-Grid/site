@@ -1,0 +1,59 @@
+<h3>filter</h3>
+<code class="type">Object</code>
+
+<p>Enables column filter.</p>
+
+<p><b>Examples</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'age',
+  title: 'Age',
+  type: 'number',
+  filter: {
+    header: true,
+    emptyText: 'Enter'
+  }
+},{
+...
+</code></pre>
+
+<p><b>Example: filter header tooltip</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'age',
+  title: 'Age',
+  type: 'number',
+  filter: {
+    header: true,
+    tip: [
+      'Contains: 30',
+      'Less than: <30',
+      'More than: >30',
+      'Equal: =30',
+      'Not Equal: !=30',
+      'Composite: <30,>5'
+    ].join("")
+  }
+},{
+...
+</code></pre>
+
+<p><b>Example: Default filter header field operator</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'age',
+  title: 'Age',
+  type: 'number',
+  filter: {
+    header: true,
+	operator: '='    
+  }
+},{
+...
+</code></pre>
+
+
+<p><b>Default</b><p>
+<pre><code class="js">
+undefined
+</code></pre>

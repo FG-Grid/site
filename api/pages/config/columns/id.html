@@ -1,0 +1,26 @@
+<h3>id</h3>
+<code class="type">String</code>
+
+<p>
+Column id was added to solve cases when column does not have data index or data index is repeated on several columns.<br>
+If column id is not provided that it will be auto generated on base of column data index or random value.
+</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+...
+columns: [{
+  type: 'string',
+  title: 'Name',
+  index: 'name',
+  id: 'name',
+  width: 80,
+  align: 'center'
+},{
+...
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+Auto generation
+</code></pre>

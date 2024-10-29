@@ -1,0 +1,19 @@
+<h3>currency</h3>
+<code class="type">String</code>
+
+<p>This property is used only for column with type <code class="js">currency</code>.</p>
+<p>Possible values: <code class="js">USD</code>, <code class="js">EUR</code>, <code class="js">GBP</code>, <code class="js">JPY</code>, <code class="js">CNY</code></p>
+<p>
+  Another specific options for column type <code class="js">currency</code>:<br>
+  <code class="js">minDecimal</code>, <code class="js">maxDecimal</code>
+</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  currency: 'EUR',
+  filter: true,
+  type: 'currency',
+  title: 'EUR'
+</code></pre>

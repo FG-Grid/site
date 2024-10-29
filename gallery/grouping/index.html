@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fancy Grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=2"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=2" rel="stylesheet">
+
+  <link href="flag.css" rel="stylesheet">
+
+  <style>
+    .flag-cell, .group-country-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .group-country-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+
+  <style media="only screen">
+    :root,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+      font-family: -apple-system, "system-ui", "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+    }
+
+    body {
+      padding: 16px;
+      overflow: auto;
+      background-color: transparent;
+    }
+  </style>
+
+  <script src="data.js"></script>
+
+  <script>
+    const countries = {
+      "Australia": "au",
+      "Austria": "at",
+      "Belgium": "be",
+      "Canada": "ca",
+      "Denmark": "dk",
+      "Finland": "fi",
+      "France": "fr",
+      "Germany": "de",
+      "Hong Kong": "hk",
+      "Iceland": "",
+      "Ireland": "ie",
+      "Japan": "ja",
+      "Luxembourg": "lu",
+      "Netherlands": "nl",
+      "Norway": "no",
+      "San Marino": "",
+      "Singapore": "sg",
+      "South Korea": "kr",
+      "Sweden": "se",
+      "Switzerland": "ch",
+      "Taiwan": "",
+      "UK": "uk",
+      "USA": "us"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      new Grid({
+        renderTo: 'container',
+        rowGroupType: 'column',
+        rowGroupBar: true,
+		    rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
+        defaults: {
+          sortable: true
+        },
+        filterBar: true,
+        rowGroupColumn: {
+          title: 'Group',
+          width: 200,
+          checkboxSelection: true,
+          headerCheckboxSelection: true,
+          render(params){
+            const {
+              item
+            } = params;
+
+            if(!item.$isGroupRow){
+              return `${item.brand} ${item.model}`
+            }
+          }
+        },
+        groupValueRender(params){
+          const {
+            el,
+            value
+          } = params;
+
+          if(!countries[value]){
+            return value;
+          }
+
+          const flagCls = 'flag-' + countries[value];
+
+          const container = document.createElement('span');
+          container.classList.add('group-country-container');
+
+          const flagEl = document.createElement('span');
+          flagEl.classList.add('flag', flagCls);
+          flagEl.innerHTML = '&nbsp;'
+          container.appendChild(flagEl);
+
+          const valueEl = document.createElement('span');
+          valueEl.classList.add('group-country-text');
+          valueEl.innerHTML = ` ${value}`;
+          container.appendChild(valueEl);
+
+          el.appendChild(container);
+        },
+        columns: [{
+          index: 'brand',
+		      rowGroup: true,
+          type: 'string'
+        },{
+          index: 'model',
+          rowGroup: true,
+          type: 'string'
+        },{
+          index: 'price',
+          filter: true,
+          agFn: 'sum',
+          type: 'currency'
+        },{
+          index: 'year',
+          filter: true,
+          type: 'number'
+        }, {
+          index: 'country',
+          rowGroup: true,
+          rowGroupOrder: 0,
+          type: 'string',
+          render(params){
+            const {
+              cell,
+              value
+            } = params;
+            const flagCls = 'flag-' + countries[value];
+            cell.classList.add('flag-cell');
+
+            const spanFlagEl = document.createElement('span');
+            spanFlagEl.classList.add('flag', flagCls);
+            spanFlagEl.innerHTML = '&nbsp;';
+            cell.appendChild(spanFlagEl);
+
+            const textEl = document.createElement('span');
+            textEl.classList.add('country-text');
+            textEl.innerHTML = ` ${value}`;
+
+            cell.appendChild(textEl);
+          }
+        },{
+          index: 'color',
+          filter: true,
+          type: 'string'
+        },{
+          index: 'fuelType',
+          filter: true,
+          type: 'string'
+        },{
+          index: 'transmission',
+          type: 'string'
+        },{
+          index: 'electric',
+          type: 'boolean'
+        }],
+        data: data
+      });
+    });
+  </script>
+</head>
+<body>
+<style>
+.img-container {
+   border: 1px solid #bdc3c7;
+   border-radius: 2px 0px;
+   border-bottom: 0px;
+   padding-top: 4px;
+}
+
+.cars-dealer-title {
+  height: 33px;
+  border: 1px solid #bdc3c7;
+  border-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  color: rgba(0, 0, 0, 0.54);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: rgba(245, 247, 247, 0.7);
+}
+</style>
+
+<div style="margin: 10px auto 10px;width: 1000px;">
+  <div style="position:relative">
+    <div class="img-container">
+		<img src="img\land-cruiser-300-gr-sport.png">
+		<img src="img\land-cruiser-300.png">
+		<img src="img\land-cruiser-250.png">
+	</div>
+	<div class="cars-dealer-title">
+		Car Dealer Store
+	</div>
+    <div id="container" style="width: 1000px; height: 810px;"></div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-track js no-touch history websockets video audio localstorage svg">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>FG-Grid - JavaScript Grid Library | JS React TypeScript grid | FG-Grid </title>
+
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="keywords" content="javascript data grid react angularjs angular 2 web components jsgrid js datatables">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="css/g.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/icons.v2.css">
+    <link rel="stylesheet" href="css/base.v2.css">
+    <link rel="stylesheet" href="css/layout.v2.css">
+    <link rel="stylesheet" href="css/nav.v3.css">
+    <link rel="stylesheet" href="css/slides.v2.css">
+
+    <!-- global styles -->
+    <link rel="stylesheet" href="css/global.v4.css">
+
+    <!--<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,300italic,400italic" type="text/css">-->
+    <link href="css/home.v3.css" rel="stylesheet" type="text/css">
+
+
+    <script src="js/modernizr.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE]>
+    <script src="js/elements.js"></script>
+    <![endif]-->
+
+    <script>
+    document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:'+(window.innerHeight-0)+'px;} #mc{min-height:'+(window.innerHeight-255)+'px;}}</style>');
+    </script><style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:799px;} #mc{min-height:544px;}}</style>
+<script>
+// hide nav bar if in iframe
+var write = function(){
+    document.write('<style>@media(min-width: 768px){main > hd{display:none;}#mc, #mc > side{top:0;}}</style>');
+};
+(function(){
+    try{
+        if(window.self !== window.top){
+            write();
+        }
+    }catch(e){
+        write();
+    }
+})();
+</script>
+
+</head>
+
+<body id="body">
+<main class="fluid">
+<hd>
+    <nav>
+        <brand>
+            <a href="/" style="text-decoration:none;display: flex; align-items: center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#088EC7"></rect>
+                  <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+                  <rect height="12" width="12" x="2" y="16" rx="2"  stroke-width="0" fill="#A2CFE8"></rect>
+                  <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#088EC7"></rect>
+              </svg>
+
+              <span class="text-lg" data-id="2" style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
+              <span class="text-lg" data-id="3" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
+              <span class="text-lg" data-id="3" style="color: rgba(255,255,255,.85); font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
+            </a>
+        </brand>
+        <btn></btn>
+        <bd>
+          <ul style="float:left;margin-left:20px;">
+            <li><a href="/docs">Docs</a></li>
+            <li><a href="/api">API</a></li>
+          </ul>
+          <ul>
+            <li><a href="https://github.com/FG-Grid/fg-grid" style="">Support</a></li>
+          </ul>
+        </bd>
+    </nav>
+</hd>
+<bd id="mc">
+
+<slide class="dark screen screen-right bg" style="overflow: hidden; padding-top: 80px; padding-bottom: 0px;" sm="true" bg="blue-cloud.jpg" bg-mode="stretch" mask="black20">
+    <h1 style="font-weight:500;font-size:42px;">JavaScript Data Grid</h1>
+    <h4 style="font-weight:300;">Open source data grid library for building enterprise applications</h4>
+    <desktop class="framed nochrome" style="width:850px;max-width:850px;max-height:493px;overflow:hidden;border-color:#1e8fc6;border-radius:3px 3px 0 0;margin-top:20px;box-shadow:0 -1px 15px rgba(0,0,0,.25)">
+        <screen class="swap" delay="14">
+          <img src="img/car-dealer-store-2.png" class="active">
+          <img src="img/new-grid-big-data.png?_dc=1">
+        </screen>
+    </desktop>
+</slide>
+
+<style>
+slide.bg {
+	background-image: url('img/blue-cloud.jpg');
+}
+
+.framework-js {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIiA/Pgo8c3ZnIHdpZHRoPSIxMjhweCIgaGVpZ2h0PSIxMjhweCIgdmlld0JveD0iMCAwIDI2NSAyNTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPgogICAgPGc+CiAgICAgICAgPHBhdGggZD0iTTAsMCBMMjU2LDAgTDI1NiwyNTYgTDAsMjU2IEwwLDAgWiIgZmlsbD0iI0Y3REYxRSI+PC9wYXRoPgogICAgICAgIDxwYXRoIGQ9Ik02Ny4zMTE3NDYsMjEzLjkzMjI5MiBMODYuOTAyNjU0LDIwMi4wNzYyNDEgQzkwLjY4MjEwNzksMjA4Ljc3NzM0NiA5NC4xMjAyMjg2LDIxNC40NDcxMzcgMTAyLjM2NzA4NiwyMTQuNDQ3MTM3IEMxMTAuMjcyMjAzLDIxNC40NDcxMzcgMTE1LjI1NjA3NiwyMTEuMzU0ODE5IDExNS4yNTYwNzYsMTk5LjMyNjg4MyBMMTE1LjI1NjA3NiwxMTcuNTI4Nzg3IEwxMzkuMzEzNTc1LDExNy41Mjg3ODcgTDEzOS4zMTM1NzUsMTk5LjY2Njk5NyBDMTM5LjMxMzU3NSwyMjQuNTg0MzMgMTI0LjcwNzc1OSwyMzUuOTI1OTQzIDEwMy4zOTg0LDIzNS45MjU5NDMgQzg0LjE1MzI5NTIsMjM1LjkyNTk0MyA3Mi45ODE5NDI5LDIyNS45NTg2MDMgNjcuMzExMzM5NywyMTMuOTMwMjYiIGZpbGw9IiMwMDAwMDAiPjwvcGF0aD4KICAgICAgICA8cGF0aCBkPSJNMTUyLjM4MDk1MiwyMTEuMzU0NDEzIEwxNzEuOTY5NDIyLDIwMC4wMTI4IEMxNzcuMTI1OTk0LDIwOC40MzM5ODEgMTgzLjgyNzkxMSwyMTQuNjE5ODM1IDE5NS42ODQzNjgsMjE0LjYxOTgzNSBDMjA1LjY1MjUyMSwyMTQuNjE5ODM1IDIxMi4wMDkwNDEsMjA5LjYzNTk2MiAyMTIuMDA5MDQxLDIwMi43NjIxNTkgQzIxMi4wMDkwNDEsMTk0LjUxMzY3NiAyMDUuNDc5NDE2LDE5MS41OTIwMjUgMTk0LjQ4MTE2OCwxODYuNzgyMDcgTDE4OC40Njg0MTksMTg0LjIwMjU2NSBDMTcxLjExMTIxMywxNzYuODE0NzMgMTU5LjU5NzMwOCwxNjcuNTM1MzQgMTU5LjU5NzMwOCwxNDcuOTQ0ODM4IEMxNTkuNTk3MzA4LDEyOS45MDEzMDggMTczLjM0NDUwOCwxMTYuMTUzMjk1IDE5NC44MjU3NTIsMTE2LjE1MzI5NSBDMjEwLjExOTkyNCwxMTYuMTUzMjk1IDIyMS4xMTc3NjUsMTIxLjQ4MDk0IDIyOS4wMjE2NjMsMTM1LjQwMDQzMiBMMjEwLjI5MDU5LDE0Ny40Mjg3NzUgQzIwNi4xNjYxNDYsMTQwLjA0MDEyNyAyMDEuNjk5NTU2LDEzNy4xMTkyODkgMTk0LjgyNjE1OSwxMzcuMTE5Mjg5IEMxODcuNzgwNDcsMTM3LjExOTI4OSAxODMuMzEyMjU0LDE0MS41ODcwOTggMTgzLjMxMjI1NCwxNDcuNDI4Nzc1IEMxODMuMzEyMjU0LDE1NC42NDYzNDkgMTg3Ljc4MDQ3LDE1Ny41Njg0MDYgMTk4LjA4OTk1NiwxNjIuMDM2NjIyIEwyMDQuMTAzOTI0LDE2NC42MTQwOTUgQzIyNC41NTM0NDgsMTczLjM3ODY0MSAyMzYuMDY3MzUyLDE4Mi4zMTM0NDggMjM2LjA2NzM1MiwyMDIuNDE4Mzg3IEMyMzYuMDY3MzUyLDIyNC4wNzE5MjQgMjE5LjA1NTEzNywyMzUuOTI3OTc1IDE5Ni4yMDA0MzIsMjM1LjkyNzk3NSBDMTczLjg2MDk3OCwyMzUuOTI3OTc1IDE1OS40MjU4MjksMjI1LjI3NDMxMSAxNTIuMzgxMzU5LDIxMS4zNTQ0MTMiIGZpbGw9IiMwMDAwMDAiPjwvcGF0aD4KICAgIDwvZz4KPC9zdmc+);
+  width: 128px;
+  height: 128px;
+  margin: auto;
+  background-repeat: no-repeat;
+}
+
+.framework-ts {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSIxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgZmlsbD0iIzMxNzhjNiIgaGVpZ2h0PSI1MTIiIHJ4PSI1MCIgd2lkdGg9IjUxMiIvPjxyZWN0IGZpbGw9IiMzMTc4YzYiIGhlaWdodD0iNTEyIiByeD0iNTAiIHdpZHRoPSI1MTIiLz48cGF0aCBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Im0zMTYuOTM5IDQwNy40MjR2NTAuMDYxYzguMTM4IDQuMTcyIDE3Ljc2MyA3LjMgMjguODc1IDkuMzg2czIyLjgyMyAzLjEyOSAzNS4xMzUgMy4xMjljMTEuOTk5IDAgMjMuMzk3LTEuMTQ3IDM0LjE5Ni0zLjQ0MiAxMC43OTktMi4yOTQgMjAuMjY4LTYuMDc1IDI4LjQwNi0xMS4zNDIgOC4xMzgtNS4yNjYgMTQuNTgxLTEyLjE1IDE5LjMyOC0yMC42NXM3LjEyMS0xOS4wMDcgNy4xMjEtMzEuNTIyYzAtOS4wNzQtMS4zNTYtMTcuMDI2LTQuMDY5LTIzLjg1N3MtNi42MjUtMTIuOTA2LTExLjczOC0xOC4yMjVjLTUuMTEyLTUuMzE5LTExLjI0Mi0xMC4wOTEtMTguMzg5LTE0LjMxNXMtMTUuMjA3LTguMjEzLTI0LjE4LTExLjk2N2MtNi41NzMtMi43MTItMTIuNDY4LTUuMzQ1LTE3LjY4NS03LjktNS4yMTctMi41NTYtOS42NTEtNS4xNjMtMTMuMzAzLTcuODIyLTMuNjUyLTIuNjYtNi40NjktNS40NzYtOC40NTEtOC40NDgtMS45ODItMi45NzMtMi45NzQtNi4zMzYtMi45NzQtMTAuMDkxIDAtMy40NDEuODg3LTYuNTQ0IDIuNjYxLTkuMzA4czQuMjc4LTUuMTM2IDcuNTEyLTcuMTE4YzMuMjM1LTEuOTgxIDcuMTk5LTMuNTIgMTEuODk0LTQuNjE1IDQuNjk2LTEuMDk1IDkuOTEyLTEuNjQyIDE1LjY1MS0xLjY0MiA0LjE3MyAwIDguNTgxLjMxMyAxMy4yMjQuOTM4IDQuNjQzLjYyNiA5LjMxMiAxLjU5MSAxNC4wMDggMi44OTQgNC42OTUgMS4zMDQgOS4yNTkgMi45NDcgMTMuNjk0IDQuOTI4IDQuNDM0IDEuOTgyIDguNTI5IDQuMjc2IDEyLjI4NSA2Ljg4NHYtNDYuNzc2Yy03LjYxNi0yLjkyLTE1LjkzNy01LjA4NC0yNC45NjItNi40OTJzLTE5LjM4MS0yLjExMi0zMS4wNjYtMi4xMTJjLTExLjg5NSAwLTIzLjE2MyAxLjI3OC0zMy44MDUgMy44MzNzLTIwLjAwNiA2LjU0NC0yOC4wOTMgMTEuOTY3Yy04LjA4NiA1LjQyNC0xNC40NzYgMTIuMzMzLTE5LjE3MSAyMC43MjktNC42OTUgOC4zOTUtNy4wNDMgMTguNDMzLTcuMDQzIDMwLjExNCAwIDE0LjkxNCA0LjMwNCAyNy42MzggMTIuOTEyIDM4LjE3MiA4LjYwNyAxMC41MzMgMjEuNjc1IDE5LjQ1IDM5LjIwNCAyNi43NTEgNi44ODYgMi44MTYgMTMuMzAzIDUuNTc5IDE5LjI1IDguMjkxczExLjA4NiA1LjUyOCAxNS40MTUgOC40NDhjNC4zMyAyLjkyIDcuNzQ3IDYuMTAxIDEwLjI1MiA5LjU0MyAyLjUwNCAzLjQ0MSAzLjc1NiA3LjM1MiAzLjc1NiAxMS43MzMgMCAzLjIzMy0uNzgzIDYuMjMxLTIuMzQ4IDguOTk1cy0zLjkzOSA1LjE2Mi03LjEyMSA3LjE5Ni03LjE0NyAzLjYyNC0xMS44OTQgNC43NzFjLTQuNzQ4IDEuMTQ4LTEwLjMwMyAxLjcyMS0xNi42NjggMS43MjEtMTAuODUxIDAtMjEuNTk3LTEuOTAzLTMyLjI0LTUuNzEtMTAuNjQyLTMuODA2LTIwLjUwMi05LjUxNi0yOS41NzktMTcuMTN6bS04NC4xNTktMTIzLjM0Mmg2NC4yMnYtNDEuMDgyaC0xNzl2NDEuMDgyaDYzLjkwNnYxODIuOTE4aDUwLjg3NHoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);
+  width: 128px;
+  height: 128px;
+  margin: auto;
+  background-repeat: no-repeat;
+}
+
+.framework-react {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgMjU2IDIyOCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCI+CiAgICA8Zz4KICAgICAgICA8cGF0aCBkPSJNMjEwLjQ4MzM4MSw3My44MjM2Mzc0IEMyMDcuODI3Njk4LDcyLjkwOTU1MDMgMjA1LjA3NTg2Nyw3Mi4wNDQ2NzYxIDIwMi4yNDI0Nyw3MS4yMjY3MzY4IEMyMDIuNzA4MTcyLDY5LjMyNjEwOTggMjAzLjEzNTU5Niw2Ny40NTAwODk0IDIwMy41MTU2MzEsNjUuNjA1OTY2NCBDMjA5Ljc1Mzg0MywzNS4zMjQ4OTIyIDIwNS42NzUwODIsMTAuOTMwMjQ3OCAxOTEuNzQ3MzI4LDIuODk4NDkyODMgQzE3OC4zOTIzNTksLTQuODAyODk2NjEgMTU2LjU1MTMyNywzLjIyNzAzNTY3IDEzNC40OTI5MzYsMjIuNDIzNzc3NiBDMTMyLjM3MTc2MSwyNC4yNjk3MjMzIDEzMC4yNDQ2NjIsMjYuMjI0MTIwMSAxMjguMTE4NDc3LDI4LjI3MjM4NjEgQzEyNi43MDE3NzcsMjYuOTE3MjA0IDEyNS4yODczNTgsMjUuNjA3NTg5NyAxMjMuODc2NTg0LDI0LjM1NDkzNDggQzEwMC43NTg3NDUsMy44Mjg1Mjg2MyA3Ny41ODY2ODAyLC00LjgyMTU3OTM3IDYzLjY3MjU5NjYsMy4yMzM0MTUxNSBDNTAuMzMwMzg2OSwxMC45NTcxMzI4IDQ2LjM3OTIxNTYsMzMuODkwNDIyNCA1MS45OTQ1MTc4LDYyLjU4ODAyMDYgQzUyLjUzNjc3MjksNjUuMzU5OTAxMSA1My4xNzA2MTg5LDY4LjE5MDU2MzkgNTMuODg3Mzk4Miw3MS4wNjg2MTcgQzUwLjYwNzg5NDEsNzEuOTk5NTY0MSA0Ny40NDE4NTM0LDcyLjk5MjAyNzcgNDQuNDEyNTE1Niw3NC4wNDc4MzAzIEMxNy4zMDkzMjk3LDgzLjQ5NzE5NSAwLDk4LjMwNjY4MjggMCwxMTMuNjY3OTk1IEMwLDEyOS41MzMyODcgMTguNTgxNTc4NiwxNDUuNDQ2NDIzIDQ2LjgxMTY1MjYsMTU1LjA5NTM3MyBDNDkuMDM5NDU1MywxNTUuODU2ODA5IDUxLjM1MTEwMjUsMTU2LjU3Njc3OCA1My43MzMzNzk2LDE1Ny4yNjAyOTMgQzUyLjk2MDA5NjUsMTYwLjM3MzAyIDUyLjI4NzUxNzksMTYzLjQyMzMxOCA1MS43MjI5MzQ1LDE2Ni4zOTg0MzEgQzQ2LjM2ODczNTEsMTk0LjU5Nzk3NSA1MC41NTAwMjMxLDIxNi45ODk0NjQgNjMuODU2Njg5OSwyMjQuNjY0NDI1IEM3Ny42MDEyNjE5LDIzMi41OTA0NjQgMTAwLjY2ODUyLDIyNC40NDM0MjIgMTIzLjEzMDE4NSwyMDQuODA5MjMxIEMxMjQuOTA1NTAxLDIwMy4yNTcxOTYgMTI2LjY4NzE5NiwyMDEuNjExMjkzIDEyOC40NzIwODEsMTk5Ljg4NjEwMiBDMTMwLjc4NTU1MiwyMDIuMTEzOTA0IDEzMy4wOTUzNzUsMjA0LjIyMjMxOSAxMzUuMzkyODk3LDIwNi4xOTk5NTUgQzE1Ny4xNDk2MywyMjQuOTIyMzM4IDE3OC42Mzc5NjksMjMyLjQ4MjQ2OSAxOTEuOTMyMzMyLDIyNC43ODYwOTIgQzIwNS42NjMyMzQsMjE2LjgzNzI2OCAyMTAuMTI1Njc1LDE5Mi43ODM0NyAyMDQuMzMyMjAyLDE2My41MTgxIEMyMDMuODg5NzQsMTYxLjI4MzAwNiAyMDMuMzc0ODI2LDE1OC45OTk2MSAyMDIuNzk2NTczLDE1Ni42NzU2NjEgQzIwNC40MTY1MDMsMTU2LjE5Njc0MyAyMDYuMDA2ODE0LDE1NS43MDIzMzUgMjA3LjU1NzQ4MiwxNTUuMTg4MzMyIEMyMzYuOTA1MzMxLDE0NS40NjQ2NSAyNTYsMTI5Ljc0NTE3NSAyNTYsMTEzLjY2Nzk5NSBDMjU2LDk4LjI1MTA5MDYgMjM4LjEzMjQ2Niw4My4zNDE4MDkzIDIxMC40ODMzODEsNzMuODIzNjM3NCBMMjEwLjQ4MzM4MSw3My44MjM2Mzc0IFogTTIwNC4xMTgwMzUsMTQ0LjgwNzU2NSBDMjAyLjcxODE5NywxNDUuMjcwOTg3IDIwMS4yODE5MDQsMTQ1LjcxODkxOCAxOTkuODE4MjcxLDE0Ni4xNTMxNzcgQzE5Ni41Nzg0MTEsMTM1Ljg5NjM1NCAxOTIuMjA1NzM5LDEyNC45ODk3MzUgMTg2Ljg1NDcyOSwxMTMuNzIxMzEgQzE5MS45NjEwNDEsMTAyLjcyMTI3NyAxOTYuMTY0NjU2LDkxLjk1NDA5NjMgMTk5LjMxMzgzNyw4MS43NjM4MDE0IEMyMDEuOTMyNjEsODIuNTIxNTkxNSAyMDQuNDc0Mzc0LDgzLjMyMDg0ODMgMjA2LjkyMzYzNiw4NC4xNjQzMDU2IEMyMzAuNjEzMzQ4LDkyLjMxOTU0ODggMjQ1LjA2Mzc2MywxMDQuMzc3MjA2IDI0NS4wNjM3NjMsMTEzLjY2Nzk5NSBDMjQ1LjA2Mzc2MywxMjMuNTY0Mzc5IDIyOS40NTc3NTMsMTM2LjQxMTI2OCAyMDQuMTE4MDM1LDE0NC44MDc1NjUgTDIwNC4xMTgwMzUsMTQ0LjgwNzU2NSBaIE0xOTMuNjAzNzU0LDE2NS42NDIwMDcgQzE5Ni4xNjU1NjcsMTc4LjU4Mjc2NiAxOTYuNTMxNDc1LDE5MC4yODI3MTcgMTk0LjgzNDUzNiwxOTkuNDI5MDU3IEMxOTMuMzA5ODQzLDIwNy42NDc2NCAxOTAuMjQzNTk1LDIxMy4xMjcxNSAxODYuNDUyMzY2LDIxNS4zMjE2ODkgQzE3OC4zODQ2MTIsMjE5Ljk5MTQ2MiAxNjEuMTMxNzg4LDIxMy45MjEzOTUgMTQyLjUyNTE0NiwxOTcuOTA5ODMyIEMxNDAuMzkyMTI0LDE5Ni4wNzQzNjYgMTM4LjI0MzYwOSwxOTQuMTE0NTAyIDEzNi4wODgyNTksMTkyLjA0MDI2MSBDMTQzLjMwMTYxOSwxODQuMTUxMTMzIDE1MC41MTA4NzgsMTc0Ljk3OTczMiAxNTcuNTQ2OTgsMTY0Ljc5Mzk5MyBDMTY5LjkyMjY5OSwxNjMuNjk1ODE0IDE4MS42MTQ5MDUsMTYxLjkwMDQ0NyAxOTIuMjE4MDQyLDE1OS40NDkzNjMgQzE5Mi43NDAyNDcsMTYxLjU1NTk1NiAxOTMuMjA0MTI2LDE2My42MjE5OTMgMTkzLjYwMzc1NCwxNjUuNjQyMDA3IEwxOTMuNjAzNzU0LDE2NS42NDIwMDcgWiBNODcuMjc2MTg2NiwyMTQuNTE0Njg2IEM3OS4zOTM4OTM0LDIxNy4yOTg0MTQgNzMuMTE2MDM3NSwyMTcuMzc4MTU3IDY5LjMyMTE2MzEsMjE1LjE4OTk5OCBDNjEuMjQ2MTE4OSwyMTAuNTMyNTI4IDU3Ljg4OTE0OTgsMTkyLjU1NDI2NSA2Mi40NjgyNDM0LDE2OC40MzgwMzkgQzYyLjk5MjcyNzIsMTY1LjY3NjE4MyA2My42MTcwMDQxLDE2Mi44MzkxNDIgNjQuMzM2NTE3MywxNTkuOTM5MjE2IEM3NC44MjM0NTc1LDE2Mi4yNTgxNTQgODYuNDI5OTk1MSwxNjMuOTI2ODQxIDk4LjgzNTMzMzQsMTY0LjkzMjUxOSBDMTA1LjkxODgyNiwxNzQuODk5NTM0IDExMy4zMzYzMjksMTg0LjA2MDkxIDEyMC44MTEyNDcsMTkyLjA4MjY0IEMxMTkuMTc4MTAyLDE5My42NTkyOCAxMTcuNTUxMzM2LDE5NS4xNjAyOCAxMTUuOTMzNjg1LDE5Ni41NzQ2OTkgQzEwNi4wMDEzMDMsMjA1LjI1NjcwNSA5Ni4wNDc5NjA1LDIxMS40MTY1NCA4Ny4yNzYxODY2LDIxNC41MTQ2ODYgTDg3LjI3NjE4NjYsMjE0LjUxNDY4NiBaIE01MC4zNDg2MTQxLDE0NC43NDY5NTkgQzM3Ljg2NTgxMDUsMTQwLjQ4MDQ2IDI3LjU1NzAzOTgsMTM0LjkzNTMzMiAyMC40OTA4NjM0LDEyOC44ODQ0MDMgQzE0LjE0MTQ2NjQsMTIzLjQ0NjgxNSAxMC45MzU3ODE3LDExOC4wNDg0MTUgMTAuOTM1NzgxNywxMTMuNjY3OTk1IEMxMC45MzU3ODE3LDEwNC4zNDYyMiAyNC44MzM0NjExLDkyLjQ1NjI1MTcgNDguMDEyMzYwNCw4NC4zNzQ4MjgxIEM1MC44MjQ3OTYxLDgzLjM5NDIxMjEgNTMuNzY4OTIyMyw4Mi40NzAxMDAxIDU2LjgyNDIzMzcsODEuNjAyMDM2MyBDNjAuMDI3NjM5OCw5Mi4wMjI0NDc3IDY0LjIyOTg4OSwxMDIuOTE3MjE4IDY5LjMwMTExMzUsMTEzLjkzNDExIEM2NC4xNjQyNzE2LDEyNS4xMTQ1OSA1OS45MDIzMjg4LDEzNi4xODI5NzUgNTYuNjY3NDgwOSwxNDYuNzI1NTA2IEM1NC40ODkzNDcsMTQ2LjA5OTQwNyA1Mi4zNzkxMDg5LDE0NS40NDA0OTkgNTAuMzQ4NjE0MSwxNDQuNzQ2OTU5IEw1MC4zNDg2MTQxLDE0NC43NDY5NTkgWiBNNjIuNzI3MDY3OCw2MC40ODc4MDczIEM1Ny45MTYwMzQ2LDM1LjkwMDQxMTggNjEuMTExMjM4NywxNy4zNTI1NTMyIDY5LjE1MTY1MTUsMTIuNjk4MjcyOSBDNzcuNzE2MDkyNCw3Ljc0MDA1NjI0IDk2LjY1NDQ2NTMsMTQuODA5NDIyMiAxMTYuNjE0OTIyLDMyLjUzMjk2MTkgQzExNy44OTA4MTYsMzMuNjY1NzczOSAxMTkuMTcxNzIzLDM0Ljg1MTQ0NDIgMTIwLjQ1NjI3NSwzNi4wNzgxMjU2IEMxMTMuMDE4MjY3LDQ0LjA2NDc2ODYgMTA1LjY2ODY2LDUzLjE1NzMzODYgOTguNjQ4MDUxNCw2My4wNjU1Njk1IEM4Ni42MDgxNjQ2LDY0LjE4MTUyMTUgNzUuMDgzMTkzMSw2NS45NzQxNTMxIDY0LjQ4Njg5MDcsNjguMzc0NjU3MSBDNjMuODIwNjkxNCw2NS42OTQ4MjMzIDYzLjIzMDU5MDMsNjMuMDYxOTI0MiA2Mi43MjcwNjc4LDYwLjQ4NzgwNzMgTDYyLjcyNzA2NzgsNjAuNDg3ODA3MyBaIE0xNzMuMTUzOTAxLDg3Ljc1NTAzNjcgQzE3MC42MjA3OTYsODMuMzc5NjMwNCAxNjguMDIwMjQ5LDc5LjEwNzY2MjcgMTY1LjM2OTEyNCw3NC45NTIzNDgzIEMxNzMuNTM3MTI2LDc1Ljk4NDkxMTMgMTgxLjM2MjkxNCw3Ny4zNTU1ODY0IDE4OC43MTIwNjYsNzkuMDMyOTMxOSBDMTg2LjUwNTY3OSw4Ni4xMDQxMjA2IDE4My43NTU2NzMsOTMuNDk3NDcyOCAxODAuNTE4NTQ2LDEwMS4wNzY3NDEgQzE3OC4xOTY0MTksOTYuNjY4MDcwMiAxNzUuNzQwMzIyLDkyLjIyMjk0NTQgMTczLjE1MzkwMSw4Ny43NTUwMzY3IEwxNzMuMTUzOTAxLDg3Ljc1NTAzNjcgWiBNMTI4LjEyMjEyMSw0My44OTM4ODk5IEMxMzMuMTY2NDYxLDQ5LjM1ODgxODkgMTM4LjIxODA5MSw1NS40NjAzMjc5IDE0My4xODY3ODksNjIuMDgwMzk2OCBDMTM4LjE3OTgxNCw2MS44NDM5MDA3IDEzMy4xMTA4NjgsNjEuNzIwODY4IDEyOC4wMDAwMDEsNjEuNzIwODY4IEMxMjIuOTM3NDM0LDYxLjcyMDg2OCAxMTcuOTA1ODU0LDYxLjg0MTE2NjcgMTEyLjkyOTg2NSw2Mi4wNzM1NjE3IEMxMTcuOTAzNTc1LDU1LjUxNTAwOSAxMjIuOTk4OTUsNDkuNDIxNzAyMSAxMjguMTIyMTIxLDQzLjg5Mzg4OTkgTDEyOC4xMjIxMjEsNDMuODkzODg5OSBaIE04Mi44MDE4OTg0LDg3LjgzMDY3OSBDODAuMjcxNTI2NSw5Mi4yMTgzODg2IDc3Ljg2MDk5NzUsOTYuNjM5MzYyNyA3NS41NzUzMjM5LDEwMS4wNjg1MzkgQzcyLjM5MDYwMDQsOTMuNTE1Njk5OCA2OS42NjYxMTAzLDg2LjA4ODYyNzYgNjcuNDQwNTg2LDc4LjkxNzE4OTkgQzc0Ljc0NDYyNTUsNzcuMjgyNjc4MSA4Mi41MzM1MDQ5LDc1Ljk0NjE3ODkgOTAuNjQ5NTYwMSw3NC45MzMyMDk5IEM4Ny45NjEwNjg0LDc5LjEyNjgwMTEgODUuMzM5MTA1NCw4My40MzAyMTA2IDgyLjgwMTg5ODQsODcuODI5NzY3NyBMODIuODAxODk4NCw4Ny44MzA2NzkgTDgyLjgwMTg5ODQsODcuODMwNjc5IFogTTkwLjg4MzMyMjEsMTUzLjE4Mjg5OSBDODIuNDk3OTYyMSwxNTIuMjQ3Mzk1IDc0LjU5MTk3MzksMTUwLjk3OTcwNCA2Ny4yODk3NTcsMTQ5LjM5MDMwMyBDNjkuNTUwODI0MiwxNDIuMDkwODIgNzIuMzM1NDYzNiwxMzQuNTA1MTczIDc1LjU4NzYyNzEsMTI2Ljc4OTY1NyBDNzcuODc5MjI0NiwxMzEuMjE1NjQ0IDgwLjI5OTMyMjgsMTM1LjYzODQ0MSA4Mi44NDUxODc3LDE0MC4wMzU3MiBMODIuODQ1NjQzMywxNDAuMDM1NzIgQzg1LjQzODg5ODcsMTQ0LjUxNTQ3NiA4OC4xMjU1Njc2LDE0OC45MDM2NCA5MC44ODMzMjIxLDE1My4xODI4OTkgTDkwLjg4MzMyMjEsMTUzLjE4Mjg5OSBaIE0xMjguNDI0NjkxLDE4NC4yMTMxMDUgQzEyMy4yNDEzNywxNzguNjIwNTg3IDExOC4wNzEyNjQsMTcyLjQzNDMyMyAxMTMuMDIxOTEyLDE2NS43ODAwNzggQzExNy45MjM2MjQsMTY1Ljk3MjM3MyAxMjIuOTIxMDI5LDE2Ni4wNzA4IDEyOC4wMDAwMDEsMTY2LjA3MDggQzEzMy4yMTc5NTMsMTY2LjA3MDggMTM4LjM3NjIxMSwxNjUuOTUzMjM1IDE0My40NTMzNiwxNjUuNzI3MjE5IEMxMzguNDY4MjU3LDE3Mi41MDEzMDggMTMzLjQzNDg1NSwxNzguNjk3MTQxIDEyOC40MjQ2OTEsMTg0LjIxMzEwNSBMMTI4LjQyNDY5MSwxODQuMjEzMTA1IFogTTE4MC42MjI4OTYsMTI2LjM5NjQwOSBDMTg0LjA0NDU3MSwxMzQuMTk1MzEzIDE4Ni45MjkwMDQsMTQxLjc0MTMxNyAxODkuMjE5MjM0LDE0OC45MTY0IEMxODEuNzk2NzE5LDE1MC42MDk2OTMgMTczLjc4MjczNiwxNTEuOTczNTM0IDE2NS4zMzkwNDksMTUyLjk4Njk1OSBDMTY3Ljk5NjU1NSwxNDguNzc1NTk1IDE3MC42MTk4ODQsMTQ0LjQzMDI2MyAxNzMuMTk3NjQ2LDEzOS45NjA1MzIgQzE3NS44MDU0ODQsMTM1LjQzODM5OSAxNzguMjgxNjMsMTMwLjkwOTQzIDE4MC42MjI4OTYsMTI2LjM5NjQwOSBMMTgwLjYyMjg5NiwxMjYuMzk2NDA5IFogTTE2My43MjQ1ODYsMTM0LjQ5Njk3MSBDMTU5LjcyMjgzNSwxNDEuNDM1NTU3IDE1NS42MTQ0NTUsMTQ4LjA1OTI3MSAxNTEuNDQzNjQ4LDE1NC4zMTE2MTEgQzE0My44NDcwNjMsMTU0Ljg1NDc3NiAxMzUuOTk4OTQ2LDE1NS4xMzQ1NjIgMTI4LjAwMDAwMSwxNTUuMTM0NTYyIEMxMjAuMDMzNDA4LDE1NS4xMzQ1NjIgMTEyLjI4NDE3MSwxNTQuODg3MTI5IDEwNC44MjIwMTMsMTU0LjQwMjc0NSBDMTAwLjQ4MzA2LDE0OC4wNjgzODYgOTYuMjg1MzY4LDE0MS40MjUwNzggOTIuMzA5MTM0MSwxMzQuNTU2NjY0IEw5Mi4zMTAwNDU1LDEzNC41NTY2NjQgQzg4LjM0NDI5MjMsMTI3LjcwNjkzNSA4NC42OTQzMjMyLDEyMC43OTkzMzMgODEuMzg3MDIyOCwxMTMuOTMwNDY2IEM4NC42OTM0MTE4LDEwNy4wNDU2NDggODguMzMzODExNywxMDAuMTMwMzAxIDkyLjI3Njc4MSw5My4yOTI4NzQgTDkyLjI3NTg2OTcsOTMuMjk0MjQxIEM5Ni4yMjkzMTkzLDg2LjQzODU4NzIgMTAwLjM5MDEwMiw3OS44Mjc2MzE3IDEwNC42ODg5NTQsNzMuNTMyOTE1NyBDMTEyLjMwMjM5OCw3Mi45NTczOTY0IDEyMC4xMDk1MDUsNzIuNjU3MTA1NSAxMjcuOTk5NTQ1LDcyLjY1NzEwNTUgTDEyOC4wMDAwMDEsNzIuNjU3MTA1NSBDMTM1LjkyNTU4Myw3Mi42NTcxMDU1IDE0My43NDI3MTQsNzIuOTU5Njc0NiAxNTEuMzUzODc5LDczLjU0MDIwNjcgQzE1NS41ODcxMTQsNzkuNzg4ODk5MyAxNTkuNzE5NjQ1LDg2LjM3ODQzNzggMTYzLjY4ODU4OCw5My4yMzUwMDMxIEMxNjcuNzAyNjQ0LDEwMC4xNjg1NzggMTcxLjM4OTk3OCwxMDcuMDM3OTAxIDE3NC43MjQ2MTgsMTEzLjc3NTA4IEMxNzEuNDAwMDAzLDEyMC42Mjc5OTkgMTY3LjcyMDg3MSwxMjcuNTY2NTg3IDE2My43MjQ1ODYsMTM0LjQ5Njk3MSBMMTYzLjcyNDU4NiwxMzQuNDk2OTcxIFogTTE4Ni4yODQ2NzcsMTIuMzcyOTE5OCBDMTk0Ljg1NzMyMSwxNy4zMTY1NTQ4IDE5OC4xOTEwNDksMzcuMjU0MjI2OCAxOTIuODA0OTUzLDYzLjM5ODY2OTIgQzE5Mi40NjEzNzIsNjUuMDY2OTAxMSAxOTIuMDc0NTA0LDY2Ljc2NjExODkgMTkxLjY1NDM2OSw2OC40ODgxMjA2IEMxODEuMDMzNDYsNjYuMDM3NDkyMSAxNjkuNTAwMjg2LDY0LjIxMzg3NDYgMTU3LjQyNTMxNSw2My4wODEwNjI2IEMxNTAuMzkxMDM1LDUzLjA2MzkyNDkgMTQzLjEwMTU3Nyw0My45NTcyMjg5IDEzNS43ODQ3NzgsMzYuMDczMTEzIEMxMzcuNzUxOTM0LDM0LjE4MDY4ODUgMTM5LjcxNjM1NiwzMi4zNzYyMDkyIDE0MS42NzI1NzUsMzAuNjczMzQ2IEMxNjAuNTcyMjE2LDE0LjIyNTcwMDcgMTc4LjIzNjUxOCw3LjczMTg1NDA2IDE4Ni4yODQ2NzcsMTIuMzcyOTE5OCBMMTg2LjI4NDY3NywxMi4zNzI5MTk4IFogTTEyOC4wMDAwMDEsOTAuODA4MDY5NiBDMTQwLjYyNDk3NSw5MC44MDgwNjk2IDE1MC44NTk5MjYsMTAxLjA0MjU2NSAxNTAuODU5OTI2LDExMy42Njc5OTUgQzE1MC44NTk5MjYsMTI2LjI5Mjk2OSAxNDAuNjI0OTc1LDEzNi41Mjc5MjIgMTI4LjAwMDAwMSwxMzYuNTI3OTIyIEMxMTUuMzc1MDI2LDEzNi41Mjc5MjIgMTA1LjE0MDA3NSwxMjYuMjkyOTY5IDEwNS4xNDAwNzUsMTEzLjY2Nzk5NSBDMTA1LjE0MDA3NSwxMDEuMDQyNTY1IDExNS4zNzUwMjYsOTAuODA4MDY5NiAxMjguMDAwMDAxLDkwLjgwODA2OTYgTDEyOC4wMDAwMDEsOTAuODA4MDY5NiBaIiBmaWxsPSIjMDBEOEZGIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPgo=);
+  width: 145px;
+  height: 128px;
+  margin: auto;
+  background-repeat: no-repeat;
+}
+
+.list-frameworks item {
+  padding-top: 0px;
+}
+
+.list-frameworks item div {
+  -o-transition: transform 200ms ease-in-out, -o-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+}
+
+.list-frameworks div:hover {
+  o-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+.example {
+  -webkit-transition: all linear 100ms;
+  -moz-transition: all linear 100ms;
+  -ms-transition: all linear 100ms;
+  -o-transition: all linear 100ms;
+  transition: all linear 100ms;
+}
+
+.example {
+  float: left;
+  position: relative;
+  max-width: 400px;
+  min-width: 315px;
+  min-height: 347px;
+  padding: 15px;
+  padding-right: 39px;
+}
+
+.example-container {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  width: 342px;
+}
+
+.example-text-wrap {
+  background-color: white;
+  font-size: 16px;
+  color: #616569;
+  padding: 8px;
+  padding-top: 0px;
+  bottom: 0px;
+  width: 100%;
+  width: 358px;
+  font-weight: 400;
+  margin: 0px auto 0px;
+}
+
+.example-text-wrap {
+  font-size: 14px;
+  height: 100%;
+}
+
+.example img {
+  width: 343px;
+  height: 205px;
+  border-width: 0;
+  border-bottom-width: 1px;
+}
+
+.example img {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.example-title {
+  font-family: 'GTEestiDisplay-Medium', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  color: hsl(0, 0%, 20%);
+  font-size: 19.2px;
+  font-weight: 500;
+}
+
+.example-title {
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.example-text-wrap-inner {
+  display: table-cell;
+}
+
+.example-description {
+  color: hsl(0, 0%, 20%);
+  opacity: .7;
+  font-size: 14px;
+}
+
+a.example {
+  -webkit-transition: color .25s ease-out;
+  -moz-transition: all 25s ease-in-out;
+  -o-transition: all 25s ease-in-out;
+  transition: color .25s ease-out;
+  text-decoration: none;
+  color: #0A8CC6;
+}
+</style>
+
+<slide class="gray" style="border-bottom:1px solid #ebebeb;border-top:1px solid #ddddde;padding: 25px 0 10px 0;">
+  <h3>Available for pure JavaScript, TypeScript and React</h3>
+  <br>
+  <ct layout="column" class="ilist list-frameworks" style="max-width:900px">
+    <item>
+      <a href="">
+        <div class="framework-js"></div>
+      </a>
+      <h3 style="font-weight:500; justify-content: center; display: flex;">JavaScript</h3>
+    </item>
+    <item>
+      <a href="">
+        <div class="framework-ts"></div>
+      </a>
+      <h3 style="font-weight:500; justify-content: center; display: flex;">TypeScript</h3>
+    </item>
+    <item>
+      <a href="">
+	      <div class="framework-react"></div>
+	    </a>
+      <h3 style="font-weight:500; justify-content: center; display: flex;">React</h3>
+    </item>
+  </ct>
+</slide>
+
+<slide class="gray" style="border-bottom:1px solid #ebebeb;border-top:1px solid #ddddde;padding-top: 30px;">
+  <h2>Gallery Samples</h2>
+  <br>
+  <ct layout="column" class="ilist" style="max-width:900px">
+    <item>
+      <a class="example" target="_blank" href="gallery/grouping/">
+        <div class="example-container">
+          <img src="img/car-dealer-store-2-small.png">
+          <div class="example-text-wrap">
+            <div class="example-title">Row Grouping</div>
+            <div class="example-text-wrap-inner">
+              <div class="example-description">Grouping, sorting, filtering</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </item>
+    <item>
+      <a class="example" target="_blank" href="gallery/big-data/">
+        <div class="example-container">
+          <img src="img/new-grid-big-data-small.png?_dc=1">
+          <div class="example-text-wrap">
+            <div class="example-title">Big Data</div>
+            <div class="example-text-wrap-inner">
+              <div class="example-description">100 000 rows</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </item>
+  </ct>
+</slide>
+
+<style>
+    .listing {
+      list-style: square;
+      padding-left: 40px;
+      color: #758EAC;
+      margin: 0px 0px 15px 0px;
+    }
+
+    .features-btn {
+      display: block;
+      padding: 0 12px;
+      margin: 9px 8px 9px 20px;
+      height: 37px;
+      line-height: 37px;
+      font-size: 15px;
+      background: #349ACC;
+
+      box-shadow: none;
+      font-weight: 500;
+
+      border: 1px solid #E3E3E3;
+      border-radius: 3px;
+      color: #34A9DC;
+
+      color: rgba(255,255,255,.85);
+    }
+</style>
+
+</bd>
+<ft>
+	<link href="css/flags.css" rel="stylesheet">
+	<style>
+		.flag {
+		  display: inline-block;
+		  width: 22px;
+		  height: 18px;
+		  background-position: 20px 0px;
+		  position: relative;
+		  background-repeat: no-repeat;
+		  background-image: url(/img/flagIcons.svg);
+		}
+	</style>
+
+
+    <cols layout="column">
+        <item id="ft-copy">
+          <div style="display: flex; align-items: center;margin-left: 15px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#088EC7"></rect>
+              <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+              <rect height="12" width="12" x="2" y="16" rx="2"  stroke-width="0" fill="#A2CFE8"></rect>
+              <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#088EC7"></rect>
+            </svg>
+            <span class="text-lg" data-id="2" style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
+            <span class="text-lg" data-id="3" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
+            <span class="text-lg" data-id="3" style="color: rgba(255,255,255,.85); font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
+          </div>
+
+          <div class="copyright">&copy; 2016-<span id="this-year"></span> FancyGrid, Inc.</div>
+          <script>document.getElementById('this-year').innerHTML = (new Date()).getFullYear();</script>
+          <div class="copyright" style="margin-top: 4px;"><span style="position: relative;top: -5px;font-weight: bold;">Designed in </span>&nbsp;<span class="flag flag-fi"></span>&nbsp;&nbsp;<span class="flag flag-nz"></span>&nbsp;&nbsp;<span class="flag flag-in"></span></div>
+        </item>
+        <item id="ft-links" layout="rows" max="4">
+            <item>
+                <h5>Wrappers</h5>
+                <ul>
+					        <li><a href="https://github.com/FG-Grid/">React</a></li>
+                </ul>
+            </item>
+            <item>
+              <h5>Follow Us</h5>
+              <ul>
+                <li><a href="https://github.com/FG-Grid/fg-grid">GitHub</a></li>
+              </ul>
+            </item>
+        </item>
+    </cols>
+</ft>
+
+<hd class="clone">
+    <nav>
+        <brand>
+          <a href="/" style="text-decoration:none;display: flex; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
+              <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+              <rect height="12" width="12" x="2" y="16" rx="2"  stroke-width="0" fill="#A2CFE8"></rect>
+              <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+            </svg>
+
+            <span class="text-lg" data-id="2" style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
+            <span class="text-lg" data-id="3" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
+            <span class="text-lg" data-id="3" style="color: #A2CFE8; font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
+          </a>
+        </brand>
+        <btn></btn>
+        <bd>
+            <ul style="float:left;margin-left:20px;">
+                <li><a href="/docs">Docs</a></li>
+                <li><a href="/api">API</a></li>
+            </ul>
+            <ul>
+                <li><a href="https://github.com/FG-Grid/fg-grid">Support</a></li>
+            </ul>
+        </bd>
+    </nav>
+</hd></main>
+
+<script src="js/jquery.min.js"></script>
+
+<script src="js/v2.js"></script>
+<script src="js/common.v2.js"></script>
+<script src="js/global.v3.js"></script>
+
+<script src="js/home.v4.js"></script>
+
+<script src="cookies-policy/gdpr.js"></script>
+
+</body></html>

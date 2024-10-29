@@ -1,0 +1,38 @@
+<h3>cellStyle</h3>
+<code class="type">Object | Function</code>
+
+<p><code class="js">cellStyle</code> is one of the way to style cells.</p>
+<p>
+  There are 2 ways to use this property.<br>
+  To provide static styles and depending params generate styles.
+</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'transmission',
+  type: 'string',
+  cellStyle: {
+    'background-color': '#F5F7F7'
+  }
+</code></pre>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+columns: [{
+  index: 'year',
+  filter: true,
+  type: 'number',
+  cellStyle(params){
+    if(params.value < 2020){
+      return {
+        'background-color': 'rgba(220, 107, 103, 0.2)'
+      }
+    }
+    else if(params.value >= 2023){
+      return {
+        'background-color': 'rgba(111, 178, 112, 0.2)'
+      }
+    }
+  }
+</code></pre>

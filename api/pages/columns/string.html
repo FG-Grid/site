@@ -1,0 +1,424 @@
+<h1>string</h1>
+<h3>String column type</h3>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+columns: [{
+...
+},{
+  type: 'string',
+  width: 65,
+  title: 'Name',
+  index: 'name'
+},{
+...
+</code></pre>
+
+
+<h3>All column configs</h3>
+
+<api>
+  <name><h4>agFn</h4><sup>String | Function</sup></name>
+  <bd>
+    <p>Aggregation for row grouping.</p>
+    <p>There 2 ways of usage - predefined values and custom function</p>
+    <p>
+      'sum' - for summary group values<br>
+      'avg' - average value<br>
+      'min' - min value<br>
+      'max' - max value<br>
+    </p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  filter: true,
+  agFn: 'sum',
+  type: 'number'
+</code></pre>
+    <default>true</default>
+  </example>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  filter: true,
+  agFn(values) => values.reduce((sum, value) => sum + value, 0),
+  type: 'number'
+</code></pre>
+    <default>true</default>
+  </example>
+</api>
+
+<api>
+  <name><h4>cellStyle</h4><sup>Object | Function</sup></name>
+  <bd>
+    <p><code class="js">cellStyle</code> is one of the way to style cells.</p>
+    <p>
+      There are 2 ways to use this property.<br>
+      To provide static styles and depending params generate styles.
+    </p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'transmission',
+  type: 'string',
+  cellStyle: {
+    'background-color': '#F5F7F7'
+  }
+</code></pre>
+  </example>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'year',
+  filter: true,
+  type: 'number',
+  cellStyle(params){
+    if(params.value < 2020){
+      return {
+        'background-color': 'rgba(220, 107, 103, 0.2)'
+      }
+    }
+    else if(params.value >= 2023){
+      return {
+        'background-color': 'rgba(111, 178, 112, 0.2)'
+      }
+    }
+  }
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>cellClsRules</h4><sup>Object</sup></name>
+  <bd><p><code class="js">cellClsRules</code> is very elegant way to add css classnames depending on params.</p></bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  filter: true,
+  agFn: 'sum',
+  cellClsRules: {
+    'high-price': params => params.value > 70000,
+    'normal-price': params => params.value < 70000 & params.value > 30000,
+    'low-price': params => params.value < 30000
+  }
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>cellCls</h4><sup>String | String[] | Function</sup></name>
+  <bd>
+    <p><code class="js">cellCls</code> is one of the way to style cells.</p>
+    <p>
+      There are 3 approaches for styling over this property.<br>
+      To provide css classname, array of css classnames or generate css classnames dynamic.<br>
+    </p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'electric',
+  cellCls: 'cell-gray',
+  type: 'boolean'
+</code></pre>
+  </example>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'electric',
+  cellCls: ['cell-gray', 'cell-electric'],
+  type: 'boolean'
+</code></pre>
+  </example>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'fuelType',
+  filter: true,
+  type: 'string',
+  cellCls(params){
+    if(params.value === 'Hybrid'){
+       return ['eco'];
+    }
+  }
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>draggable</h4><sup>Boolean</sup></name>
+  <bd><p>Allows column to be dragged.</p></bd>
+  <example>
+<pre><code class="js">
+draggable: false,
+</code></pre>
+    <default>true</default>
+  </example>
+</api>
+
+<api>
+  <name><h4>filter</h4><sup>Object</sup></name>
+  <bd>
+    <p>Enable column filter for filterBar.</p>
+  </bd>
+  <example>
+<pre><code class="js">
+filterBar: true,
+columns: [{
+  index: 'price',
+  filter: true,
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>format</h4><sup>Function</sup></name>
+  <bd>
+    <p>It formats value before render.</p>
+    <p>Formatting is used for currency column.</p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'price',
+  format(params) {
+    const value = params.value;
+    const minDecimal = params.minDecimal || 0;
+    const maxDecimal = params.maxDecimal || minDecimal || 0;
+    const currency = params.currency || 'USD';
+    let region = 'en-US';
+
+    if (isNaN(value) || value === '' || value === null) {
+      return '';
+    }
+
+    if (params.region) {
+      region = params.region;
+    } else if (Fancy.format.CURRENCY_REGIONS[params.currency]) {
+      region = Fancy.format.CURRENCY_REGIONS[params.currency];
+    }
+
+    return new Intl.NumberFormat(region, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: minDecimal,
+      maximumFractionDigits: maxDecimal
+    }).format(value);
+  }
+},{
+...
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>hidden</h4><sup>Boolean</sup></name>
+  <bd><p>
+    It hides column on start.<br>
+  </p></bd>
+  <example>
+<pre><code class="js">
+{
+  index: 'price',
+  type: 'currency',
+  width: 100,
+  hidden: true
+}
+</code></pre>
+  </example>
+  <default>false</default>
+</api>
+
+<api>
+  <name><h4>id</h4><sup>String</sup></name>
+  <bd>
+    <p>
+      If column id is not provided, it will be auto generated on base of column data index or random value.
+    </p>
+
+  </bd>
+
+  <example>
+    <pre><code class="js">
+columns: [{
+  type: 'string',
+  title: 'Name',
+  index: 'name',
+  id: 'name',
+  width: 80,
+  align: 'center'
+},{
+    </code></pre>
+  </example>
+
+  <default>Auto generation.</default>
+</api>
+
+<api>
+  <name><h4>index</h4><sup>String</sup></name>
+  <bd>
+    <p>Index(key) from data row.</p>
+    <p>Also index is used in cases <code>title</code> is absent to generate column header.</p>
+  </bd>
+  <example>
+    <pre><code class="js">
+index: 'name',
+    </code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>menu</h4><sup>Boolean</sup></name>
+  <bd><p>
+    It enables menu for columns.<br>
+  </p></bd>
+  <example>
+<pre><code class="js">
+{
+  index: 'price',
+  type: 'number',
+  width: 100,
+  menu: false
+}
+</code></pre>
+  </example>
+  <default>true</default>
+</api>
+
+<api>
+  <name><h4>minWidth</h4><sup>Number</sup></name>
+  <bd>
+    <p>Minimal column's width.</p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  resizable: true,
+  width: 100,
+  minWidth: 70
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>render</h4><sup>Function</sup></name>
+  <bd>
+    <p>Before grid cell will be updated with it's value, function <code>render</code> runs if it exists.</p>
+    <p>Function <code>render</code> is mainly used for some not standard styling or formatting of cell value.</p>
+    <p>There are 2 approaches in using render method. The first one is to use return value.<br>
+      The second one to append html element to cell.</p>
+  </bd>
+  <example>
+<pre><code class="js">
+render(o){
+  if(o.value < 0){
+    o.style = {
+      color: '#E46B67'
+    };
+  }
+  else{
+    o.style = {
+      color: '#65AE6E'
+    };
+  }
+
+  o.value = o.value + '%';
+
+  return o;
+}
+</code></pre>
+  </example>
+  <example>
+<pre><code class="js">
+render(params) {
+  const {
+    column,
+    value,
+    cell
+  } = params;
+
+  if(value === ''){
+    return;
+  }
+
+  const inputEl = document.createElement('input');
+  inputEl.setAttribute('type', 'checkbox');
+  inputEl.checked = value;
+
+  inputEl.addEventListener('click', (e) => {
+    if(!column.editable){
+      e.preventDefault();
+    }
+  });
+
+  cell.classList.add(Fancy.cls.CELL_BOOLEAN);
+
+  cell.appendChild(inputEl);
+},
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>resizable</h4><sup>Boolean</sup></name>
+  <bd><p>Enable resizing of column.</p></bd>
+  <example>
+<pre><code class="js">
+resizable: true,
+</code></pre>
+    <default>false</default>
+  </example>
+</api>
+
+<api>
+  <name><h4>sortable</h4><sup>Boolean</sup></name>
+  <bd><p>Enable column sorting.</p></bd>
+  <example>
+<pre><code class="js">
+sortable: true,
+</code></pre>
+    <default>false</default>
+  </example>
+</api>
+
+<api>
+  <name><h4>title</h4><sup>String</sup></name>
+  <bd>
+    <p>Column header text.</p>
+    <p>If title is absent, it will be auto generated by index.</p>
+  </bd>
+  <example>
+<pre><code class="js">
+title: 'Name',
+</code></pre>
+  </example>
+  <default>''</default>
+</api>
+
+<api>
+  <name><h4>type</h4><sup>String</sup></name>
+  <bd>
+    <p>Column type.</p>
+  </bd>
+  <example>
+<pre><code class="js">
+type: 'string',
+</code></pre>
+    <default>'string'</default>
+  </example>
+</api>
+
+<api>
+  <name><h4>width</h4><sup>Number</sup></name>
+  <bd><p>Column width.</p></bd>
+  <example>
+<pre><code class="js">
+width: 100,
+</code></pre>
+  </example>
+</api>

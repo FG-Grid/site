@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fancy Grid - Big Data Sample</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=2"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=2" rel="stylesheet">
+
+  <link href="flag.css" rel="stylesheet">
+
+  <style>
+    .flag-cell, .group-country-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .group-country-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+
+  <style media="only screen">
+    :root,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+      font-family: -apple-system, "system-ui", "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+    }
+
+    body {
+      padding: 16px;
+      overflow: auto;
+      background-color: transparent;
+    }
+  </style>
+
+  <script src="data.js"></script>
+
+  <script>
+    const countries = {
+      "Australia": "au",
+      "Austria": "at",
+      "Belgium": "be",
+      "Canada": "ca",
+      "Denmark": "dk",
+      "Finland": "fi",
+      "France": "fr",
+      "Germany": "de",
+      "Hong Kong": "hk",
+      "Iceland": "",
+      "Ireland": "ie",
+      "Japan": "ja",
+      "Luxembourg": "lu",
+      "Netherlands": "nl",
+      "Norway": "no",
+      "San Marino": "",
+      "Singapore": "sg",
+      "South Korea": "kr",
+      "Sweden": "se",
+      "Switzerland": "ch",
+      "Taiwan": "",
+      "UK": "uk",
+      "USA": "us"
+    };
+
+	  let grid;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      grid = new Grid({
+        renderTo: 'container',
+        rowGroupType: 'column',
+        defaults: {
+          sortable: true
+        },
+        filterBar: true,
+        columns: [{
+          type: 'order'
+        },{
+          index: 'brand',
+          type: 'string'
+        },{
+          index: 'model',
+          type: 'string'
+        },{
+          index: 'price',
+          filter: true,
+          agFn: 'sum',
+          type: 'currency'
+        },{
+          index: 'year',
+          filter: true,
+          type: 'number'
+        }, {
+          index: 'country',
+          type: 'string',
+          render(params){
+            const {
+              cell,
+              value
+            } = params;
+            const flagCls = 'flag-' + countries[value];
+            cell.classList.add('flag-cell');
+
+            const spanFlagEl = document.createElement('span');
+            spanFlagEl.classList.add('flag', flagCls);
+            spanFlagEl.innerHTML = '&nbsp;';
+            cell.appendChild(spanFlagEl);
+
+            const textEl = document.createElement('span');
+            textEl.classList.add('country-text');
+            textEl.innerHTML = ` ${value}`;
+
+            cell.appendChild(textEl);
+          }
+        },{
+          index: 'color',
+          filter: true,
+          type: 'string'
+        },{
+          index: 'fuelType',
+          filter: true,
+          type: 'string'
+        },{
+          index: 'transmission',
+          type: 'string'
+        },{
+          index: 'electric',
+          type: 'boolean'
+        }],
+        data: data,
+        width: 700,
+        height: 700
+      });
+    });
+  </script>
+</head>
+<body>
+<style>
+.img-container {
+   border: 1px solid #bdc3c7;
+   border-radius: 2px 0px;
+   border-bottom: 0px;
+   padding-top: 4px;
+}
+
+.cars-dealer-title {
+  display: flex;
+  overflow: hidden;
+  padding: 4px;
+  background-color: rgb(249, 250, 251);
+  border: 1px solid #eaecf0;
+  color: #39485d;
+  border-radius: 4px;
+	padding: 7px;
+	width: fit-content;
+	gap: 5px;
+	margin-bottom: 4px;
+	padding-left: 8px;
+	background-color: rgb(245, 247, 247);
+  border: 1px solid rgb(189, 195, 199);
+}
+
+.cars-dealer-title button {
+	background: rgb(249, 250, 251);
+	transition: background .3s, color .3s;
+	cursor: pointer;
+	appearance: none;
+  display: inline-block;
+  padding: 7px 14px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  background-color: #f9fafb;
+  color: #344054;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	background: rgb(249, 250, 251);
+	color: rgba(0, 0, 0, 0.54);
+	padding: 4px 14px;
+}
+
+.cars-dealer-title button:hover {
+  background: #7c7c7c23;
+  color: #25252599;
+}
+
+.cars-dealer-title button.active {
+	background: #fff;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  box-shadow: 0 1px 3px #0000001a;
+}
+</style>
+
+<script>
+const generateNewDate = (amount) => {
+	document.querySelector('.cars-dealer-title button.active').classList.remove('active');
+
+	document.getElementById(`btn-${amount}`).classList.add('active');
+
+	const data = generateCarsData(amount);
+  grid.setData(data);
+}
+</script>
+
+<div style="margin: 10px auto 10px;max-width: 1000px;">
+  <div style="position:relative">
+	<div class="cars-dealer-title">
+		<button id="btn-100" class="active" onclick="generateNewDate(100)">100</button>
+		<button id="btn-1000" onclick="generateNewDate(1000)">1 000</button>
+		<button id="btn-10000" onclick="generateNewDate(10000)">10 000</button>
+		<button id="btn-100000" onclick="generateNewDate(100000)">100 000</button>
+	</div>
+    <div id="container" style="width: 100%; height: 800px;"></div>
+  </div>
+</div>
+
+</body>
+</html>

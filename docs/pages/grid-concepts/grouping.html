@@ -1,0 +1,65 @@
+<h2>Grouping</h2>
+
+<h3>Enable grouping</h3>
+<p>
+  Add <code class="js">rowGroup</code> to column.
+</p>
+<pre><code class="js">
+new Grid({
+  renderTo: 'container',
+  defaults: {
+    sortable: true
+  },
+  columns: [{
+    index: 'brand',
+    rowGroup: true,
+    type: 'string'
+  },{
+    index: 'model',
+    rowGroup: true,
+    type: 'string'
+  },{
+    index: 'price',
+    type: 'currency'
+  },{
+    index: 'year',
+    type: 'number'
+  }, {
+    index: 'color',
+    type: 'string'
+  }, {
+    index: 'country',
+    type: 'string'
+  },{
+    index: 'fuelType',
+    type: 'string'
+  },{
+    index: 'year',
+    type: 'number'
+  },{
+    index: 'transmission',
+    type: 'string'
+  },{
+    index: 'electric',
+    type: 'boolean'
+  }],
+  data: data,
+  width: 700,
+  height: 700
+});
+</code></pre>
+
+<h3>Row Group Bar</h3>
+<pre><code class="js">
+new Grid({
+   rowGroupBar: true,
+  ...
+</code></pre>
+
+<h3>Row group type</h3>
+<p>
+  There are 2 row group types.<br>
+<code class="js">row</code> and <code class="js">column</code><br>
+  For <code class="js">row</code> group type, full row can have only group value.<br>
+  For <code class="js">column</code> group type, each column can have values and also use aggregations over column property agFn
+</p>

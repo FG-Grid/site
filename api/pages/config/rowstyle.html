@@ -1,0 +1,17 @@
+<h3>rowStyle</h3>
+<code class="type">Function</code>
+
+<p>One of the way to style.</p>
+<p>It returns row styles based on params</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+new Grid({
+   rowStyle(params){
+     if(params.item.price >= 30000 && params.item.price <= 35000){
+       return {
+         'background-color': 'rgba(111, 178, 112, 0.2)'
+       }
+     }
+   },
+</code></pre>

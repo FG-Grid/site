@@ -1,0 +1,360 @@
+<h1>Config</h1>
+
+<api>
+    <name><h4>columnLines</h4><sup>Boolean</sup></name>
+    <bd><p>Enable column lines.</p> </bd>
+    <example>
+<pre><code>
+columnLines: true
+</code></pre>
+<default>false</default>
+    </example>
+</api>
+
+<api required="true">
+    <name><h4>columns</h4><sup>Array</sup></name>
+    <bd><p>Grid columns.</p> </bd>
+    <example>
+<pre><code>
+const columns = [{
+  index: "brand",
+  width: 100,
+  filter: true,
+  type: "string"
+},{
+  index: "model",
+  filter: true,
+  type: "string"
+},{
+  index: "price",
+  filter: true,
+  type: "currency",
+  minDecimal: 2,
+  title: 'USD'
+},{
+  index: "country",
+  type: "string"
+},{
+  index: "fuelType",
+  type: "string"
+},{
+  index: "year",
+  type: "number"
+},{
+  index: "transmission",
+  type: "string"
+},{
+  index: "electric",
+  type: "boolean"
+}];
+
+new Grid({
+  columns,
+  ...
+</code></pre>
+    </example>
+</api>
+
+<api required="true">
+    <name><h4>data</h4><sup>Array</sup></name>
+    <bd>
+      <p>Grid data.</p>
+    </bd>
+    <example>
+<pre><code>
+const data = [{
+  brand: "Toyota",
+  model: "Camry",
+  price: 25000,
+  color: "Blue",
+  country: "Japan",
+  year: 2019,
+  fuelType: "Petrol",
+  electric: false,
+  transmission: "Automatic"
+},{
+  brand: "Honda",
+  model: "Civic",
+  price: 22000,
+  color: "Silver",
+  country: "Japan",
+  year: 2020,
+  fuelType: "Hybrid",
+  electric: true,
+  transmission: "Manual"
+},{
+  brand: "BMW",
+  model: "3 Series",
+  price: 40000,
+  color: "Black",
+  country: "Germany",
+  year: 2021,
+  fuelType: "Petrol",
+  electric: false,
+  transmission: "Automatic"
+}]
+
+new Grid({
+  data,
+  ...
+</code></pre>
+</example>
+
+</api>
+
+<api>
+    <name><h4>defaults</h4><sup>Object</sup></name>
+    <bd><p>Columns default properties.</p></bd>
+    <example>
+<pre><code>
+defaults: {
+  type: 'string',
+  width: 100,
+  sortable: true
+},
+</code></pre>
+    </example>
+</api>
+
+<api>
+  <name><h4>defaultColumnWidth</h4><sup>Number</sup></name>
+  <bd><p>Default column width if no width for column was provided.</p></bd>
+  <default>120</default>
+</api>
+
+<api>
+  <name><h4>defaultRowGroupSort</h4><sup>String</sup></name>
+  <bd>
+    <p>Possible values: <code class="js">asc-string</code>, <code class="js">desc-string</code>, <code class="js">asc-amount</code>, <code class="js">desc-amount</code>.</p>
+    <p>Default row group sorting.</p>
+  </bd>
+  <default>'desc-amount'</default>
+</api>
+
+<api>
+    <name><h4>filterBar</h4><sup>Boolean</sup></name>
+    <bd>
+      <p> Enables filter bar under columns header.</p>
+      <p class="tip">Also requires property <code class="js">filter: true</code> for columns</p>
+    </bd>
+    <example>
+<pre><code class="js">
+const grid = new Grid({
+  filterBar: true,
+  columns: [{
+     index: "brand",
+     width: 100,
+     filter: true,
+     type: "string"
+  ...
+});
+...
+</code></pre>
+    </example>
+<default>false</default>
+</api>
+
+<api>
+    <name><h4>height</h4><sup>Number</sup></name>
+    <bd>
+      <p>Grid height</p>
+    </bd>
+<example>
+<pre><code>
+height: 500,
+</code></pre>
+</example>
+</api>
+
+<api>
+  <name><h4>headerRowHeight</h4><sup>Number</sup></name>
+  <bd><p>Header row height.</p></bd>
+  <default>32</default>
+</api>
+
+<api>
+  <name><h4>id</h4><sup>String</sup></name>
+  <bd>
+    <p>There are several ways to get link on grid object.</br>
+One of which is to set <code>id</code> and than to use <code>Fancy.get('my-grid')</code>.<br></p>
+  </bd>
+  <example>
+<pre><code class="js">
+new Grid({
+  id: 'my-grid',
+  ...
+});
+
+...
+const grid = Fancy.get('my-grid');
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>minColumnWidth</h4><sup>Number</sup></name>
+  <bd>
+    <p>Default min column width.</p>
+    <p>It is used when no min column width was provided.</p>
+  </bd>
+  <default>35</default>
+</api>
+
+<api>
+    <name><h4>renderTo</h4><sup>Mixed</sup></name>
+    <bd>
+      <p>Dom/id, where to render grid.</p>
+    </bd>
+    <example>
+<pre><code class="js">
+&lt;div id="container">&lt;/div>
+...
+
+new Grid({
+  renderTo: 'container',
+  width: 700,
+  height: 350,
+  ...
+</code></pre>
+    </example>
+<example>
+<pre><code class="js">
+&lt;div id="container">&lt;/div>
+...
+
+new Grid({
+  renderTo: document.querySelector('#container'),
+  width: 700,
+  height: 350,
+  ...
+</code></pre>
+    </example>
+<example>
+<pre><code class="js">
+&lt;div id="container">&lt;/div>
+...
+
+new Grid(document.querySelector('#container'), {
+  width: 700,
+  height: 350,
+  ...
+</code></pre>
+    </example>
+</api>
+
+<api>
+  <name><h4>rowAnimation</h4><sup>Boolean</sup></name>
+  <bd><p>Enables for animation for sorting, filtering, grouping.</p></bd>
+  <default>true</default>
+</api>
+
+<api>
+  <name><h4>rowGroupBarSeparator</h4><sup>Boolean</sup></name>
+  <bd>
+    <p>Enables row group bar separator.</p>
+  </bd>
+  <default>false</default>
+</api>
+
+<api>
+  <name><h4>rowHeight</h4><sup>Number</sup></name>
+  <bd><p>Body row height.</p></bd>
+  <default>28</default>
+</api>
+
+<api>
+  <name><h4>rowGroupType</h4><sup>String</sup></name>
+  <bd>
+    <p>Possible values: <code class="js">row</code>, <code class="js">column</code></p>
+    <p>For row group type, full row can have only group value</p>
+    <p>For column group type, each column can have values and also use aggregations over column property <code class="js">agFn</code></p>
+  </bd>
+  <default>row</default>
+</api>
+
+<api>
+  <name><h4>rowCls</h4><sup>Function</sup></name>
+  <bd>
+    <p>One of the way to style.</p>
+    <p>It returns row css classnames based on params</p>
+  </bd>
+  <example>
+<pre><code>
+new Grid({
+   rowCls(params){
+     if(params.item.price > 75000){
+       return ['high-price'];
+     }
+   },
+...
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>rowStyle</h4><sup>Function</sup></name>
+  <bd>
+    <p>One of the way to style.</p>
+    <p>It returns row styles based on params</p>
+  </bd>
+<example>
+<pre><code>
+new Grid({
+   rowStyle(params){
+     if(params.item.price >= 30000 && params.item.price <= 35000){
+       return {
+         'background-color': 'rgba(111, 178, 112, 0.2)'
+       }
+     }
+   },
+</code></pre>
+</example>
+</api>
+
+<api>
+  <name><h4>rowClsRules</h4><sup>Function</sup></name>
+  <bd>
+    <p>One of the way to style.</p>
+    <p>It uses interesting approach of applying css classes if condition is true</p>
+  </bd>
+  <example>
+<pre><code>
+new Grid({
+   rowClsRules: {
+    'low-price': params => params.item.price < 30000
+  }
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>theme</h4><sup>String</sup></name>
+  <bd>
+    <p>
+      You can easily design self theme.<br>
+      Take from css code class <code class="js">fg-grid-default</code>,<br>
+      name it for example <code class="js">fg-grid-custom</code> change css variables inside and <br>
+      and use it over <code class="class">theme: 'custom'</code>
+    </p>
+  </bd>
+  <example>
+<pre><code>
+new Grid({
+  theme: 'custom',
+...
+</code></pre>
+  </example>
+</api>
+
+<api>
+    <name><h4>width</h4><sup>Number</sup></name>
+    <bd>
+      <p>Grid width.</p>
+      <p>If width is not set than grid width become responsive.</p>
+    </bd>
+<example>
+<pre><code>
+width: 400,
+</code></pre>
+</example>
+</api>

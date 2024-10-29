@@ -1,0 +1,55 @@
+<h3>render</h3>
+<code class="type">Function</code>
+
+<p>Before grid cell will be updated with it's value, function <code>render</code> runs if it exist.</p>
+<p>Function <code>render</code> is mainly used for some not standard styling or formatting of cell value.</p>
+
+<p><b>Example: style</b><p>
+<pre><code class="js">
+render: function(o){
+  if(o.value < 0){
+    o.style = {
+      color: '#E46B67'
+    };
+  }
+  else{
+    o.style = {
+      color: '#65AE6E'
+    };
+  }
+
+  o.value = o.value + '%';
+
+  return o;
+}
+</code></pre>
+
+<p><b>Example: cls</b><p>
+<p>
+  Grid can not auto-detect used classnames in render method and requires help to clear cells from used classnames.
+</p>
+<pre><code class="js">
+new FancyGrid({
+  cellStylingCls: ['green', 'red', 'yellow'],
+  ...
+  columns: [{
+    ...
+    render: function(o){
+      if(o.value < 50000){
+        o.cls = 'red';
+      }
+      else if(o.value > 90000){
+       	o.cls = 'green';
+      }
+      else{
+       	o.cls = 'yellow';
+      }
+
+      return o;
+    }
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+undefined
+</code></pre>

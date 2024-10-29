@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en" class="framed js no-touch history websockets video audio localstorage svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>FG-Grid API</title>
+
+  <meta http-equiv="cleartype" content="on">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="../css/g.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/icons.v2.css">
+  <link rel="stylesheet" href="../css/base.v2.css">
+  <link rel="stylesheet" href="../css/layout.v2.css">
+  <link rel="stylesheet" href="../css/nav.v3.css">
+  <link rel="stylesheet" href="../css/slides.v2.css" charset="utf-8">
+
+  <!-- global styles -->
+  <link rel="stylesheet" href="../css/global.v4.css">
+
+  <link href="../css/guides.v3.css" rel="stylesheet" type="text/css">
+  <link href="../css/v2.css" rel="stylesheet" type="text/css">
+
+  <script src="../js/modernizr.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!--[if IE]>
+  <script src="js/elements.js"></script>
+  <![endif]-->
+
+    <script>
+    document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:'+(window.innerHeight-55)+'px;} #mc{min-height:'+(window.innerHeight-255)+'px;}}</style>');
+    </script><style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:744px;} #mc{min-height:544px;}}</style>
+<script>
+// hide nav bar if in iframe
+var write = function(){
+    document.write('<style>@media(min-width: 768px){main > hd{display:none;}#mc, #mc > side{top:0;}}</style>');
+};
+(function(){
+  try{
+    if(window.self !== window.top){
+      write();
+    }
+  }catch(e){
+    write();
+  }
+})();
+</script>
+</head>
+<body id="body" class="hide-chose">
+<main class="fluid">
+<hd>
+  <nav>
+    <brand>
+     <a href="/" style="text-decoration:none;display: flex; align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
+          <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+          <rect height="12" width="12" x="2" y="16" rx="2"  stroke-width="0" fill="#A2CFE8"></rect>
+          <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+        </svg>
+
+        <span class="text-lg" style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
+        <span class="text-lg" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
+        <span class="text-lg" style="color: #A2CFE8; font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
+     </a>
+    </brand>
+    <btn></btn>
+    <bd>
+      <ul style="float:left;margin-left:20px;">
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/api">API</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/FG-Grid/fg-grid">Support</a></li>
+      </ul>
+    </bd>
+  </nav>
+</hd>
+
+<style>
+subhd {
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+
+subhd nav > bd > ul > li > a:not(.btn) {
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+
+@media (min-width: 768px) {
+  .framed main > bd {
+    top: 99px;
+    transition: all .2s linear;
+  }
+
+  .framed main > bd > side {
+    top: 99px;
+    transition: all .2s linear;
+  }
+
+  .hide-chose main > bd {
+    top: 55px;
+  }
+
+  .hide-chose main > bd > side {
+    top: 55px;
+  }
+
+  .hide-chose subhd {
+    height: 0px;
+  }
+}
+
+@media (max-width: 400px) {
+  subhd {
+	display: none;
+  }
+}
+
+main > subhd {
+  height: 44px;
+  padding: 0;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  -webkit-box-shadow: 0 1px 4px rgba(30,30,30,0.3);
+  -moz-box-shadow: 0 1px 4px rgba(30,30,30,0.3);
+  box-shadow: 0 1px 4px rgba(30,30,30,0.3);
+  margin: 0;
+  background: #0079AF;
+  z-index: 100;
+}
+
+subhd nav > bd > ul > li > a:not(.btn) {
+  height: 27px;
+  line-height: 30px;
+  margin-top: 9px;
+  border-radius: 30px;
+
+  margin-right: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+subhd nav > bd > ul > li {
+  height: 44px;
+}
+
+subhd a.checked {
+  background-color: #048DC8;
+}
+
+subhd a:active {
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+subhd {
+  overflow: hidden;
+}
+
+.active a.doc-item {
+  color: #1e8fc6 !important;
+}
+
+.doc-item-btn {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 24px;
+  text-align: center;
+  color: #aaa;
+  right: 8px;
+  top: 8px;
+  background-color: transparent;
+  border-radius: 3px;
+  line-height: 24px;
+  font-family: entypo,sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.api-item-btn {
+  position: absolute;
+  width: 20px;
+  height: 24px;
+  left: 8px;
+  top: 5px;
+  text-align: center;
+  color: #aaa;
+  border-radius: 3px;
+  line-height: 24px;
+  font-family: entypo,sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.sbar-content btn:before {
+  content: "\e75e";
+}
+
+btn.active:before {
+  content: "\e75c";
+}
+
+.doc-item-btn:hover {
+  color: #1e8fc6;
+  background-color: #f0f8fb;
+}
+
+.api-item-btn:hover {
+  color: #1e8fc6;
+  background-color: #f0f8fb;
+}
+
+.doc-sub-items li a {
+  color: #656565;
+  padding-left: 30px;
+  line-height: 36px;
+  font-weight: 500;
+  display: block;
+}
+
+.doc-sub-items li a:hover {
+  color: #1e8fc6 !important;
+  text-decoration: none !important;
+  /*background: #f9f9f9 !important;*/
+  background-color: #E1E7ED !important;
+}
+
+.doc-items {
+  border-top: 1px solid #eaeaea;
+}
+
+.active-item {
+  background-color: #E1E7ED;
+}
+
+.params-list {
+  color: #758EAC;
+  list-style: square;
+  padding-left: 40px;
+  margin: 0px 0px 15px 0px;
+}
+
+.params-list span {
+  color: #555963;
+}
+
+api > name {
+  -webkit-touch-callout: initial;
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+
+sup.prop-type {
+  float: right;
+  margin-top: 9px;
+  margin-right: 5px;
+}
+
+.h3-toc > li > a {
+  color: #656565;
+  padding-left: 45px;
+}
+
+.h4-toc > li > a {
+  color: #777;
+  padding-left: 60px;
+}
+
+.h3-toc btn {
+  left: 20px;
+}
+
+.h4-toc btn {
+  left: 34px;
+}
+
+.h5-toc btn {
+  left: 48px;
+}
+
+a.deprecated:after, a[deprecated]:after {
+  content: 'deprecated';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #b94a48;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #f2dede;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.required:after, a[required]:after {
+  content: 'required';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #b94a48;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #f2dede;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.isreqiredarray:before, a[isreqiredarray]:before {
+  content: 'Array';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 75px;
+  top: 8px
+}
+
+a.isreqirednumber:before, a[isreqirednumber]:before {
+  content: 'Number';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 75px;
+  top: 8px
+}
+
+a.isarray:before, a[isarray]:before {
+  content: 'Array';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.isrequiredmixed:before, a[isrequiredmixed]:before {
+  content: 'Mixed';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 75px;
+  top: 8px
+}
+
+a.isrequiredstring:before, a[isrequiredstring]:before {
+  content: 'String';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 75px;
+  top: 8px
+}
+
+a.isrequirednumber:before, a[isrequirednumber]:before {
+  content: 'Number';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 75px;
+  top: 8px
+}
+
+a.isrequiredarray:before, a[isrequiredarray]:before {
+    content: 'Array';
+    display: inline-block;
+    font-size: 13px;
+    padding: 3px 6px;
+    color: #656565;
+    line-height: 17px;
+    margin-left: 15px;
+    font-weight: 400;
+    vertical-align: middle;
+    background: #eee;
+    border-radius: 3px;
+    opacity: .8;
+    position: absolute;
+    right: 75px;
+    top: 8px
+}
+
+a.isobject:before, a[isobject]:before {
+  content: 'Object';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.isnumber:before, a[isnumber]:before {
+  content: 'Number';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.isboolean:before, a[isboolean]:before {
+  content: 'Boolean';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.isstring:before, a[isstring]:before {
+  content: 'String';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.isfunction:before, a[isfunction]:before {
+  content: 'Function';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+a.ismixed:before, a[ismixed]:before {
+  content: 'Mixed';
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: absolute;
+  right: 5px;
+  top: 8px
+}
+
+.h5-toc > li > a {
+  color: #777;
+  padding-left: 70px;
+}
+
+.h6-toc > li > a {
+  color: #777;
+  padding-left: 80px;
+}
+
+li {
+  position: relative;
+}
+
+.btn-options {
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  margin-left: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+  position: relative;
+  top: 7px;
+  text-decoration: none;
+}
+
+.btn-options:hover{
+  text-decoration: none;
+}
+
+.btn-options.active {
+  background-color: rgba(117,189,119, .80);
+  color: rgba(255,255,255,.85);
+}
+
+.tab-btn {
+  background-color: #eee !important;
+  text-decoration: none;
+  float: left;
+  height: 40px;
+  width: 119px;
+  font-weight: 600;
+  color: #515559;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  text-decoration: none;
+}
+
+.widget-choose-btn btn {
+  top: -24px;
+  color: rgba(255,255,255,.85);
+}
+
+.widget-choose-btn btn:hover {
+  color: rgba(255,255,255,.85);
+  background-color: transparent;
+}
+
+</style>
+
+<bd id="mc" style=""><side data-sbar-dir="vertical" style="height: 700px;"><div class="sbar-track" style="display: none;"><div class="sbar-scrollbar"></div></div><div class="sbar-scroll-content"><div class="sbar-content">
+<div style="height: 25px;background-color: #eee !important">
+  <div onclick="location.href='/docs/'" style="padding-top: 9px;padding-left: 39px;" class="tab-btn active">Docs</div>
+  <div onclick="location.href='/api/'" style="padding-top: 9px;padding-left: 48px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);" class="tab-btn active">
+    API
+  </div>
+
+</div>
+<ul class="all" style="padding-top:15px;">
+  <li class="doc-items">
+    <a href="/api/config" class="doc-item">Config</a>
+    <btn class="doc-item-btn"></btn>
+    <ul class="doc-sub-items" style="display: none;">
+      <li class="" style="position: relative;">
+        <a href="/api/config/columnlines" isboolean="true">columnLines</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/columns" isreqiredarray="true" required="true">columns</a>
+        <btn class="api-item-btn"></btn>
+        <div>
+          <ul class="h3-toc" style="display: none;height: 0px;overflow: hidden;">
+            <li>
+              <a href="/api/config/columns/agfn" isstring="true">agFn</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/cellstyle" ismixed="true">cellStyle</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/cellclsrules" isobject="true">cellClsRules</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/cellcls" ismixed="true">cellCls</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/currency" isstring="true">currency</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/draggable" isboolean="true">draggable</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/filter" isboolean="true">filter</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/format" isboolean="true">format</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/hidden" isboolean="true">hidden</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/id" isstring="true">id</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/index" ismixed="true">index</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/maxwidth" isnumber="true">maxWidth</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/menu" ismixed="true">menu</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/minwidth" isnumber="true">minWidth</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/render" isfunction="true">render</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/resizable" isboolean="true">resizable</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/sortable" isboolean="true">sortable</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/title" isstring="true">title</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/type" isstring="true">type</a>
+            </li>
+            <li>
+              <a href="/api/config/columns/width" isnumber="true">width</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/data" isrequiredarray="true" required="true">data</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/defaults" isobject="true">defaults</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/defaultcolumnwidth" isobject="true">defaultColumnWidth</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/defaultrowgroupSort" isobject="true">defaultRowGroupSort</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/filterbar" isnumber="true">filterBar</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/height" isnumber="true">height</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/headerrowheight" isnumber="true">headerRowHeight</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/id" isstring="true">id</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/mincolumnwidth" isnumber="true">minColumnWidth</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/renderto" ismixed="true">renderTo</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/rowanimation" isboolean="true">rowAnimation</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/rowgroupbarseparator" isboolean="true">rowGroupBarSeparator</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/rowheight" isnumber="true">rowHeight</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/rowgrouptype" isstring="true">rowGroupType</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/rowcls" isfunction="true">rowCls</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/rowstyle" isfunction="true">rowStyle</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/rowclsrules" isfunction="true">rowClsRules</a>
+      </li>
+	    <li class="" style="position: relative;">
+        <a href="/api/config/theme" isstring="true">theme</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/config/width" isnumber="true">width</a>
+      </li>
+    </ul>
+  </li>
+  <li class="doc-items">
+    <a href="/api/columns" class="doc-item">Columns</a>
+    <btn class="doc-item-btn"></btn>
+    <ul class="doc-sub-items" style="display: none;">
+      <li class="" style="position: relative;">
+        <a href="/api/columns/boolean">boolean</a>
+      </li>
+	    <li class="" style="position: relative;">
+        <a href="/api/columns/currency">currency</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/columns/number">number</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/columns/order">order</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/columns/string">string</a>
+      </li>
+    </ul>
+  </li>
+  <li class="doc-items">
+    <a href="/api/methods" class="doc-item">Methods</a>
+    <btn class="doc-item-btn"></btn>
+    <ul class="doc-sub-items" style="display: none;">
+      <li class="" style="position: relative;">
+        <a href="/api/methods/getcolumn">getColumn</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/methods/hidecolumn">hideColumn</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/methods/removecolumn">removeColumn</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/methods/setcolumns">setColumns</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/methods/setdata">setData</a>
+      </li>
+      <li class="" style="position: relative;">
+        <a href="/api/methods/showcolumn">showColumn</a>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+</div></div></side>
+<!--[if IE]>
+<script src="/resources/js/guides-els.js"></script>
+<![endif]-->
+<style>
+#body doc > hd {
+    display:none;
+}
+#body #doc > bd {
+
+}
+
+
+
+@media (max-width: 767px) {
+  #mc side {
+    display:none !important;
+  }
+  #body doc h4 {
+    font-size: 20px;
+    margin-top:20px;
+  }
+  #body doc h2+h4 {
+    margin-top:10px;
+  }
+  #body doc p {
+    font-size: 18px;
+  }
+}
+
+.type {
+  font-size: 13px;
+  padding: 3px 6px;
+  color: #656565;
+  line-height: 17px;
+  font-weight: 400;
+  vertical-align: middle;
+  background: #eee;
+  border-radius: 3px;
+  opacity: .8;
+}
+
+</style>
+<doc id="doc" class="text-left">
+<bd>
+</bd>
+</doc>
+</bd>
+</main>
+
+<script src="../js/jquery.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/fg-grid/styles/fg-grid.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fg-grid/dist/fg-grid.min.js"></script>
+
+<script src="/js/markup.js"></script>
+<script src="/js/guides.v4.js"></script>
+
+<script src="/js/v2.js"></script>
+<script src="/js/common.v2.js"></script>
+<script src="/js/global.v3.js"></script>
+
+
+<script src="/js/highlight.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+<script>
+  var isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+
+  $(function(){
+    $('.doc-item, .doc-item-btn').on('click', function(e){
+      let dataTarget;
+      const el = $(this);
+
+      if($(this).hasClass('doc-item')){
+        dataTarget = $(this).attr('href');
+
+        if( $(this).hasClass('active') ){
+          $(this).next().removeClass('active');
+        }
+        else{
+          $(this).next().addClass('active');
+        }
+      }
+      else{
+        dataTarget = $(this).prev().attr('href');
+      }
+
+      if(isBot === false){
+        e.preventDefault();
+      }
+
+      if($(this).parent().hasClass('active')){
+        $(this).parent().removeClass('active');
+        $(this).next().removeClass('active');
+        $(this).parent().find('ul').slideUp("");
+
+        $(this).removeClass('active');
+      }
+      else{
+        $('.active ul').slideUp("");
+        $('li.doc-items.active').removeClass('active');
+
+        $(this).addClass('active');
+
+        $(this).parent().addClass('active');
+        $(this).parent().find('ul').slideDown("");
+      }
+
+      if(dataTarget){
+        const url = '/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+        fetch(url)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(html => {
+            $('#doc bd').html(html);
+
+            if(el && el.length && el[0].innerHTML !== undefined){
+              const title = el[0].innerHTML + ' | API';
+
+              //history.pushState({}, title, dataTarget);
+              document.title = title;
+            }
+            mc.scrollTop = 0;
+
+            hljs.initHighlighting.called = false;
+            hljs.initHighlighting();
+          })
+          .catch(error => {
+            console.error('Error during loading page:', error);
+          });
+      }
+    });
+
+    $('.doc-sub-items li a').on('click', function(e){
+      if(isBot === false){
+        e.preventDefault();
+      }
+
+      var dataTarget = $(this).attr('href'),
+        el = this,
+        ul = $($(this).parent().find('ul')[0]),
+        containSub = $(this).next().length !== 0;
+
+      $('.active-item').removeClass('active-item');
+
+      $(el).addClass('active-item');
+
+      if(containSub){
+        if( $(this).parent().hasClass('active') ){
+          $(this).next().removeClass('active');
+          $(this).parent().removeClass('active');
+
+          $($(this).parent().find('ul')[0]).slideUp("", function(){
+            if($(this).parent().find('ul').css('display') === 'none'){
+              ul.css({
+                height: '0px',
+                overflow: 'hidden'
+              });
+            }
+          });
+        }
+        else{
+          $(this).next().addClass('active');
+          $(this).parent('li').addClass('active');
+
+          ul.css({
+            display: 'none',
+            height: '',
+            overflow: ''
+          });
+
+          $($(this).parent().find('ul')[0]).slideDown();
+        }
+      }
+
+      const url = '/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+      fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(html => {
+       $('#doc bd').html(html);
+
+       var title = el.innerHTML + ' | API';
+
+       //history.pushState({}, title, dataTarget);
+       document.title = title;
+       mc.scrollTop = 0;
+
+       hljs.initHighlighting.called = false;
+       hljs.initHighlighting();
+      })
+      .catch(error => {
+        console.error('Error during loading page:', error);
+      });
+    });
+
+    var el,
+      paths = location.pathname.split('/'),
+      _paths = [],
+      i = 0,
+      iL = paths.length;
+
+    for(;i<iL;i++){
+      if(paths[i] !== ''){
+        _paths.push(paths[i]);
+      }
+    }
+
+    var url = '/api'
+
+    if(_paths.length > 1){
+      var _i = 2;
+      var slideDownCallBack = function(){
+        if(_i === iL - 1){
+          return;
+        }
+
+        url += '/' + _paths[_i];
+        el = $("[href='"+url+"']" );
+
+        _i++;
+        el.next().addClass('active');
+        el.parent('li').addClass('active');
+
+        var ul = el.next().next().children('ul');
+
+        ul.css({
+          display: 'none',
+          height: '',
+          overflow: ''
+        });
+
+        ul.slideDown(slideDownCallBack);
+      };
+
+      url += '/' + _paths[1];
+
+      el = $("[href='"+url+"']" );
+
+      el.parent().addClass('active');
+      el.next().addClass('active');
+
+      el.next().next().slideDown(slideDownCallBack);
+
+	  var _el = $("[href='"+location.pathname+"']" );
+
+	  if(_el.length){
+		_el.addClass('active-item');
+	  }
+    }
+
+    if(el && el.length && window.opened === undefined){
+      document.title = el[0].innerHTML;
+      el.next().next().slideDown();
+    }
+  });
+
+  $('.doc-sub-items li btn').on('click', function(e){
+    if(isBot === false){
+      e.preventDefault();
+    }
+
+    var dataTarget = $(this).prev().attr('href'),
+      el = this,
+      ul = $($(this).parent().find('ul')[0]);
+
+    if( $(this).parent().hasClass('active') ){
+      $(this).removeClass('active');
+      $(this).parent().removeClass('active');
+
+      $($(this).parent().find('ul')[0]).slideUp("", function(){
+        if($(this).parent().find('ul').css('display') === 'none'){
+          ul.css({
+            height: '0px',
+            overflow: 'hidden'
+          });
+        }
+      });
+    }
+    else{
+      $(this).addClass('active');
+      $(this).parent('li').addClass('active');
+
+      ul.css({
+        display: 'none',
+        height: '',
+        overflow: ''
+      });
+
+      $($(this).parent().find('ul')[0]).slideDown();
+    }
+  });
+
+  $(window).on('popstate', onUpdateDocInfo);
+
+  $(document).ready( onUpdateDocInfo );
+
+  function onUpdateDocInfo() {
+    var dataTarget = location.pathname,
+      el = $("[href='"+location.pathname+"']" ),
+        path = dataTarget.replace(/\/api/g, '');
+
+      if(el[0] && el[0].innerHTML){
+        elText = el[0].innerHTML + ' | API';
+      }
+      else{
+        elText = 'FG-Grid API';
+        path = '/main';
+      }
+
+      const url = '/api/pages' + (path || 'main' ) + '.html';
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(html => {
+          $('#doc bd').html(html);
+          mc.scrollTop = 0;
+
+          document.title = elText;
+
+          hljs.initHighlighting.called = false;
+          hljs.initHighlighting();
+        })
+        .catch(error => {
+          console.error('Error during loading page:', error);
+        });
+  }
+</script>
+
+</body></html>

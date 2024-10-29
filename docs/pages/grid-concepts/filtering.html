@@ -1,0 +1,87 @@
+<h2>Filtering</h2>
+
+<h3>Enable Filtering</h3>
+<p>
+To show filter field in column header, needs to set <code class="js">filter: true</code> and add filter bar <code class="js">filterBar</code>.
+  <br>
+</p>
+<pre><code class="js">
+new Grid({
+  ...
+  filterBar: true,
+  columns: [{
+    index: 'brand',
+    title: 'Brand',
+    filter: true,
+  ...
+</code></pre>
+
+<h3>Filter operators</h3>
+<p>
+There are several operator that possible to use in filter field.<br>
+They are: <code>&lt;,&gt;,&lt;=,&gt;=,=,!=</code>
+</p>
+
+<h4>Methods</h4>
+<p>
+Sometimes it requires to filter grid without setting params in grid.<br>
+For example there is form with values that should run filtering on it's changing.<br>
+To do this there are 2 methods.
+</p>
+
+<api>
+  <name><h4>filter</h4><sup>(index: String, value: Mixed, operator?: String)</sup></name>
+  <bd><p>Filter operator.</p>
+  <p><b>Example: index with value</b><p>
+  <pre><code class="js">
+var grid = new Grid({
+  ...,
+  filter: true,
+  ...
+});
+
+grid.filter('name', 'Nick');
+</code></pre>
+
+<p><b>Example: index with value and operator</b><p>
+  <pre><code class="js">
+const grid = new Grid({
+  ...,
+  ...
+});
+
+grid.filter('price', 30000, '>');
+</code></pre>
+
+</bd>
+</api>
+
+<api>
+  <name><h4>clearFilter</h4><sup>(index?: String, sign?: String)</sup></name>
+  <bd><p>Filter value.</p>
+	<p><b>Example: clean all filters</b><p>
+    <pre><code class="js">
+const grid = new Grid({
+	...
+});
+
+grid.clearFilter();
+</code></pre>
+	<p><b>Example: clean filters by data index</b><p>
+    <pre><code class="js">
+const grid = new Grid({
+	...
+});
+
+grid.clearFilter('name');
+</code></pre>
+	<p><b>Example: clean filters by data index and operator(sign)</b><p>
+    <pre><code class="js">
+const grid = new Grid({
+	...
+});
+
+grid.clearFilter('price', '<');
+</code></pre>
+  </bd>
+</api>

@@ -21,17 +21,15 @@ grid.hideColumn(column[1]);
 If it was set renderTo property than use <code class="js">Fancy.get('my-grid')</code><br>
 <pre>
 <code class="js">
-new FancyGrid({
+new Grid({
   id: 'my-grid',
   renderTo: 'myGridReport',
   ...
 });
 
-function updateGridTitle(){
-  const grid = Fancy.get('my-grid');
-
-  grid.setData([...]);
-}
+...
+const grid = Fancy.get('my-grid');
+grid.setData([...]);
 </code>
 </pre>
 </p>

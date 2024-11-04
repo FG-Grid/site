@@ -50,6 +50,14 @@
       overflow: auto;
       background-color: transparent;
     }
+
+    .eco {
+        background-color: rgba(111, 178, 112, 0.2);
+    }
+
+    .high-price {
+        background-color: rgba(220, 107, 103, 0.2);
+    }
   </style>
 
   <script src="data.js"></script>
@@ -103,7 +111,10 @@
           index: 'price',
           filter: true,
           agFn: 'sum',
-          type: 'currency'
+          type: 'currency',
+          cellClsRules: {
+            'high-price': params => params.value > 100000
+          }
         },{
           index: 'year',
           filter: true,
@@ -137,7 +148,12 @@
         },{
           index: 'fuelType',
           filter: true,
-          type: 'string'
+          type: 'string',
+          cellCls(params){
+            if(params.value === 'Hybrid'){
+              return ['eco'];
+            }
+          }
         },{
           index: 'transmission',
           type: 'string'

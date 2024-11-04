@@ -1,6 +1,11 @@
 const Fancy$1 = {
-  version: '0.2.7',
+  version: '0.3.9',
   isTouchDevice: 'ontouchstart' in window,
+  gridIdSeed: 0,
+  gridsMap: new Map(),
+  get(id){
+    return this.gridsMap.get(id);
+  },
   capitalizeFirstLetter(str){
     return str.charAt(0).toUpperCase() + str.slice(1);
   },
@@ -246,7 +251,7 @@ Fancy.format = {
   currency(params) {
     const value = params.value;
     const minDecimal = params.minDecimal || 0;
-    const maxDecimal = params.maxDecimal || 0;
+    const maxDecimal = params.maxDecimal || minDecimal || 0;
     const currency = params.currency || 'USD';
     let region = 'en-US';
 
@@ -2057,8 +2062,6 @@ Fancy.format = {
       me.grid = config.grid;
 
       me.calcScrollBarWidth();
-
-      me.calcMaxScrollTop();
       me.calcViewRange();
 
       me.initResizeObserver();
@@ -2067,6 +2070,12 @@ Fancy.format = {
     deltaChange(delta) {
       const me = this;
 
+      if(!me.isVerticalVisible()){
+        me.scrollTop = 0;
+        me.verticalScrollContainerEl.scrollTop = 0;
+        return false;
+      }
+
       let changed = false;
       let scrollTop = me.scrollTop - delta;
 
@@ -2074,13 +2083,14 @@ Fancy.format = {
         scrollTop = 0;
       }
 
-      if (scrollTop >= me.maxScrollTop) {
+      if(scrollTop > me.maxScrollTop){
         scrollTop = me.maxScrollTop;
       }
 
       if(me.scrollTop !== scrollTop){
         changed = true;
       }
+
       me.scrollTop = scrollTop;
       me.verticalScrollContainerEl.scrollTop = scrollTop;
 
@@ -2090,6 +2100,12 @@ Fancy.format = {
     horizontalDeltaChange(delta){
       const me = this;
 
+      if(!me.isHorizontalVisible()){
+        me.scrollLeft = 0;
+        me.horizontalScrollContainerEl.scrollLeft = 0;
+        return false;
+      }
+
       let changed = false;
       let scrollLeft = me.scrollLeft - delta;
 
@@ -2097,16 +2113,12 @@ Fancy.format = {
         scrollLeft = 0;
       }
 
-      if (scrollLeft >= me.maxScrollTop) {
-        scrollLeft = me.maxScrollTop;
-      }
-
       if(me.horizontalScrollContainerEl.scrollLeft !== scrollLeft){
         changed = true;
       }
+
       me.horizontalScrollContainerEl.scrollLeft = scrollLeft;
       me.scrollLeft = me.horizontalScrollContainerEl.scrollLeft;
-      //me.horizontalScrollContainerEl.scrollLeft = scrollLeft;
 
       return changed;
     }
@@ -2128,14 +2140,17 @@ Fancy.format = {
     calcMaxScrollTop() {
       const me = this;
 
-      //me.maxScrollTop = me.grid.store.getDataTotal() * me.grid.rowHeight;
-      me.maxScrollTop = me.grid.store.getDisplayedDataTotal() * me.grid.rowHeight;
+      me.maxScrollTop = me.grid.store.getDisplayedDataTotal() * me.grid.rowHeight - me.grid.bodyEl.getBoundingClientRect().height;
+
+      if(me.maxScrollTop < 0){
+        me.maxScrollTop = 0;
+      }
     }
 
     updateScrollTop() {
       const me = this;
 
-      if (me.scrollTop > me.maxScrollTop) {
+      if(me.scrollTop > me.maxScrollTop){
         me.scrollTop = me.maxScrollTop;
         me.verticalScrollContainerEl.scrollTop = me.maxScrollTop;
       }
@@ -2297,7 +2312,7 @@ Fancy.format = {
     onVerticalScroll = () => {
       const me = this;
 
-      if (!me.grid.wheelScrolling) {
+      if(!me.grid.wheelScrolling){
         me.scrollTop = me.verticalScrollContainerEl.scrollTop;
         me.grid.bodyInnerEl.scrollTop = me.scrollTop;
 
@@ -2443,8 +2458,9 @@ Fancy.format = {
 
     setHorizontalSize() {
       const me = this;
+      const columnsWidth = me.grid.getTotalColumnsWidth();
 
-      me.horizontalScrollSizeEl.style.width = me.grid.getTotalColumnsWidth() + 'px';
+      me.horizontalScrollSizeEl.style.width = `${columnsWidth}px`;
 
       if (!me.isHorizontalVisible()) {
         me.horizontalScrollEl.style.display = 'none';
@@ -2558,6 +2574,10 @@ Fancy.format = {
       const grid = me.grid;
 
       me.resizeObserver = new ResizeObserver((entries) => {
+        if (!Array.isArray(entries) || !entries.length) {
+          return;
+        }
+
         if(me.grid.checkSize()) {
           const changedBufferedRows = me.calcVisibleRows();
           me.generateNewRange();
@@ -2598,6 +2618,164 @@ Fancy.format = {
 
 })();
 
+(()=>{
+
+  class TouchScroller {
+    constructor(element, config) {
+      const me = this;
+
+      Object.assign(me, config);
+
+      me.element = element;
+      me.startY = 0;
+      me.startX = 0;
+
+      me.velocityX = 0;
+      me.velocityY = 0;
+      me.lastMoveTime = 0;
+
+      me.touchStartHandler = me.touchStart.bind(me);
+      me.touchMoveHandler = me.touchMove.bind(me);
+      me.touchEndHandler = me.touchEnd.bind(me);
+
+      me.init();
+    }
+
+    init() {
+      const me = this;
+
+      me.element.addEventListener('touchstart', me.touchStartHandler);
+      me.element.addEventListener('touchmove', me.touchMoveHandler);
+      me.element.addEventListener('touchend', me.touchEndHandler);
+    }
+
+    touchStart(e) {
+      const me = this;
+
+      delete me.direction;
+
+      me.startY = e.touches[0].pageY;
+      me.startX = e.touches[0].pageX;
+
+      me.velocityX = 0;
+      me.velocityY = 0;
+      me.lastMoveTime = Date.now();
+
+      if (me.intervalId) {
+        clearInterval(me.intervalId);
+        delete me.intervalId;
+      }
+    }
+
+    touchMove(e) {
+      const me = this;
+      const currentY = e.touches[0].pageY;
+      const currentX = e.touches[0].pageX;
+      const now = Date.now();
+
+      const deltaY = currentY - me.startY;
+      const deltaX = currentX - me.startX;
+      const timeDelta = now - me.lastMoveTime;
+
+      // Calculating the velocity
+      me.velocityX = deltaX / timeDelta;
+      me.velocityY = deltaY / timeDelta;
+
+      // Updating coordinates for the next event
+      me.startY = currentY;
+      me.startX = currentX;
+      me.lastMoveTime = now;
+
+      if(!me.direction){
+        if(Math.abs(deltaY) > Math.abs(deltaX)){
+          me.direction = 'vertical';
+        }
+        else {
+          me.direction = 'horizontal';
+        }
+      }
+
+      if(me.direction === 'vertical'){
+        Object.assign(e, {
+          deltaX: 0,
+          deltaY
+        });
+      }
+      else {
+        Object.assign(e, {
+          deltaX,
+          deltaY: 0
+        });
+      }
+
+      me.onTouchScroll(e);
+    }
+
+    smoothScroll() {
+      const me = this;
+      //let deceleration = 0.95; // Deceleration factor
+      //let threshold = 0.5;     // Minimum speed to stop
+
+      let deceleration = 0.98; // Deceleration factor
+      //let threshold = 0.01;     // Minimum speed to stop
+      let threshold = 0.2;     // Minimum speed to stop
+
+      //let intervalDuration = 16;
+
+      //me.intervalId = setInterval(() => {
+      const step = () => {
+        me.velocityX *= deceleration;
+        me.velocityY *= deceleration;
+
+        if (me.direction === 'vertical') {
+          me.onTouchScroll({
+            deltaX: 0,
+            deltaY: me.velocityY * 10
+          });
+        } else {
+          me.onTouchScroll({
+            deltaX: me.velocityX * 10,
+            deltaY: 0
+          });
+        }
+
+        // Continue scrolling until the speed exceeds the threshold
+        if(Math.abs(me.velocityX) <= threshold && Math.abs(me.velocityY) <= threshold);
+        else {
+          requestAnimationFrame(()=> {
+            requestAnimationFrame(step);
+          });
+        }
+        //}, intervalDuration);
+      };
+
+      requestAnimationFrame(step);
+    }
+
+    touchEnd() {
+      const me = this;
+
+      // Smooth continuation of the scroll
+      me.smoothScroll();
+    }
+
+    destroy() {
+      const me = this;
+
+      me.element.removeEventListener('touchstart', me.touchStartHandler);
+      me.element.removeEventListener('touchmove', me.touchMoveHandler);
+      me.element.removeEventListener('touchend', me.touchEndHandler);
+
+      if (me.intervalId) {
+        clearInterval(me.intervalId);
+      }
+    }
+  }
+
+  Fancy.TouchScroller = TouchScroller;
+
+})();
+
 (()=> {
   const {
     GRID,
@@ -2609,7 +2787,6 @@ Fancy.format = {
     BODY,
     BODY_INNER,
     BODY_INNER_CONTAINER,
-    ANIMATE_CELLS_POSITION,
     TOUCH
   } = Fancy.cls;
 
@@ -2647,8 +2824,16 @@ Fancy.format = {
       }
     };
 
-    constructor(config) {
+    constructor(config, extraConfig) {
       const me = this;
+
+      if(extraConfig){
+        extraConfig.renderTo = config;
+        config = extraConfig;
+      }
+
+      me.initContainer(config.renderTo);
+      me.initId(config.id);
 
       me.actualRowsIdSet = new Set();
       me.renderedRowsIdMap = new Map();
@@ -2657,12 +2842,10 @@ Fancy.format = {
 
       Object.assign(me, config);
 
-      //me.initScroller();
-      me.containerEl = document.getElementById(me.renderTo);
-
       me.checkSize();
       me.initScroller();
       me.render();
+      me.scroller.calcMaxScrollTop();
       me.scroller.calcVisibleRows();
       me.renderVisibleRows();
       me.renderVisibleHeaderCells();
@@ -2673,16 +2856,51 @@ Fancy.format = {
       me.ons();
     }
 
+    initContainer(renderTo){
+      const me = this;
+
+      if(renderTo.tagName){
+        me.containerEl = renderTo;
+      }
+      else if(typeof renderTo === 'string'){
+        me.containerEl = document.getElementById(renderTo);
+
+        if(!me.containerEl){
+          me.containerEl = document.querySelector(renderTo);
+        }
+      }
+
+      if(!me.containerEl){
+        console.error(`Could not find renderTo element`);
+      }
+    }
+
+    initId(id){
+      const me = this;
+
+      if(id){
+        me.id = id;
+      }
+
+      if(!me.id){
+        me.id = `fg-grid-${Fancy.gridIdSeed}`;
+        Fancy.gridIdSeed++;
+      }
+
+      Fancy.gridsMap.set(me.id, me);
+    }
+
     render() {
       const me = this;
       const gridEl = document.createElement('div');
 
+      gridEl.setAttribute('id', me.id);
       gridEl.classList.add(GRID);
       if(me.rowAnimation){
         gridEl.classList.add(ROW_ANIMATION);
       }
 
-      if(me.cellsRightBorder){
+      if(me.cellsRightBorder || me.columnLines){
         gridEl.classList.add(GRID_CELLS_RIGHT_BORDER);
       }
 
@@ -2929,7 +3147,10 @@ Fancy.format = {
       const me = this;
 
       me.debouceClearWheelScrollingFn = Fancy.debounce(me.clearWheelScrolling, 50);
-      me.gridEl.addEventListener('wheel', me.onMouseWheel.bind(this));
+      me.bodyEl.addEventListener('wheel', me.onMouseWheel.bind(this));
+      me.touchScroller = new Fancy.TouchScroller(me.bodyEl, {
+        onTouchScroll: me.onTouchScroll.bind(this)
+      });
 
       me.headerInnerContainerEl.addEventListener('click', me.onHeaderCellClick.bind(this));
       me.headerInnerContainerEl.addEventListener('mousedown', me.onHeaderMouseDown.bind(this));
@@ -3001,6 +3222,14 @@ Fancy.format = {
         me.renderVisibleRows();
         me.store.memorizePrevRowIndexesMap();
       }
+    }
+
+    destroy(){
+      const me = this;
+
+      me.touchScroller.destroy();
+
+      me.gridEl.remove();
     }
   }
 
@@ -3336,12 +3565,15 @@ Fancy.format = {
         case 'currency':
           column.format = Fancy.format.currency;
           column.type = 'number';
+          column.$type = 'currency';
           break;
         case 'order':
           column.sortable = false;
           column.render = Fancy.render.order;
           column.width = column.width || 45;
           column.resizable = false;
+          column.menu = false;
+          column.draggable = false;
           me.columnOrder = column;
 
           if(store?.rowGroups.length || me?.rowGroupBar){
@@ -3593,10 +3825,14 @@ Fancy.format = {
       }
 
       cell.appendChild(label);
-      if(column.resizable !== false){
+
+      if(column.menu !== false){
         cell.appendChild(elMenu);
       }
-      cell.appendChild(cellResize);
+
+      if(column.resizable !== false){
+        cell.appendChild(cellResize);
+      }
 
       cell.addEventListener('mousedown', me.onCellMouseDown.bind(this));
 
@@ -3616,6 +3852,10 @@ Fancy.format = {
       const cell = event.target.classList.contains(HEADER_CELL)? event.target : event.target.closest(`.${HEADER_CELL}`);
       const columnIndex = Number(cell.getAttribute('col-index'));
       const column = me.columns[columnIndex];
+
+      if(column.draggable === false){
+        return;
+      }
 
       me.columnDragDownX = event.pageX;
       me.columnDragDownY = event.pageY;
@@ -3788,12 +4028,8 @@ Fancy.format = {
       const me = this;
       const el = document.createElement('div');
       const elMenuRect = column.elMenu.getBoundingClientRect();
-
-      const verticalScrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-      const horizontalScrollPosition = document.documentElement.scrollLeft || document.body.scrollLeft;
-
-      let top = elMenuRect.top - 1 + elMenuRect.height + verticalScrollPosition;
-      let left = elMenuRect.left + horizontalScrollPosition;
+      const top = elMenuRect.top - 1 + elMenuRect.height;
+      const left = elMenuRect.left;
 
       el.classList.add(COLUMNS_MENU);
       el.classList.add('fg-theme-' + me.theme);
@@ -3988,8 +4224,21 @@ Fancy.format = {
         const column = me.columns[columnIndex];
         let value = item[column.index];
         let cellInner;
-
         const cell = document.createElement('div');
+        const params = {
+          item,
+          column,
+          rowIndex,
+          columnIndex,
+          value,
+          cell
+        };
+
+        if(column.$type === 'currency'){
+          column.currency && (params.currency = column.currency);
+          column.minDecimal !== undefined && (params.minDecimal = column.minDecimal);
+          column.maxDecimal !== undefined && (params.maxDecimal = column.maxDecimal);
+        }
 
         cell.setAttribute('col-index', columnIndex);
         cell.setAttribute('col-id', column.id);
@@ -3997,26 +4246,56 @@ Fancy.format = {
         cell.style.width = column.width + 'px';
         cell.style.left = column.left + 'px';
 
+
+        if(column.cellStyle) {
+          let cellExtraStyles;
+          switch(typeof column.cellStyle){
+            case 'function':
+              cellExtraStyles = column.cellStyle(params) || {};
+              break;
+            case 'object':
+              cellExtraStyles = column.cellStyle;
+              break;
+          }
+
+          for (const p in cellExtraStyles) {
+            cell.style[p] = cellExtraStyles[p];
+          }
+        }
+
+        if(column.cellCls){
+          if(typeof column.cellCls === 'string'){
+            cell.classList.add(column.cellCls);
+          }
+          else if(Array.isArray(column.cellCls)){
+            cell.classList.add(...column.cellCls);
+          }
+          else if(typeof column.cellCls === 'function'){
+            let cls = column.cellCls(params);
+            if(typeof cls === 'string'){
+              cls = [cls];
+            }
+
+            if(cls){
+              cell.classList.add(...cls);
+            }
+          }
+        }
+
+        if(column.cellClsRules){
+          for(const cls in column.cellClsRules){
+            const fn = column.cellClsRules[cls];
+
+            fn(params) && cell.classList.add(cls);
+          }
+        }
+
         if(column.format){
-          value = column.format({
-            item,
-            column,
-            rowIndex,
-            columnIndex,
-            value,
-            cell
-          });
+          value = column.format(params);
         }
 
         if(column.render){
-          cellInner = column.render({
-            item,
-            column,
-            rowIndex,
-            columnIndex,
-            value,
-            cell
-          });
+          cellInner = column.render(params);
         }
         else {
           cellInner = value;
@@ -4270,7 +4549,7 @@ Fancy.format = {
 
           const cell = rowEl.querySelector(`[col-index="${columnIndex}"]`);
 
-          cell.remove?.();
+          cell?.remove();
         });
       });
     },
@@ -4284,7 +4563,14 @@ Fancy.format = {
         return;
       }
 
+      const params = {
+        rowIndex: index,
+        item
+      };
+
       rowEl.classList.add(ROW, index % 2 === 1 ? ROW_ODD : ROW_EVEN);
+
+      me.applyExtraRowStyles(rowEl, params);
 
       if(item.$selected){
         rowEl.classList.add(ROW_SELECTED);
@@ -4314,6 +4600,44 @@ Fancy.format = {
       me.renderedRowsIdMap.set(item.id, rowEl);
 
       return rowEl;
+    },
+
+    applyExtraRowStyles(rowEl, params){
+      const me = this;
+
+      if(me.rowStyle){
+        if(typeof me.rowStyle === 'function'){
+          const rowStyles = me.rowStyle(params) || {};
+
+          for(const p in rowStyles){
+            rowEl.style[p] = rowStyles[p];
+          }
+        }
+      }
+
+      if(me.rowCls){
+        if(typeof me.rowCls === 'function'){
+          let cls = me.rowCls(params) || [];
+
+          if(typeof cls === 'string'){
+            cls = [cls];
+          }
+
+          rowEl.classList.add(...cls);
+        }
+      }
+
+      if(me.rowClsRules){
+        if(typeof me.rowClsRules === 'object'){
+          for(const cls in me.rowClsRules){
+            const fn = me.rowClsRules[cls];
+
+            if(fn(params)){
+              rowEl.classList.add(cls);
+            }
+          }
+        }
+      }
     },
 
     renderRowGroup(index, item, style = {}) {
@@ -4387,7 +4711,13 @@ Fancy.format = {
         rowEl.classList.add(ROW_SELECTED);
       }
 
+      const params = {
+        rowIndex: index,
+        item
+      };
+
       rowEl.classList.add(ROW, index % 2 === 1 ? ROW_ODD : ROW_EVEN);
+      me.applyExtraRowStyles(rowEl, params);
 
       rowEl.style.transform = `translateY(${positionY}px)`;
       rowEl.setAttribute('row-id', item.id);
@@ -4747,6 +5077,42 @@ Fancy.format = {
 
       if(changed){
         event.preventDefault();
+      }
+
+      cancelAnimationFrame(me.animationRenderId);
+
+      me.animationRenderId = requestAnimationFrame(() => {
+        me.renderVisibleRows();
+      });
+
+      cancelAnimationFrame(me.animationRemoveId);
+
+      me.animationRemoveId = requestAnimationFrame(() => {
+        me.removeNotNeededRows();
+      });
+
+      me.debouceClearWheelScrollingFn();
+    },
+
+    onTouchScroll(event){
+      const me = this;
+      let changed = false;
+
+      me.wheelScrolling = true;
+
+      if(Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+        // Vertical scroll
+        changed = me.scroller.deltaChange(event.deltaY);
+        me.bodyInnerEl.scrollTop = me.scroller.scrollTop;
+      }
+      else if(event.deltaX){
+        // Horizontal scroll
+        changed = me.scroller.horizontalDeltaChange(event.deltaX);
+        me.bodyInnerEl.scrollLeft = me.scroller.scrollLeft;
+      }
+
+      if(changed){
+        event.preventDefault?.();
       }
 
       cancelAnimationFrame(me.animationRenderId);
@@ -6289,6 +6655,7 @@ Fancy.format = {
 
       if (!me.elComboList) {
         requestAnimationFrame(() => {
+          me.hideAllOpenedComboList();
           me.showComboList();
         });
       } else {
@@ -6304,6 +6671,12 @@ Fancy.format = {
       me.onChange?.(value, sign, me.column);
     }
 
+    hideAllOpenedComboList(){
+      document.body.querySelectorAll(`.${FILTER_FIELD_LIST}`).forEach(el => {
+        el.remove();
+      });
+    }
+
     destroyComboList() {
       const me = this;
 
@@ -6315,12 +6688,8 @@ Fancy.format = {
       const me = this;
       const el = document.createElement('div');
       const elSignRect = me.elSign.getBoundingClientRect();
-
-      const verticalScrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-      const horizontalScrollPosition = document.documentElement.scrollLeft || document.body.scrollLeft;
-
-      let top = elSignRect.top - 1 + elSignRect.height + verticalScrollPosition;
-      let left = elSignRect.left + horizontalScrollPosition;
+      const top = elSignRect.top - 1 + elSignRect.height;
+      const left = elSignRect.left;
 
       el.classList.add(FILTER_FIELD_LIST);
       el.style.top = `${top}px`;
@@ -6328,7 +6697,7 @@ Fancy.format = {
 
       let signs = [];
 
-      switch (me.column.type) {
+      switch(me.column.type){
         case 'string':
           signs = ['Clear', 'Contains', 'Not Contains', 'Equals', 'Not Equals', 'Empty', 'Not Empty', 'Starts with', 'Ends with', 'Regex'];
           break;

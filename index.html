@@ -159,8 +159,9 @@ slide.bg {
   max-width: 400px;
   min-width: 315px;
   min-height: 347px;
-  padding: 15px;
-  padding-right: 39px;
+
+  padding: 10px;
+
 }
 
 .example-container {
@@ -180,7 +181,7 @@ slide.bg {
   width: 100%;
   width: 358px;
   font-weight: 400;
-  margin: 0px auto 0px;
+  margin: -4px auto 0px;
 }
 
 .example-text-wrap {
@@ -193,10 +194,6 @@ slide.bg {
   height: 205px;
   border-width: 0;
   border-bottom-width: 1px;
-}
-
-.example img {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .example-title {
@@ -219,6 +216,7 @@ slide.bg {
   color: hsl(0, 0%, 20%);
   opacity: .7;
   font-size: 14px;
+  line-height: 1.6;
 }
 
 a.example {
@@ -228,6 +226,10 @@ a.example {
   transition: color .25s ease-out;
   text-decoration: none;
   color: #0A8CC6;
+}
+
+.gallery-samples item {
+  min-height: 330px;
 }
 </style>
 
@@ -256,7 +258,7 @@ a.example {
   </ct>
 </slide>
 
-<slide class="gray" style="border-bottom:1px solid #ebebeb;border-top:1px solid #ddddde;padding-top: 30px;">
+<slide class="gray gallery-samples" style="border-bottom:1px solid #ebebeb;border-top:1px solid #ddddde;padding-top: 30px;">
   <h2>Gallery Samples</h2>
   <br>
   <ct layout="column" class="ilist" style="max-width:900px">

@@ -23,34 +23,10 @@
   <link href="../css/guides.v3.css" rel="stylesheet" type="text/css">
   <link href="../css/v2.css" rel="stylesheet" type="text/css">
 
-  <script src="../js/modernizr.js"></script>
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <!--[if IE]>
-  <script src="js/elements.js"></script>
-  <![endif]-->
-
-    <script>
+  <script>
     document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:'+(window.innerHeight-55)+'px;} #mc{min-height:'+(window.innerHeight-255)+'px;}}</style>');
-    </script><style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:744px;} #mc{min-height:544px;}}</style>
-<script>
-// hide nav bar if in iframe
-var write = function(){
-    document.write('<style>@media(min-width: 768px){main > hd{display:none;}#mc, #mc > side{top:0;}}</style>');
-};
-(function(){
-  try{
-    if(window.self !== window.top){
-      write();
-    }
-  }catch(e){
-    write();
-  }
-})();
-</script>
+  </script><style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:744px;} #mc{min-height:544px;}}</style>
+
 </head>
 <body id="body" class="hide-chose">
 <main class="fluid">
@@ -85,22 +61,12 @@ var write = function(){
 
 <style>
 subhd {
-  -webkit-transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -ms-transition: all .2s linear;
-  -o-transition: all .2s linear;
   transition: all .2s linear;
 }
 
-
-subhd nav > bd > ul > li > a:not(.btn) {
-  -webkit-transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -ms-transition: all .2s linear;
-  -o-transition: all .2s linear;
+subhd nav > bd > ul > li > a:not(.btn){
   transition: all .2s linear;
 }
-
 
 @media (min-width: 768px) {
   .framed main > bd {
@@ -128,7 +94,7 @@ subhd nav > bd > ul > li > a:not(.btn) {
 
 @media (max-width: 400px) {
   subhd {
-	display: none;
+	  display: none;
   }
 }
 
@@ -139,8 +105,6 @@ main > subhd {
   left: 0;
   width: 100%;
   position: fixed;
-  -webkit-box-shadow: 0 1px 4px rgba(30,30,30,0.3);
-  -moz-box-shadow: 0 1px 4px rgba(30,30,30,0.3);
   box-shadow: 0 1px 4px rgba(30,30,30,0.3);
   margin: 0;
   background: #0079AF;
@@ -241,7 +205,6 @@ btn.active:before {
 .doc-sub-items li a:hover {
   color: #1e8fc6 !important;
   text-decoration: none !important;
-  /*background: #f9f9f9 !important;*/
   background-color: #E1E7ED !important;
 }
 
@@ -266,10 +229,6 @@ btn.active:before {
 
 api > name {
   -webkit-touch-callout: initial;
-  -webkit-user-select: initial;
-  -khtml-user-select: initial;
-  -moz-user-select: initial;
-  -ms-user-select: initial;
   user-select: initial;
 }
 
@@ -960,6 +919,7 @@ li {
 
             hljs.initHighlighting.called = false;
             hljs.initHighlighting();
+            addCopyButton();
           })
           .catch(error => {
             console.error('Error during loading page:', error);
@@ -1028,6 +988,7 @@ li {
 
        hljs.initHighlighting.called = false;
        hljs.initHighlighting();
+       addCopyButton();
       })
       .catch(error => {
         console.error('Error during loading page:', error);
@@ -1164,11 +1125,50 @@ li {
 
           hljs.initHighlighting.called = false;
           hljs.initHighlighting();
+          addCopyButton();
         })
         .catch(error => {
           console.error('Error during loading page:', error);
         });
   }
+
+function addCopyButton(){
+  document.querySelectorAll('pre code').forEach(codeBlock => {
+    // Create a copy button
+    const copyButton = document.createElement('button');
+    copyButton.innerHTML = 'Copy';
+
+    // Style the button to appear inside the code block
+    Object.assign(copyButton.style, {
+      position: 'absolute',
+      top: '2px',
+      right: '6px',
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      color: '#888',
+      padding: '4px 0px',
+      cursor: 'pointer',
+      border: 'none',
+      fontSize: '12px',
+      fontWeight: 600
+    });
+
+    // Ensure the code block's parent is positioned properly for absolute positioning
+    codeBlock.parentElement.style.position = 'relative';
+    codeBlock.parentElement.appendChild(copyButton);
+
+    // Copy logic
+    copyButton.addEventListener('click', () => {
+      const codeText = codeBlock.textContent;
+      navigator.clipboard.writeText(codeText).then(() => {
+        copyButton.textContent = 'Copied!';
+        setTimeout(() => copyButton.innerHTML = 'Copy', 3000);
+      }).catch(err => {
+        console.error('Error copying text:', err);
+      });
+    });
+  });
+}
+addCopyButton();
 </script>
 
 </body></html>

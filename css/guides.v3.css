@@ -554,19 +554,6 @@ doc pre:first-child {
     padding:10px;
 }
 
-#body doc pre code:after {
-    content: 'Code';
-    display: block;
-    position: absolute;
-    padding: 8px 10px;
-    font-size: 13px;
-    font-weight: 300;
-    color: #aaa;
-    top: 0;
-    right: 0;
-    font-family: gn,roboto, 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 .types h3 + code {
     position:relative;
     top:-3px;

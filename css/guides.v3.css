@@ -525,6 +525,7 @@ doc pre {
     position: relative;
     margin: 20px 0;
     background:#fff;
+    border-radius: 7px;
 }
 
 doc pre:last-child {

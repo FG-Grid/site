@@ -103,6 +103,10 @@ a m {
     border:1px solid rgba(30,143,198,.11);
 }
 
+pre {
+    border: 1px solid color(srgb 0.866667 0.880392 0.903922) !important;
+}
+
 table code {
     background: transparent;
 }
@@ -526,6 +530,7 @@ doc pre {
     margin: 20px 0;
     background:#fff;
     border-radius: 7px;
+    background: color(srgb 0.992941 0.994118 0.995294);
 }
 
 doc pre:last-child {

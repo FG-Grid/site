@@ -51,15 +51,15 @@ function App(){
   const [columns, setColumns] = useState(initialColumns);
 
   return (
-    <div className="App">
-      <div style={{width: '100%', height: '300px'}}>
-        <FGGridReact
-            defaults={{
-            sortable: true
-            }}
-            columns={columns}
-            data={data}
-            rowStyle={(params)=>{
+    &lt;div className="App"&gt;
+      &lt;div style={{width: '100%', height: '300px'}}&gt;
+        &lt;FGGridReact
+          defaults={{
+          sortable: true
+          }}
+          columns={columns}
+          data={data}
+          rowStyle={(params)=>{
             if(Number(params.item.price) > 55000){
               return {
                 'background-color': 'rgba(220, 107, 103, 0.2)'
@@ -67,8 +67,8 @@ function App(){
             }
           }}
         />
-      </div>
-  </div>
+      &lt;/div&gt;
+    &lt;/div&gt;
   );
 }
 

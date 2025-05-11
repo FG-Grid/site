@@ -5,8 +5,8 @@
   <title>Fancy Grid</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="/fg-grid/dist/fg-grid.min.js?_dc=3"></script>
-  <link href="/fg-grid/styles/fg-grid.css?_dc=3" rel="stylesheet">
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=5"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=5" rel="stylesheet">
 
   <link href="flag.css" rel="stylesheet">
 
@@ -86,9 +86,10 @@
         renderTo: 'container',
         rowGroupType: 'column',
         rowGroupBar: true,
-		    rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
+        rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
         defaults: {
-          sortable: true
+          sortable: true,
+		  editable: true
         },
         filterBar: true,
         rowGroupColumn: {
@@ -96,6 +97,7 @@
           width: 200,
           checkboxSelection: true,
           headerCheckboxSelection: true,
+		  editable: false,
           render(params){
             const {
               item
@@ -135,7 +137,7 @@
         },
         columns: [{
           index: 'brand',
-		      rowGroup: true,
+          rowGroup: true,
           type: 'string'
         },{
           index: 'model',
@@ -222,9 +224,9 @@
 <div style="margin: 10px auto 10px;width: 1000px;">
   <div style="position:relative">
     <div class="img-container">
-		<img src="img\land-cruiser-300-gr-sport.png">
-		<img src="img\land-cruiser-300.png">
-		<img src="img\land-cruiser-250.png">
+		<img loading="lazy" src="img\land-cruiser-300-gr-sport.png">
+		<img loading="lazy" src="img\land-cruiser-300.png">
+		<img loading="lazy" src="img\land-cruiser-250.png">
 	</div>
 	<div class="cars-dealer-title">
 		Car Dealer Store

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" class="framed js no-touch history websockets video audio localstorage svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" class="framed js no-touch history websockets video audio localstorage svg">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>FG-Grid API</title>
 
   <meta http-equiv="cleartype" content="on">
@@ -20,820 +22,847 @@
   <!-- global styles -->
   <link rel="stylesheet" href="../css/global.v4.css">
 
-  <link href="/css/guides.v3.css?_dc=1" rel="stylesheet" type="text/css">
+  <link href="../css/guides.v3.css" rel="stylesheet" type="text/css">
   <link href="../css/v2.css" rel="stylesheet" type="text/css">
 
   <script>
-    document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:'+(window.innerHeight-55)+'px;} #mc{min-height:'+(window.innerHeight-255)+'px;}}</style>');
-  </script><style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:744px;} #mc{min-height:544px;}}</style>
+    document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:' + (window.innerHeight - 55) + 'px;} #mc{min-height:' + (window.innerHeight - 255) + 'px;}}</style>');
+  </script>
+  <style>@media (min-width: 768px) {
+    slide[fullsize], ct[fullsize] {
+      width: 100%;
+      height: 744px;
+    }
 
+    #mc {
+      min-height: 544px;
+    }
+  }</style>
 </head>
 <body id="body" class="hide-chose">
 <main class="fluid">
-<hd>
-  <nav>
-    <brand>
-     <a href="/" style="text-decoration:none;display: flex; align-items: center;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
-          <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
-          <rect height="12" width="12" x="2" y="16" rx="2"  stroke-width="0" fill="#A2CFE8"></rect>
-          <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
-        </svg>
-
-        <span class="text-lg" style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
-        <span class="text-lg" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
-        <span class="text-lg" style="color: #A2CFE8; font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
-     </a>
-    </brand>
-    <btn></btn>
-    <bd>
-      <ul style="float:left;margin-left:20px;">
-        <li><a href="/docs">Docs</a></li>
-        <li><a href="/api">API</a></li>
-      </ul>
-      <ul>
-        <li><a href="https://github.com/FancyGrid/fg-grid">Support</a></li>
-      </ul>
-    </bd>
-  </nav>
-</hd>
-
-<style>
-subhd {
-  transition: all .2s linear;
-}
-
-subhd nav > bd > ul > li > a:not(.btn){
-  transition: all .2s linear;
-}
-
-@media (min-width: 768px) {
-  .framed main > bd {
-    top: 99px;
-    transition: all .2s linear;
-  }
-
-  .framed main > bd > side {
-    top: 99px;
-    transition: all .2s linear;
-  }
-
-  .hide-chose main > bd {
-    top: 55px;
-  }
-
-  .hide-chose main > bd > side {
-    top: 55px;
-  }
-
-  .hide-chose subhd {
-    height: 0px;
-  }
-}
-
-@media (max-width: 400px) {
-  subhd {
-	  display: none;
-  }
-}
-
-main > subhd {
-  height: 44px;
-  padding: 0;
-  top: 55px;
-  left: 0;
-  width: 100%;
-  position: fixed;
-  box-shadow: 0 1px 4px rgba(30,30,30,0.3);
-  margin: 0;
-  background: #0079AF;
-  z-index: 100;
-}
-
-subhd nav > bd > ul > li > a:not(.btn) {
-  height: 27px;
-  line-height: 30px;
-  margin-top: 9px;
-  border-radius: 30px;
-
-  margin-right: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-subhd nav > bd > ul > li {
-  height: 44px;
-}
-
-subhd a.checked {
-  background-color: #048DC8;
-}
-
-subhd a:active {
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-}
-
-subhd {
-  overflow: hidden;
-}
-
-.active a.doc-item {
-  color: #1e8fc6 !important;
-}
-
-.doc-item-btn {
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 24px;
-  text-align: center;
-  color: #aaa;
-  right: 8px;
-  top: 8px;
-  background-color: transparent;
-  border-radius: 3px;
-  line-height: 24px;
-  font-family: entypo,sans-serif;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.api-item-btn {
-  position: absolute;
-  width: 20px;
-  height: 24px;
-  left: 8px;
-  top: 5px;
-  text-align: center;
-  color: #aaa;
-  border-radius: 3px;
-  line-height: 24px;
-  font-family: entypo,sans-serif;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.sbar-content btn:before {
-  content: "\e75e";
-}
-
-btn.active:before {
-  content: "\e75c";
-}
-
-.doc-item-btn:hover {
-  color: #1e8fc6;
-  background-color: #f0f8fb;
-}
-
-.api-item-btn:hover {
-  color: #1e8fc6;
-  background-color: #f0f8fb;
-}
-
-.doc-sub-items li a {
-  color: #656565;
-  padding-left: 30px;
-  line-height: 36px;
-  font-weight: 500;
-  display: block;
-}
-
-.doc-sub-items li a:hover {
-  color: #1e8fc6 !important;
-  text-decoration: none !important;
-  background-color: #E1E7ED !important;
-}
-
-.doc-items {
-  border-top: 1px solid #eaeaea;
-}
-
-.active-item {
-  background-color: #E1E7ED;
-}
-
-.params-list {
-  color: #758EAC;
-  list-style: square;
-  padding-left: 40px;
-  margin: 0px 0px 15px 0px;
-}
-
-.params-list span {
-  color: #555963;
-}
-
-api > name {
-  -webkit-touch-callout: initial;
-  user-select: initial;
-}
-
-sup.prop-type {
-  float: right;
-  margin-top: 9px;
-  margin-right: 5px;
-}
-
-.h3-toc > li > a {
-  color: #656565;
-  padding-left: 45px;
-}
-
-.h4-toc > li > a {
-  color: #777;
-  padding-left: 60px;
-}
-
-.h3-toc btn {
-  left: 20px;
-}
-
-.h4-toc btn {
-  left: 34px;
-}
-
-.h5-toc btn {
-  left: 48px;
-}
-
-a.deprecated:after, a[deprecated]:after {
-  content: 'deprecated';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #b94a48;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #f2dede;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.required:after, a[required]:after {
-  content: 'required';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #b94a48;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #f2dede;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.isreqiredarray:before, a[isreqiredarray]:before {
-  content: 'Array';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 75px;
-  top: 8px
-}
-
-a.isreqirednumber:before, a[isreqirednumber]:before {
-  content: 'Number';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 75px;
-  top: 8px
-}
-
-a.isarray:before, a[isarray]:before {
-  content: 'Array';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.isrequiredmixed:before, a[isrequiredmixed]:before {
-  content: 'Mixed';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 75px;
-  top: 8px
-}
-
-a.isrequiredstring:before, a[isrequiredstring]:before {
-  content: 'String';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 75px;
-  top: 8px
-}
-
-a.isrequirednumber:before, a[isrequirednumber]:before {
-  content: 'Number';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 75px;
-  top: 8px
-}
-
-a.isrequiredarray:before, a[isrequiredarray]:before {
-    content: 'Array';
-    display: inline-block;
-    font-size: 13px;
-    padding: 3px 6px;
-    color: #656565;
-    line-height: 17px;
-    margin-left: 15px;
-    font-weight: 400;
-    vertical-align: middle;
-    background: #eee;
-    border-radius: 3px;
-    opacity: .8;
-    position: absolute;
-    right: 75px;
-    top: 8px
-}
-
-a.isobject:before, a[isobject]:before {
-  content: 'Object';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.isnumber:before, a[isnumber]:before {
-  content: 'Number';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.isboolean:before, a[isboolean]:before {
-  content: 'Boolean';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.isstring:before, a[isstring]:before {
-  content: 'String';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.isfunction:before, a[isfunction]:before {
-  content: 'Function';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-a.ismixed:before, a[ismixed]:before {
-  content: 'Mixed';
-  display: inline-block;
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: absolute;
-  right: 5px;
-  top: 8px
-}
-
-.h5-toc > li > a {
-  color: #777;
-  padding-left: 70px;
-}
-
-.h6-toc > li > a {
-  color: #777;
-  padding-left: 80px;
-}
-
-li {
-  position: relative;
-}
-
-.btn-options {
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  margin-left: 15px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-  position: relative;
-  top: 7px;
-  text-decoration: none;
-}
-
-.btn-options:hover{
-  text-decoration: none;
-}
-
-.btn-options.active {
-  background-color: rgba(117,189,119, .80);
-  color: rgba(255,255,255,.85);
-}
-
-.tab-btn {
-  background-color: #eee !important;
-  text-decoration: none;
-  float: left;
-  height: 40px;
-  width: 119px;
-  font-weight: 600;
-  color: #515559;
-  cursor: pointer;
-}
-
-.tab-btn:hover {
-  text-decoration: none;
-}
-
-.widget-choose-btn btn {
-  top: -24px;
-  color: rgba(255,255,255,.85);
-}
-
-.widget-choose-btn btn:hover {
-  color: rgba(255,255,255,.85);
-  background-color: transparent;
-}
-
-</style>
-
-<bd id="mc" style=""><side data-sbar-dir="vertical" style="height: 700px;"><div class="sbar-track" style="display: none;"><div class="sbar-scrollbar"></div></div><div class="sbar-scroll-content"><div class="sbar-content">
-<div style="height: 25px;background-color: #eee !important">
-  <div onclick="location.href='/docs/'" style="padding-top: 9px;padding-left: 39px;" class="tab-btn active">Docs</div>
-  <div onclick="location.href='/api/'" style="padding-top: 9px;padding-left: 48px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);" class="tab-btn active">
-    API
-  </div>
-
-</div>
-<ul class="all" style="padding-top:15px;">
-  <li class="doc-items">
-    <a href="/api/config" class="doc-item">Config</a>
-    <btn class="doc-item-btn"></btn>
-    <ul class="doc-sub-items" style="display: none;">
-      <li class="" style="position: relative;">
-        <a href="/api/config/columnlines" isboolean="true">columnLines</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/columns" isreqiredarray="true" required="true">columns</a>
-        <btn class="api-item-btn"></btn>
-        <div>
-          <ul class="h3-toc" style="display: none;height: 0px;overflow: hidden;">
-            <li>
-              <a href="/api/config/columns/agfn" isstring="true">agFn</a>
+  <hd>
+    <nav>
+      <brand>
+        <a href="/fg-grid/" style="text-decoration:none;display: flex; align-items: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
+            <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+            <rect height="12" width="12" x="2" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+            <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+          </svg>
+
+          <span class="text-lg"
+                style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
+          <span class="text-lg" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
+          <span class="text-lg"
+                style="color: #A2CFE8; font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
+        </a>
+      </brand>
+      <btn></btn>
+      <bd>
+        <ul style="float:left;margin-left:20px;">
+          <li><a href="/fg-grid/docs">Docs</a></li>
+          <li><a href="/fg-grid/api">API</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://github.com/FancyGrid/fg-grid">Support</a></li>
+        </ul>
+      </bd>
+    </nav>
+  </hd>
+
+  <style>
+    subhd {
+      transition: all .2s linear;
+    }
+
+
+    subhd nav > bd > ul > li > a:not(.btn) {
+      transition: all .2s linear;
+    }
+
+
+    @media (min-width: 768px) {
+      .framed main > bd {
+        top: 99px;
+        transition: all .2s linear;
+      }
+
+      .framed main > bd > side {
+        top: 99px;
+        transition: all .2s linear;
+      }
+
+      .hide-chose main > bd {
+        top: 55px;
+      }
+
+      .hide-chose main > bd > side {
+        top: 55px;
+      }
+
+      .hide-chose subhd {
+        height: 0px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      subhd {
+        display: none;
+      }
+    }
+
+    main > subhd {
+      height: 44px;
+      padding: 0;
+      top: 55px;
+      left: 0;
+      width: 100%;
+      position: fixed;
+      -webkit-box-shadow: 0 1px 4px rgba(30, 30, 30, 0.3);
+      -moz-box-shadow: 0 1px 4px rgba(30, 30, 30, 0.3);
+      box-shadow: 0 1px 4px rgba(30, 30, 30, 0.3);
+      margin: 0;
+      background: #0079AF;
+      z-index: 100;
+    }
+
+    subhd nav > bd > ul > li > a:not(.btn) {
+      height: 27px;
+      line-height: 30px;
+      margin-top: 9px;
+      border-radius: 30px;
+
+      margin-right: 5px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    subhd nav > bd > ul > li {
+      height: 44px;
+    }
+
+    subhd a.checked {
+      background-color: #048DC8;
+    }
+
+    subhd a:active {
+      outline: 0;
+      -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+      box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    }
+
+    subhd {
+      overflow: hidden;
+    }
+
+    .active a.doc-item {
+      color: #1e8fc6 !important;
+    }
+
+    .doc-item-btn {
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 24px;
+      text-align: center;
+      color: #aaa;
+      right: 8px;
+      top: 8px;
+      background-color: transparent;
+      border-radius: 3px;
+      line-height: 24px;
+      font-family: entypo, sans-serif;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .api-item-btn {
+      position: absolute;
+      width: 20px;
+      height: 24px;
+      left: 8px;
+      top: 5px;
+      text-align: center;
+      color: #aaa;
+      border-radius: 3px;
+      line-height: 24px;
+      font-family: entypo, sans-serif;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .sbar-content btn:before {
+      content: "\e75e";
+    }
+
+    btn.active:before {
+      content: "\e75c";
+    }
+
+    .doc-item-btn:hover {
+      color: #1e8fc6;
+      background-color: #f0f8fb;
+    }
+
+    .api-item-btn:hover {
+      color: #1e8fc6;
+      background-color: #f0f8fb;
+    }
+
+    .doc-sub-items li a {
+      color: #656565;
+      padding-left: 30px;
+      line-height: 36px;
+      font-weight: 500;
+      display: block;
+    }
+
+    .doc-sub-items li a:hover {
+      color: #1e8fc6 !important;
+      text-decoration: none !important;
+      /*background: #f9f9f9 !important;*/
+      background-color: #E1E7ED !important;
+    }
+
+    .doc-items {
+      border-top: 1px solid #eaeaea;
+    }
+
+    .active-item {
+      background-color: #E1E7ED;
+    }
+
+    .params-list {
+      color: #758EAC;
+      list-style: square;
+      padding-left: 40px;
+      margin: 0px 0px 15px 0px;
+    }
+
+    .params-list span {
+      color: #555963;
+    }
+
+    api > name {
+      -webkit-touch-callout: initial;
+      user-select: initial;
+    }
+
+    sup.prop-type {
+      float: right;
+      margin-top: 9px;
+      margin-right: 5px;
+    }
+
+    .h3-toc > li > a {
+      color: #656565;
+      padding-left: 45px;
+    }
+
+    .h4-toc > li > a {
+      color: #777;
+      padding-left: 60px;
+    }
+
+    .h3-toc btn {
+      left: 20px;
+    }
+
+    .h4-toc btn {
+      left: 34px;
+    }
+
+    .h5-toc btn {
+      left: 48px;
+    }
+
+    a.deprecated:after, a[deprecated]:after {
+      content: 'deprecated';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #b94a48;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #f2dede;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.required:after, a[required]:after {
+      content: 'required';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #b94a48;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #f2dede;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.isreqiredarray:before, a[isreqiredarray]:before {
+      content: 'Array';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 75px;
+      top: 8px
+    }
+
+    a.isreqirednumber:before, a[isreqirednumber]:before {
+      content: 'Number';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 75px;
+      top: 8px
+    }
+
+    a.isarray:before, a[isarray]:before {
+      content: 'Array';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.isrequiredmixed:before, a[isrequiredmixed]:before {
+      content: 'Mixed';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 75px;
+      top: 8px
+    }
+
+    a.isrequiredstring:before, a[isrequiredstring]:before {
+      content: 'String';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 75px;
+      top: 8px
+    }
+
+    a.isrequirednumber:before, a[isrequirednumber]:before {
+      content: 'Number';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 75px;
+      top: 8px
+    }
+
+    a.isrequiredarray:before, a[isrequiredarray]:before {
+      content: 'Array';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 75px;
+      top: 8px
+    }
+
+    a.isobject:before, a[isobject]:before {
+      content: 'Object';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.isnumber:before, a[isnumber]:before {
+      content: 'Number';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.isboolean:before, a[isboolean]:before {
+      content: 'Boolean';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.isstring:before, a[isstring]:before {
+      content: 'String';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.isfunction:before, a[isfunction]:before {
+      content: 'Function';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    a.ismixed:before, a[ismixed]:before {
+      content: 'Mixed';
+      display: inline-block;
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: absolute;
+      right: 5px;
+      top: 8px
+    }
+
+    .h5-toc > li > a {
+      color: #777;
+      padding-left: 70px;
+    }
+
+    .h6-toc > li > a {
+      color: #777;
+      padding-left: 80px;
+    }
+
+    li {
+      position: relative;
+    }
+
+    .btn-options {
+      font-size: 13px;
+      padding: 3px 6px;
+      color: #656565;
+      line-height: 17px;
+      margin-left: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+      background: #eee;
+      border-radius: 3px;
+      opacity: .8;
+      position: relative;
+      top: 7px;
+      text-decoration: none;
+    }
+
+    .btn-options:hover {
+      text-decoration: none;
+    }
+
+    .btn-options.active {
+      background-color: rgba(117, 189, 119, .80);
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .tab-btn {
+      background-color: #eee !important;
+      text-decoration: none;
+      float: left;
+      height: 40px;
+      width: 119px;
+      font-weight: 600;
+      color: #515559;
+      cursor: pointer;
+    }
+
+    .tab-btn:hover {
+      text-decoration: none;
+    }
+
+    .widget-choose-btn btn {
+      top: -24px;
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .widget-choose-btn btn:hover {
+      color: rgba(255, 255, 255, .85);
+      background-color: transparent;
+    }
+
+  </style>
+
+  <bd id="mc" style="">
+    <side data-sbar-dir="vertical" style="height: 700px;">
+      <div class="sbar-track" style="display: none;">
+        <div class="sbar-scrollbar"></div>
+      </div>
+      <div class="sbar-scroll-content">
+        <div class="sbar-content">
+          <div style="height: 25px;background-color: #eee !important">
+            <div onclick="location.href='/fg-grid/docs/'" style="padding-top: 9px;padding-left: 39px;"
+                 class="tab-btn active">Docs
+            </div>
+            <div onclick="location.href='/fg-grid/api/'"
+                 style="padding-top: 9px;padding-left: 48px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);"
+                 class="tab-btn active">
+              API
+            </div>
+
+          </div>
+          <ul class="all" style="padding-top:15px;">
+            <li class="doc-items">
+              <a href="/api/config" class="doc-item">Config</a>
+              <btn class="doc-item-btn"></btn>
+              <ul class="doc-sub-items" style="display: none;">
+                <li class="" style="position: relative;">
+                  <a href="/api/config/columnlines" isboolean="true">columnLines</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/columns" isreqiredarray="true" required="true">columns</a>
+                  <btn class="api-item-btn"></btn>
+                  <div>
+                    <ul class="h3-toc" style="display: none;height: 0px;overflow: hidden;">
+                      <li>
+                        <a href="/api/config/columns/agfn" isstring="true">agFn</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/cellstyle" ismixed="true">cellStyle</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/cellclsrules" isobject="true">cellClsRules</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/cellcls" ismixed="true">cellCls</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/currency" isstring="true">currency</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/draggable" isboolean="true">draggable</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/editable" isboolean="true">editable</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/filter" isboolean="true">filter</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/format" isboolean="true">format</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/hidden" isboolean="true">hidden</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/id" isstring="true">id</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/index" ismixed="true">index</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/maxwidth" isnumber="true">maxWidth</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/menu" ismixed="true">menu</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/minwidth" isnumber="true">minWidth</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/render" isfunction="true">render</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/resizable" isboolean="true">resizable</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/sortable" isboolean="true">sortable</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/title" isstring="true">title</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/type" isstring="true">type</a>
+                      </li>
+                      <li>
+                        <a href="/api/config/columns/width" isnumber="true">width</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/data" isrequiredarray="true" required="true">data</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/defaults" isobject="true">defaults</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/defaultcolumnwidth" isobject="true">defaultColumnWidth</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/defaultrowgroupsort" isobject="true">defaultRowGroupSort</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/filterbar" isnumber="true">filterBar</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/height" isnumber="true">height</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/headerrowheight" isnumber="true">headerRowHeight</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/id" isstring="true">id</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/mincolumnwidth" isnumber="true">minColumnWidth</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/renderto" ismixed="true">renderTo</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/rowanimation" isboolean="true">rowAnimation</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/rowgroupbarseparator" isboolean="true">rowGroupBarSeparator</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/rowheight" isnumber="true">rowHeight</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/rowgrouptype" isstring="true">rowGroupType</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/rowcls" isfunction="true">rowCls</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/rowstyle" isfunction="true">rowStyle</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/rowclsrules" isfunction="true">rowClsRules</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/theme" isstring="true">theme</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/config/width" isnumber="true">width</a>
+                </li>
+              </ul>
             </li>
-            <li>
-              <a href="/api/config/columns/cellstyle" ismixed="true">cellStyle</a>
+            <li class="doc-items">
+              <a href="/api/columns" class="doc-item">Columns</a>
+              <btn class="doc-item-btn"></btn>
+              <ul class="doc-sub-items" style="display: none;">
+                <li class="" style="position: relative;">
+                  <a href="/api/columns/boolean">boolean</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/columns/currency">currency</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/columns/number">number</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/columns/order">order</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/columns/string">string</a>
+                </li>
+              </ul>
             </li>
-            <li>
-              <a href="/api/config/columns/cellclsrules" isobject="true">cellClsRules</a>
+            <li class="doc-items">
+              <a href="/api/methods" class="doc-item">Methods</a>
+              <btn class="doc-item-btn"></btn>
+              <ul class="doc-sub-items" style="display: none;">
+                <li class="" style="position: relative;">
+                  <a href="/api/methods/getcolumn">getColumn</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/methods/hidecolumn">hideColumn</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/methods/removecolumn">removeColumn</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/methods/setcolumns">setColumns</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/methods/setdata">setData</a>
+                </li>
+                <li class="" style="position: relative;">
+                  <a href="/api/methods/showcolumn">showColumn</a>
+                </li>
+              </ul>
             </li>
-            <li>
-              <a href="/api/config/columns/cellcls" ismixed="true">cellCls</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/currency" isstring="true">currency</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/draggable" isboolean="true">draggable</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/filter" isboolean="true">filter</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/format" isboolean="true">format</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/hidden" isboolean="true">hidden</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/id" isstring="true">id</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/index" ismixed="true">index</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/maxwidth" isnumber="true">maxWidth</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/menu" ismixed="true">menu</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/minwidth" isnumber="true">minWidth</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/render" isfunction="true">render</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/resizable" isboolean="true">resizable</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/sortable" isboolean="true">sortable</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/title" isstring="true">title</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/type" isstring="true">type</a>
-            </li>
-            <li>
-              <a href="/api/config/columns/width" isnumber="true">width</a>
-            </li>
+
           </ul>
         </div>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/data" isrequiredarray="true" required="true">data</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/defaults" isobject="true">defaults</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/defaultcolumnwidth" isobject="true">defaultColumnWidth</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/defaultrowgroupsort" isobject="true">defaultRowGroupSort</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/filterbar" isnumber="true">filterBar</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/height" isnumber="true">height</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/headerrowheight" isnumber="true">headerRowHeight</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/id" isstring="true">id</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/mincolumnwidth" isnumber="true">minColumnWidth</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/renderto" ismixed="true">renderTo</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/rowanimation" isboolean="true">rowAnimation</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/rowgroupbarseparator" isboolean="true">rowGroupBarSeparator</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/rowheight" isnumber="true">rowHeight</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/rowgrouptype" isstring="true">rowGroupType</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/rowcls" isfunction="true">rowCls</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/rowstyle" isfunction="true">rowStyle</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/rowclsrules" isfunction="true">rowClsRules</a>
-      </li>
-	    <li class="" style="position: relative;">
-        <a href="/api/config/theme" isstring="true">theme</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/config/width" isnumber="true">width</a>
-      </li>
-    </ul>
-  </li>
-  <li class="doc-items">
-    <a href="/api/columns" class="doc-item">Columns</a>
-    <btn class="doc-item-btn"></btn>
-    <ul class="doc-sub-items" style="display: none;">
-      <li class="" style="position: relative;">
-        <a href="/api/columns/boolean">boolean</a>
-      </li>
-	    <li class="" style="position: relative;">
-        <a href="/api/columns/currency">currency</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/columns/number">number</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/columns/order">order</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/columns/string">string</a>
-      </li>
-    </ul>
-  </li>
-  <li class="doc-items">
-    <a href="/api/methods" class="doc-item">Methods</a>
-    <btn class="doc-item-btn"></btn>
-    <ul class="doc-sub-items" style="display: none;">
-      <li class="" style="position: relative;">
-        <a href="/api/methods/getcolumn">getColumn</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/methods/hidecolumn">hideColumn</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/methods/removecolumn">removeColumn</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/methods/setcolumns">setColumns</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/methods/setdata">setData</a>
-      </li>
-      <li class="" style="position: relative;">
-        <a href="/api/methods/showcolumn">showColumn</a>
-      </li>
-    </ul>
-  </li>
+      </div>
+    </side>
+    <style>
+      #body doc > hd {
+        display: none;
+      }
 
-</ul>
-</div></div></side>
-<!--[if IE]>
-<script src="/resources/js/guides-els.js"></script>
-<![endif]-->
-<style>
-#body doc > hd {
-    display:none;
-}
-#body #doc > bd {
+      @media (max-width: 767px) {
+        #mc side {
+          display: none !important;
+        }
 
-}
+        #body doc h4 {
+          font-size: 20px;
+          margin-top: 20px;
+        }
 
+        #body doc h2 + h4 {
+          margin-top: 10px;
+        }
 
+        #body doc p {
+          font-size: 18px;
+        }
+      }
 
-@media (max-width: 767px) {
-  #mc side {
-    display:none !important;
-  }
-  #body doc h4 {
-    font-size: 20px;
-    margin-top:20px;
-  }
-  #body doc h2+h4 {
-    margin-top:10px;
-  }
-  #body doc p {
-    font-size: 18px;
-  }
-}
+      .type {
+        font-size: 13px;
+        padding: 3px 6px;
+        color: #656565;
+        line-height: 17px;
+        font-weight: 400;
+        vertical-align: middle;
+        background: #eee;
+        border-radius: 3px;
+        opacity: .8;
+      }
 
-.type {
-  font-size: 13px;
-  padding: 3px 6px;
-  color: #656565;
-  line-height: 17px;
-  font-weight: 400;
-  vertical-align: middle;
-  background: #eee;
-  border-radius: 3px;
-  opacity: .8;
-}
-
-</style>
-<doc id="doc" class="text-left">
-<bd>
-</bd>
-</doc>
-</bd>
+    </style>
+    <doc id="doc" class="text-left">
+      <bd>
+      </bd>
+    </doc>
+  </bd>
 </main>
 
 <script src="../js/jquery.min.js"></script>
@@ -848,7 +877,6 @@ li {
 <script src="/js/common.v2.js"></script>
 <script src="/js/global.v3.js"></script>
 
-
 <script src="/js/highlight.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
@@ -857,48 +885,45 @@ li {
 <script>
   var isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
 
-  $(function(){
-    $('.doc-item, .doc-item-btn').on('click', function(e){
+  $(function () {
+    $('.doc-item, .doc-item-btn').on('click', function (e) {
       let dataTarget;
       const el = $(this);
 
-      if($(this).hasClass('doc-item')){
+      if ($(this).hasClass('doc-item')) {
         dataTarget = $(this).attr('href');
 
-        if( $(this).hasClass('active') ){
+        if ($(this).hasClass('active')) {
           $(this).next().removeClass('active');
-        }
-        else{
+        } else {
           $(this).next().addClass('active');
         }
-      }
-      else{
+      } else {
         dataTarget = $(this).prev().attr('href');
       }
 
-      if(isBot === false){
+      if (isBot === false) {
         e.preventDefault();
       }
 
-      if($(this).parent().hasClass('active')){
+      if ($(this).parent().hasClass('active')) {
         $(this).parent().removeClass('active');
         $(this).next().removeClass('active');
-        $(this).parent().find('ul').slideUp("");
+        $(this).parent().find('ul').slideUp('');
 
         $(this).removeClass('active');
-      }
-      else{
-        $('.active ul').slideUp("");
+      } else {
+        $('.active ul').slideUp('');
         $('li.doc-items.active').removeClass('active');
 
         $(this).addClass('active');
 
         $(this).parent().addClass('active');
-        $(this).parent().find('ul').slideDown("");
+        $(this).parent().find('ul').slideDown('');
       }
 
-      if(dataTarget){
-        const url = '/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+      if (dataTarget) {
+        const url = '/fg-grid/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
         fetch(url)
           .then(response => {
             if (!response.ok) {
@@ -909,7 +934,7 @@ li {
           .then(html => {
             $('#doc bd').html(html);
 
-            if(el && el.length && el[0].innerHTML !== undefined){
+            if (el && el.length && el[0].innerHTML !== undefined) {
               const title = el[0].innerHTML + ' | API';
 
               //history.pushState({}, title, dataTarget);
@@ -927,8 +952,8 @@ li {
       }
     });
 
-    $('.doc-sub-items li a').on('click', function(e){
-      if(isBot === false){
+    $('.doc-sub-items li a').on('click', function (e) {
+      if (isBot === false) {
         e.preventDefault();
       }
 
@@ -941,21 +966,20 @@ li {
 
       $(el).addClass('active-item');
 
-      if(containSub){
-        if( $(this).parent().hasClass('active') ){
+      if (containSub) {
+        if ($(this).parent().hasClass('active')) {
           $(this).next().removeClass('active');
           $(this).parent().removeClass('active');
 
-          $($(this).parent().find('ul')[0]).slideUp("", function(){
-            if($(this).parent().find('ul').css('display') === 'none'){
+          $($(this).parent().find('ul')[0]).slideUp('', function () {
+            if ($(this).parent().find('ul').css('display') === 'none') {
               ul.css({
                 height: '0px',
                 overflow: 'hidden'
               });
             }
           });
-        }
-        else{
+        } else {
           $(this).next().addClass('active');
           $(this).parent('li').addClass('active');
 
@@ -969,30 +993,30 @@ li {
         }
       }
 
-      const url = '/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+      const url = '/fg-grid//api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
       fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(html => {
-       $('#doc bd').html(html);
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(html => {
+          $('#doc bd').html(html);
 
-       var title = el.innerHTML + ' | API';
+          var title = el.innerHTML + ' | API';
 
-       //history.pushState({}, title, dataTarget);
-       document.title = title;
-       mc.scrollTop = 0;
+          //history.pushState({}, title, dataTarget);
+          document.title = title;
+          mc.scrollTop = 0;
 
-       hljs.initHighlighting.called = false;
-       hljs.initHighlighting();
-       addCopyButton();
-      })
-      .catch(error => {
-        console.error('Error during loading page:', error);
-      });
+          hljs.initHighlighting.called = false;
+          hljs.initHighlighting();
+          addCopyButton();
+        })
+        .catch(error => {
+          console.error('Error during loading page:', error);
+        });
     });
 
     var el,
@@ -1001,23 +1025,23 @@ li {
       i = 0,
       iL = paths.length;
 
-    for(;i<iL;i++){
-      if(paths[i] !== ''){
+    for (; i < iL; i++) {
+      if (paths[i] !== '') {
         _paths.push(paths[i]);
       }
     }
 
     var url = '/api'
 
-    if(_paths.length > 1){
+    if (_paths.length > 1) {
       var _i = 2;
-      var slideDownCallBack = function(){
-        if(_i === iL - 1){
+      var slideDownCallBack = function () {
+        if (_i === iL - 1) {
           return;
         }
 
         url += '/' + _paths[_i];
-        el = $("[href='"+url+"']" );
+        el = $('[href=\'' + url + '\']');
 
         _i++;
         el.next().addClass('active');
@@ -1036,28 +1060,28 @@ li {
 
       url += '/' + _paths[1];
 
-      el = $("[href='"+url+"']" );
+      el = $('[href=\'' + url + '\']');
 
       el.parent().addClass('active');
       el.next().addClass('active');
 
       el.next().next().slideDown(slideDownCallBack);
 
-	  var _el = $("[href='"+location.pathname+"']" );
+      var _el = $('[href=\'' + location.pathname + '\']');
 
-	  if(_el.length){
-		_el.addClass('active-item');
-	  }
+      if (_el.length) {
+        _el.addClass('active-item');
+      }
     }
 
-    if(el && el.length && window.opened === undefined){
+    if (el && el.length && window.opened === undefined) {
       document.title = el[0].innerHTML;
       el.next().next().slideDown();
     }
   });
 
-  $('.doc-sub-items li btn').on('click', function(e){
-    if(isBot === false){
+  $('.doc-sub-items li btn').on('click', function (e) {
+    if (isBot === false) {
       e.preventDefault();
     }
 
@@ -1065,20 +1089,19 @@ li {
       el = this,
       ul = $($(this).parent().find('ul')[0]);
 
-    if( $(this).parent().hasClass('active') ){
+    if ($(this).parent().hasClass('active')) {
       $(this).removeClass('active');
       $(this).parent().removeClass('active');
 
-      $($(this).parent().find('ul')[0]).slideUp("", function(){
-        if($(this).parent().find('ul').css('display') === 'none'){
+      $($(this).parent().find('ul')[0]).slideUp('', function () {
+        if ($(this).parent().find('ul').css('display') === 'none') {
           ul.css({
             height: '0px',
             overflow: 'hidden'
           });
         }
       });
-    }
-    else{
+    } else {
       $(this).addClass('active');
       $(this).parent('li').addClass('active');
 
@@ -1094,81 +1117,81 @@ li {
 
   $(window).on('popstate', onUpdateDocInfo);
 
-  $(document).ready( onUpdateDocInfo );
+  $(document).ready(onUpdateDocInfo);
 
   function onUpdateDocInfo() {
     var dataTarget = location.pathname,
-      el = $("[href='"+location.pathname+"']" ),
-        path = dataTarget.replace(/\/api/g, '');
+      el = $('[href=\'' + location.pathname + '\']'),
+      path = dataTarget.replace(/\/api/g, '');
 
-      if(el[0] && el[0].innerHTML){
-        elText = el[0].innerHTML + ' | API';
-      }
-      else{
-        elText = 'FG-Grid API';
-        path = '/main';
-      }
+    if (el[0] && el[0].innerHTML) {
+      elText = el[0].innerHTML + ' | API';
+    } else {
+      elText = 'FG-Grid API';
+      path = '/main';
+    }
 
-      const url = '/api/pages' + (path || '/main' ) + '.html';
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.text();
-        })
-        .then(html => {
-          $('#doc bd').html(html);
-          mc.scrollTop = 0;
+    const url = '/fg-grid/api/pages' + (path || '/fg-grid/main') + '.html';
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(html => {
+        $('#doc bd').html(html);
+        mc.scrollTop = 0;
 
-          document.title = elText;
+        document.title = elText;
 
-          hljs.initHighlighting.called = false;
-          hljs.initHighlighting();
-          addCopyButton();
-        })
-        .catch(error => {
-          console.error('Error during loading page:', error);
-        });
+        hljs.initHighlighting.called = false;
+        hljs.initHighlighting();
+        addCopyButton();
+      })
+      .catch(error => {
+        console.error('Error during loading page:', error);
+      });
   }
 
-function addCopyButton(){
-  document.querySelectorAll('pre code').forEach(codeBlock => {
-    // Create a copy button
-    const copyButton = document.createElement('button');
-    copyButton.innerHTML = 'Copy';
+  function addCopyButton(){
+    document.querySelectorAll('pre code').forEach(codeBlock => {
+      // Create a copy button
+      const copyButton = document.createElement('button');
+      copyButton.innerHTML = 'Copy';
 
-    // Style the button to appear inside the code block
-    Object.assign(copyButton.style, {
-      position: 'absolute',
-      top: '2px',
-      right: '6px',
-      backgroundColor: 'rgba(0, 0, 0, 0)',
-      color: '#888',
-      padding: '4px 0px',
-      cursor: 'pointer',
-      border: 'none',
-      fontSize: '12px',
-      fontWeight: 600
-    });
+      // Style the button to appear inside the code block
+      Object.assign(copyButton.style, {
+        position: 'absolute',
+        top: '2px',
+        right: '6px',
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        color: '#888',
+        padding: '4px 0px',
+        cursor: 'pointer',
+        border: 'none',
+        fontSize: '12px',
+        fontWeight: 600
+      });
 
-    // Ensure the code block's parent is positioned properly for absolute positioning
-    codeBlock.parentElement.style.position = 'relative';
-    codeBlock.parentElement.appendChild(copyButton);
+      // Ensure the code block's parent is positioned properly for absolute positioning
+      codeBlock.parentElement.style.position = 'relative';
+      codeBlock.parentElement.appendChild(copyButton);
 
-    // Copy logic
-    copyButton.addEventListener('click', () => {
-      const codeText = codeBlock.textContent;
-      navigator.clipboard.writeText(codeText).then(() => {
-        copyButton.textContent = 'Copied!';
-        setTimeout(() => copyButton.innerHTML = 'Copy', 3000);
-      }).catch(err => {
-        console.error('Error copying text:', err);
+      // Copy logic
+      copyButton.addEventListener('click', () => {
+        const codeText = codeBlock.textContent;
+        navigator.clipboard.writeText(codeText).then(() => {
+          copyButton.textContent = 'Copied!';
+          setTimeout(() => copyButton.innerHTML = 'Copy', 3000);
+        }).catch(err => {
+          console.error('Error copying text:', err);
+        });
       });
     });
-  });
-}
-addCopyButton();
+  }
+  addCopyButton();
 </script>
 
-</body></html>
+</body>
+</html>

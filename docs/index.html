@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="framed js no-touch history websockets video audio localstorage svg">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" class="framed js no-touch history websockets video audio localstorage svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>FG-Grid Documentation</title>
 
   <meta http-equiv="cleartype" content="on">
@@ -22,7 +20,7 @@
   <!-- global styles -->
   <link rel="stylesheet" href="/css/global.v4.css">
 
-  <link href="/css/guides.v3.css?_dc=1" rel="stylesheet" type="text/css">
+  <link href="/css/guides.v3.css" rel="stylesheet" type="text/css">
   <link href="/css/v2.css" rel="stylesheet" type="text/css">
 
   <script src="/js/jquery.min.js"></script>
@@ -31,227 +29,195 @@
   <script src="https://cdn.jsdelivr.net/npm/fg-grid/dist/fg-grid.min.js"></script>
 
   <script>
-    document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:' + (window.innerHeight - 55) + 'px;} #mc{min-height:' + (window.innerHeight - 255) + 'px;}}</style>');
+    document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:'+(window.innerHeight-55)+'px;} #mc{min-height:'+(window.innerHeight-255)+'px;}}</style>');
   </script>
-  <style>@media (min-width: 768px) {
-      slide[fullsize], ct[fullsize] {
-          width: 100%;
-          height: 744px;
-      }
-
-      #mc {
-          min-height: 544px;
-      }
-  }</style>
-
+  <style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:744px;} #mc{min-height:544px;}}</style>
 </head>
 <body id="body">
 <main class="fluid">
-  <hd>
-    <nav>
-      <brand>
-        <a href="/" style="text-decoration:none;display: flex; align-items: center;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<hd>
+  <nav>
+     <brand>
+       <a href="/fg-grid/" style="text-decoration:none;display: flex; align-items: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
             <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
-            <rect height="12" width="12" x="2" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+            <rect height="12" width="12" x="2" y="16" rx="2"  stroke-width="0" fill="#A2CFE8"></rect>
             <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
           </svg>
 
-          <span class="text-lg"
-                style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
+          <span class="text-lg" style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
           <span class="text-lg" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
-          <span class="text-lg"
-                style="color: #A2CFE8; font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
-        </a>
-      </brand>
-      <btn></btn>
-      <bd>
-        <ul style="float:left;margin-left:20px;">
-          <li><a href="/docs">Docs</a></li>
-          <li><a href="/api">API</a></li>
-        </ul>
-        <ul>
-          <li><a href="https://github.com/FancyGrid/fg-grid">Support</a></li>
-        </ul>
-      </bd>
-    </nav>
-  </hd>
-  <style>
-      .active a.doc-item {
-          color: #1e8fc6 !important;
-      }
+          <span class="text-lg" style="color: #A2CFE8; font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
+       </a>
+     </brand>
+    <btn></btn>
+    <bd>
+      <ul style="float:left;margin-left:20px;">
+        <li><a href="/fg-grid/docs">Docs</a></li>
+        <li><a href="/fg-grid/api">API</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/FancyGrid/fg-grid">Support</a></li>
+      </ul>
+    </bd>
+  </nav>
+</hd>
+<style>
+.active a.doc-item {
+  color: #1e8fc6 !important;
+}
 
-      .doc-item-btn {
-          display: block;
-          position: absolute;
-          width: 20px;
-          height: 24px;
-          text-align: center;
-          color: #aaa;
-          right: 8px;
-          top: 8px;
-          background-color: transparent;
-          border-radius: 3px;
-          line-height: 24px;
-          font-family: entypo, sans-serif;
-          cursor: pointer;
-          font-size: 15px;
-      }
+.doc-item-btn {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 24px;
+  text-align: center;
+  color: #aaa;
+  right: 8px;
+  top: 8px;
+  background-color: transparent;
+  border-radius: 3px;
+  line-height: 24px;
+  font-family: entypo,sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
 
-      li btn:before {
-          content: "\e75e";
-      }
+li btn:before {
+  content: "\e75e";
+}
 
-      li.active btn:before {
-          content: "\e75c";
-      }
+li.active btn:before {
+  content: "\e75c";
+}
 
-      .doc-item-btn:hover {
-          color: #1e8fc6;
-          background-color: #f0f8fb;
-      }
+.doc-item-btn:hover {
+  color: #1e8fc6;
+  background-color: #f0f8fb;
+}
 
-      .doc-sub-items li a {
-          color: #656565;
-          padding-left: 30px;
-          line-height: 36px;
-          font-weight: 500;
-          display: block;
-      }
+.doc-sub-items li a {
+  color: #656565;
+  padding-left: 30px;
+  line-height: 36px;
+  font-weight: 500;
+  display: block;
+}
 
-      .doc-sub-items li a:hover {
-          color: #1e8fc6 !important;
-          text-decoration: none !important;
-          /*background: #f9f9f9 !important;*/
-          background-color: #E1E7ED !important;
-      }
+.doc-sub-items li a:hover {
+  color: #1e8fc6 !important;
+  text-decoration: none !important;
+  /*background: #f9f9f9 !important;*/
+  background-color: #E1E7ED !important;
+}
 
-      .doc-items {
-          border-top: 1px solid #eaeaea;
-      }
+.doc-items {
+  border-top: 1px solid #eaeaea;
+}
 
-      .active-item {
-          /*
-        background-color: #E1E7ED;
-           */
-      }
+.active-item {
+  background-color: #E1E7ED;
+}
 
-      .params-list {
-          color: #758EAC;
-          list-style: square;
-          padding-left: 40px;
-          margin: 0px 0px 15px 0px;
-      }
+.params-list {
+  color: #758EAC;
+  list-style: square;
+  padding-left: 40px;
+  margin: 0px 0px 15px 0px;
+}
 
-      .params-list span {
-          color: #555963;
-      }
+.params-list span {
+  color: #555963;
+}
 
-      api > name {
-          -webkit-touch-callout: initial;
-          user-select: initial;
-      }
+api > name {
+  -webkit-touch-callout: initial;
+  user-select: initial;
+}
 
-      .tab-btn {
-          background-color: #eee !important;
-          text-decoration: none;
-          float: left;
-          height: 40px;
-          width: 119px;
-          font-weight: 600;
-          color: #515559;
-          cursor: pointer;
-      }
+.tab-btn {
+  background-color: #eee !important;
+  text-decoration: none;
+  float: left;
+  height: 40px;
+  width: 119px;
+  font-weight: 600;
+  color: #515559;
+  cursor: pointer;
+}
 
-      .tab-btn:hover {
-          text-decoration: none;
-      }
+.tab-btn:hover {
+  text-decoration: none;
+}
 
-  </style>
+</style>
 
-  <bd id="mc" style="">
-    <side data-sbar-dir="vertical" style="height: 700px;">
-      <div class="sbar-track" style="display: none;">
-        <div class="sbar-scrollbar"></div>
-      </div>
-      <div class="sbar-scroll-content">
-        <div class="sbar-content">
-          <div class="doc-tabs" style="height: 25px;background-color: #eee !important">
-            <div onclick="location.href='/docs/'"
-                 style="padding-top: 9px;padding-left: 39px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);"
-                 class="tab-btn active" href="/docs">Docs
-            </div>
-            <div style="padding-top: 9px;padding-left: 48px;" onclick="location.href='/api/'" class="tab-btn"
-                 href="/api">API
-            </div>
-          </div>
-          <ul class="all" style="padding-top:15px;">
-            <li class="doc-items">
-              <a href="#" class="doc-item">Getting Started</a>
-              <btn class="doc-item-btn"></btn>
-              <ul class="doc-sub-items" style="display: none;">
-                <li>
-                  <a href="/docs/getting-started/installation">Installation grid</a>
-                  <a href="/docs/getting-started/your-first-grid">Your first grid</a>
-                  <a href="/docs/getting-started/react">React</a>
-                </li>
-              </ul>
-            </li>
-            <li class="doc-items">
-              <a href="#" class="doc-item">Grid Concepts</a>
-              <btn class="doc-item-btn"></btn>
-              <ul class="doc-sub-items" style="display: none;">
-                <li>
-                  <a href="/docs/grid-concepts/understanding-fg-grid">Understanding FG-Grid</a>
-                  <a href="/docs/grid-concepts/columns">Columns</a>
-                  <a href="/docs/grid-concepts/data">Data</a>
-                  <a href="/docs/grid-concepts/sorting">Sorting</a>
-                  <a href="/docs/grid-concepts/filtering">Filtering</a>
-                  <a href="/docs/grid-concepts/grouping">Grouping</a>
-                  <a href="/docs/grid-concepts/selection">Selection</a>
-                  <a href="/docs/grid-concepts/cells-styling">Cells Styling</a>
-                  <a href="/docs/grid-concepts/methods">Methods</a>
-                </li>
-              </ul>
-            </li>
+<bd id="mc" style=""><side data-sbar-dir="vertical" style="height: 700px;"><div class="sbar-track" style="display: none;"><div class="sbar-scrollbar"></div></div><div class="sbar-scroll-content"><div class="sbar-content">
+<div class="doc-tabs" style="height: 25px;background-color: #eee !important">
+  <div onclick="location.href='/fg-grid/docs/'" style="padding-top: 9px;padding-left: 39px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);" class="tab-btn active" href="/support">Docs</div>
+  <div style="padding-top: 9px;padding-left: 48px;" onclick="location.href='/fg-grid/api/'" class="tab-btn" href="/api">API</div>
+</div>
+<ul class="all" style="padding-top:15px;">
+  <li class="doc-items">
+    <a href="#" class="doc-item">Getting Started</a>
+    <btn class="doc-item-btn"></btn>
+    <ul class="doc-sub-items" style="display: none;">
+      <li>
+        <a href="/docs/getting-started/installation">Installation grid</a>
+        <a href="/docs/getting-started/your-first-grid">Your first grid</a>
+        <a href="/docs/getting-started/react">React</a>
+      </li>
+    </ul>
+  </li>
+  <li class="doc-items">
+    <a href="#" class="doc-item">Grid Concepts</a>
+    <btn class="doc-item-btn"></btn>
+    <ul class="doc-sub-items" style="display: none;">
+      <li>
+        <a href="/docs/grid-concepts/understanding-fg-grid">Understanding FG-Grid</a>
+        <a href="/docs/grid-concepts/columns">Columns</a>
+        <a href="/docs/grid-concepts/data">Data</a>
+        <a href="/docs/grid-concepts/sorting">Sorting</a>
+        <a href="/docs/grid-concepts/filtering">Filtering</a>
+        <a href="/docs/grid-concepts/grouping">Grouping</a>
+		    <a href="/docs/grid-concepts/selection">Selection</a>
+		    <a href="/docs/grid-concepts/cells-styling">Cells Styling</a>
+        <a href="/docs/grid-concepts/methods">Methods</a>
+      </li>
+    </ul>
+  </li>
 
-          </ul>
-        </div>
-      </div>
-    </side>
+</ul>
+</div></div></side>
+<style>
+#body doc > hd {
+    display:none;
+}
 
-    <style>
-        #body doc > hd {
-            display: none;
-        }
+@media (max-width: 767px) {
+  #mc side {
+    display:none !important;
+  }
+  #body doc h4 {
+    font-size: 20px;
+    margin-top:20px;
+  }
+  #body doc h2+h4 {
+    margin-top:10px;
+  }
+  #body doc p {
+    font-size: 18px;
+  }
+}
+</style>
+<doc id="doc" class="text-left">
+<bd>
+</bd>
 
-        @media (max-width: 767px) {
-            #mc side {
-                display: none !important;
-            }
-
-            #body doc h4 {
-                font-size: 20px;
-                margin-top: 20px;
-            }
-
-            #body doc h2 + h4 {
-                margin-top: 10px;
-            }
-
-            #body doc p {
-                font-size: 18px;
-            }
-        }
-    </style>
-    <doc id="doc" class="text-left">
-      <bd>
-      </bd>
-
-    </doc>
-  </bd>
+</doc>
+</bd>
 </main>
 
 <script src="/js/markup.js"></script>
@@ -270,23 +236,24 @@
 <script>
   var isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
 
-  $(function () {
-    $('.doc-item, .doc-item-btn').on('click', function (e) {
+  $(function() {
+    $('.doc-item, .doc-item-btn').on('click', function(e) {
       e.preventDefault();
-      if ($(this).parent().hasClass('active')) {
+      if($(this).parent().hasClass('active')){
         $(this).parent().removeClass('active');
-        $(this).parent().find('ul').slideUp('slow');
-      } else {
-        $('.active ul').slideUp('slow');
+        $(this).parent().find('ul').slideUp("slow");
+      }
+      else{
+        $('.active ul').slideUp("slow");
         $('.active').removeClass('active');
 
         $(this).parent().addClass('active');
-        $(this).parent().find('ul').slideDown('slow');
+        $(this).parent().find('ul').slideDown("slow");
       }
     });
 
-    $('.doc-sub-items a').on('click', function (e) {
-      if (isBot === false) {
+    $('.doc-sub-items a').on('click', function(e) {
+      if(isBot === false){
         e.preventDefault();
       }
       var dataTarget = $(this).attr('href'),
@@ -297,7 +264,7 @@
       $(el).addClass('active-item');
 
       const path = dataTarget.replace(/\/docs/g, '');
-      const url = '/docs/pages' + (path || 'main') + '.html';
+      const url = '/fg-grid/docs/pages' + (path || 'main' ) + '.html';
 
       fetch(url).then(response => {
         if (!response.ok) {
@@ -305,51 +272,51 @@
         }
         return response.text();
       })
-        .then(html => {
-          $('#doc bd').html(html);
+      .then(html => {
+        $('#doc bd').html(html);
 
-          var title = el.innerHTML + ' | Docs';
+        var title = el.innerHTML + ' | Docs';
 
-          //history.pushState({}, title, dataTarget);
-          document.title = title;
-          mc.scrollTop = 0;
+        //history.pushState({}, title, dataTarget);
+        document.title = title;
+        mc.scrollTop = 0;
 
-          hljs.initHighlighting.called = false;
-          hljs.initHighlighting();
-          addCopyButton();
-        })
-        .catch(error => {
-          console.error('Error during loading page:', error);
-        });
+        hljs.initHighlighting.called = false;
+        hljs.initHighlighting();
+        addCopyButton();
+      })
+      .catch(error => {
+        console.error('Error during loading page:', error);
+      });
     });
 
-    var el = $('[href=\'' + location.pathname + '\']');
+    var el = $("[href='"+location.pathname+"']" );
 
-    if (el.length) {
-      document.title = el[0].innerHTML + ' | Docs';
-      ;
+    if(el.length){
+      document.title = el[0].innerHTML + ' | Docs';;
       el.addClass('active-item');
       el.closest('li.doc-items').children('a').click();
     }
   });
 
   $(window).on('popstate', onUpdateDocInfo);
-  $(document).ready(onUpdateDocInfo);
+  $(document).ready( onUpdateDocInfo );
 
-  function onUpdateDocInfo() {
-    var dataTarget = location.pathname,
-      el = $('[href=\'' + location.pathname + '\']'),
+function onUpdateDocInfo() {
+  var dataTarget = location.pathname,
+    el = $("[href='"+location.pathname+"']" ),
       path = dataTarget.replace(/\/docs/g, '');
 
-    if (el[0] && el[0].innerHTML) {
+    if(el[0] && el[0].innerHTML){
       elText = el[0].innerHTML + ' | Docs';
-    } else {
+    }
+    else{
       elText = 'FG-Grid Docs';
       path = '/main';
     }
 
 
-    const url = '/docs/pages' + (path || '/main') + '.html';
+    const url = '/fg-grid/docs/pages' + (path || '/main' ) + '.html';
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -370,51 +337,46 @@
       .catch(error => {
         console.error('Error during loading page:', error);
       });
-  }
+}
 
+function addCopyButton(){
+  document.querySelectorAll('pre code').forEach(codeBlock => {
+    // Create a copy button
+    const copyButton = document.createElement('button');
+    copyButton.innerHTML = 'Copy';
 
-  function addCopyButton() {
-    document.querySelectorAll('pre code').forEach(codeBlock => {
-      // Create a copy button
-      const copyButton = document.createElement('button');
-      copyButton.innerHTML = 'Copy';
+    // Style the button to appear inside the code block
+    Object.assign(copyButton.style, {
+      position: 'absolute',
+      top: '2px',
+      right: '6px',
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      color: '#888',
+      padding: '4px 0px',
+      cursor: 'pointer',
+      border: 'none',
+      fontSize: '12px',
+      fontWeight: 600
+    });
 
-      // Style the button to appear inside the code block
-      Object.assign(copyButton.style, {
-        position: 'absolute',
-        top: '2px',
-        right: '6px',
-        backgroundColor: 'rgba(0, 0, 0, 0)',
-        color: '#888',
-        padding: '4px 0px',
-        cursor: 'pointer',
-        border: 'none',
-        fontSize: '12px',
-        fontWeight: 600
-      });
+    // Ensure the code block's parent is positioned properly for absolute positioning
+    codeBlock.parentElement.style.position = 'relative';
+    codeBlock.parentElement.appendChild(copyButton);
 
-      // Ensure the code block's parent is positioned properly for absolute positioning
-      codeBlock.parentElement.style.position = 'relative';
-      codeBlock.parentElement.appendChild(copyButton);
-
-      // Copy logic
-      copyButton.addEventListener('click', () => {
-        const codeText = codeBlock.textContent;
-        navigator.clipboard.writeText(codeText).then(() => {
-          copyButton.textContent = 'Copied!';
-          setTimeout(() => copyButton.innerHTML = 'Copy', 3000);
-        }).catch(err => {
-          console.error('Error copying text:', err);
-        });
+    // Copy logic
+    copyButton.addEventListener('click', () => {
+      const codeText = codeBlock.textContent;
+      navigator.clipboard.writeText(codeText).then(() => {
+        copyButton.textContent = 'Copied!';
+        setTimeout(() => copyButton.innerHTML = 'Copy', 3000);
+      }).catch(err => {
+        console.error('Error copying text:', err);
       });
     });
-  }
-
-  addCopyButton();
+  });
+}
+addCopyButton();
 </script>
 
-
 <script src="/cookies-policy/gdpr.js"></script>
-
-</body>
-</html>
+</body></html>

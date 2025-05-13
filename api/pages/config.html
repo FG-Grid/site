@@ -1,8 +1,19 @@
 <h1>Config</h1>
 
 <api>
+  <name><h4>activeCell</h4><sup>Boolean</sup></name>
+  <bd><p>Enables activeCell.</p> </bd>
+  <example>
+<pre><code>
+activeCell: true
+</code></pre>
+    <default>true</default>
+  </example>
+</api>
+
+<api>
     <name><h4>columnLines</h4><sup>Boolean</sup></name>
-    <bd><p>Enable column lines.</p> </bd>
+    <bd><p>Enables column lines.</p> </bd>
     <example>
 <pre><code>
 columnLines: true
@@ -129,6 +140,20 @@ defaults: {
     <p>Default row group sorting.</p>
   </bd>
   <default>'desc-amount'</default>
+</api>
+
+<api>
+  <name><h4>editorEnterAction</h4><sup>String</sup></name>
+  <bd>
+    <p>
+      This option defines behavior on key press <b>ENTER</b> in cell editor.<br>
+      By default, it will close editor and focus back edited cell.<br>
+      With values <code class="js">right</code> or <code class="js">bottom</code> it will focus next cell and<br>
+      open editor for it.
+    </p>
+    <p>Possible values: <code class="js">stay</code>, <code class="js">right</code>, <code class="js">bottom</code>.</p>
+  </bd>
+  <default>'stay'</default>
 </api>
 
 <api>
@@ -323,6 +348,21 @@ new Grid({
    rowClsRules: {
     'low-price': params => params.item.price < 30000
   }
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>selectingCells</h4><sup>Boolean</sup></name>
+  <bd>
+    <p>Enables selecting cells.</p>
+    <p>It used for copying data over <b>CTRL+C</b>.</p>
+  </bd>
+  <example>
+<pre><code>
+new Grid({
+  selectingCells: true,
+  ...
 </code></pre>
   </example>
 </api>

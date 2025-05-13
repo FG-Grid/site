@@ -4,5 +4,35 @@
 <p>To enable local sorting, you need to set for columns that needs to be sorting, param <code class="js">sortable</code></p>
 <pre><code class="js">
 new Grid({
-  sortable: true,
+  columns: [{
+    index: 'brand',
+    sortable: true
+  },{
+    index: 'model',
+    sortable: true
+  },{
+    index: 'price',
+    type: 'number',
+    sortable: true
+  },{
+  ...
 </code></pre>
+
+To avoid repeating this property for all columns, there is a default option property.
+<pre><code class="js">
+new Grid({
+  defaults: {
+    sortable: true
+  },
+  columns: [{
+    index: 'brand'
+  },{
+    index: 'model'
+  },{
+    index: 'price',
+    type: 'number'
+  },{
+  ...
+</code></pre>
+</p>
+

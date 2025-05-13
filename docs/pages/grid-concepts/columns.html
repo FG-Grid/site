@@ -356,6 +356,40 @@ columns: [{
 </api>
 
 <api>
+  <name><h4>getter</h4><sup>Function</sup></name>
+  <bd>
+    <p>
+      Sometimes it requires to get value for column in not casual way.<br>
+      To read from another data <code>index</code> or to combine with several data <code>indexes</code>.<br>
+      For this case, it should be used combination of properties:<br>
+      <code class="js">format</code>,<code class="js">getter</code>, <code class="js">setter</code>,<code class="js">render</code>. <br>
+      Let's study the simplest case when we do not set <code>index</code>.<br>
+    </p>
+    <p><code class="js">getter</code> is used for getting data value for editor field.</p>
+    <p><code class="js">setter</code> is used for setting value for editor field to data store</p>
+    <p><code class="js">render</code> is used to display our data in cell</p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  type: 'string',
+  title: 'Model',
+	render(params){
+    return params.item.model;
+  },
+	getter(params) {
+	  return params.item.model;
+  },
+  setter(params) {
+    params.item.model = params.newValue;
+  }
+},{
+...
+</code></pre>
+  </example>
+</api>
+
+<api>
   <name><h4>hidden</h4><sup>Boolean</sup></name>
   <bd><p>
     It hides column on start.<br>
@@ -553,6 +587,40 @@ render(params) {
 resizable: true,
 </code></pre>
     <default>false</default>
+  </example>
+</api>
+
+<api>
+  <name><h4>setter</h4><sup>Function</sup></name>
+  <bd>
+    <p>
+      Sometimes it requires to get value for column in not casual way.<br>
+      To read from another data <code>index</code> or to combine with several data <code>indexes</code>.<br>
+      For this case, it should be used combination of properties:<br>
+      <code class="js">format</code>,<code class="js">getter</code>, <code class="js">setter</code>,<code class="js">render</code>. <br>
+      Let's study the simplest case when we do not set <code>index</code>.<br>
+    </p>
+    <p><code class="js">getter</code> is used for getting data value for editor field.</p>
+    <p><code class="js">setter</code> is used for setting value for editor field to data store</p>
+    <p><code class="js">render</code> is used to display our data in cell</p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  type: 'string',
+  title: 'Model',
+	render(params){
+    return params.item.model;
+  },
+	getter(params) {
+	  return params.item.model;
+  },
+  setter(params) {
+    params.item.model = params.newValue;
+  }
+},{
+...
+</code></pre>
   </example>
 </api>
 

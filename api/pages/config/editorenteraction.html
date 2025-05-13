@@ -1,0 +1,22 @@
+<h3>defaultRowGroupSort</h3>
+<code class="type">String</code>
+
+<p>
+  This option defines behavior on key press <b>ENTER</b> in cell editor.<br>
+  By default, it will close editor and focus back edited cell.<br>
+  With values <code class="js">right</code> or <code class="js">bottom</code> it will focus next cell and<br>
+  open editor for it.
+</p>
+<p>Possible values: <code class="js">stay</code>, <code class="js">right</code>, <code class="js">bottom</code>.</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+new Grid({
+  editorEnterAction: 'right',
+  ...
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+stay
+</code></pre>

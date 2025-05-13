@@ -8,17 +8,16 @@ const grid = new Grid({
   ...
 });
 ...
-grid.hideColumn(column[1]);
+grid.hideColumn(columns[1]);
 </code></pre>
-
 </p>
 
 <p class="tip">
-  To get link on grid widget from any place there is method <code class="js">Fancy.get</code>
+  To get a reference to the grid widget from any place, use the method <code class="js">Fancy.get</code>.
 </p>
 
 <p>
-  If it was set renderTo property than use <code class="js">Fancy.get('my-grid')</code><br>
+  If the <code class="js">renderTo</code> property was set, then use <code class="js">Fancy.get('my-grid')</code><br>
 <pre>
 <code class="js">
 new Grid({
@@ -27,7 +26,7 @@ new Grid({
   ...
 });
 
-function updateGridTitle(){
+function updateGridTitle() {
   const grid = Fancy.get('my-grid');
 
   grid.setData([...]);
@@ -35,4 +34,3 @@ function updateGridTitle(){
 </code>
 </pre>
 </p>
-

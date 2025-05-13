@@ -157,6 +157,9 @@
           rowGroup: true,
           rowGroupOrder: 0,
           type: 'string',
+          getter(params){
+            return params.item.country;
+          },
           render(params){
             const {
               cell,

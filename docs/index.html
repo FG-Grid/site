@@ -38,7 +38,7 @@
 <hd>
   <nav>
      <brand>
-       <a href="/fg-grid/" style="text-decoration:none;display: flex; align-items: center;">
+       <a href="/" style="text-decoration:none;display: flex; align-items: center;">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
             <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
@@ -54,8 +54,8 @@
     <btn></btn>
     <bd>
       <ul style="float:left;margin-left:20px;">
-        <li><a href="/fg-grid/docs">Docs</a></li>
-        <li><a href="/fg-grid/api">API</a></li>
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/api">API</a></li>
       </ul>
       <ul>
         <li><a href="https://github.com/FancyGrid/fg-grid">Support</a></li>
@@ -156,8 +156,8 @@ api > name {
 
 <bd id="mc" style=""><side data-sbar-dir="vertical" style="height: 700px;"><div class="sbar-track" style="display: none;"><div class="sbar-scrollbar"></div></div><div class="sbar-scroll-content"><div class="sbar-content">
 <div class="doc-tabs" style="height: 25px;background-color: #eee !important">
-  <div onclick="location.href='/fg-grid/docs/'" style="padding-top: 9px;padding-left: 39px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);" class="tab-btn active" href="/support">Docs</div>
-  <div style="padding-top: 9px;padding-left: 48px;" onclick="location.href='/fg-grid/api/'" class="tab-btn" href="/api">API</div>
+  <div onclick="location.href='/docs/'" style="padding-top: 9px;padding-left: 39px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);" class="tab-btn active" href="/support">Docs</div>
+  <div style="padding-top: 9px;padding-left: 48px;" onclick="location.href='/api/'" class="tab-btn" href="/api">API</div>
 </div>
 <ul class="all" style="padding-top:15px;">
   <li class="doc-items">
@@ -265,7 +265,7 @@ api > name {
       $(el).addClass('active-item');
 
       const path = dataTarget.replace(/\/docs/g, '');
-      const url = '/fg-grid/docs/pages' + (path || 'main' ) + '.html';
+      const url = '/docs/pages' + (path || 'main' ) + '.html';
 
       fetch(url).then(response => {
         if (!response.ok) {
@@ -317,7 +317,7 @@ function onUpdateDocInfo() {
     }
 
 
-    const url = '/fg-grid/docs/pages' + (path || '/main' ) + '.html';
+    const url = '/docs/pages' + (path || '/main' ) + '.html';
     fetch(url)
       .then(response => {
         if (!response.ok) {

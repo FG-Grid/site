@@ -44,7 +44,7 @@
   <hd>
     <nav>
       <brand>
-        <a href="/fg-grid/" style="text-decoration:none;display: flex; align-items: center;">
+        <a href="/" style="text-decoration:none;display: flex; align-items: center;">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"
                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
@@ -63,8 +63,8 @@
       <btn></btn>
       <bd>
         <ul style="float:left;margin-left:20px;">
-          <li><a href="/fg-grid/docs">Docs</a></li>
-          <li><a href="/fg-grid/api">API</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/api">API</a></li>
         </ul>
         <ul>
           <li><a href="https://github.com/FancyGrid/fg-grid">Support</a></li>
@@ -623,10 +623,10 @@
       <div class="sbar-scroll-content">
         <div class="sbar-content">
           <div style="height: 25px;background-color: #eee !important">
-            <div onclick="location.href='/fg-grid/docs/'" style="padding-top: 9px;padding-left: 39px;"
+            <div onclick="location.href='/docs/'" style="padding-top: 9px;padding-left: 39px;"
                  class="tab-btn active">Docs
             </div>
-            <div onclick="location.href='/fg-grid/api/'"
+            <div onclick="location.href='/api/'"
                  style="padding-top: 9px;padding-left: 48px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);"
                  class="tab-btn active">
               API
@@ -938,7 +938,7 @@
       }
 
       if (dataTarget) {
-        const url = '/fg-grid/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+        const url = '/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
         fetch(url)
           .then(response => {
             if (!response.ok) {
@@ -1008,7 +1008,7 @@
         }
       }
 
-      const url = '/fg-grid//api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+      const url = '//api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
       fetch(url)
         .then(response => {
           if (!response.ok) {
@@ -1146,7 +1146,7 @@
       path = '/main';
     }
 
-    const url = '/fg-grid/api/pages' + (path || '/fg-grid/main') + '.html';
+    const url = '/api/pages' + (path || '/main') + '.html';
     fetch(url)
       .then(response => {
         if (!response.ok) {

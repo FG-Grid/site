@@ -1010,7 +1010,9 @@
         }
       }
 
-      const url = '//api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+      const url = '/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
+
+      console.log(url)
       fetch(url)
         .then(response => {
           if (!response.ok) {

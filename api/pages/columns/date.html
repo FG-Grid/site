@@ -1,22 +1,51 @@
-<h3>
-  Order column type<br>
-</h3>
+<h3>Date column type</h3>
+<p>
+  To enable the <code class="js">date</code> column type, there are a few specific things to keep in mind.<br>
+The date editor uses the HTML5 <code>date</code> input, which supports only the format <b>YYYY-MM-DD</b>.<br>
+Therefore, if the original date value is <code class="js">'20.07.2025'</code>, it must be reformatted for the editor.<br>
 
-<p>Order column. It does numbered rows.</p>
-<p class="tip">This column type is not supported for row grouping</p>
+To keep the library lightweight and avoid including large date formatting module, column property <code class="js">getter</code> is used for conversion:<br>
+<pre><code class="js">
+getter(params) {
+  const [day, month, year] = (params.item.dateProduction || '').split('.');
+  return `${year}-${month}-${day}`;
+}
+</code></pre>
 
-<p class="tip">
-  For this column type properties <code class="js">draggable</code>, <code class="js">menu</code>, <code class="js">resizable</code>
-  have value <code class="js">false</code>.
+After the value is edited, it needs to be converted back to your original format using the <code class="js">setter</code> property.<br>
+If the date needs to be displayed in the cell in a specific format, use the <code class="js">render</code> property.
 </p>
+
 
 <p><b>Example</b><p>
 <pre><code class="js">
 columns: [{
 ...
 },{
-  type: 'order',
-  width: 100
+  index: 'dateProduction',
+  type: 'date',
+  title: 'Production Date',
+  getter(params){
+    const [day, month, year] = (params.item.dateProduction || '').split('.');
+
+    return `${year}-${month}-${day}`;
+  },
+  setter(params){
+    if(params.newValue === ''){
+      params.item.dateProduction = '';
+      return;
+    }
+
+    const date = new Date(params.newValue);
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    let formatted = `${day}.${month}.${year}`;
+
+    params.item.dateProduction = formatted;
+  }
 },{
 ...
 </code></pre>
@@ -134,6 +163,17 @@ draggable: false,
 </api>
 
 <api>
+  <name><h4>editable</h4><sup>Boolean</sup></name>
+  <bd><p>Allows column to be editable.</p></bd>
+  <example>
+<pre><code class="js">
+editable: false,
+</code></pre>
+    <default>false</default>
+  </example>
+</api>
+
+<api>
   <name><h4>filter</h4><sup>Object</sup></name>
   <bd>
     <p>Enable column filter for filterBar.</p>
@@ -144,6 +184,40 @@ filterBar: true,
 columns: [{
   index: 'price',
   filter: true,
+</code></pre>
+  </example>
+</api>
+
+<api>
+  <name><h4>getter</h4><sup>Function</sup></name>
+  <bd>
+    <p>
+      Sometimes it requires to get value for column in not casual way.<br>
+      To read from another data <code>index</code> or to combine with several data <code>indexes</code>.<br>
+      For this case, it should be used combination of properties:<br>
+      <code class="js">format</code>,<code class="js">getter</code>, <code class="js">setter</code>,<code class="js">render</code>. <br>
+      Let's study the simplest case when we do not set <code>index</code>.<br>
+    </p>
+    <p><code class="js">getter</code> is used for getting data value for editor field.</p>
+    <p><code class="js">setter</code> is used for setting value for editor field to data store</p>
+    <p><code class="js">render</code> is used to display our data in cell</p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  type: 'string',
+  title: 'Model',
+	render(params){
+    return params.item.model;
+  },
+	getter(params) {
+	  return params.item.model;
+  },
+  setter(params) {
+    params.item.model = params.newValue;
+  }
+},{
+...
 </code></pre>
   </example>
 </api>

@@ -1,14 +1,26 @@
 <h1>Columns</h1>
 <h3>Column types</h3>
 <p>
-  <code>boolean, currency, number, string, order</code>.
+  <code>boolean, currency, date, number, string, order</code>.
 </p>
 
-<br>
+<api>
+  <name><h4>boolean</h4><sup>Boolean</sup></name>
+  <bd><p>Boolean column type</p></bd>
+  <example>
+<pre><code class="js">
+{
+  index: 'electric',
+  title: 'Electric',
+  type: 'boolean'
+}
+</code></pre>
+  </example>
+</api>
 
 <api>
-  <name><h4>currency</h4><sup>String</sup></name>
-  <bd><p>currency column type.</p></bd>
+  <name><h4>currency</h4><sup>Number</sup></name>
+  <bd><p>Currency column type.</p></bd>
   <example>
 <pre><code class="js">
 columns: [{
@@ -36,8 +48,44 @@ columns: [{
 </api>
 
 <api>
+  <name><h4>date</h4><sup>String</sup></name>
+  <bd><p>Date column type.</p></bd>
+  <example>
+<pre><code class="js">
+{
+  index: 'dateProduction',
+  type: 'date',
+  title: 'Production Date',
+  getter(params){
+    const [day, month, year] = (params.item.dateProduction || '').split('.');
+
+    return `${year}-${month}-${day}`;
+  },
+  setter(params){
+    if(params.newValue === ''){
+      params.item.dateProduction = '';
+      return;
+    }
+
+    const date = new Date(params.newValue);
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    let formatted = `${day}.${month}.${year}`;
+
+    params.item.dateProduction = formatted;
+  }
+}
+</code></pre>
+  </example>
+
+</api>
+
+<api>
   <name><h4>number</h4><sup>Number</sup></name>
-  <bd><p>number column type.</p></bd>
+  <bd><p>Number column type.</p></bd>
   <example>
 <pre><code class="js">
 {
@@ -90,7 +138,7 @@ columns: [{
 </api>
 
 <api>
-  <name><h4>string</h4><sup></sup></name>
+  <name><h4>string</h4><sup>String</sup></name>
   <bd><p>String column.</p></bd>
   <example>
 <pre><code class="js">

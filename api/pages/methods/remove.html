@@ -1,0 +1,22 @@
+<h3>remove<sup>(items: object | object[], position?: number|object): void</sup></h3>
+
+<p>
+  Remove items from grid.
+</p>
+
+<p><b>Example: remove selected rows</b><p>
+<pre><code class="js">
+const selected = grid.getSelection();
+grid.remove(selected);
+</code></pre>
+
+<p><b>Example: remove by id</b><p>
+<pre><code class="js">
+grid.remove('id-11');
+</code></pre>
+
+<p><b>Example: remove by item</b><p>
+<pre><code class="js">
+const item = grid.getItemById('id-2');
+grid.remove(item);
+</code></pre>

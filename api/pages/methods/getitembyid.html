@@ -1,0 +1,37 @@
+<h3>getItemById<sup>(id: String): Object</sup></h3>
+<p>Return grid data item by id</p>
+
+<p><b>Example: remove item</b><p>
+<pre><code class="js">
+const item = grid.getItemById('id-2');
+grid.remove(item);
+</code></pre>
+
+<p><b>Example: insert after item</b><p>
+<pre><code class="js">
+const item = grid.getItemById('id-2');
+
+grid.add([{
+  brand: 'BMW',
+  model: '3 Series',
+  price: 50000,
+  color: 'Black',
+  country: 'Germany',
+  year: 2023,
+  fuelType: 'Diesel',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '12.02.2023'
+}, {
+  brand: 'Ford',
+  model: 'F-150',
+  price: 45000,
+  color: 'Gray',
+  country: 'USA',
+  year: 2022,
+  fuelType: 'Petrol',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '02.02.2022'
+}], item)
+</code></pre>

@@ -1,0 +1,33 @@
+<h3>setById<sup>(id: string, index: string|object, value:string|number|boolean|undefined|null): void</sup></h3>
+
+<p>
+  Change data item by id.<br>
+</p>
+
+<p>
+  <h3>Flashing changes</h3>
+  By default, changes will be flashed.<br>
+  Grid parameter <code>flashChanges</code> is true by default.<br>
+  For flashing, parameter <code>flashChangesColors</code> is used.<br>
+First color for usual cell, second color to selected rows.<br>
+<pre><code class="js">
+flashChanges: true,
+flashChangesColors: ['#e0e5e9','beige']
+</code></pre>
+</p>
+
+<p><b>Example: change one option</b><p>
+<pre><code class="js">
+grid.setById('id-0', 'price', 45000);
+</code></pre>
+
+<p><b>Example: change several options</b><p>
+<pre><code class="js">
+grid.setById('id-2', {
+  price: 75000,
+  brand: 'Toyota',
+  model: 'Land Cruiser',
+  year: 2025,
+  country: 'Japan'
+});
+</code></pre>

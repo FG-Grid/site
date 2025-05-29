@@ -1,0 +1,108 @@
+<h3>add<sup>(items: object | object[], position?: number|object): void</sup></h3>
+
+<p>
+  Add items to grid.<br>
+  By default, it adds data to the end of grid.<br>
+</p>
+<p class="tip">
+  For grouped data method <code class="js">add</code> ignores position and adds data to the end of group.
+</p>
+
+<p><b>Example: add item to grid</b><p>
+<pre><code class="js">
+grid.add({
+  brand: 'BMW',
+  model: '3 Series',
+  price: 50000,
+  color: 'Black',
+  country: 'Germany',
+  year: 2023,
+  fuelType: 'Diesel',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '12.02.2023'
+})
+</code></pre>
+
+<p><b>Example: add items to grid</b><p>
+<pre><code class="js">
+grid.add([{
+  brand: 'BMW',
+  model: '3 Series',
+  price: 50000,
+  color: 'Black',
+  country: 'Germany',
+  year: 2023,
+  fuelType: 'Diesel',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '12.02.2023'
+}, {
+  brand: 'Ford',
+  model: 'F-150',
+  price: 45000,
+  color: 'Gray',
+  country: 'USA',
+  year: 2022,
+  fuelType: 'Petrol',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '02.02.2022'
+}])
+</code></pre>
+
+<p><b>Example: add items to position</b><p>
+<pre><code class="js">
+grid.add([{
+  brand: 'BMW',
+  model: '3 Series',
+  price: 50000,
+  color: 'Black',
+  country: 'Germany',
+  year: 2023,
+  fuelType: 'Diesel',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '12.02.2023'
+}, {
+  brand: 'Ford',
+  model: 'F-150',
+  price: 45000,
+  color: 'Gray',
+  country: 'USA',
+  year: 2022,
+  fuelType: 'Petrol',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '02.02.2022'
+}], 0)
+</code></pre>
+
+<p><b>Example: add items after item</b><p>
+<pre><code class="js">
+const item = grid.getItemById('id-2');
+
+grid.add([{
+  brand: 'BMW',
+  model: '3 Series',
+  price: 50000,
+  color: 'Black',
+  country: 'Germany',
+  year: 2023,
+  fuelType: 'Diesel',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '12.02.2023'
+}, {
+  brand: 'Ford',
+  model: 'F-150',
+  price: 45000,
+  color: 'Gray',
+  country: 'USA',
+  year: 2022,
+  fuelType: 'Petrol',
+  electric: false,
+  transmission: 'Automatic',
+  dateProduction: '02.02.2022'
+}], item)
+</code></pre>

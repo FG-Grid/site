@@ -180,6 +180,46 @@ const grid = new Grid({
 </api>
 
 <api>
+  <name><h4>flashChanges</h4><sup>Boolean</sup></name>
+  <bd>
+    <p>
+      By default, changes will be flashed.
+      Grid parameter <code class="js">flashChanges</code> is <code class="js">true</code> by default.
+      For flashing, parameter <code class="js">flashChangesColors</code> is used.
+      First color for usual cell, second color to selected rows.
+    </p>
+  </bd>
+  <example>
+<pre><code class="js">
+new Grid({
+  flashChanges: true,
+  ...
+</code></pre>
+  </example>
+  <default>true</default>
+</api>
+
+<api>
+  <name><h4>flashChangesColors</h4><sup>[string, string]</sup></name>
+  <bd>
+    <p>
+      By default, changes will be flashed.
+      Grid parameter <code class="js">flashChanges</code> is <code class="js">true</code> by default.
+      For flashing, parameter <code class="js">flashChangesColors</code> is used.
+      First color for usual cell, second color to selected rows.
+    </p>
+  </bd>
+  <example>
+<pre><code class="js">
+new Grid({
+  flashChangesColors: ['#e0e5e9', 'beige']
+  ...
+</code></pre>
+  </example>
+  <default>['#e0e5e9', 'beige']</default>
+</api>
+
+<api>
     <name><h4>height</h4><sup>Number</sup></name>
     <bd>
       <p>Grid height</p>

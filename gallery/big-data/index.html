@@ -11,21 +11,7 @@
   <link href="flag.css" rel="stylesheet">
 
   <style>
-    .flag-cell, .group-country-container {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .group-country-text {
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  </style>
-
-  <style media="only screen">
-    :root,
-    body {
+    :root, body {
       height: 100%;
       width: 100%;
       margin: 0;
@@ -50,14 +36,82 @@
       overflow: auto;
       background-color: transparent;
     }
+	
+	.flag-cell, .group-country-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .group-country-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .eco {
-        background-color: rgba(111, 178, 112, 0.2);
+      background-color: rgba(111, 178, 112, 0.2);
     }
 
     .high-price {
-        background-color: rgba(220, 107, 103, 0.2);
+      background-color: rgba(220, 107, 103, 0.2);
     }
+
+	.img-container {
+	   border: 1px solid #bdc3c7;
+	   border-radius: 2px 0px;
+	   border-bottom: 0px;
+	   padding-top: 4px;
+	}
+
+	.cars-dealer-title {
+	  display: flex;
+	  overflow: hidden;
+	  color: #39485d;
+	  border-radius: 4px;
+	  padding: 7px;
+	  width: fit-content;
+	  gap: 5px;
+	  margin-bottom: 4px;
+	  padding-left: 8px;
+	  background-color: rgb(245, 247, 247);
+	  border: 1px solid rgb(189, 195, 199);
+	}
+
+	.cars-dealer-title button {
+	  transition: background .3s, color .3s;
+	  cursor: pointer;
+	  appearance: none;
+	  display: inline-block;
+	  white-space: nowrap;
+	  font-size: 14px;
+	  font-weight: 500;
+	  border-radius: 6px;
+	  border: none;
+	  color: #344054;
+	  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  background: rgb(249, 250, 251);
+	  color: rgba(0, 0, 0, 0.54);
+	  padding: 4px 14px;
+	  outline: none;
+	}
+
+	.cars-dealer-title button:hover {
+	  background: #7c7c7c23;
+	  color: #25252599;
+	}
+
+	.cars-dealer-title button.active {
+	  background: #fff;
+	  color: rgba(0, 0, 0, 0.7);
+	  font-weight: 500;
+	  box-shadow: 0 1px 3px #0000001a;
+	}
+	
+	#progress-generate {
+	  min-width: 39px;
+	  opacity: 0;
+	  padding-top: 12px;
+	}
   </style>
 
   <script src="data.js"></script>
@@ -89,7 +143,7 @@
       "USA": "us"
     };
 
-	  let grid;
+	let grid;
 
     document.addEventListener("DOMContentLoaded", () => {
       grid = new Grid({
@@ -168,71 +222,45 @@
       });
     });
   </script>
+  
+  <script>
+	let worker;
+
+	const generateNewDate = (amount) => {
+	  document.querySelector('.cars-dealer-title button.active').classList.remove('active');
+	  document.getElementById(`btn-${amount}`).classList.add('active');
+
+	  if (worker) {
+		worker.terminate();
+	  }
+
+	  const elProgress = document.getElementById('progress-generate');
+
+	  elProgress.innerHTML = `Starting data generation...`;
+	  elProgress.style.opacity = '1';
+	  worker = new Worker('generate-data.js');
+	  worker.postMessage({ amount });
+
+	  worker.onmessage = function (e) {
+		if (e.data.type === 'progress') {
+		  elProgress.innerHTML = `Generated ${e.data.amountDone} data items...`;
+		  if(e.data.amountDone === amount - 1000){
+			elProgress.innerHTML = 'Finishing data generation...';
+		  }
+		  else{
+			elProgress.innerHTML = `Generated ${e.data.amountDone} data rows...`;
+		  }
+
+		} else if (e.data.type === 'done') {
+		  elProgress.innerHTML = 'Processing and rendering...';
+		  grid.setData(e.data.data);
+		  elProgress.innerHTML = 'Done';
+		}
+	  }
+	}
+  </script>
 </head>
 <body>
-<style>
-.img-container {
-   border: 1px solid #bdc3c7;
-   border-radius: 2px 0px;
-   border-bottom: 0px;
-   padding-top: 4px;
-}
-
-.cars-dealer-title {
-  display: flex;
-  overflow: hidden;
-  color: #39485d;
-  border-radius: 4px;
-	padding: 7px;
-	width: fit-content;
-	gap: 5px;
-	margin-bottom: 4px;
-	padding-left: 8px;
-	background-color: rgb(245, 247, 247);
-  border: 1px solid rgb(189, 195, 199);
-}
-
-.cars-dealer-title button {
-	transition: background .3s, color .3s;
-	cursor: pointer;
-	appearance: none;
-  display: inline-block;
-  white-space: nowrap;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 6px;
-  border: none;
-  color: #344054;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	background: rgb(249, 250, 251);
-	color: rgba(0, 0, 0, 0.54);
-	padding: 4px 14px;
-  outline: none;
-}
-
-.cars-dealer-title button:hover {
-  background: #7c7c7c23;
-  color: #25252599;
-}
-
-.cars-dealer-title button.active {
-	background: #fff;
-  color: rgba(0, 0, 0, 0.7);
-  font-weight: 500;
-  box-shadow: 0 1px 3px #0000001a;
-}
-</style>
-
-<script>
-const generateNewDate = (amount) => {
-	document.querySelector('.cars-dealer-title button.active').classList.remove('active');
-
-	document.getElementById(`btn-${amount}`).classList.add('active');
-
-	const data = generateCarsData(amount);
-  grid.setData(data);
-}
-</script>
 
 <div style="margin: 10px auto 10px;max-width: 1000px;">
   <div style="position:relative">
@@ -249,6 +277,7 @@ const generateNewDate = (amount) => {
         <button id="btn-700000" onclick="generateNewDate(700000)"> 700 000</button>
         <button id="btn-1000000" onclick="generateNewDate(1000000)"> 1 000 000</button>
       </div>
+	  <div class="cars-dealer-title" id="progress-generate"></div>
     </div>
     <div id="container" style="width: 100%; height: 800px;"></div>
   </div>

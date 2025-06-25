@@ -5,8 +5,8 @@
   <title>Fancy Grid</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="/fg-grid/dist/fg-grid.min.js?_dc=8"></script>
-  <link href="/fg-grid/styles/fg-grid.css?_dc=8" rel="stylesheet">
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=9"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=9" rel="stylesheet">
 
   <link href="flag.css" rel="stylesheet">
 
@@ -89,7 +89,7 @@
         rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
         defaults: {
           sortable: true,
-		  editable: true
+		      editable: true
         },
         filterBar: true,
         rowGroupColumn: {
@@ -97,7 +97,7 @@
           width: 200,
           checkboxSelection: true,
           headerCheckboxSelection: true,
-		  editable: false,
+		      editable: false,
           render(params){
             const {
               item
@@ -136,6 +136,8 @@
           el.appendChild(container);
         },
         columns: [{
+		  type: 'order'
+		},{
           index: 'brand',
           rowGroup: true,
           type: 'string'

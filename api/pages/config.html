@@ -322,9 +322,11 @@ new Grid(document.querySelector('#container'), {
 </api>
 
 <api>
-  <name><h4>rowHeight</h4><sup>Number</sup></name>
-  <bd><p>Body row height.</p></bd>
-  <default>28</default>
+  <name><h4>rowGroupExpanded</h4><sup>Mixed</sup></name>
+  <bd>
+    <p>Provides list of expanded row.</p>
+  </bd>
+  <default>undefined</default>
 </api>
 
 <api>
@@ -335,6 +337,12 @@ new Grid(document.querySelector('#container'), {
     <p>For column group type, each column can have values and also use aggregations over column property <code class="js">agFn</code></p>
   </bd>
   <default>row</default>
+</api>
+
+<api>
+  <name><h4>rowHeight</h4><sup>Number</sup></name>
+  <bd><p>Body row height.</p></bd>
+  <default>28</default>
 </api>
 
 <api>

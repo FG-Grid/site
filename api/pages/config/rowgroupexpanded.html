@@ -1,0 +1,44 @@
+<h3>rowGroupExpanded</h3>
+<code class="type">Boolean</code>
+
+<p>Provides list of expanded row.</p>
+
+<p><b>Example: Array list</b><p>
+<pre><code class="js">
+new Grid({
+  rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
+  ...
+</code></pre>
+
+<p><b>Example: Function</b><p>
+<pre><code class="js">
+new Grid({
+  rowGroupExpanded: (groupName) => {)=>{
+    switch(groupName){
+      case 'Japan':
+      case 'Japan/Toyota':
+      case 'Japan/Toyota/Camry':
+      case 'UK':
+      case 'Sweden':
+        return true;
+    }
+
+    return false;
+  },
+  ...
+</code></pre>
+
+<p><b>Example: Boolean</b><p>
+<p>
+  Expand all groups.
+</p>
+<pre><code class="js">
+new Grid({
+  rowGroupExpanded: true,
+  ...
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+undefined
+</code></pre>

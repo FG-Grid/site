@@ -104,6 +104,7 @@ li.active btn:before {
   line-height: 36px;
   font-weight: 500;
   display: block;
+  transition: background-color .25s ease-in-out, color .25s ease-in-out, border-color .25s ease-in-out;
 }
 
 .doc-sub-items li a:hover {
@@ -117,11 +118,9 @@ li.active btn:before {
   border-top: 1px solid #eaeaea;
 }
 
-/*
 .active-item {
   background-color: #E1E7ED;
 }
- */
 
 .params-list {
   color: #758EAC;
@@ -170,6 +169,8 @@ api > name {
         <a href="/docs/getting-started/installation">Installation grid</a>
         <a href="/docs/getting-started/your-first-grid">Your first grid</a>
         <a href="/docs/getting-started/react">React</a>
+        <a href="/docs/getting-started/typescript">TypeScript</a>
+        <a href="/docs/getting-started/typescript-react">TypeScript with React</a>
       </li>
     </ul>
   </li>
@@ -196,7 +197,7 @@ api > name {
 </div></div></side>
 <style>
 #body doc > hd {
-    display:none;
+  display:none;
 }
 
 @media (max-width: 767px) {
@@ -278,7 +279,7 @@ api > name {
       .then(html => {
         $('#doc bd').html(html);
 
-        var title = el.innerHTML + ' | Docs';
+        const title = el.innerHTML + ' | Docs';
 
         //history.pushState({}, title, dataTarget);
         document.title = title;

@@ -15,7 +15,7 @@
 })(typeof self !== 'undefined' ? self : this, function () {
 
 const Fancy$1 = {
-  version: '0.7.16',
+  version: '0.7.18',
   isTouchDevice: 'ontouchstart' in window,
   gridIdSeed: 0,
   gridsMap: new Map(),
@@ -506,9 +506,7 @@ Fancy.render = {
     inputEl.checked = value;
 
     inputEl.addEventListener('click', (e) => {
-      if(!column.editable){
-        e.preventDefault();
-      }
+      !column.editable && e.preventDefault();
     });
 
     inputEl.addEventListener('change', (e)=>{
@@ -674,7 +672,7 @@ Fancy.copyText = (text) => {
       me.idSeed = 0;
 
       me.data.forEach(item => {
-        if (!item.id) {
+        if (item.id === undefined) {
           item.id = me.generateId();
         }
         else if(typeof item.id === 'number'){
@@ -745,13 +743,13 @@ Fancy.copyText = (text) => {
       me.idSeed = 0;
 
       me.data.forEach((item, index) => {
-        if (!item.id) {
+        if (item.id === undefined) {
           item.id = me.generateId();
           item.originalRowIndex = index;
         }
 
-        me.idRowIndexesMap.set(item.id, index);
-        me.idItemMap.set(item.id, item);
+        me.idRowIndexesMap.set(String(item.id), index);
+        me.idItemMap.set(String(item.id), item);
       });
     }
 
@@ -1840,6 +1838,9 @@ Fancy.copyText = (text) => {
       return data;
     },
 
+    // Runs only on start and on setData
+    // rowGroupExpanded will be deleted
+    // On resetting data, rowGroupData won't be used.
     setExpandedGroups() {
       const me = this;
 
@@ -1862,25 +1863,21 @@ Fancy.copyText = (text) => {
 
           const parentGroupNames = Object.keys(parentGroups);
 
-          const rowGroupExpanded = [].concat(groupNames).concat(parentGroupNames).sort();
+          const expandedGroupsArr = [].concat(groupNames).concat(parentGroupNames).sort();
 
-          rowGroupExpanded.forEach(group => {
+          expandedGroupsArr.forEach(group => {
             const expanded = me.rowGroupExpanded === true? true: me.rowGroupExpanded(group);
 
             me.expandedGroups[group] = expanded;
-
-            if (expanded && !rowGroupExpanded.includes(group)) {
-              rowGroupExpanded.push(group);
-            }
           });
-
-          me.rowGroupExpanded = rowGroupExpanded;
           break;
         default:
-          me.rowGroupExpanded.forEach(group => {
+          me.rowGroupExpanded?.forEach(group => {
             me.expandedGroups[group] = true;
           });
       }
+
+      delete me.rowGroupExpanded;
     },
 
     generateDisplayedGroupsForFiltering(zeroLevelGroups) {
@@ -1892,7 +1889,7 @@ Fancy.copyText = (text) => {
         me.displayedGroupsForFiltering[group] = true;
       });
 
-      me.rowGroupExpanded.forEach(group => {
+      for(let group in me.expandedGroups){
         const subGroups = me.groupsChildrenForFiltering[group];
 
         subGroups?.forEach(({$rowGroupValue}) => {
@@ -1900,7 +1897,7 @@ Fancy.copyText = (text) => {
             me.displayedGroupsForFiltering[$rowGroupValue] = true;
           }
         });
-      });
+      }
     },
 
     sortGroups() {
@@ -2054,7 +2051,6 @@ Fancy.copyText = (text) => {
       const groupData = me.getGroupExpandedChildren(group);
 
       me.displayedData.splice(rowIndex + 1, 0, ...groupData);
-      me.rowGroupExpanded.push(group);
 
       me.updateIndexes();
     },
@@ -2074,7 +2070,6 @@ Fancy.copyText = (text) => {
       const groupData = me.getGroupExpandedChildrenForFiltering(group);
 
       me.displayedData.splice(rowIndex + 1, 0, ...groupData);
-      me.rowGroupExpanded.push(group);
       me.updateIndexes();
     },
 
@@ -2083,17 +2078,10 @@ Fancy.copyText = (text) => {
 
       me.prevAction = '';
 
-      me.rowGroupExpanded = () => {
-        return true;
-      };
-
-      me.rowGroupExpanded = [];
-
       for (const group in me.groupDetails) {
         const groupDetails = me.groupDetails[group];
 
         me.expandedGroups[group] = true;
-        me.rowGroupExpanded.push(group);
         groupDetails.expanded = true;
 
         if (!groupDetails.$hasChildrenGroups) {
@@ -2129,7 +2117,6 @@ Fancy.copyText = (text) => {
       }
 
       me.displayedData.splice(rowIndex + 1, groupData.length);
-      me.rowGroupExpanded = me.rowGroupExpanded.filter(value => value !== group);
 
       me.updateIndexes();
     },
@@ -2148,7 +2135,6 @@ Fancy.copyText = (text) => {
       }
 
       me.displayedData.splice(rowIndex + 1, groupData.length);
-      me.rowGroupExpanded = me.rowGroupExpanded.filter(value => value !== group);
 
       me.updateIndexes();
     },
@@ -2157,12 +2143,6 @@ Fancy.copyText = (text) => {
       const me = this;
 
       me.prevAction = '';
-
-      me.rowGroupExpanded = () => {
-        return false;
-      };
-
-      me.rowGroupExpanded = [];
 
       for (const group in me.groupDetails) {
         me.expandedGroups[group] = false;
@@ -2237,7 +2217,6 @@ Fancy.copyText = (text) => {
       me.prevAction = '';
 
       if(!me.$dontDropExpandedGroups){
-        me.rowGroupExpanded = [];
         me.expandedGroups = {};
       }
 
@@ -2315,9 +2294,6 @@ Fancy.copyText = (text) => {
       me.groupsChildren = me.groupsChildren || {};
       me.expandedGroupsWithDataChildren = me.expandedGroupsWithDataChildren || {};
       me.expandedGroups = me.expandedGroups || {};
-      if(typeof me.rowGroupExpanded === 'function'){
-        me.rowGroupExpanded = [];
-      }
 
       me.expandedGroupsWithDataChildren[group] = true;
 
@@ -2356,10 +2332,6 @@ Fancy.copyText = (text) => {
           }
 
           me.levelsWithGroups[groupLevel][0][parentGroup].push(name);
-        }
-
-        if(!me.expandedGroups[name]){
-          me.rowGroupExpanded.push(name);
         }
 
         me.expandedGroups[name] = true;
@@ -2779,8 +2751,6 @@ Fancy.copyText = (text) => {
           me.data.push(item);
         });
 
-        me.rowGroupExpanded.sort();
-
         me.generateDisplayedGroupedData();
         me.setIndexAndItemsMaps();
 
@@ -2814,8 +2784,6 @@ Fancy.copyText = (text) => {
     },
     clearGroup(groupName){
       const me = this;
-
-      me.rowGroupExpanded = me.rowGroupExpanded.filter(value => value !== groupName);
 
       const splitted = groupName.split('/');
       const level = splitted.length - 1;
@@ -3063,13 +3031,14 @@ Fancy.copyText = (text) => {
 
     renderHorizontalScroll() {
       const me = this;
+      const scrollBarWidth = `${me.scrollBarWidth}px`;
 
       const horizontalScrollEl = div(BODY_HORIZONTAL_SCROLL,{
-        height: me.scrollBarWidth + 'px',
-        minHeight: me.scrollBarWidth + 'px',
-        maxHeight: me.scrollBarWidth + 'px',
+        height: scrollBarWidth,
+        minHeight: scrollBarWidth,
+        maxHeight: scrollBarWidth,
         width: (me.isDomInvisibleScrollbar || !me.isVerticalVisible())? `100%`:
-          `calc(100% - ${me.scrollBarWidth}px)`
+          `calc(100% - ${scrollBarWidth})`
       });
 
       if (me.isDomInvisibleScrollbar) {
@@ -3077,15 +3046,15 @@ Fancy.copyText = (text) => {
       }
 
       const horizontalScrollContainerEl = div(BODY_HORIZONTAL_SCROLL_CONTAINER, {
-        height: me.scrollBarWidth + 'px',
-        minHeight: me.scrollBarWidth + 'px',
-        maxHeight: me.scrollBarWidth + 'px'
+        height: scrollBarWidth,
+        minHeight: scrollBarWidth,
+        maxHeight: scrollBarWidth
       });
 
       const horizontalScrollSizeEl = div(BODY_HORIZONTAL_SCROLL_SIZE, {
-        height: me.scrollBarWidth + 'px',
-        minHeight: me.scrollBarWidth + 'px',
-        maxHeight: me.scrollBarWidth + 'px'
+        height: scrollBarWidth,
+        minHeight: scrollBarWidth,
+        maxHeight: scrollBarWidth
       });
 
       horizontalScrollContainerEl.appendChild(horizontalScrollSizeEl);
@@ -3144,16 +3113,17 @@ Fancy.copyText = (text) => {
 
     onHorizontalScroll = () => {
       const me = this;
+      const grid = me.grid;
 
       me.scrollLeft = me.horizontalScrollContainerEl.scrollLeft;
-      me.grid.headerEl.scrollLeft = me.scrollLeft;
-      me.grid.bodyInnerEl.scrollLeft = me.scrollLeft;
+      grid.headerEl.scrollLeft = me.scrollLeft;
+      grid.bodyInnerEl.scrollLeft = me.scrollLeft;
 
-      if (me.grid.filterBar) {
-        me.grid.filterBarEl.scrollLeft = me.scrollLeft;
+      if (grid.filterBar) {
+        grid.filterBarEl.scrollLeft = me.scrollLeft;
       }
 
-      cancelAnimationFrame(me.grid.horizontalScrollId);
+      cancelAnimationFrame(grid.horizontalScrollId);
 
       me.grid.horizontalScrollId = requestAnimationFrame(() => {
         me.generateNewRange();
@@ -3162,6 +3132,7 @@ Fancy.copyText = (text) => {
 
     generateNewRange(doRender = true) {
       const me = this;
+      const grid = me.grid;
       const {
         columnStart: newColumnStart,
         columnEnd: newColumnEnd,
@@ -3176,7 +3147,7 @@ Fancy.copyText = (text) => {
 
       if(doRender){
         newRange.forEach(newColumnIndex => {
-          const column = me.grid.columns[newColumnIndex];
+          const column = grid.columns[newColumnIndex];
 
           if (!column.hidden && !rangeSet.has(newColumnIndex)) {
             columnsToAdd.push(newColumnIndex);
@@ -3194,8 +3165,8 @@ Fancy.copyText = (text) => {
       me.columnViewStart = newColumnStart;
       me.columnViewEnd = newColumnEnd;
 
-      me.grid.addColumnCells(columnsToAdd);
-      me.grid.removeColumnCells(columnsToRemove);
+      grid.addColumnCells(columnsToAdd);
+      grid.removeColumnCells(columnsToRemove);
 
       return {
         columnsViewRange: me.columnsViewRange,
@@ -3385,27 +3356,29 @@ Fancy.copyText = (text) => {
 
     initResizeObserver(){
       const me = this;
-      const grid = me.grid;
 
       me.resizeObserver = new ResizeObserver((entries) => {
         if (!Array.isArray(entries) || !entries.length) {
           return;
         }
 
-        if(me.grid.checkSize()) {
-          const changedBufferedRows = me.calcVisibleRows();
-          me.generateNewRange();
-          grid.reCalcColumnsPositions();
-          grid.updateWidth();
-          grid.updateCellPositions();
-
-          if(changedBufferedRows){
-            grid.renderVisibleRows();
-          }
-        }
+        me.grid.checkSize() && me.updateSize();
       });
 
       me.resizeObserver.observe(me.grid.containerEl);
+    }
+
+    updateSize(){
+      const me = this;
+      const grid = me.grid;
+
+      const changedBufferedRows = me.calcVisibleRows();
+      me.generateNewRange();
+      grid.reCalcColumnsPositions();
+      grid.updateWidth();
+      grid.updateCellPositions();
+
+      changedBufferedRows && grid.renderVisibleRows();
     }
 
     isColumnVisible(checkColumn){
@@ -3501,11 +3474,7 @@ Fancy.copyText = (text) => {
       me.lastMoveTime = now;
 
       if(!me.direction){
-        if(Math.abs(deltaY) > Math.abs(deltaX)){
-          me.direction = 'vertical';
-        } else {
-          me.direction = 'horizontal';
-        }
+        me.direction = Math.abs(deltaY) > Math.abs(deltaX)? 'vertical': 'horizontal';
       }
 
       if(me.direction === 'vertical'){
@@ -3577,9 +3546,7 @@ Fancy.copyText = (text) => {
       me.element.removeEventListener('touchmove', me.touchMoveHandler);
       me.element.removeEventListener('touchend', me.touchEndHandler);
 
-      if (me.intervalId) {
-        clearInterval(me.intervalId);
-      }
+      me.intervalId && clearInterval(me.intervalId);
     }
   }
 
@@ -3686,6 +3653,7 @@ Fancy.copyText = (text) => {
 
       Object.assign(me, config);
 
+      me.checkInitialSize();
       me.checkSize();
       me.initScroller();
       me.render();
@@ -3694,13 +3662,8 @@ Fancy.copyText = (text) => {
       scroller.calcVisibleRows();
       me.renderVisibleRows();
       me.renderVisibleHeaderCells();
-      if(me.filterBar){
-        me.renderVisibleFilterBarCells();
-      }
-
-      if(me.activeCell){
-        me.initKeyNavigation();
-      }
+      me.filterBar && me.renderVisibleFilterBarCells();
+      me.activeCell && me.initKeyNavigation();
 
       me.ons();
     }
@@ -3740,22 +3703,14 @@ Fancy.copyText = (text) => {
 
     render() {
       const me = this;
-      const gridEl = div(GRID);
+      const gridCls = [GRID, 'fg-theme-' + me.theme];
+
+      me.rowAnimation && gridCls.push(ROW_ANIMATION);
+      (me.cellsRightBorder || me.columnLines) && gridCls.push(GRID_CELLS_RIGHT_BORDER);
+      Fancy.isTouchDevice && gridCls.push(TOUCH);
+      const gridEl = div(gridCls);
 
       gridEl.setAttribute('id', me.id);
-      if(me.rowAnimation){
-        gridEl.classList.add(ROW_ANIMATION);
-      }
-
-      if(me.cellsRightBorder || me.columnLines){
-        gridEl.classList.add(GRID_CELLS_RIGHT_BORDER);
-      }
-
-      if(Fancy.isTouchDevice){
-        gridEl.classList.add(TOUCH);
-      }
-
-      gridEl.classList.add('fg-theme-' + me.theme);
 
       me.containerEl.appendChild(gridEl);
       me.gridEl = gridEl;
@@ -3879,8 +3834,6 @@ Fancy.copyText = (text) => {
 
       if(rowEl){
         rowEl.remove();
-      } else {
-        console.warn(`Row El with id = ${id} was not found`);
       }
 
       me.actualRowsIdSet.delete(id);
@@ -3984,10 +3937,11 @@ Fancy.copyText = (text) => {
       };
 
       if(rowGroups.length){
-        storeConfig.rowGroups = rowGroups;
-        storeConfig.aggregations = aggregations;
-
-        storeConfig.rowGroupExpanded = config.rowGroupExpanded || [];
+        Object.assign(storeConfig, {
+          rowGroups,
+          aggregations,
+          rowGroupExpanded: config.rowGroupExpanded || []
+        });
         delete config.rowGroupExpanded;
       }
 
@@ -3999,9 +3953,7 @@ Fancy.copyText = (text) => {
     }
 
     initStore(config) {
-      const me = this;
-
-      me.store = new Fancy.Store(config);
+      this.store = new Fancy.Store(config);
     }
 
     ons() {
@@ -4033,36 +3985,49 @@ Fancy.copyText = (text) => {
       }, 0);
     }
 
+    checkInitialSize(){
+      const me = this;
+
+      if(me.width){
+        me.initialWidth = me.width;
+        delete me.width;
+        me.containerEl.style.width = me.initialWidth + 'px';
+      }
+
+      if(me.height){
+        me.initialHeight = me.height;
+        delete me.height;
+        me.containerEl.style.height = me.initialHeight + 'px';
+      }
+    }
+
     checkSize(){
       const me = this;
+      const rect = me.containerEl.getBoundingClientRect();
       let changed = false;
 
-      if(me.width && me.height);
-
-      const rect = me.containerEl.getBoundingClientRect();
-
-      if(me.width !== rect.width){
+      if(!me.initialWidth || me.width !== rect.width){
+        me.width = rect.width;
         changed = true;
       }
 
-      if(me.height !== rect.height){
+      if(me.initialHeight || me.height !== rect.height){
+        me.height = rect.height;
         changed = true;
       }
-
-      me.width = rect.width;
-      me.height = rect.height;
 
       return changed;
     }
 
     setData(data){
       const me = this;
+      const store = me.store;
 
-      me.store.$dontDropExpandedGroups = true;
+      store.$dontDropExpandedGroups = true;
 
-      me.store.setData(structuredClone(data));
+      store.setData(structuredClone(data));
       me.reRender();
-      delete me.store.$dontDropExpandedGroups;
+      delete store.$dontDropExpandedGroups;
     }
 
     reRender(){
@@ -4422,9 +4387,7 @@ Fancy.copyText = (text) => {
         }, 300);
       }
 
-      if(me.activeCell){
-        me.clearActiveCell();
-      }
+      me.activeCell && me.clearActiveCell();
 
       return {
         columnIndex: columnsToRemove[0]
@@ -4474,6 +4437,10 @@ Fancy.copyText = (text) => {
       const me = this;
 
       return me.columns.find(column => column.index === index);
+    },
+
+    getColumnById(id){
+      return this.columnIdsMap.get(id);
     },
 
     getNextVisibleColumnIndex(index){
@@ -4610,7 +4577,7 @@ Fancy.copyText = (text) => {
 
       cells.forEach(cell => {
         const columnId = cell.getAttribute('col-id');
-        const column = me.columnIdsMap.get(columnId);
+        const column = me.getColumnById(columnId);
         const isColumnVisible = me.scroller.isColumnVisible(column);
 
         if(!column || !isColumnVisible){
@@ -4668,7 +4635,7 @@ Fancy.copyText = (text) => {
       });
 
       columnsToRemoveIds.forEach(id => {
-        const column = me.columnIdsMap.get(id);
+        const column = me.getColumnById(id);
         const index = (column.index || column.title || '').toLocaleLowerCase();
         me.columnIdsMap.delete(id);
         let seed = me.columnIdsSeedMap.get(index);
@@ -4690,7 +4657,7 @@ Fancy.copyText = (text) => {
 
       const orderedColumns = [];
       newColumnsOrderMap.forEach((columnId, index) => {
-        const column = me.columnIdsMap.get(columnId);
+        const column = me.getColumnById(columnId);
 
         orderedColumns[index] = column;
       });
@@ -4715,17 +4682,21 @@ Fancy.copyText = (text) => {
           };
           break;
         case 'currency':
-          column.format = Fancy.format.currency;
-          column.type = 'number';
-          column.$type = 'currency';
+          Object.assign(column, {
+            format: Fancy.format.currency,
+            type: 'number',
+            $type: 'currency'
+          });
           break;
         case 'order':
-          column.sortable = false;
-          column.render = Fancy.render.order;
-          column.width = column.width || 45;
-          column.resizable = false;
-          column.menu = false;
-          column.draggable = false;
+          Object.assign(column, {
+            sortable: false,
+            render: Fancy.render.order,
+            width: column.width || 45,
+            resizable: false,
+            menu: false,
+            draggable: false
+          });
           me.columnOrder = column;
 
           if(store?.rowGroups.length || me?.rowGroupBar){
@@ -5199,8 +5170,8 @@ Fancy.copyText = (text) => {
 
         return [
           `<div col-index="${index}" class="${COLUMNS_MENU_ITEM}">`,
-          `<input type="checkbox" ${column.hidden ? '' : 'checked'}>`,
-          `<div class="${COLUMNS_MENU_ITEM_TEXT}">${column.title}</div>`,
+            `<input type="checkbox" ${column.hidden ? '' : 'checked'}>`,
+            `<div class="${COLUMNS_MENU_ITEM_TEXT}">${column.title}</div>`,
           '</div>'
         ].join('');
       }).join('');
@@ -5372,9 +5343,7 @@ Fancy.copyText = (text) => {
 
         me.appendHeaderCell(columnIndex);
 
-        if (me.filterBar) {
-          me.appendFilterBarCell(columnIndex);
-        }
+        me.filterBar && me.appendFilterBarCell(columnIndex);
 
         for (; i < endRow; i++) {
           me.appendCell(i, columnIndex);
@@ -5538,17 +5507,13 @@ Fancy.copyText = (text) => {
 
             if(me.selectionCellsRange && cell){
               requestAnimationFrame(()=> {
-                if (me.isCellInSelectedRange(cell)) {
-                  cell.classList.add(CELL_SELECTED);
-                }
+                me.isCellInSelectedRange(cell) && cell.classList.add(CELL_SELECTED);
               });
             }
           }
         }
 
-        if(column.editable){
-          cell.addEventListener('dblclick', me.onBodyCellDBLClick.bind(this));
-        }
+        column.editable && cell.addEventListener('dblclick', me.onBodyCellDBLClick.bind(this));
 
         cell.addEventListener('click', me.onBodyCellClick.bind(this));
         //cell.addEventListener('mousedown', me.onBodyCellMouseDown.bind(this));
@@ -5636,9 +5601,7 @@ Fancy.copyText = (text) => {
       const me = this;
       const cell = div(ROW_GROUP_CELL);
 
-      if(item.expanded){
-        cell.classList.add(ROW_GROUP_EXPANDED_CELL);
-      }
+      item.expanded && cell.classList.add(ROW_GROUP_EXPANDED_CELL);
 
       const expanderEl = me.generateRowGroupExpanderEl(item);
       cell.appendChild(expanderEl);
@@ -5793,9 +5756,7 @@ Fancy.copyText = (text) => {
         const cell = me.createCell(index, i);
         const column = me.columns[i];
 
-        if (!column.hidden) {
-          rowEl.appendChild(cell);
-        }
+        !column.hidden && rowEl.appendChild(cell);
       }
 
       me.bodyInnerContainerEl.appendChild(rowEl);
@@ -6648,8 +6609,9 @@ Fancy.copyText = (text) => {
       const store = me.store;
 
       if(store.rowGroups.length){
+        me.beforeGrouping();
         store.clearFilterForGrouping(index, sign);
-        me.updateAfterGrouping();
+        me.afterGrouping();
         me.updateRowGroupAmount();
         me.updateHeaderCells();
         return;
@@ -6675,8 +6637,9 @@ Fancy.copyText = (text) => {
       const store = me.store;
 
       if(store.rowGroups.length){
+        me.beforeGrouping();
         me.filterForRowGrouping(column, value, sign);
-        me.updateAfterGrouping();
+        me.afterGrouping();
         me.updateRowGroupAmount();
         me.updateHeaderCells();
         return;
@@ -6734,10 +6697,7 @@ Fancy.copyText = (text) => {
         if (!item) {
           console.warn(`Item with index equals to ${i} does not exist`);
         } else {
-          if (!me.renderedRowsIdMap.has(item.id)) {
-            me.renderRowOnPrevPosition(item, true);
-          }
-
+          !me.renderedRowsIdMap.has(item.id) && me.renderRowOnPrevPosition(item, true);
           me.actualRowsIdSet.add(item.id);
         }
       }
@@ -6789,17 +6749,15 @@ Fancy.copyText = (text) => {
     toggleExpand(group) {
       const me = this;
 
+      me.beforeGrouping();
+
       if (me.grouping) {
         return;
       }
 
       me.store.toggleExpand(group);
 
-      me.updateAfterGrouping();
-
-      if(me.activeCell){
-        me.clearActiveCell();
-      }
+      me.afterGrouping();
     },
 
     expand(group) {
@@ -6808,6 +6766,8 @@ Fancy.copyText = (text) => {
       if (me.grouping) {
         return;
       }
+
+      me.beforeGrouping();
 
       me.grouping = true;
 
@@ -6818,15 +6778,13 @@ Fancy.copyText = (text) => {
       }
 
       me.updateRowGroupCellExpandedCls(group);
-      me.updateAfterGrouping();
-
-      if(me.activeCell){
-        me.clearActiveCell();
-      }
+      me.afterGrouping();
     },
 
     expandAll() {
       const me = this;
+
+      me.beforeGrouping();
 
       if (me.grouping) {
         return;
@@ -6837,15 +6795,13 @@ Fancy.copyText = (text) => {
       me.store.expandAll();
 
       me.updateAllRowGroupCellsExtendedCls();
-      me.updateAfterGrouping();
-
-      if(me.activeCell){
-        me.clearActiveCell();
-      }
+      me.afterGrouping();
     },
 
     collapse(group) {
       const me = this;
+
+      me.beforeGrouping();
 
       if (me.grouping) {
         return;
@@ -6860,15 +6816,13 @@ Fancy.copyText = (text) => {
       }
 
       me.updateRowGroupCellExpandedCls(group);
-      me.updateAfterGrouping();
-
-      if(me.activeCell){
-        me.clearActiveCell();
-      }
+      me.afterGrouping();
     },
 
     collapseAll() {
       const me = this;
+
+      me.beforeGrouping();
 
       if (me.grouping) {
         return;
@@ -6879,14 +6833,22 @@ Fancy.copyText = (text) => {
       me.store.collapseAll();
 
       me.updateAllRowGroupCellsExtendedCls();
-      me.updateAfterGrouping();
+      me.afterGrouping();
+    },
+
+    beforeGrouping(){
+      const me = this;
+
+      if(me.isEditing){
+        me.hideActiveEditor();
+      }
 
       if(me.activeCell){
         me.clearActiveCell();
       }
     },
 
-    updateAfterGrouping() {
+    afterGrouping() {
       const me = this;
 
       me.scroller.calcMaxScrollTop();
@@ -7887,9 +7849,7 @@ Fancy.copyText = (text) => {
       me.scroller.deltaChange(delta);
       setTimeout(()=>{
         const cell = me.getCell(newRowIndex, columnIndex);
-        if (cell) {
-          me.setActiveCell(cell);
-        }
+        cell && me.setActiveCell(cell);
       },0);
     },
 
@@ -8585,9 +8545,7 @@ Fancy.copyText = (text) => {
           me.hideActiveEditor();
 
           const activeCell = shift? me.setActiveCellLeft() : me.setActiveCellRight();
-          if (activeCell) {
-            me.openEditorForCell(me.activeCellEl);
-          }
+          activeCell && me.openEditorForCell(me.activeCellEl);
         } else {
           if(shift){
             me.setActiveCellLeft();
@@ -8692,9 +8650,7 @@ Fancy.copyText = (text) => {
           me.debouceColumnDraggingFn(event);
         }
       } else {
-        if(me.isEditing){
-          me.hideActiveEditor();
-        }
+        me.isEditing && me.hideActiveEditor();
 
         const deltaX = Math.abs(event.pageX - me.columnDragDownX);
         const deltaY = Math.abs(event.pageY - me.columnDragDownY);
@@ -9146,9 +9102,7 @@ Fancy.copyText = (text) => {
           me.renderedRowsIdMap.forEach((rowEl, id) => {
             const item = me.store.idItemMap.get(id);
 
-            if (me.actualRowsIdSet.has(item.id)) {
-              me.updateRowPosition(item);
-            }
+            me.actualRowsIdSet.has(item.id) && me.updateRowPosition(item);
           });
         });
       });

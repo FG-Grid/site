@@ -7,9 +7,13 @@ We assume you included sources to page.
 </code></pre>
 
 <h3>Add div to page</h3>
-Add a div in your webpage. Give it an id.
+Add a <code class="html">&lt;div&gt;</code> element to your webpage.<br>
+Assign it an <code class="html">id</code>.<br>
+The Data Grid will automatically fill the size of its parent container.<br>
+If the container changes its size, the grid adapts accordingly.<br>
+Alternatively, you can specify the height and/or width using grid options.
 <pre><code class="html">
-&lt;div id="container"&gt;&lt;/div&gt;
+&lt;div id="container" style="width: 700px; height: 400px;"&gt&lt/div&gt
 </code></pre>
 
 <h2>Grid code</h2>
@@ -39,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     data: data,
     defaults: {
       width: 100,
-      sortable: true
+      sortable: true,
+      editable: true
     },
     columns: [{
       index: 'brand',
@@ -87,7 +92,8 @@ $(function(){
     data: data,
     defaults: {
       width: 100,
-      sortable: true
+      sortable: true,
+      editable: true
     },
     columns: [{
       index: 'brand',

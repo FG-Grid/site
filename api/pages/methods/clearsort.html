@@ -1,0 +1,42 @@
+<h3>clearSort<sup>(column?: object, multi?: boolean): void</sup></h3>
+
+<p>
+  The <code class="js">clearSort</code> method clears sorting.<br>
+  To clear sorting on a specific column, you need to pass the column.<br>
+  Columns can be retrieved using <code class="js">getColumn</code> or <code class="js">getColumnById</code>.<br>
+  Consider the <code class="js">multi</code> argument when using multi-column sorting.<br>
+  If multiple columns are sorted and you want to clear only one of them, use the <code class="js">multi</code> argument.
+</p>
+
+<p><b>Example: clear all sorters</b><p>
+<pre><code class="js">
+grid.clearSort();
+</code></pre>
+
+<p><b>Example: clear exact column(getColumn)</b><p>
+<p>
+  Method <code>getColumn</code> returns column by data index.
+</p>
+<pre><code class="js">
+const columnPrice = grid.getColumn('price');
+grid.clearSort(columnPrice);
+</code></pre>
+
+<p><b>Example: clear a specific column (getColumnById)</b></p>
+<p>
+  The <code>getColumnById</code> method is similar to <code>getColumn</code>.<br>
+  Each column has an <code class="js">id</code>. If not provided, it will be automatically generated based on the column’s <code class="js">index</code><br>
+  or with a prefix like <code class="js">'id-'</code>.<br>
+  IDs are helpful when two columns share the same data index.<br>
+  In such cases, the grid uses IDs to distinguish them.
+</p>
+<pre><code class="js">
+const columnPrice = grid.getColumnById('price-2');
+grid.clearSort(columnPrice);
+</code></pre>
+
+<p><b>Example: clear sorting for multi sorted grid</b><p>
+<pre><code class="js">
+const columnPrice = grid.getColumn('price');
+grid.clearSort(columnPrice, true);
+</code></pre>

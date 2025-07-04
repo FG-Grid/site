@@ -1,12 +1,12 @@
-<h3>getColumn<sup>(orderIndex: String): Object</sup></h3>
-<p>Return grid column by column order index</p>
+<h3>getColumn<sup>(index: string): object</sup></h3>
+<p>Returns a grid column by its data index.</p>
 
-<p><b>Example:</b><p>
+<p><b>Example:</b></p>
 <pre><code class="js">
-const column = grid.getColumn(0);
+const columnPrice = grid.getColumn('price');
 </code></pre>
 
-<p><b>Example: getting column width</b><p>
+<p><b>Example: get column width</b></p>
 <pre><code class="js">
-const columnWidth = grid.getColumn(1).width;
+const columnWidth = grid.getColumn('price').width;
 </code></pre>

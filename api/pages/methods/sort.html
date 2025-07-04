@@ -1,0 +1,35 @@
+<h3>sort<sup>(column: object, dir: 'ASC' | 'DESC', multi?: boolean): void</sup></h3>
+
+<p>
+  Sorts the grid by a given column and direction.<br>
+  Keep in mind multi-column sorting.<br>
+  If the <code class="js">multi</code> parameter is omitted, all other sorters will be cleared.<br>
+</p>
+
+<p>
+  To sort by a specific column, you need to pass the column object.<br>
+  Columns can be retrieved using <code class="js">getColumn</code> or <code class="js">getColumnById</code>.<br>
+  Use the <code class="js">multi</code> argument when applying multi-column sorting.<br>
+  If you want to sort multiple columns at once, you can also use the <code class="js">multiSort</code> method.
+</p>
+
+<p><b>Example: ASC sort</b><p>
+<pre><code class="js">
+const columnPrice = grid.getColumn('price');
+grid.sort(columnPrice, 'ASC');
+</code></pre>
+
+<p><b>Example: DESC sort</b><p>
+<pre><code class="js">
+const columnPrice = grid.getColumn('price');
+grid.sort(columnPrice, 'DESC');
+</code></pre>
+
+<p><b>Example: Multi sorting</b><p>
+<pre><code class="js">
+const columnBrand = grid.getColumn('brand');
+grid.sort(columnBrand, 'DESC', true);
+...
+const columnModel = grid.getColumn('model');
+grid.sort(columnModel, 'ASC', true);
+</code></pre>

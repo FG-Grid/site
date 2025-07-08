@@ -1,0 +1,28 @@
+<h3>clearFilter<sup>(column: object, operator: '<'|'>'|'<='|'>='|'='|'!='): void</sup></h3>
+
+<p>
+  Clear filter from grid<br>
+</p>
+
+<h3>Filter operators</h3>
+<p>
+  There are several operators that possible to use in filter field.<br>
+  They are: <code>&lt;,&gt;,&lt;=,&gt;=,=,!=</code>
+</p>
+
+<p><b>Example: Clear all filters</b><p>
+<pre><code class="js">
+grid.clearFilter();
+</code></pre>
+
+<p><b>Example: Clear all filters for column</b><p>
+<pre><code class="js">
+const columnPrice = grid.getColumn('price');
+grid.clearFilter(columnPrice);
+</code></pre>
+
+<p><b>Example: Clear operator filter for column</b><p>
+<pre><code class="js">
+const columnPrice = grid.getColumn('price');
+grid.clearFilter(columnPrice, '>');
+</code></pre>

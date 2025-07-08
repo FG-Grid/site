@@ -2,8 +2,7 @@
 
 <h3>Enable Filtering</h3>
 <p>
-To show filter field in column header, needs to set <code class="js">filter: true</code> and add filter bar <code class="js">filterBar</code>.
-  <br>
+  To display a filter field in the column header, set <code class="js">filter: true</code> and enable the filter bar by setting <code class="js">filterBar: true</code>.
 </p>
 <pre><code class="js">
 new Grid({
@@ -12,73 +11,79 @@ new Grid({
   columns: [{
     index: 'brand',
     title: 'Brand',
-    filter: true,
-  ...
+    filter: true
+  },{
+    ...
+  }]
+});
 </code></pre>
 
-<h3>Filter operators</h3>
+<h3>Filter Operators</h3>
 <p>
-There are several operator that possible to use in filter field.<br>
-They are: <code>&lt;,&gt;,&lt;=,&gt;=,=,!=</code>
+  Several operators can be used in the filter field:<br>
+  <code>&lt;, &gt;, &lt;=, &gt;=, =, !=</code>
 </p>
 
 <h4>Methods</h4>
 <p>
-Sometimes it requires to filter grid without setting params in grid.<br>
-For example there is form with values that should run filtering on it's changing.<br>
-To do this there are 2 methods.
+  Sometimes you may need to apply filters programmatically instead of setting them in the grid config.<br>
+  For example, when you have a form whose changes should trigger filtering.<br>
+  In such cases, the following two methods can be used:
 </p>
 
 <api>
-  <name><h4>filter</h4><sup>(index: String, value: Mixed, operator?: String)</sup></name>
-  <bd><p>Filter operator.</p>
-  <p><b>Example: index with value</b><p>
-  <pre><code class="js">
-var grid = new Grid({
-  ...,
-  filter: true,
-  ...
-});
-
-grid.filter('name', 'Nick');
-</code></pre>
-
-<p><b>Example: index with value and operator</b><p>
-  <pre><code class="js">
+  <name><h4>filter</h4><sup>(column: object, value: mixed, operator?: string)</sup></name>
+  <p>The default operator is <code class="js">'='</code>.</p>
+  <bd>
+    <p><b>Example: filter by column and value</b></p>
+    <pre><code class="js">
 const grid = new Grid({
   ...,
+  filterBar: true,
+  columns: [{ index: 'name', filter: true }]
+});
+
+const column = grid.getColumn('name');
+grid.filter(column, 'Nick');
+</code></pre>
+
+    <p><b>Example: filter by value and operator</b></p>
+    <pre><code class="js">
+const grid = new Grid({
   ...
 });
 
-grid.filter('price', 30000, '>');
+const columnPrice = grid.getColumn('price');
+grid.filter(columnPrice, 30000, '>');
 </code></pre>
-
-</bd>
+  </bd>
 </api>
 
 <api>
-  <name><h4>clearFilter</h4><sup>(index?: String, sign?: String)</sup></name>
-  <bd><p>Filter value.</p>
-	<p><b>Example: clean all filters</b><p>
+  <name><h4>clearFilter</h4><sup>(column?: object, operator?: string)</sup></name>
+  <bd>
+    <p><b>Example: clear all filters</b></p>
     <pre><code class="js">
 const grid = new Grid({
-	...
+  ...
 });
 
 grid.clearFilter();
 </code></pre>
-	<p><b>Example: clean filters by data index</b><p>
+
+    <p><b>Example: clear filters by column index</b></p>
     <pre><code class="js">
 const grid = new Grid({
-	...
+  ...
 });
 
 grid.clearFilter('name');
 </code></pre>
-	<p><b>Example: clean filters by data index and operator(sign)</b><p>
+
+    <p><b>Example: clear filters by column index and operator</b></p>
     <pre><code class="js">
 const grid = new Grid({
-	...
+  ...
 });
 
 grid.clearFilter('price', '<');

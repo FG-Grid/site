@@ -1,0 +1,25 @@
+<h3>filter<sup>(column: object, value: mixed, operator: '<'|'>'|'<='|'>='|'='|'!='): void</sup></h3>
+
+<p>
+  Add filter to grid<br>
+</p>
+
+<h3>Filter operators</h3>
+<p>
+  There are several operators that possible to use in filter field.<br>
+  They are: <code>&lt;,&gt;,&lt;=,&gt;=,=,!=</code>
+</p>
+
+<p>The default operator is <code class="js">'='</code>.</p>
+
+<p><b>Example: add filter to grid</b><p>
+<pre><code class="js">
+const columnPrice = grid.getColumn('price');
+grid.filter(columnPrice, 35000, '>');
+</code></pre>
+
+<p><b>Example: default operator</b><p>
+<pre><code class="js">
+const column = grid.getColumn('brand');
+grid.filter(column, 'Toyota');
+</code></pre>

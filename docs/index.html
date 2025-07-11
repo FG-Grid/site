@@ -17,13 +17,15 @@
   <link rel="stylesheet" href="/css/nav.v3.css">
   <link rel="stylesheet" href="/css/slides.v2.css" charset="utf-8">
 
+  <script src="/js/jquery.min.js"></script>
+
+  <link href="doc.css?_dc=1" rel="stylesheet">
+
   <!-- global styles -->
   <link rel="stylesheet" href="/css/global.v4.css">
 
   <link href="/css/guides.v3.css" rel="stylesheet" type="text/css">
   <link href="/css/v2.css" rel="stylesheet" type="text/css">
-
-  <script src="/js/jquery.min.js"></script>
 
   <script src="/fg-grid/dist/fg-grid.min.js?_dc=9"></script>
   <link href="/fg-grid/styles/fg-grid.css?_dc=9" rel="stylesheet">
@@ -63,97 +65,6 @@
     </bd>
   </nav>
 </hd>
-<style>
-.active a.doc-item {
-  color: #1e8fc6 !important;
-}
-
-.doc-item-btn {
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 24px;
-  text-align: center;
-  color: #aaa;
-  right: 8px;
-  top: 8px;
-  background-color: transparent;
-  border-radius: 3px;
-  line-height: 24px;
-  font-family: entypo,sans-serif;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-li btn:before {
-  content: "\e75e";
-}
-
-li.active btn:before {
-  content: "\e75c";
-}
-
-.doc-item-btn:hover {
-  color: #1e8fc6;
-  background-color: #f0f8fb;
-}
-
-.doc-sub-items li a {
-  color: #656565;
-  padding-left: 30px;
-  line-height: 36px;
-  font-weight: 500;
-  display: block;
-  transition: background-color .25s ease-in-out, color .25s ease-in-out, border-color .25s ease-in-out;
-}
-
-.doc-sub-items li a:hover {
-  color: #1e8fc6 !important;
-  text-decoration: none !important;
-  /*background: #f9f9f9 !important;*/
-  background-color: #E1E7ED !important;
-}
-
-.doc-items {
-  border-top: 1px solid #eaeaea;
-}
-
-.sbar-scroll-content .active-item {
-  background-color: #E1E7ED;
-}
-
-.params-list {
-  color: #758EAC;
-  list-style: square;
-  padding-left: 40px;
-  margin: 0px 0px 15px 0px;
-}
-
-.params-list span {
-  color: #555963;
-}
-
-api > name {
-  -webkit-touch-callout: initial;
-  user-select: initial;
-}
-
-.tab-btn {
-  background-color: #eee !important;
-  text-decoration: none;
-  float: left;
-  height: 40px;
-  width: 119px;
-  font-weight: 600;
-  color: #515559;
-  cursor: pointer;
-}
-
-.tab-btn:hover {
-  text-decoration: none;
-}
-
-</style>
 
 <bd id="mc" style=""><side data-sbar-dir="vertical" style="height: 700px;"><div class="sbar-track" style="display: none;"><div class="sbar-scrollbar"></div></div><div class="sbar-scroll-content"><div class="sbar-content">
 <div class="doc-tabs" style="height: 25px;background-color: #eee !important">
@@ -232,7 +143,6 @@ api > name {
 <script src="/js/common.v2.js"></script>
 <script src="/js/global.v3.js"></script>
 
-
 <script src="/js/highlight.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
@@ -241,107 +151,168 @@ api > name {
 <script>
   var isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
 
-  $(function() {
-    $('.doc-item, .doc-item-btn').on('click', function(e) {
-      e.preventDefault();
-      if($(this).parent().hasClass('active')){
-        $(this).parent().removeClass('active');
-        $(this).parent().find('ul').slideUp("slow");
-      }
-      else{
-        $('.active ul').slideUp("slow");
-        $('.active').removeClass('active');
+  function slideUp(element, duration = 400) {
+    element.style.height = element.offsetHeight + 'px';
+    element.style.transition = `height ${duration}ms ease`;
+    element.offsetHeight; // принудительная перерисовка
+    element.style.overflow = 'hidden';
+    element.style.height = 0;
 
-        $(this).parent().addClass('active');
-        $(this).parent().find('ul').slideDown("slow");
-      }
+    setTimeout(() => {
+      element.style.display = 'none';
+      element.style.removeProperty('height');
+      element.style.removeProperty('transition');
+      element.style.removeProperty('overflow');
+    }, duration);
+  }
+
+  function slideDown(element, duration = 400) {
+    element.style.removeProperty('display');
+    let display = window.getComputedStyle(element).display;
+    if (display === 'none') display = 'block';
+    element.style.display = display;
+
+    const height = element.scrollHeight;
+    element.style.height = 0;
+    element.style.overflow = 'hidden';
+    element.style.transition = `height ${duration}ms ease`;
+
+    requestAnimationFrame(() => {
+      element.style.height = height + 'px';
     });
 
-    $('.doc-sub-items a').on('click', function(e) {
-      if(isBot === false){
-        e.preventDefault();
+    setTimeout(() => {
+      element.style.removeProperty('height');
+      element.style.removeProperty('transition');
+      element.style.removeProperty('overflow');
+    }, duration);
+  }
+
+  function domReady(fn) {
+    if (typeof fn === 'function') {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fn);
+      } else {
+        fn();
       }
-      var dataTarget = $(this).attr('href'),
-        el = this;
-
-      $('.active-item').removeClass('active-item');
-
-      $(el).addClass('active-item');
-
-      const path = dataTarget.replace(/\/docs/g, '');
-      const url = '/docs/pages' + (path || 'main' ) + '.html';
-
-      fetch(url).then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(html => {
-        $('#doc bd').html(html);
-
-        const title = el.innerHTML + ' | Docs';
-
-        //history.pushState({}, title, dataTarget);
-        document.title = title;
-        mc.scrollTop = 0;
-
-        hljs.initHighlighting.called = false;
-        hljs.initHighlighting();
-        addCopyButton();
-      })
-      .catch(error => {
-        console.error('Error during loading page:', error);
-      });
-    });
-
-    var el = $("[href='"+location.pathname+"']" );
-
-    if(el.length){
-      document.title = el[0].innerHTML + ' | Docs';;
-      el.addClass('active-item');
-      el.closest('li.doc-items').children('a').click();
     }
+  }
+
+  domReady(function() {
+    document.addEventListener('click', function (e) {
+      const trigger = e.target.closest('.doc-item, .doc-item-btn');
+      if (!trigger) return;
+
+      e.preventDefault();
+
+      const parent = trigger.parentElement;
+      const sublist = parent.querySelector('ul');
+
+      if (parent.classList.contains('active')) {
+        parent.classList.remove('active');
+        if (sublist) slideUp(sublist);
+      } else {
+        // Закрыть все активные
+        document.querySelectorAll('.active ul').forEach(ul => slideUp(ul));
+        document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+
+        parent.classList.add('active');
+        if (sublist) slideDown(sublist);
+      }
+    });
+
+    document.querySelectorAll('.doc-sub-items a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        if (isBot === false) {
+          e.preventDefault();
+        }
+        const dataTarget = this.getAttribute('href');
+        const el = this;
+
+        document.querySelectorAll('.active-item').forEach(item => {
+          item.classList.remove('active-item');
+        });
+
+        el.classList.add('active-item');
+
+        const path = dataTarget.replace(/\/docs/g, '');
+        const url = '/docs/pages' + (path || 'main') + '.html';
+
+        fetch(url).then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+          .then(html => {
+            document.querySelector('#doc bd').innerHTML = html;
+
+            const title = el.innerHTML + ' | Docs';
+
+            //history.pushState({}, title, dataTarget);
+            document.title = title;
+            mc.scrollTop = 0;
+
+            hljs.initHighlighting.called = false;
+            hljs.initHighlighting();
+            addCopyButton();
+          })
+          .catch(error => {
+            console.error('Error during loading page:', error);
+          });
+      });
+
+      const el = document.querySelector("[href='" + location.pathname + "']");
+      if (el) {
+        document.title = el.innerHTML + ' | Docs';
+        el.classList.add('active-item');
+
+        const closestLi = el.closest('li.doc-items');
+        if (closestLi) {
+          const link = closestLi.querySelector('a');
+          if (link) link.click();
+        }
+      }
+    });
   });
 
-  $(window).on('popstate', onUpdateDocInfo);
-  $(document).ready( onUpdateDocInfo );
+window.addEventListener('popstate', onUpdateDocInfo);
+domReady(onUpdateDocInfo);
 
 function onUpdateDocInfo() {
-  var dataTarget = location.pathname,
-    el = $("[href='"+location.pathname+"']" ),
-      path = dataTarget.replace(/\/docs/g, '');
+  let dataTarget = location.pathname;
+  let el = document.querySelector("[href='" + location.pathname + "']");
+  let path = dataTarget.replace(/\/docs/g, '');
 
-    if(el[0] && el[0].innerHTML){
-      elText = el[0].innerHTML + ' | Docs';
-    }
-    else{
-      elText = 'FG-Grid Docs';
-      path = '/main';
-    }
+  let elText;
+  if (el && el.innerHTML) {
+    elText = el.innerHTML + ' | Docs';
+  } else {
+    elText = 'FG-Grid Docs';
+    path = '/main';
+  }
 
+  const url = '/docs/pages' + (path || '/main' ) + '.html';
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.querySelector('#doc bd').innerHTML = html;
+      mc.scrollTop = 0;
 
-    const url = '/docs/pages' + (path || '/main' ) + '.html';
-    fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(html => {
-        $('#doc bd').html(html);
-        mc.scrollTop = 0;
+      document.title = elText;
 
-        document.title = elText;
-
-        hljs.initHighlighting.called = false;
-        hljs.initHighlighting();
-        addCopyButton();
-      })
-      .catch(error => {
-        console.error('Error during loading page:', error);
-      });
+      hljs.initHighlighting.called = false;
+      hljs.initHighlighting();
+      addCopyButton();
+    })
+    .catch(error => {
+      console.error('Error during loading page:', error);
+    });
 }
 
 function addCopyButton(){

@@ -15,7 +15,7 @@
 })(typeof self !== 'undefined' ? self : this, function () {
 
 const Fancy$1 = {
-  version: '0.8.0',
+  version: '0.8.4',
   isTouchDevice: 'ontouchstart' in window,
   gridIdSeed: 0,
   gridsMap: new Map(),
@@ -168,17 +168,17 @@ Fancy.svg = {
   ].join(''),
   groupCellDrag: [
     '<svg viewBox="0 0 16 16" style="shape-rendering: geometricprecision;">',
-      '<path fill-rule="evenodd" fill="currentColor" d="M5 3.505C5 3.226 5.214 3 5.505 3h.99c.279 0 .505.214.505.505v.99A.497.497 0 0 1 6.495 5h-.99A.497.497 0 0 1 5 4.495v-.99zm4 0C9 3.226 9.214 3 9.505 3h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 9 4.495v-.99zm-4 4C5 7.226 5.214 7 5.505 7h.99c.279 0 .505.214.505.505v.99A.497.497 0 0 1 6.495 9h-.99A.497.497 0 0 1 5 8.495v-.99zm4 0C9 7.226 9.214 7 9.505 7h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 9 8.495v-.99zm-4 4c0-.279.214-.505.505-.505h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 5 12.495v-.99zm4 0c0-.279.214-.505.505-.505h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 9 12.495v-.99z"></path>',
+    '<path fill-rule="evenodd" fill="currentColor" d="M5 3.505C5 3.226 5.214 3 5.505 3h.99c.279 0 .505.214.505.505v.99A.497.497 0 0 1 6.495 5h-.99A.497.497 0 0 1 5 4.495v-.99zm4 0C9 3.226 9.214 3 9.505 3h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 9 4.495v-.99zm-4 4C5 7.226 5.214 7 5.505 7h.99c.279 0 .505.214.505.505v.99A.497.497 0 0 1 6.495 9h-.99A.497.497 0 0 1 5 8.495v-.99zm4 0C9 7.226 9.214 7 9.505 7h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 9 8.495v-.99zm-4 4c0-.279.214-.505.505-.505h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 5 12.495v-.99zm4 0c0-.279.214-.505.505-.505h.99c.279 0 .505.214.505.505v.99a.497.497 0 0 1-.505.505h-.99A.497.497 0 0 1 9 12.495v-.99z"></path>',
     '</svg>'
   ].join(''),
   remove: [
     '<svg viewBox="0 0 16 16" style="shape-rendering: geometricprecision;">',
-      '<path fill-rule="evenodd" fill="currentColor" d="M3.71428571,7 C3.32,7 3,7.224 3,7.5 L3,8.5 C3,8.776 3.32,9 3.71428571,9 L12.2857143,9 C12.68,9 13,8.776 13,8.5 L13,7.5 C13,7.224 12.68,7 12.2857143,7 L3.71428571,7 Z"></path>',
+    '<path fill-rule="evenodd" fill="currentColor" d="M3.71428571,7 C3.32,7 3,7.224 3,7.5 L3,8.5 C3,8.776 3.32,9 3.71428571,9 L12.2857143,9 C12.68,9 13,8.776 13,8.5 L13,7.5 C13,7.224 12.68,7 12.2857143,7 L3.71428571,7 Z"></path>',
     '</svg>'
   ].join(''),
   block: [
     '<svg viewBox="0 0 16 16" style="shape-rendering: geometricprecision;">',
-      '<path fill-rule="evenodd" fill="currentColor" d="M3.617 4.677A5.48 5.48 0 0 0 2.5 8 5.5 5.5 0 0 0 8 13.5a5.48 5.48 0 0 0 3.323-1.117zm1.06-1.06 7.706 7.706A5.48 5.48 0 0 0 13.5 8 5.5 5.5 0 0 0 8 2.5a5.48 5.48 0 0 0-3.323 1.117M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8 Z"></path>"',
+    '<path fill-rule="evenodd" fill="currentColor" d="M3.617 4.677A5.48 5.48 0 0 0 2.5 8 5.5 5.5 0 0 0 8 13.5a5.48 5.48 0 0 0 3.323-1.117zm1.06-1.06 7.706 7.706A5.48 5.48 0 0 0 13.5 8 5.5 5.5 0 0 0 8 2.5a5.48 5.48 0 0 0-3.323 1.117M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8 Z"></path>"',
     '</svg>'
   ].join(''),
   menu: [
@@ -509,7 +509,7 @@ Fancy.render = {
       !column.editable && e.preventDefault();
     });
 
-    inputEl.addEventListener('change', (e)=>{
+    inputEl.addEventListener('change', (e) => {
       column.onCheckBoxChange?.(e, inputEl.checked);
     });
 
@@ -565,7 +565,7 @@ Fancy.format = {
 Fancy.copyText = (text) => {
   if(navigator.clipboard){
     navigator.clipboard.writeText(text)
-      .catch(err => console.error('Error copying: ', err));
+      .catch(err => console.error('FG-Grid: Error copying: ', err));
   } else {
     const textarea = document.createElement('textarea');
     textarea.value = text;
@@ -576,8 +576,7 @@ Fancy.copyText = (text) => {
   }
 };
 
-(()=> {
-
+(() => {
   /**
    * @mixes StoreMixinEdit
    * @mixes StoreMixinFilter
@@ -585,7 +584,6 @@ Fancy.copyText = (text) => {
    * @mixes StoreMixinSelection
    * @mixes StoreMixinSort
    */
-
   class Store {
     data = [];
     sortedData = undefined;
@@ -604,7 +602,7 @@ Fancy.copyText = (text) => {
 
     prevAction = '';
 
-    constructor({data, rowGroups, rowGroupExpanded, aggregations, defaultRowGroupSort}) {
+    constructor({ data, rowGroups, rowGroupExpanded, aggregations, defaultRowGroupSort }) {
       const me = this;
 
       me.prevAction = '';
@@ -626,7 +624,6 @@ Fancy.copyText = (text) => {
         me.setIds();
       }
     }
-
     setData(data){
       const me = this;
 
@@ -650,16 +647,10 @@ Fancy.copyText = (text) => {
       } else {
         me.setIds();
 
-        if(me.filters.length){
-          me.reFilter(false);
-        }
-
-        if(me.sorters.length){
-          me.reSort();
-        }
+        me.filters.length && me.reFilter(false);
+        me.sorters.length && me.reSort();
       }
     }
-
     lightSetIds() {
       const me = this;
 
@@ -674,7 +665,6 @@ Fancy.copyText = (text) => {
         }
       });
     }
-
     // For row groups only
     setIndexAndItemsMaps() {
       const me = this;
@@ -684,7 +674,6 @@ Fancy.copyText = (text) => {
       }
       me.updateIndexes();
     }
-
     // TODO: something wrong
     // Serious bug
     updateIndexes() {
@@ -729,7 +718,6 @@ Fancy.copyText = (text) => {
       });
        */
     }
-
     setIds() {
       const me = this;
 
@@ -751,15 +739,12 @@ Fancy.copyText = (text) => {
         me.idItemMap.set(item.id, item);
       });
     }
-
     generateId() {
       return 'id-' + this.idSeed++;
     }
-
     getDataTotal() {
       return this.data.length;
     }
-
     getDisplayedDataTotal() {
       const me = this;
       const {
@@ -774,7 +759,6 @@ Fancy.copyText = (text) => {
 
       return me.getDataTotal();
     }
-
     getItemByRowIndex(rowIndex) {
       const me = this;
       const {
@@ -793,13 +777,9 @@ Fancy.copyText = (text) => {
 
       return item;
     }
-
     memorizePrevRowIndexesMap() {
-      const me = this;
-
-      me.prevIdRowIndexesMap = me.idRowIndexesMap;
+      this.prevIdRowIndexesMap = this.idRowIndexesMap;
     }
-
     getPrevVisibleRowIndex(rowIndex){
       const me = this;
       const data = me.displayedData || me.data;
@@ -811,7 +791,6 @@ Fancy.copyText = (text) => {
         }
       }
     }
-
     getNextVisibleRowIndex(rowIndex){
       const me = this;
       const totalDisplayed = me.getDisplayedDataTotal();
@@ -827,15 +806,12 @@ Fancy.copyText = (text) => {
   }
 
   Fancy.Store = Store;
-
 })();
 
-(()=> {
-
+(() => {
   /**
    * @mixin StoreMixinSort
    */
-
   const StoreMixinSort = {
     reSort() {
       const me = this;
@@ -852,7 +828,6 @@ Fancy.copyText = (text) => {
       });
 
       me.sortedData = data;
-
       me.idRowIndexesMap = new Map();
 
       me.sortedData.forEach((item, index) => {
@@ -862,7 +837,6 @@ Fancy.copyText = (text) => {
 
       me.displayedData = me.sortedData;
     },
-
     sort(column, dir = 'ASC', multi) {
       const me = this;
       let data;
@@ -911,7 +885,6 @@ Fancy.copyText = (text) => {
       me.displayedData = me.sortedData;
       me.prevAction = 'sort';
     },
-
     sortGroupData(column, dir) {
       const me = this;
       const sortedData = me.displayedData.slice();
@@ -939,7 +912,6 @@ Fancy.copyText = (text) => {
 
       return sortedData;
     },
-
     sortGroupDataForFiltering(column, dir) {
       const me = this;
       const sortedData = me.displayedData.slice();
@@ -967,7 +939,6 @@ Fancy.copyText = (text) => {
 
       return sortedData;
     },
-
     sortPieceOfData(data) {
       const me = this;
 
@@ -977,7 +948,6 @@ Fancy.copyText = (text) => {
 
       return data;
     },
-
     sortData(data, column, dir) {
       let sortedData = [];
 
@@ -1028,7 +998,7 @@ Fancy.copyText = (text) => {
                 }
 
                 if (!a.localeCompare) {
-                  console.error(`${a} is not a string`);
+                  console.error(`FG-Grid: ${a} is not a string`);
                 }
 
                 return a.localeCompare(b);
@@ -1126,7 +1096,6 @@ Fancy.copyText = (text) => {
 
       return sortedData;
     },
-
     clearSort(column, multi) {
       const me = this;
 
@@ -1170,9 +1139,7 @@ Fancy.copyText = (text) => {
 
           me.prevAction = 'filter';
         } else {
-          if(!me.filteredData){
-            me.reFilter(false);
-          }
+          !me.filteredData && me.reFilter(false);
 
           me.filteredData.forEach((item, index) => {
             me.idRowIndexesMap.set(item.id, index);
@@ -1183,6 +1150,9 @@ Fancy.copyText = (text) => {
         }
       } else {
         if (me.rowGroups.length) {
+          // Here is problem and bug
+          // Wrong setting rowIndex
+          /*
           for (const group in me.expandedGroupsWithDataChildren) {
             const groupData = me.groupsChildren[group];
 
@@ -1190,10 +1160,11 @@ Fancy.copyText = (text) => {
               me.idRowIndexesMap.set(item.id, item.originalRowIndex);
               item.rowIndex = item.originalRowIndex;
             });
-          }
+          }*/
 
           me.sortGroups();
           me.simpleReGenerateDisplayedGroupedData();
+          me.updateIndexes();
         } else {
           me.data.forEach((item, index) => {
             me.idRowIndexesMap.set(item.id, index);
@@ -1205,41 +1176,23 @@ Fancy.copyText = (text) => {
       if (me.sorters.length === 0) {
         delete me.sortedData;
       }
-    },
-
-    isParentCollapsed(group) {
-      const me = this;
-      const splitted = group.split('/');
-      let iL = splitted.length - 1;
-
-      for (let i = 0; i < iL; i++) {
-        splitted.pop();
-        if (!me.expandedGroups[splitted.join('/')]) {
-          return true;
-        }
-      }
-
-      return false;
     }
   };
 
   Object.assign(Fancy.Store.prototype, StoreMixinSort);
-
 })();
 
-(()=> {
-
+(() => {
   /**
    * @mixin StoreMixinFilter
    */
-
   const StoreMixinFilter = {
-    removeFilter(column, sign, update){
+    removeFilter(column, sign, removePrevFilterColumn = true){
       const me = this;
 
       if(sign){
         me.filters = me.filters.filter(filter => {
-          if(filter.column.id == column.id && filter.sign == sign){
+          if(filter.column.id === column.id && filter.sign === sign){
             return false;
           }
           return true;
@@ -1249,9 +1202,11 @@ Fancy.copyText = (text) => {
       } else {
         me.filters = [];
       }
-      delete me.prevFilterColumn;
-    },
 
+      if(removePrevFilterColumn !== false){
+        delete me.prevFilterColumn;
+      }
+    },
     clearFilter(column, sign) {
       const me = this;
 
@@ -1260,12 +1215,11 @@ Fancy.copyText = (text) => {
       me.reFilter(false);
       me.reSort();
 
-      if(!column || me.filters.length == 0){
+      if(!column || me.filters.length === 0){
         delete me.prevAction;
         delete me.prevFilterColumn;
       }
     },
-
     clearFilterForGrouping(column, sign) {
       const me = this;
       const data = me.data.slice();
@@ -1287,7 +1241,6 @@ Fancy.copyText = (text) => {
 
       me.prevAction = 'filter';
     },
-
     reFilter(useSortedDataIfPossible = true) {
       const me = this;
       let data;
@@ -1311,8 +1264,7 @@ Fancy.copyText = (text) => {
 
       me.prevAction = 'filter';
     },
-
-    filter(column, value, sign = '=') {
+    filter(column, value, sign = '=', oneFilterPerColumn = false) {
       const me = this;
       let data;
       let totalReFilterRequired = false;
@@ -1328,6 +1280,10 @@ Fancy.copyText = (text) => {
       }
 
       me.removeFilter(column, sign);
+
+      if(oneFilterPerColumn){
+        me.filters = me.filters.filter(filter => filter.column.id!== column.id);
+      }
 
       if (value !== null) {
         me.filters.push({
@@ -1353,12 +1309,15 @@ Fancy.copyText = (text) => {
       me.prevAction = 'filter';
       me.prevFilterColumn = column;
     },
-
-    filterForRowGrouping(column, value, sign = '=') {
+    filterForRowGrouping(column, value, sign = '=', oneFilterPerColumn = false) {
       const me = this;
       const data = me.data.slice();
 
       me.removeFilter(column, sign);
+
+      if(oneFilterPerColumn){
+        me.filters = me.filters.filter(filter => filter.column.id!== column.id);
+      }
 
       if (value !== null) {
         me.filters.push({
@@ -1380,7 +1339,6 @@ Fancy.copyText = (text) => {
       me.prevAction = 'filter';
       me.prevFilterColumn = column;
     },
-
     updateIndexMapAfterFilter() {
       const me = this;
 
@@ -1392,7 +1350,6 @@ Fancy.copyText = (text) => {
         item.rowIndex = index;
       });
     },
-
     filterData(data, column, value, sign) {
       let filteredData = [];
 
@@ -1463,7 +1420,7 @@ Fancy.copyText = (text) => {
           });
           break;
         // Starts with
-        case '_a':
+        case 'a_':
           filteredData = data.filter(item => {
             const itemValue = String(getItemValue(item)).toLocaleLowerCase();
 
@@ -1471,7 +1428,7 @@ Fancy.copyText = (text) => {
           });
           break;
         // Ends with
-        case 'a_':
+        case '_a':
           filteredData = data.filter(item => {
             const itemValue = String(getItemValue(item)).toLocaleLowerCase();
 
@@ -1539,7 +1496,6 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Fancy.Store.prototype, StoreMixinFilter);
-
 })();
 
 /*
@@ -1567,13 +1523,10 @@ Fancy.copyText = (text) => {
     }]
   ]
 */
-
-(()=> {
-
+(() => {
   /**
    * @mixin StoreMixinRowGroup
    */
-
   const StoreMixinRowGroup = {
     rowGroupData() {
       const me = this;
@@ -1584,13 +1537,9 @@ Fancy.copyText = (text) => {
       me.sortGroups();
       me.generateDisplayedGroupedData();
     },
-
     rowGroupDataForFiltering() {
-      const me = this;
-
-      me.generateGroupDetailsForFiltering();
+      this.generateGroupDetailsForFiltering();
     },
-
     generateDisplayedGroupedData() {
       const me = this;
       // Possible bug
@@ -1614,7 +1563,6 @@ Fancy.copyText = (text) => {
 
       me.displayedData = groupedData;
     },
-
     // Regenerate display group data
     // It is only for case when there are no sorters
     simpleReGenerateDisplayedGroupedData() {
@@ -1635,7 +1583,6 @@ Fancy.copyText = (text) => {
 
       me.displayedData = groupedData;
     },
-
     generateDisplayedGroupedDataForFiltering(doNotSort = false) {
       const me = this;
       let displayedGroupsSorted = [];
@@ -1663,7 +1610,6 @@ Fancy.copyText = (text) => {
 
       me.displayedData = groupedData;
     },
-
     /*
      Generates groupsChildren, groupDetails, levelsWithGroups
      */
@@ -1756,6 +1702,10 @@ Fancy.copyText = (text) => {
         const children = me.groupsChildren[groupName];
         const childrenSorted = children.sort((groupA, groupB) => {
           switch (me.defaultRowGroupSort) {
+            case 'asc-string':
+              return groupA.$rowDisplayGroupValue.localeCompare(groupB.$rowDisplayGroupValue);
+            case 'desc-string':
+              return groupB.$rowDisplayGroupValue.localeCompare(groupA.$rowDisplayGroupValue);
             case 'asc-amount':
               return groupA.amount - groupB.amount;
             case 'desc-amount':
@@ -1765,7 +1715,6 @@ Fancy.copyText = (text) => {
         me.groupsChildren[groupName] = childrenSorted;
       }
     },
-
     generateGroupDetailsForFiltering(groupNames, groupLevel) {
       const me = this;
       const parentGroups = {};
@@ -1801,7 +1750,7 @@ Fancy.copyText = (text) => {
         me.levelsWithGroupsForFiltering[groupLevel][0][parentGroupName].push(groupName);
 
         if(!groupDetails){
-          console.error(`groupDetails does not contain ${groupName}`);
+          console.error(`FG-Grid: groupDetails does not contain ${groupName}`);
         }
 
         const groupDetailsForFiltering = {
@@ -1849,7 +1798,6 @@ Fancy.copyText = (text) => {
         me.generateGroupDetailsForFiltering(parentGroupNames, groupLevel - 1);
       }
     },
-
     clearGroups() {
       const me = this;
 
@@ -1861,7 +1809,6 @@ Fancy.copyText = (text) => {
         delete rowData.$rowGroupValue;
       });
     },
-
     set$rowGroupValue(data) {
       if(data === undefined){
         data = this.data;
@@ -1879,7 +1826,6 @@ Fancy.copyText = (text) => {
 
       return data;
     },
-
     // Runs only on start and on setData
     // rowGroupExpanded will be deleted
     // On resetting data, rowGroupData won't be used.
@@ -1921,7 +1867,6 @@ Fancy.copyText = (text) => {
 
       delete me.rowGroupExpanded;
     },
-
     generateDisplayedGroupsForFiltering(zeroLevelGroups) {
       const me = this;
 
@@ -1934,18 +1879,17 @@ Fancy.copyText = (text) => {
       for(let group in me.expandedGroups){
         const subGroups = me.groupsChildrenForFiltering[group];
 
-        subGroups?.forEach(({$rowGroupValue}) => {
+        subGroups?.forEach(({ $rowGroupValue }) => {
           if ($rowGroupValue) {
             me.displayedGroupsForFiltering[$rowGroupValue] = true;
           }
         });
       }
     },
-
     sortGroups() {
       const me = this;
 
-      me.levelsWithGroups.forEach(({0: groupsContainer}) => {
+      me.levelsWithGroups.forEach(({ 0: groupsContainer }) => {
         for (const group in groupsContainer) {
           const subGroups = groupsContainer[group];
           const newSubGroupsOrder = subGroups.toSorted((a, b) => {
@@ -1953,6 +1897,10 @@ Fancy.copyText = (text) => {
             const groupB = me.groupDetails[b];
 
             switch (me.defaultRowGroupSort) {
+              case 'asc-string':
+                return groupA.$rowDisplayGroupValue.localeCompare(groupB.$rowDisplayGroupValue);
+              case 'desc-string':
+                return groupB.$rowDisplayGroupValue.localeCompare(groupA.$rowDisplayGroupValue);
               case 'asc-amount':
                 return groupA.amount - groupB.amount;
               case 'desc-amount':
@@ -1964,12 +1912,11 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     sortGroupsForFiltering() {
       const me = this;
       const levelsWithGroupsForFiltering = [];
 
-      me.levelsWithGroups.forEach(({0: groupsContainer}, level) => {
+      me.levelsWithGroups.forEach(({ 0: groupsContainer }, level) => {
         const filteredGroupsContainer = {};
 
         for (const group in groupsContainer) {
@@ -1985,7 +1932,6 @@ Fancy.copyText = (text) => {
 
       me.levelsWithGroupsForFiltering = levelsWithGroupsForFiltering;
     },
-
     getSortedDisplayedGroups() {
       const me = this;
       let displayedGroupsSorted = [];
@@ -2003,22 +1949,22 @@ Fancy.copyText = (text) => {
         });
       };
 
+      // All these with levelsWithGroups and groupDetails looks incorrect
+      // It looks like it does sort on levelsWithGroups first and then for some types we do extra sort
       switch (me.defaultRowGroupSort) {
         case 'desc-string':
-          // Possible bug
-          displayedGroupsSorted = Array.from(Object.keys(me.displayedGroups)).sort();
-          break;
+        case 'asc-string':
         case 'desc-amount':
+        case 'asc-amount':
           const zeroLevelGroups = me.levelsWithGroups[0][0].root;
           recursiveDataExtraction(zeroLevelGroups);
           break;
         default:
-          console.error(`Not supported defaultRowGroupSort value ${me.defaultRowGroupSort}`);
+          console.error(`FG-Grid: Not supported defaultRowGroupSort value ${me.defaultRowGroupSort}`);
       }
 
       return displayedGroupsSorted;
     },
-
     getSortedDisplayedGroupsForFiltering() {
       const me = this;
       let displayedGroupsSorted = [];
@@ -2045,12 +1991,11 @@ Fancy.copyText = (text) => {
           recursiveDataExtraction(zeroLevelGroups);
           break;
         default:
-          console.error(`Not supported defaultRowGroupSort value ${me.defaultRowGroupSort}`);
+          console.error(`FG-Grid: Not supported defaultRowGroupSort value ${me.defaultRowGroupSort}`);
       }
 
       return displayedGroupsSorted;
     },
-
     getAggregationResult(aggregation, values) {
       let result = '';
 
@@ -2078,7 +2023,6 @@ Fancy.copyText = (text) => {
 
       return result;
     },
-
     expand(group) {
       const me = this;
       const groupDetails = me.groupDetails[group];
@@ -2096,7 +2040,6 @@ Fancy.copyText = (text) => {
 
       me.updateIndexes();
     },
-
     expandForFiltering(group) {
       const me = this;
       const groupDetails = me.groupDetailsForFiltering[group];
@@ -2114,7 +2057,6 @@ Fancy.copyText = (text) => {
       me.displayedData.splice(rowIndex + 1, 0, ...groupData);
       me.updateIndexes();
     },
-
     expandAll() {
       const me = this;
 
@@ -2134,18 +2076,12 @@ Fancy.copyText = (text) => {
       me.generateDisplayedGroupedData();
       me.setIndexAndItemsMaps();
     },
-
     toggleExpand(group) {
       const me = this;
       const groupDetails = me.groupDetails[group];
 
-      if (groupDetails.expanded) {
-        me.collapse(group);
-      } else {
-        me.expand(group);
-      }
+      groupDetails.expanded? me.collapse(group): me.expand(group);
     },
-
     collapse(group) {
       const me = this;
       const groupData = me.getGroupExpandedChildren(group);
@@ -2162,7 +2098,6 @@ Fancy.copyText = (text) => {
 
       me.updateIndexes();
     },
-
     collapseForFiltering(group) {
       const me = this;
       const groupDetails = me.groupDetailsForFiltering[group];
@@ -2180,7 +2115,6 @@ Fancy.copyText = (text) => {
 
       me.updateIndexes();
     },
-
     collapseAll() {
       const me = this;
 
@@ -2194,7 +2128,6 @@ Fancy.copyText = (text) => {
       me.generateDisplayedGroupedData();
       me.setIndexAndItemsMaps();
     },
-
     getGroupExpandedChildren(group, groupData = []) {
       const me = this;
       const groupDetails = me.groupDetails[group];
@@ -2215,7 +2148,6 @@ Fancy.copyText = (text) => {
 
       return groupData;
     },
-
     getGroupExpandedChildrenForFiltering(group, groupData = []) {
       const me = this;
       const groupDetails = me.groupDetailsForFiltering[group];
@@ -2236,7 +2168,6 @@ Fancy.copyText = (text) => {
 
       return groupData;
     },
-
     reConfigRowGroups(rowGroups) {
       const me = this;
       const {
@@ -2290,11 +2221,9 @@ Fancy.copyText = (text) => {
         me.setIndexAndItemsMaps();
       }
     },
-
     setRowGroups(rowGroups) {
       this.rowGroups = rowGroups;
     },
-
     getGroupDataForFiltering() {
       const me = this;
       const sortedData = me.displayedData.slice();
@@ -2313,7 +2242,6 @@ Fancy.copyText = (text) => {
 
       return sortedData;
     },
-
     addGroup(group){
       const me = this;
       const splitted = group.split('/');
@@ -2398,7 +2326,6 @@ Fancy.copyText = (text) => {
         me.groupsChildren[parentGroup].push(me.groupDetails[group]);
       });
     },
-
     agGroupUpdateData(groupName, items, sign = '-'){
       const me = this;
       const groupDetails = me.groupDetails[groupName];
@@ -2448,15 +2375,12 @@ Fancy.copyText = (text) => {
         });
       });
     },
-
     isItemInCollapsedGroup(item){
       const splitted = item.$rowGroupValue.split('/');
+      const iL = splitted.length;
+      item.$isGroupRow && splitted.pop();
 
-      if(item.$isGroupRow){
-        splitted.pop();
-      }
-
-      for(let i = 0;i<splitted.length;i++) {
+      for(let i = 0;i<iL;i++) {
         const name = splitted.join('/');
         const expanded = this.expandedGroups[name];
 
@@ -2468,14 +2392,27 @@ Fancy.copyText = (text) => {
       }
 
       return false;
+    },
+    isParentCollapsed(group) {
+      const me = this;
+      const splitted = group.split('/');
+      const iL = splitted.length - 1;
+
+      for (let i = 0; i < iL; i++) {
+        splitted.pop();
+        if (!me.expandedGroups[splitted.join('/')]) {
+          return true;
+        }
+      }
+
+      return false;
     }
   };
 
   Object.assign(Fancy.Store.prototype, StoreMixinRowGroup);
-
 })();
 
-(()=> {
+(() => {
 
   /**
    * @mixin StoreMixinSelection
@@ -2572,7 +2509,7 @@ Fancy.copyText = (text) => {
       const me = this;
 
       if (item.$isGroupRow) {
-        console.warn('It is wrong to use selectedItemsMap for group row. Only for items that do not have children.');
+        console.warn('FG-Grid: It is wrong to use selectedItemsMap for group row. Only for items that do not have children.');
       }
 
       if (value) {
@@ -2700,17 +2637,15 @@ Fancy.copyText = (text) => {
   Object.assign(Fancy.Store.prototype, StoreMixinSelection);
 })();
 
-(()=> {
+(() => {
   const typeOf = Fancy.typeOf;
 
   /**
    * @mixin StoreMixinEdit
    */
-
   const StoreMixinEdit = {
     setById(id, key, value){
-      const me = this;
-      const item = me.idItemMap.get(id);
+      const item = this.idItemMap.get(id);
 
       if(!item){
         return false;
@@ -2729,7 +2664,6 @@ Fancy.copyText = (text) => {
     removeItemById(id){
       const me = this;
       const item = me.idItemMap.get(id);
-      //const rowIndex = item.originalRowIndex;
       const rowIndex = item.originalDataRowIndex;
 
       me.idItemMap.delete(id);
@@ -2753,7 +2687,7 @@ Fancy.copyText = (text) => {
         }
       });
 
-      if(me.rowGroups.length) {
+      if(me.rowGroups.length){
         items = me.set$rowGroupValue(items);
         items.forEach(item => {
           const group = item.$rowGroupValue;
@@ -2784,25 +2718,16 @@ Fancy.copyText = (text) => {
 
       if(position === undefined){
         me.data.push(...items);
-
-        if(me.displayedData){
-          me.displayedData.push(...items);
-        }
+        me.displayedData && me.displayedData.push(...items);
       } else if(position === 0){
         me.data.unshift(...items);
-        if(me.displayedData){
-          me.displayedData.unshift(...items);
-        }
+        me.displayedData && me.displayedData.unshift(...items);
       } else if(typeOf(position) === 'number'){
         me.data.splice(position, 0, ...items);
-        if(me.displayedData){
-          me.displayedData.splice(position, 0, ...items);
-        }
+        me.displayedData && me.displayedData.splice(position, 0, ...items);
       } else if(typeOf(position) === 'object'){
         me.data.splice(position.originalRowIndex, 0, ...items);
-        if(me.displayedData){
-          me.displayedData.splice(position.rowIndex, 0, ...items);
-        }
+        me.displayedData && me.displayedData.splice(position.rowIndex, 0, ...items);
       }
 
       me.updateIndexes();
@@ -2814,13 +2739,12 @@ Fancy.copyText = (text) => {
       const level = splitted.length - 1;
       if(level === 0){
         me.levelsWithGroups[0][0].root = me.levelsWithGroups[0][0].root.filter(value => value !== groupName);
-      }
-      else {
+      } else {
         splitted.pop();
         const parentGroupName = splitted.join('/');
         me.levelsWithGroups[level][0][parentGroupName] = me.levelsWithGroups[level][0][parentGroupName].filter(value => value !== groupName);
 
-        // Go to group level to remove group that has subgroups
+        // Go to group level to remove a group that has subgroups
         const groupDetail = me.groupDetails[groupName];
         if(groupDetail?.$hasChildrenGroups && me.levelsWithGroups[level + 1]){
           delete me.levelsWithGroups[level + 1][0][groupName];
@@ -2831,7 +2755,6 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Fancy.Store.prototype, StoreMixinEdit);
-
 })();
 
 (() => {
@@ -2877,7 +2800,6 @@ Fancy.copyText = (text) => {
 
       me.initResizeObserver();
     }
-
     deltaChange(delta) {
       const me = this;
 
@@ -2907,7 +2829,6 @@ Fancy.copyText = (text) => {
 
       return changed;
     }
-
     horizontalDeltaChange(delta){
       const me = this;
 
@@ -2933,7 +2854,6 @@ Fancy.copyText = (text) => {
 
       return changed;
     }
-
     calcVisibleRows() {
       const me = this;
       let requiresRenderMoreRows = false;
@@ -2947,7 +2867,6 @@ Fancy.copyText = (text) => {
 
       return requiresRenderMoreRows;
     }
-
     calcMaxScrollTop() {
       const me = this;
 
@@ -2957,7 +2876,6 @@ Fancy.copyText = (text) => {
         me.maxScrollTop = 0;
       }
     }
-
     updateScrollTop() {
       const me = this;
 
@@ -2966,7 +2884,6 @@ Fancy.copyText = (text) => {
         me.verticalScrollContainerEl.scrollTop = me.maxScrollTop;
       }
     }
-
     getStartRow() {
       const me = this;
 
@@ -2974,7 +2891,6 @@ Fancy.copyText = (text) => {
 
       return me.startRow;
     }
-
     calcStartRow() {
       const me = this;
       let startRow = Math.round(me.scrollTop / me.grid.rowHeight) - me.topBufferRows;
@@ -2991,7 +2907,6 @@ Fancy.copyText = (text) => {
 
       me.startRow = startRow;
     }
-
     getEndRow() {
       const me = this;
       const store = me.grid.store;
@@ -3016,7 +2931,6 @@ Fancy.copyText = (text) => {
 
       return endRow;
     }
-
     render() {
       const me = this;
 
@@ -3025,7 +2939,6 @@ Fancy.copyText = (text) => {
 
       me.ons();
     }
-
     renderVerticalScroll() {
       const me = this;
 
@@ -3051,7 +2964,6 @@ Fancy.copyText = (text) => {
 
       me.setVerticalSize();
     }
-
     renderHorizontalScroll() {
       const me = this;
       const scrollBarWidth = `${me.scrollBarWidth}px`;
@@ -3060,7 +2972,7 @@ Fancy.copyText = (text) => {
         height: scrollBarWidth,
         minHeight: scrollBarWidth,
         maxHeight: scrollBarWidth,
-        width: (me.isDomInvisibleScrollbar || !me.isVerticalVisible())? `100%`:
+        width: (me.isDomInvisibleScrollbar || !me.isVerticalVisible())? '100%':
           `calc(100% - ${scrollBarWidth})`
       });
 
@@ -3088,29 +3000,26 @@ Fancy.copyText = (text) => {
 
       me.setHorizontalSize();
     }
-
     updateHorizontalScrollSize() {
       const me = this,
         horizontalScrollEl = me.horizontalScrollEl;
 
       if (me.isDomInvisibleScrollbar) {
-        horizontalScrollEl.style.width = `100%`;
+        horizontalScrollEl.style.width = '100%';
       } else {
         if (me.isVerticalVisible()) {
           horizontalScrollEl.style.width = `calc(100% - ${me.scrollBarWidth}px)`;
         } else {
-          horizontalScrollEl.style.width = `100%`;
+          horizontalScrollEl.style.width = '100%';
         }
       }
     }
-
     ons() {
       const me = this;
 
       me.verticalScrollContainerEl.addEventListener('scroll', me.onVerticalScroll);
       me.horizontalScrollContainerEl.addEventListener('scroll', me.onHorizontalScroll);
     }
-
     onVerticalScroll = () => {
       const me = this;
 
@@ -3131,7 +3040,6 @@ Fancy.copyText = (text) => {
         });
       }
     }
-
     onHorizontalScroll = () => {
       const me = this;
       const grid = me.grid;
@@ -3150,7 +3058,6 @@ Fancy.copyText = (text) => {
         me.generateNewRange();
       });
     }
-
     generateNewRange(doRender = true) {
       const me = this;
       const grid = me.grid;
@@ -3195,9 +3102,8 @@ Fancy.copyText = (text) => {
         columnViewEnd: me.columnViewEnd,
         columnsToAdd,
         columnsToRemove
-      }
+      };
     }
-
     setVerticalSize() {
       const me = this;
       const grid = me.grid;
@@ -3223,7 +3129,6 @@ Fancy.copyText = (text) => {
         me.verticalScrollEl.style.display = 'none';
       }
     }
-
     isHorizontalVisible() {
       const me = this;
       const bodyWidth = me.grid.bodyEl.getBoundingClientRect().width;
@@ -3237,7 +3142,6 @@ Fancy.copyText = (text) => {
 
       return visibleColumnsWidth > bodyWidth;
     }
-
     isVerticalVisible() {
       const me = this;
       const grid = me.grid;
@@ -3259,7 +3163,6 @@ Fancy.copyText = (text) => {
 
       return bodyHeight < visibleRowsHeight;
     }
-
     setHorizontalSize() {
       const me = this;
       const columnsWidth = me.grid.getTotalColumnsWidth();
@@ -3272,7 +3175,6 @@ Fancy.copyText = (text) => {
         me.horizontalScrollEl.style.display = '';
       }
     }
-
     calcViewRange() {
       const me = this;
       const {
@@ -3285,7 +3187,6 @@ Fancy.copyText = (text) => {
       me.columnViewEnd = columnEnd;
       me.columnsViewRange = range;
     }
-
     getColumnsViewRange() {
       const me = this;
       const gridWidth = me.grid.width;
@@ -3300,7 +3201,7 @@ Fancy.copyText = (text) => {
         const column = me.grid.columns[i];
 
         if (column.hidden) {
-          continue
+          continue;
         }
 
         if (columnStart === undefined && columnPastWidth <= me.scrollLeft && (columnPastWidth + column.width) > me.scrollLeft) {
@@ -3334,15 +3235,11 @@ Fancy.copyText = (text) => {
         columnStart,
         columnEnd,
         range
-      }
+      };
     }
-
     calcScrollBarWidth() {
-      const me = this;
-
-      me.scrollBarWidth = me.getScrollbarWidth();
+      this.scrollBarWidth = this.getScrollbarWidth();
     }
-
     getScrollbarWidth() {
       const body = document.body;
       const el = div([],{
@@ -3356,16 +3253,8 @@ Fancy.copyText = (text) => {
       body.appendChild(el);
 
       let width = el.offsetWidth - el.clientWidth;
-      // if width is 0 and client width is 0, means the DOM isn't ready
-      /*
-      if (width === 0 && div.clientWidth === 0) {
-        width = null;
-      }
-       */
 
-      if (el.parentNode) {
-        el.parentNode.removeChild(el);
-      }
+      el.parentNode && el.parentNode.removeChild(el);
 
       if (width === 0) {
         this.isDomInvisibleScrollbar = width === 0;
@@ -3374,7 +3263,6 @@ Fancy.copyText = (text) => {
 
       return width;
     }
-
     initResizeObserver(){
       const me = this;
 
@@ -3388,7 +3276,6 @@ Fancy.copyText = (text) => {
 
       me.resizeObserver.observe(me.grid.containerEl);
     }
-
     updateSize(){
       const me = this;
       const grid = me.grid;
@@ -3401,7 +3288,6 @@ Fancy.copyText = (text) => {
 
       changedBufferedRows && grid.renderVisibleRows();
     }
-
     isColumnVisible(checkColumn){
       const me = this;
 
@@ -3423,11 +3309,9 @@ Fancy.copyText = (text) => {
   }
 
   Fancy.Scroller = Scroller;
-
 })();
 
-(()=>{
-
+(() => {
   class TouchScroller {
     constructor(element, config) {
       const me = this;
@@ -3448,15 +3332,14 @@ Fancy.copyText = (text) => {
 
       me.init();
     }
-
     init() {
       const me = this;
+      const el = me.element;
 
-      me.element.addEventListener('touchstart', me.touchStartHandler);
-      me.element.addEventListener('touchmove', me.touchMoveHandler);
-      me.element.addEventListener('touchend', me.touchEndHandler);
+      el.addEventListener('touchstart', me.touchStartHandler);
+      el.addEventListener('touchmove', me.touchMoveHandler);
+      el.addEventListener('touchend', me.touchEndHandler);
     }
-
     touchStart(e) {
       const me = this;
 
@@ -3469,12 +3352,8 @@ Fancy.copyText = (text) => {
       me.velocityY = 0;
       me.lastMoveTime = Date.now();
 
-      if (me.intervalId) {
-        clearInterval(me.intervalId);
-        delete me.intervalId;
-      }
+      me.intervalId && clearInterval(me.intervalId);
     }
-
     touchMove(e) {
       const me = this;
       const currentY = e.touches[0].pageY;
@@ -3512,7 +3391,6 @@ Fancy.copyText = (text) => {
 
       me.onTouchScroll(e);
     }
-
     smoothScroll() {
       const me = this;
       const deceleration = 0.98; // Deceleration factor
@@ -3539,7 +3417,7 @@ Fancy.copyText = (text) => {
 
         // Continue scrolling until the speed exceeds the threshold
         if(Math.abs(me.velocityX) <= threshold && Math.abs(me.velocityY) <= threshold); else {
-          requestAnimationFrame(()=> {
+          requestAnimationFrame(() => {
             requestAnimationFrame(step);
           });
         }
@@ -3548,14 +3426,12 @@ Fancy.copyText = (text) => {
 
       requestAnimationFrame(step);
     }
-
     touchEnd() {
       const me = this;
 
       // Smooth continuation of the scroll
       me.smoothScroll();
     }
-
     destroy() {
       const me = this;
 
@@ -3568,10 +3444,9 @@ Fancy.copyText = (text) => {
   }
 
   Fancy.TouchScroller = TouchScroller;
-
 })();
 
-(()=> {
+(() => {
   const {
     GRID,
     GRID_CELLS_RIGHT_BORDER,
@@ -3587,7 +3462,6 @@ Fancy.copyText = (text) => {
   } = Fancy.cls;
 
   const div = Fancy.div;
-
   /**
    * @mixes GridMixinBody
    * @mixes GridMixinColumn
@@ -3602,7 +3476,6 @@ Fancy.copyText = (text) => {
    * @mixes GridMixinSelection
    * @mixes GridMixinSort
    */
-
   class Grid {
     theme = 'default';
     defaultColumnWidth = 120;
@@ -3651,7 +3524,6 @@ Fancy.copyText = (text) => {
         return value || '';
       }
     };
-
     constructor(config, extraConfig) {
       const me = this;
 
@@ -3684,7 +3556,6 @@ Fancy.copyText = (text) => {
 
       me.ons();
     }
-
     initContainer(renderTo){
       const me = this;
 
@@ -3699,10 +3570,9 @@ Fancy.copyText = (text) => {
       }
 
       if(!me.containerEl){
-        console.error(`Could not find renderTo element`);
+        console.error('FG-Grid: Could not find renderTo element');
       }
     }
-
     initId(id){
       const me = this;
 
@@ -3717,7 +3587,6 @@ Fancy.copyText = (text) => {
 
       Fancy.gridsMap.set(me.id, me);
     }
-
     render() {
       const me = this;
       const gridCls = [GRID, 'fg-theme-' + me.theme];
@@ -3732,21 +3601,12 @@ Fancy.copyText = (text) => {
       me.containerEl.appendChild(gridEl);
       me.gridEl = gridEl;
 
-      if(me.rowGroupBar){
-        me.renderRowGroupBar();
-      }
-
+      me.rowGroupBar && me.renderRowGroupBar();
       me.renderHeader();
-
-      if(me.filterBar){
-        me.renderFilterBar();
-      }
-
+      me.filterBar && me.renderFilterBar();
       me.renderBody();
-
       me.scroller.render();
     }
-
     updateWidth(){
       const me = this;
       const width = me.getTotalColumnsWidth();
@@ -3764,7 +3624,6 @@ Fancy.copyText = (text) => {
 
       me.scroller.setHorizontalSize();
     }
-
     renderHeader() {
       const me = this;
 
@@ -3781,7 +3640,6 @@ Fancy.copyText = (text) => {
         width: me.getTotalColumnsWidth() + 'px'
       });
 
-
       headerInnerEl.appendChild(headerInnerContainerEl);
       headerEl.appendChild(headerInnerEl);
       me.gridEl.appendChild(headerEl);
@@ -3790,7 +3648,6 @@ Fancy.copyText = (text) => {
       me.headerInnerEl = headerInnerEl;
       me.headerEl = headerEl;
     }
-
     renderBody() {
       const me = this;
       const bodyEl = div(BODY);
@@ -3812,7 +3669,6 @@ Fancy.copyText = (text) => {
       me.bodyInnerEl = bodyInnerEl;
       me.bodyEl = bodyEl;
     }
-
     updateVisibleHeight(){
       const me = this;
       const store = me.store;
@@ -3827,14 +3683,13 @@ Fancy.copyText = (text) => {
         me.bodyInnerContainerEl.style.height = (store.getDataTotal() * me.rowHeight) + 'px';
       }
     }
-
     animatedRemoveDomRowById(id){
       const me = this;
       const rowEl = me.renderedRowsIdMap.get(id);
 
       if(rowEl){
         rowEl.style.opacity = 0;
-        setTimeout(()=>{
+        setTimeout(() => {
           rowEl.remove();
         }, 200);
       }
@@ -3842,19 +3697,15 @@ Fancy.copyText = (text) => {
       me.actualRowsIdSet.delete(id);
       me.renderedRowsIdMap.delete(id);
     }
-
     removeDomRowById(id){
       const me = this;
       const rowEl = me.renderedRowsIdMap.get(id);
 
-      if(rowEl){
-        rowEl.remove();
-      }
+      rowEl?.remove();
 
       me.actualRowsIdSet.delete(id);
       me.renderedRowsIdMap.delete(id);
     }
-
     prepareConfig(config) {
       const me = this;
       let rowGroups = [];
@@ -3917,13 +3768,11 @@ Fancy.copyText = (text) => {
         }
 
         config.columns.forEach(column => {
-          switch(column.type){
-            case 'order':
-              if((rowGroups.length || config.rowGroupBar) && config.rowGroupType !== 'column'){
-                console.error('Order column is not supported for row grouping with rowGroupType equals to "row"');
-                console.error('For order column use rowGroupType equals to "column"');
-              }
-              break;
+          if(column.type === 'order'){
+            if((rowGroups.length || config.rowGroupBar) && config.rowGroupType !== 'column'){
+              console.error('FG-Grid: Order column is not supported for row grouping with rowGroupType equals to "row"');
+              console.error('FG-Grid: For order column use rowGroupType equals to "column"');
+            }
           }
 
           me.prepareColumn(column, config.defaults);
@@ -3966,11 +3815,9 @@ Fancy.copyText = (text) => {
 
       return config;
     }
-
     initStore(config) {
       this.store = new Fancy.Store(config);
     }
-
     ons() {
       const me = this;
 
@@ -3983,13 +3830,11 @@ Fancy.copyText = (text) => {
       me.headerInnerContainerEl.addEventListener('click', me.onHeaderCellClick.bind(this));
       me.headerInnerContainerEl.addEventListener('mousedown', me.onHeaderMouseDown.bind(this));
     }
-
     getTotalColumnsWidth() {
-      return this.columns.reduce((sum, column)=>{
-        return sum + (column.hidden? 0: column.width)
+      return this.columns.reduce((sum, column) => {
+        return sum + (column.hidden? 0: column.width);
       }, 0);
     }
-
     reCalcColumnsPositions(){
       const me = this;
 
@@ -3999,7 +3844,6 @@ Fancy.copyText = (text) => {
         return left + (column.hidden? 0: column.width);
       }, 0);
     }
-
     checkInitialSize(){
       const me = this;
 
@@ -4015,7 +3859,6 @@ Fancy.copyText = (text) => {
         me.containerEl.style.height = me.initialHeight + 'px';
       }
     }
-
     checkSize(){
       const me = this;
       const rect = me.containerEl.getBoundingClientRect();
@@ -4033,7 +3876,6 @@ Fancy.copyText = (text) => {
 
       return changed;
     }
-
     setData(data){
       const me = this;
       const store = me.store;
@@ -4045,7 +3887,6 @@ Fancy.copyText = (text) => {
       me.reRender();
       delete store.$dontDropExpandedGroups;
     }
-
     reRender(){
       const me = this;
       const store = me.store;
@@ -4068,21 +3909,13 @@ Fancy.copyText = (text) => {
         store.memorizePrevRowIndexesMap();
       }
     }
-
     destroy(){
-      const me = this;
-
-      me.touchScroller.destroy();
-
-      me.gridEl.remove();
+      this.touchScroller.destroy();
+      this.gridEl.remove();
     }
-
     onBodyCellClick(){
-      const me = this;
-
-      me.hideActiveEditor();
+      this.hideActiveEditor();
     }
-
     remove(rows){
       const me = this;
       const store = me.store;
@@ -4116,6 +3949,7 @@ Fancy.copyText = (text) => {
         }
       }
 
+      const passedGroupForAgUpdate = {};
       rowGroups.forEach((items, groupValue) => {
         const splitted = groupValue.split('/');
 
@@ -4181,17 +4015,12 @@ Fancy.copyText = (text) => {
             }
           }
 
-          store.agGroupUpdateData(name, dataItemsToRemove);
+          if(!passedGroupForAgUpdate[name]){
+            store.agGroupUpdateData(name, dataItemsToRemove);
+            passedGroupForAgUpdate[name] = true;
+          }
         }
       });
-
-      /*
-      if(!me.$isOriginalDataIndexesSet){
-        me.data.forEach((item, index) => {
-          item.originalDataRowIndex = index;
-        });
-      }
-       */
 
       const rowIndexes = dataItemsToRemove.sort((a, b) => a.originalDataRowIndex - b.originalDataRowIndex);
       rowIndexes.forEach((item, index) => {
@@ -4199,15 +4028,6 @@ Fancy.copyText = (text) => {
       });
       delete store.$isOriginalDataIndexesSet;
 
-      /*
-      const rowIndexes = dataItemsToRemove.sort((a,b) => a.originalRowIndex - b.originalRowIndex);
-      rowIndexes.forEach((item,index) => {
-        me.store.data.splice(item.originalRowIndex - index, 1)
-      });
-      */
-
-      // TODO: Here there is problem and bug.
-      // For cases when remove item in hidden group
       if(store.displayedData?.length){
         // Filter items that are in collapsed groups
         const displayedItemsToRemove = itemsToRemove.filter(item => {
@@ -4240,7 +4060,6 @@ Fancy.copyText = (text) => {
 
       me.updateOrderColumn();
     }
-
     add(items, position){
       const me = this;
       const store = me.store;
@@ -4278,7 +4097,6 @@ Fancy.copyText = (text) => {
 
       me.updateOrderColumn();
     }
-
     setById(id, index, value){
       const me = this;
       const store = me.store;
@@ -4306,11 +4124,11 @@ Fancy.copyText = (text) => {
           cellStyle.transition = 'background-color 2000ms';
           cellStyle.backgroundColor = flashChangesColors[store.selectedItemsMap.has(id)?1:0];
 
-          setTimeout(()=>{
+          setTimeout(() => {
             cellStyle.backgroundColor = '';
           });
 
-          setTimeout(()=>{
+          setTimeout(() => {
             cellStyle.transition = '';
             cellStyle.backgroundColor = '';
           }, 2000);
@@ -4334,7 +4152,6 @@ Fancy.copyText = (text) => {
 
       row && me.rowCellsUpdateWithColumnRender(row, me.flashChanges);
     }
-
     getItemById(id) {
       return this.store.idItemMap.get(id);
     }
@@ -4342,11 +4159,9 @@ Fancy.copyText = (text) => {
 
   window.Grid = Grid;
   Fancy.Grid = Grid;
-
 })();
 
-(()=>{
-
+(() => {
   const  {
     ANIMATE_CELLS_POSITION,
     CELL,
@@ -4358,7 +4173,6 @@ Fancy.copyText = (text) => {
   /**
    * @mixin GridMixinColumn
    */
-
   const GridMixinColumn = {
     showColumn(column, animate){
       const me = this;
@@ -4382,12 +4196,11 @@ Fancy.copyText = (text) => {
         }, 300);
       }
     },
-
     hideColumn(column, animate){
       const me = this;
 
       if(!me.isPossibleToHideColumn()){
-        console.warn('Hiding column was prevented because it requires at least 1 visible column');
+        console.warn('FG-Grid: Hiding column was prevented because it requires at least 1 visible column');
         return false;
       }
 
@@ -4418,14 +4231,12 @@ Fancy.copyText = (text) => {
         columnIndex: columnsToRemove[0]
       };
     },
-
     isPossibleToHideColumn(){
       const me = this;
       const numOfHiddenColumns = me.columns.reduce((sum, column) => sum + (column.hidden? 1: 0), 0);
 
       return me.columns.length - numOfHiddenColumns !== 1;
     },
-
     removeColumn(column){
       const me = this;
 
@@ -4446,7 +4257,6 @@ Fancy.copyText = (text) => {
       me.reSetVisibleBodyColumnsIndex();
       me.reCalcColumnsPositions();
     },
-
     clearColumFromLinks(column){
       delete column.elFilter;
       delete column.elMenu;
@@ -4457,17 +4267,12 @@ Fancy.copyText = (text) => {
       delete column.filterField;
       delete column.headerCellEl;
     },
-
     getColumn(index){
-      const me = this;
-
-      return me.columns.find(column => column.index === index);
+      return this.columns.find(column => column.index === index);
     },
-
     getColumnById(id){
       return this.columnIdsMap.get(id);
     },
-
     getNextVisibleColumnIndex(index){
       const me = this;
 
@@ -4478,7 +4283,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     getPrevVisibleColumnIndex(index){
       const me = this;
 
@@ -4489,7 +4293,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     getAutoColumnIdSeed(){
       const me = this;
 
@@ -4501,10 +4304,8 @@ Fancy.copyText = (text) => {
 
       return me.columnIdSeed;
     },
-
     generateColumnIds(columns, updateMaps = true){
       const me = this;
-
       const columnIdsMap = new Map();
       const columnIdsSeedMap = new Map();
 
@@ -4544,9 +4345,8 @@ Fancy.copyText = (text) => {
       return {
         columnIdsMap,
         columnIdsSeedMap
-      }
+      };
     },
-
     setColumns(columns){
       const me = this;
 
@@ -4573,7 +4373,6 @@ Fancy.copyText = (text) => {
         delete me.animatingColumnsPosition;
       }, 300);
     },
-
     renderMissedCells(){
       const me = this;
       let columnStart = me.scroller.columnViewStart;
@@ -4585,7 +4384,7 @@ Fancy.copyText = (text) => {
         const column = me.columns[i];
 
         if(column.hidden){
-          continue
+          continue;
         }
 
         if(!column.headerCellEl){
@@ -4595,7 +4394,6 @@ Fancy.copyText = (text) => {
 
       me.addColumnCells(columnIndexes);
     },
-
     terminateNotExistedCells(){
       const me = this;
       const cells = me.headerEl.querySelectorAll(`.${HEADER_CELL}`);
@@ -4621,7 +4419,6 @@ Fancy.copyText = (text) => {
         column && !isColumnVisible && me.clearColumFromLinks(column);
       });
     },
-
     $setColumns(newColumns){
       const me = this;
       const columnsToAdd = new Map();
@@ -4645,7 +4442,7 @@ Fancy.copyText = (text) => {
       });
 
       const newColumnsOrderMap = new Map();
-      newColumns.forEach((newColumn, index)=>{
+      newColumns.forEach((newColumn, index) => {
         if(!me.columnIdsMap.has(newColumn.id)){
           me.prepareColumn(newColumn, me.defaults);
 
@@ -4685,7 +4482,6 @@ Fancy.copyText = (text) => {
 
       me.columns = orderedColumns;
     },
-
     prepareColumn(column, defaults = {}){
       const me = this;
       const store = me.store;
@@ -4714,14 +4510,14 @@ Fancy.copyText = (text) => {
             sortable: false,
             render: Fancy.render.order,
             width: column.width || 45,
-            resizable: false,
             menu: false,
-            draggable: false
+            draggable: false,
+            filter: false
           });
           me.columnOrder = column;
 
           if(store?.rowGroups.length || me?.rowGroupBar){
-            console.error('Order column is not supported for row grouping');
+            console.error('FG-Grid: Order column is not supported for row grouping');
           }
           break;
       }
@@ -4747,10 +4543,9 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Grid.prototype, GridMixinColumn);
-
 })();
 
-(()=> {
+(() => {
   const {
     ANIMATE_CELLS_POSITION,
     HIDDEN,
@@ -4793,7 +4588,6 @@ Fancy.copyText = (text) => {
     onHeaderMouseDown(event) {
       event.preventDefault();
     },
-
     onHeaderCellClick(event) {
       const me = this;
       const cellLabel = event.target.closest(`.${HEADER_CELL_LABEL}`);
@@ -4849,7 +4643,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     renderVisibleHeaderCells() {
       const me = this;
 
@@ -4868,7 +4661,6 @@ Fancy.copyText = (text) => {
         me.headerInnerContainerEl.appendChild(cell);
       }
     },
-
     appendHeaderCell(columnIndex) {
       const me = this;
       const rowEl = me.headerInnerContainerEl;
@@ -4876,7 +4668,6 @@ Fancy.copyText = (text) => {
 
       rowEl.appendChild(cell);
     },
-
     createHeaderCell(columnIndex) {
       const me = this;
       const column = me.columns[columnIndex];
@@ -4886,8 +4677,13 @@ Fancy.copyText = (text) => {
       });
       const value = column.title;
 
-      if(column.sortable && column.type){
-        cell.classList.add(HEADER_CELL_SORTABLE);
+      if(column.sortable){
+        if(column.type){
+          cell.classList.add(HEADER_CELL_SORTABLE);
+        } else {
+          console.warn('FG-Grid: Column has property sortable=true, but does not have type');
+          console.warn('FG-Grid: Add type for column to enable sorting', column);
+        }
       }
 
       if(column.resizable === false){
@@ -4969,13 +4765,8 @@ Fancy.copyText = (text) => {
 
       cell.appendChild(label);
 
-      if(column.menu !== false){
-        cell.appendChild(elMenu);
-      }
-
-      if(column.resizable !== false){
-        cell.appendChild(cellResize);
-      }
+      column.menu !== false && cell.appendChild(elMenu);
+      column.resizable !== false && cell.appendChild(cellResize);
 
       cell.addEventListener('mousedown', me.onCellMouseDown.bind(this));
 
@@ -4983,7 +4774,6 @@ Fancy.copyText = (text) => {
 
       return cell;
     },
-
     onCellMouseDown(event){
       const me = this;
       const isTargetHeaderCellMenu = event.target.closest(`.${HEADER_CELL_MENU}`);
@@ -5014,7 +4804,7 @@ Fancy.copyText = (text) => {
         delete me.columnDragMouseDownColumn;
         delete me.debouceColumnDraggingFn;
 
-        setTimeout(()=>{
+        setTimeout(() => {
           if(me.activeRowGroupBarItemEl){
             me.activeRowGroupBarItemEl.classList.remove(ROW_GROUP_BAR_ITEM_ACTIVE);
           }
@@ -5026,7 +4816,7 @@ Fancy.copyText = (text) => {
           if(me.$requiresReSetGroupColumn && me.rowGroupType === 'column'){
             delete me.$requiresReSetGroupColumn;
             if(me.rowGroupBarItemColumns.length === 1){
-              setTimeout(()=>{
+              setTimeout(() => {
                 let indexToAddColumn = 0;
                 me.$rowGroupColumn.hidden = true;
                 if(me.columns[0].type === 'order'){
@@ -5058,7 +4848,6 @@ Fancy.copyText = (text) => {
         once: true
       });
     },
-
     onResizeMouseDown(event) {
       const me = this;
       const gridEl = me.gridEl;
@@ -5098,7 +4887,6 @@ Fancy.copyText = (text) => {
         bodyEl.style.cursor = 'ew-resize';
       });
     },
-
     onResizeMouseUp() {
       const me = this;
 
@@ -5115,7 +4903,6 @@ Fancy.copyText = (text) => {
       });
       document.body.removeEventListener('mousemove', me.onResizeMouseMoveFn);
     },
-
     onResizeMouseMove(event) {
       const me = this;
       const deltaX = event.pageX - me.resizeDownX;
@@ -5136,7 +4923,6 @@ Fancy.copyText = (text) => {
         me.updateWidth();
       });
     },
-
     updateHeaderCells() {
       const me = this;
 
@@ -5176,7 +4962,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     showHeaderCellMenuList(event, column) {
       const me = this;
       const elMenuRect = column.elMenu.getBoundingClientRect();
@@ -5202,8 +4987,8 @@ Fancy.copyText = (text) => {
 
       column.elMenuList = el;
       document.body.appendChild(el);
-      setTimeout(()=>{
-        el.style.opacity = `1`;
+      setTimeout(() => {
+        el.style.opacity = '1';
         me.activeElMenuList = el;
       }, 0);
 
@@ -5212,7 +4997,6 @@ Fancy.copyText = (text) => {
       me.onDocClickForHeaderCellMenuFn = me.onDocClickForHeaderCellMenu.bind(this, column);
       document.addEventListener('mousedown', me.onDocClickForHeaderCellMenuFn);
     },
-
     onClickHeaderMenuItem(e) {
       const me = this;
       const menuItem = e.target.closest(`.${COLUMNS_MENU_ITEM}`);
@@ -5230,7 +5014,7 @@ Fancy.copyText = (text) => {
             e.preventDefault();
           }
 
-          console.warn('Hiding column was prevented because it requires at least 1 visible column');
+          console.warn('FG-Grid: Hiding column was prevented because it requires at least 1 visible column');
 
           return;
         }
@@ -5254,15 +5038,11 @@ Fancy.copyText = (text) => {
         }, 300);
       }
     },
-
     onDocClickForHeaderCellMenu(column, e) {
-      const me = this;
-
       if (!e.target.closest(`.${COLUMNS_MENU}`) && !e.target.closest(`.${HEADER_CELL_MENU}`)) {
-        me.destroyHeaderCellMenuList(column);
+        this.destroyHeaderCellMenuList(column);
       }
     },
-
     destroyHeaderCellMenuList(column) {
       const me = this;
 
@@ -5283,7 +5063,6 @@ Fancy.copyText = (text) => {
       }
       delete me.activeElMenuList;
     },
-
     reSetVisibleHeaderColumnsIndex(){
       const me = this;
       const columnsViewRange = me.scroller.columnsViewRange;
@@ -5310,10 +5089,9 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Grid.prototype, GridMixinHeader);
-
 })();
 
-(()=>{
+(() => {
   const {
     CELL,
     CELL_VALUE,
@@ -5369,7 +5147,6 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     appendCell(rowIndex, columnIndex) {
       const me = this;
       const item = me.store.getItemByRowIndex(rowIndex);
@@ -5388,156 +5165,152 @@ Fancy.copyText = (text) => {
 
       rowEl.appendChild(cell);
     },
+    createCell(rowIndex, columnIndex, allowActiveCellSet = true) {
+      const me = this;
+      const store = me.store;
+      const item = store.getItemByRowIndex(rowIndex);
+      const column = me.columns[columnIndex];
+      let value = item[column.index];
+      let cellInner;
+      const cell = div(CELL,{
+        width: column.width + 'px',
+        left: column.left + 'px'
+      });
+      const params = {
+        item,
+        column,
+        rowIndex,
+        columnIndex,
+        value,
+        cell
+      };
 
-    createCell(rowIndex, columnIndex) {
-        const me = this;
-        const store = me.store;
-        const item = store.getItemByRowIndex(rowIndex);
-        const column = me.columns[columnIndex];
-        let value = item[column.index];
-        let cellInner;
-        const cell = div(CELL,{
-          width: column.width + 'px',
-          left: column.left + 'px'
-        });
-        const params = {
-          item,
-          column,
-          rowIndex,
-          columnIndex,
-          value,
-          cell
-        };
+      if(column.$type === 'currency'){
+        column.currency && (params.currency = column.currency);
+        column.minDecimal !== undefined && (params.minDecimal = column.minDecimal);
+        column.maxDecimal !== undefined && (params.maxDecimal = column.maxDecimal);
+      }
 
-        if(column.$type === 'currency'){
-          column.currency && (params.currency = column.currency);
-          column.minDecimal !== undefined && (params.minDecimal = column.minDecimal);
-          column.maxDecimal !== undefined && (params.maxDecimal = column.maxDecimal);
+      cell.setAttribute('col-index', columnIndex);
+      cell.setAttribute('col-id', column.id);
+
+      if(allowActiveCellSet && me.activeCell && me.$preventActiveCellRender !== true && item.id === me.activeCellRowId && columnIndex === me.activeCellColumnIndex){
+        cell.classList.add(ACTIVE_CELL);
+        me.activeCellEl = cell;
+      }
+
+      if(column.cellStyle) {
+        let cellExtraStyles;
+        switch(typeof column.cellStyle){
+          case 'function':
+            cellExtraStyles = column.cellStyle(params) || {};
+            break;
+          case 'object':
+            cellExtraStyles = column.cellStyle;
+            break;
         }
 
-        cell.setAttribute('col-index', columnIndex);
-        cell.setAttribute('col-id', column.id);
-
-        if(me.activeCell && me.$preventActiveCellRender !== true && item.id === me.activeCellRowId && columnIndex === me.activeCellColumnIndex){
-          cell.classList.add(ACTIVE_CELL);
-          me.activeCellEl = cell;
+        for (const p in cellExtraStyles) {
+          cell.style[p] = cellExtraStyles[p];
         }
+      }
 
-        if(column.cellStyle) {
-          let cellExtraStyles;
-          switch(typeof column.cellStyle){
-            case 'function':
-              cellExtraStyles = column.cellStyle(params) || {};
-              break;
-            case 'object':
-              cellExtraStyles = column.cellStyle;
-              break;
+      if(column.cellCls){
+        if(typeof column.cellCls === 'string'){
+          cell.classList.add(column.cellCls);
+        } else if(Array.isArray(column.cellCls)){
+          cell.classList.add(...column.cellCls);
+        } else if(typeof column.cellCls === 'function'){
+          let cls = column.cellCls(params);
+          if(typeof cls === 'string'){
+            cls = [cls];
           }
 
-          for (const p in cellExtraStyles) {
-            cell.style[p] = cellExtraStyles[p];
-          }
+          cls && cell.classList.add(...cls);
+        }
+      }
+
+      if(column.cellClsRules){
+        for(const cls in column.cellClsRules){
+          const fn = column.cellClsRules[cls];
+
+          fn(params) && cell.classList.add(cls);
+        }
+      }
+
+      if(column.format){
+        value = column.format(params);
+      }
+
+      if(column.render){
+        cellInner = column.render(params);
+      } else {
+        cellInner = value;
+      }
+
+      if(column.$isRowGroupColumn || column.rowGroupIndent){
+        cell.classList.add(ROW_GROUP_VALUE_CELL);
+      }
+
+      if(column.checkboxSelection){
+        const wrapperEl = div(CELL_WRAPPER);
+
+        if(column.rowGroupIndent){
+          wrapperEl.style.setProperty('--grid-group-level', `${store.rowGroups.length + 1}`);
         }
 
-        if(column.cellCls){
-          if(typeof column.cellCls === 'string'){
-            cell.classList.add(column.cellCls);
-          } else if(Array.isArray(column.cellCls)){
-            cell.classList.add(...column.cellCls);
-          } else if(typeof column.cellCls === 'function'){
-            let cls = column.cellCls(params);
-            if(typeof cls === 'string'){
-              cls = [cls];
-            }
+        const checkBoxEl = me.generateRowGroupCheckBoxEl(item);
+        checkBoxEl.addEventListener('click', this.onRowCellSelectionClick.bind(this));
+        wrapperEl.appendChild(checkBoxEl);
 
-            if(cls){
-              cell.classList.add(...cls);
-            }
-          }
+        const valueEl = me.generateSimpleValueEl(cellInner);
+        wrapperEl.appendChild(valueEl);
+
+        cell.appendChild(wrapperEl);
+        cell.classList.add(CELL_SELECTION);
+      } else if(column.$isRowGroupColumn){
+        const wrapperEl = div(CELL_WRAPPER);
+
+        if(column.rowGroupIndent){
+          wrapperEl.style.setProperty('--grid-group-level', `${store.rowGroups.length}`);
         }
 
-        if(column.cellClsRules){
-          for(const cls in column.cellClsRules){
-            const fn = column.cellClsRules[cls];
+        const valueEl = span(CELL_VALUE);
 
-            fn(params) && cell.classList.add(cls);
-          }
+        if(cellInner === ''){
+          cellInner = '&nbsp;';
+        }
+        valueEl.innerHTML = cellInner ?? '&nbsp;';
+
+        wrapperEl.appendChild(valueEl);
+
+        cell.appendChild(wrapperEl);
+      } else if (cellInner !== undefined) {
+        if(cellInner === ''){
+          cellInner = '&nbsp;';
         }
 
-        if(column.format){
-          value = column.format(params);
-        }
+        cell.innerHTML = cellInner ?? '&nbsp;';
+      }
 
-        if(column.render){
-          cellInner = column.render(params);
-        } else {
-          cellInner = value;
-        }
+      if(me.activeCell){
+        cell.addEventListener('mousedown', me.onBodyCellMouseDown.bind(this));
+        if(me.selectingCells){
+          cell.addEventListener('mouseenter', me.onBodyCellMouseEnter.bind(this));
 
-        if(column.$isRowGroupColumn || column.rowGroupIndent){
-          cell.classList.add(ROW_GROUP_VALUE_CELL);
-        }
-
-        if(column.checkboxSelection){
-          const wrapperEl = div(CELL_WRAPPER);
-
-          if(column.rowGroupIndent){
-            wrapperEl.style.setProperty('--grid-group-level', `${store.rowGroups.length + 1}`);
-          }
-
-          const checkBoxEl = me.generateRowGroupCheckBoxEl(item);
-          checkBoxEl.addEventListener('click', this.onRowCellSelectionClick.bind(this));
-          wrapperEl.appendChild(checkBoxEl);
-
-          const valueEl = me.generateSimpleValueEl(cellInner);
-          wrapperEl.appendChild(valueEl);
-
-          cell.appendChild(wrapperEl);
-          cell.classList.add(CELL_SELECTION);
-        } else if(column.$isRowGroupColumn){
-          const wrapperEl = div(CELL_WRAPPER);
-
-          if(column.rowGroupIndent){
-            wrapperEl.style.setProperty('--grid-group-level', `${store.rowGroups.length}`);
-          }
-
-          const valueEl = span(CELL_VALUE);
-
-          if(cellInner === ''){
-            cellInner = '&nbsp;';
-          }
-          valueEl.innerHTML = cellInner ?? '&nbsp;';
-
-          wrapperEl.appendChild(valueEl);
-
-          cell.appendChild(wrapperEl);
-        } else if (cellInner !== undefined) {
-          if(cellInner === ''){
-            cellInner = '&nbsp;';
-          }
-
-          cell.innerHTML = cellInner ?? '&nbsp;';
-        }
-
-        if(me.activeCell){
-          cell.addEventListener('mousedown', me.onBodyCellMouseDown.bind(this));
-          if(me.selectingCells){
-            cell.addEventListener('mouseenter', me.onBodyCellMouseEnter.bind(this));
-
-            if(me.selectionCellsRange && cell){
-              requestAnimationFrame(()=> {
-                me.isCellInSelectedRange(cell) && cell.classList.add(CELL_SELECTED);
-              });
-            }
+          if(me.selectionCellsRange && cell){
+            requestAnimationFrame(() => {
+              me.isCellInSelectedRange(cell) && cell.classList.add(CELL_SELECTED);
+            });
           }
         }
+      }
 
-        column.editable && cell.addEventListener('dblclick', me.onBodyCellDBLClick.bind(this));
-        cell.addEventListener('click', me.onBodyCellClick.bind(this));
+      column.editable && cell.addEventListener('dblclick', me.onBodyCellDBLClick.bind(this));
+      cell.addEventListener('click', me.onBodyCellClick.bind(this));
 
-        return cell;
+      return cell;
     },
-
     createCellGroupTypeColumn(rowIndex, item, columnIndex) {
       const me = this;
       const column = me.columns[columnIndex];
@@ -5594,7 +5367,6 @@ Fancy.copyText = (text) => {
         return cell;
       }
     },
-
     createCellGroupTypeRow(rowIndex, item) {
       const cell = this.generateGroupCell(rowIndex, item);
 
@@ -5602,7 +5374,6 @@ Fancy.copyText = (text) => {
 
       return cell;
     },
-
     generateSimpleValueEl(cellInner){
       const valueEl = span(CELL_VALUE);
 
@@ -5613,7 +5384,6 @@ Fancy.copyText = (text) => {
 
       return valueEl;
     },
-
     generateGroupCell(rowIndex, item, column = {}){
       const me = this;
       const cell = div(ROW_GROUP_CELL);
@@ -5637,14 +5407,12 @@ Fancy.copyText = (text) => {
 
       return cell;
     },
-
     generateAmountEl(item){
       const amountEl = span(ROW_GROUP_CELL_AMOUNT);
       amountEl.innerHTML = ` (${item.amount})`;
 
       return amountEl;
     },
-
     generateValueEl(item, rowIndex){
       const displayGroupValue = item.$rowDisplayGroupValue;
       const valueEl = span(ROW_GROUP_CELL_VALUE);
@@ -5666,7 +5434,6 @@ Fancy.copyText = (text) => {
 
       return valueEl;
     },
-
     generateRowGroupExpanderEl(item){
       const svgChevronRight = Fancy.svg.chevronRight;
       const expanderEl = span([ROW_GROUP_CELL_EXPANDER, SVG_ITEM, SVG_CHEVRON_RIGHT]);
@@ -5677,7 +5444,6 @@ Fancy.copyText = (text) => {
 
       return expanderEl;
     },
-
     generateRowGroupCheckBoxEl(item){
       const selected = item.$selected || false;
       const checkboxEl = input(INPUT_CHECKBOX);
@@ -5690,7 +5456,6 @@ Fancy.copyText = (text) => {
 
       return checkboxEl;
     },
-
     generateRowGroupSelectionEl(item){
       const selectionEl = span(ROW_GROUP_CELL_SELECTION);
       const checkBoxEl = this.generateRowGroupCheckBoxEl(item);
@@ -5700,7 +5465,6 @@ Fancy.copyText = (text) => {
 
       return selectionEl;
     },
-
     removeColumnCells(columnIndexes = []) {
       const me = this;
 
@@ -5721,7 +5485,7 @@ Fancy.copyText = (text) => {
 
         me.renderedRowsIdMap.forEach(rowEl => {
           if (rowEl.classList.contains(ROW_GROUP)) {
-            return
+            return;
           }
 
           const cell = rowEl.querySelector(`[col-index="${columnIndex}"]`);
@@ -5730,12 +5494,11 @@ Fancy.copyText = (text) => {
         });
       });
     },
-
     renderRow(index, item, style = {}) {
       const me = this;
 
       if (!item) {
-        console.warn(`row ${index} does not exist`);
+        console.warn(`FG-Grid: row ${index} does not exist`);
         return;
       }
 
@@ -5757,9 +5520,7 @@ Fancy.copyText = (text) => {
 
       me.applyExtraRowStyles(rowEl, params);
 
-      if(item.$selected){
-        rowEl.classList.add(ROW_SELECTED);
-      }
+      item.$selected && rowEl.classList.add(ROW_SELECTED);
 
       rowEl.setAttribute('row-id', item.id);
       rowEl.setAttribute('row-index', index);
@@ -5781,7 +5542,6 @@ Fancy.copyText = (text) => {
 
       return rowEl;
     },
-
     applyExtraRowStyles(rowEl, params){
       const me = this;
 
@@ -5812,30 +5572,24 @@ Fancy.copyText = (text) => {
           for(const cls in me.rowClsRules){
             const fn = me.rowClsRules[cls];
 
-            if(fn(params)){
-              rowEl.classList.add(cls);
-            }
+            fn(params) && rowEl.classList.add(cls);
           }
         }
       }
     },
-
     renderRowGroup(index, item, style = {}) {
       const me = this;
       const rowGroupType = me.rowGroupType;
 
       if (!item) {
-        console.warn(`row ${index} does not exist`);
+        console.warn(`FG-Grid: row ${index} does not exist`);
         return;
       }
 
       const rowEl = div(ROW_GROUP, style);
 
       rowEl.classList.add(index % 2 === 1 ? ROW_ODD : ROW_EVEN);
-
-      if(item.$selected){
-        rowEl.classList.add(ROW_SELECTED);
-      }
+      item.$selected && rowEl.classList.add(ROW_SELECTED);
 
       rowEl.style.transform = `translateY(${index * me.rowHeight}px)`;
       rowEl.setAttribute('row-id', item.id);
@@ -5866,12 +5620,11 @@ Fancy.copyText = (text) => {
 
       return rowEl;
     },
-
     renderRowOnPrevPosition(item, smoothPositionAnimate) {
       const me = this;
 
       if (!item) {
-        console.warn(`row ${item.index} does not exist`);
+        console.warn(`FG-Grid: row ${item.index} does not exist`);
         return;
       }
 
@@ -5887,9 +5640,7 @@ Fancy.copyText = (text) => {
         positionY = prevIndex * me.rowHeight;
       }
 
-      if(item.$selected){
-        rowEl.classList.add(ROW_SELECTED);
-      }
+      item.$selected && rowEl.classList.add(ROW_SELECTED);
 
       const params = {
         rowIndex: index,
@@ -5911,7 +5662,7 @@ Fancy.copyText = (text) => {
         const column = me.columns[i];
 
         if (column.hidden) {
-          continue
+          continue;
         }
 
         const cell = me.createCell(index, i);
@@ -5922,7 +5673,6 @@ Fancy.copyText = (text) => {
       me.bodyInnerContainerEl.appendChild(rowEl);
       me.renderedRowsIdMap.set(item.id, rowEl);
     },
-
     updateCellPositions(columnIndex) {
       const me = this;
 
@@ -5938,7 +5688,7 @@ Fancy.copyText = (text) => {
         const column = me.columns[i];
 
         if (column.hidden) {
-          continue
+          continue;
         }
 
         if(!column.headerCellEl){
@@ -5955,7 +5705,7 @@ Fancy.copyText = (text) => {
       }
 
       // Update Body Cells
-      me.renderedRowsIdMap.forEach((rowEl, id) => {
+      me.renderedRowsIdMap.forEach(rowEl => {
         const cells = rowEl.querySelectorAll(`.${CELL}`);
         cells.forEach(cell => {
 
@@ -5979,7 +5729,6 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     renderVisibleRows() {
       const me = this;
       const startRow = me.scroller.getStartRow();
@@ -5993,7 +5742,7 @@ Fancy.copyText = (text) => {
         const item = me.store.getItemByRowIndex(i);
 
         if (!item) {
-          console.warn(`Item with index equals to ${i} does not exist`);
+          console.warn(`FG-Grid: Item with index equals to ${i} does not exist`);
           continue;
         }
 
@@ -6008,35 +5757,28 @@ Fancy.copyText = (text) => {
         me.actualRowsIdSet.add(item.id);
       }
     },
-
     terminateVisibleRows(){
-      const me = this;
-
-      me.renderedRowsIdMap.forEach((row, key) => {
-        me.removeDomRowById(key);
-      });
+      this.renderedRowsIdMap.forEach((row, key) => this.removeDomRowById(key));
     },
-
     // For smooth filtering
     fakeHideRow(item) {
       const me = this;
       const rowEl = me.renderedRowsIdMap.get(item.id);
 
       if (!rowEl) {
-        console.warn(`Row el for row index ${item.rowIndex} does not exist`);
+        console.warn(`FG-Grid: Row el for row index ${item.rowIndex} does not exist`);
         return;
       }
 
       rowEl.style.opacity = '0';
     },
-
     // For smooth animating
     fakeRowPosition(item) {
       const me = this;
       const rowEl = me.renderedRowsIdMap.get(item.id);
 
       if (!rowEl) {
-        console.warn(`Row el for row index ${item.rowIndex} does not exist`);
+        console.warn(`FG-Grid: Row el for row index ${item.rowIndex} does not exist`);
         return;
       }
 
@@ -6053,7 +5795,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     getSmoothPositionY(item, prevPosition) {
       const me = this;
       const bufferPosition = me.rowHeight * me.scroller.bufferRows;
@@ -6074,30 +5815,25 @@ Fancy.copyText = (text) => {
 
       return positionY;
     },
-
     updateRowPosition(item) {
       const me = this;
       const rowEl = me.renderedRowsIdMap.get(item.id);
 
       if (!rowEl) {
-        console.warn(`Row el for row index ${item.rowIndex} does not exist`);
+        console.warn(`FG-Grid: Row el for row index ${item.rowIndex} does not exist`);
         return;
       }
 
       rowEl.style.transform = `translateY(${item.rowIndex * me.rowHeight}px)`;
       rowEl.setAttribute('row-index', item.rowIndex);
     },
-
     removeNotNeededRows() {
       const me = this;
 
       me.renderedRowsIdMap.forEach((rowEl, id) => {
-        if (!me.actualRowsIdSet.has(id)) {
-          me.removeDomRowById(id);
-        }
+        !me.actualRowsIdSet.has(id) && me.removeDomRowById(id);
       });
     },
-
     onRowMouseEnter(event) {
       const me = this;
 
@@ -6111,11 +5847,9 @@ Fancy.copyText = (text) => {
         once: true
       });
     },
-
     onRowMouseLeave(event) {
       event.target.classList.remove(ROW_HOVER);
     },
-
     onRowGroupExpanderClick(event) {
       const me = this;
 
@@ -6133,18 +5867,10 @@ Fancy.copyText = (text) => {
         me.expand($rowGroupValue);
       }
     },
-
     updateRowGroupCellExpandedCls(group){
-      const me = this;
-      const cell = me.bodyEl.querySelector(`div[row-group="${group.replaceAll('-', '$').replaceAll('/', '-')}"] .${ROW_GROUP_CELL}`);
-
-      if (cell.classList.contains(ROW_GROUP_EXPANDED_CELL)) {
-        cell.classList.remove(ROW_GROUP_EXPANDED_CELL);
-      } else {
-        cell.classList.add(ROW_GROUP_EXPANDED_CELL);
-      }
+      const cell = this.bodyEl.querySelector(`div[row-group="${group.replaceAll('-', '$').replaceAll('/', '-')}"] .${ROW_GROUP_CELL}`);
+      cell.classList.toggle(ROW_GROUP_EXPANDED_CELL);
     },
-
     updateAllRowGroupCellsExtendedCls(){
       const me = this;
       const rows = me.bodyEl.querySelectorAll(`.${ROW_GROUP}`);
@@ -6163,7 +5889,6 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     reSetVisibleBodyColumnsIndex(from, to, oldOrders){
       const me = this;
       const cellsMap = {};
@@ -6198,16 +5923,16 @@ Fancy.copyText = (text) => {
       }
 
       for(let i = from;i <= to;i++){
-          const cells = me.bodyEl.querySelectorAll(`.${CELL}[col-index="${i}"]`);
-          cellsMap[i] = cells;
+        const cells = me.bodyEl.querySelectorAll(`.${CELL}[col-index="${i}"]`);
+        cellsMap[i] = cells;
 
-          if(me.rowGroupType === 'column'){
-            const cells = me.bodyEl.querySelectorAll(`.${ROW_GROUP_CELL}[col-index="${i}"]`);
+        if(me.rowGroupType === 'column'){
+          const cells = me.bodyEl.querySelectorAll(`.${ROW_GROUP_CELL}[col-index="${i}"]`);
 
-            if(cells.length){
-              cellsGroupMap[i] = cells;
-            }
+          if(cells.length){
+            cellsGroupMap[i] = cells;
           }
+        }
       }
 
       for(let i = from, j = 0;i <= to;i++, j++){
@@ -6223,14 +5948,11 @@ Fancy.copyText = (text) => {
         });
       }
     },
-
-    getCell(rowIndex, columnIndex){
-      const me = this;
-      const cell = me.bodyEl.querySelector(`div.${ROW}[row-index="${rowIndex}"] div.${CELL}[col-index="${columnIndex}"]`);
+    getCell(rowIndex, columnIndex) {
+      const cell = this.bodyEl.querySelector(`div.${ROW}[row-index="${rowIndex}"] div.${CELL}[col-index="${columnIndex}"]`);
 
       return cell;
     },
-
     updateOrderColumn(){
       const me = this;
 
@@ -6256,24 +5978,18 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Grid.prototype, GridMixinBody);
-
 })();
 
-(()=> {
-
+(() => {
   /**
    * @mixin GridMixinScroll
    */
-
   const GridMixinScroll = {
     initScroller() {
-      const me = this;
-
-      me.scroller = new Fancy.Scroller({
-        grid: me
+      this.scroller = new Fancy.Scroller({
+        grid: this
       });
     },
-
     onMouseWheel(event) {
       const me = this;
       const delta = 'wheelDelta' in event ? event.wheelDelta : event.deltaY;
@@ -6309,7 +6025,6 @@ Fancy.copyText = (text) => {
 
       me.debouceClearWheelScrollingFn();
     },
-
     onTouchScroll(event){
       const me = this;
       let changed = false;
@@ -6344,22 +6059,18 @@ Fancy.copyText = (text) => {
 
       me.debouceClearWheelScrollingFn();
     },
-
     clearWheelScrolling() {
       delete this.wheelScrolling;
     }
   };
 
   Object.assign(Grid.prototype, GridMixinScroll);
-
 })();
 
-(()=> {
-
+(() => {
   /**
    * @mixin GridMixinSort
    */
-
   const GridMixinSort = {
     sort(sortingColumn, dir = 'ASC', multi) {
       const me = this;
@@ -6462,7 +6173,7 @@ Fancy.copyText = (text) => {
         const item = me.store.getItemByRowIndex(i);
 
         if (!item) {
-          console.warn(`Item with index equals to ${i} does not exist`);
+          console.warn(`FG-Grid: Item with index equals to ${i} does not exist`);
         } else {
           if (!me.renderedRowsIdMap.has(item.id)) {
             me.renderRowOnPrevPosition(item, true);
@@ -6483,7 +6194,7 @@ Fancy.copyText = (text) => {
               itemsToRemove.push(item);
             }
 
-            // me.updateRowPosition(item);
+            //me.updateRowPosition(item);
             me.fakeRowPosition(item);
           });
 
@@ -6502,10 +6213,9 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Grid.prototype, GridMixinSort);
-
 })();
 
-(()=> {
+(() => {
   const {
     FILTER_BAR,
     FILTER_BAR_CELL,
@@ -6538,7 +6248,6 @@ Fancy.copyText = (text) => {
         me.filterBarInnerContainerEl.appendChild(cell);
       }
     },
-
     renderFilterBar() {
       const me = this;
 
@@ -6563,7 +6272,6 @@ Fancy.copyText = (text) => {
       me.filterBarInnerEl = filterBarInnerEl;
       me.filterBarEl = filterBarEl;
     },
-
     createFilterBarCell(columnIndex) {
       const me = this;
       const column = me.columns[columnIndex];
@@ -6585,27 +6293,24 @@ Fancy.copyText = (text) => {
           value = filter.value;
         }
 
-        const field = new Fancy.FilterField({
+        column.filterField = new Fancy.FilterField({
           renderTo: cell,
           onChange: me.onFilterFieldChange.bind(this),
           column,
           sign,
           value
         });
-
-        column.filterField = field;
       }
 
       column.filterCellEl = cell;
 
       return cell;
     },
-
     onFilterFieldChange(value, sign, column, signWasChanged) {
       const me = this;
 
       if(signWasChanged){
-        me.store.removeFilter(column);
+        me.store.removeFilter(column, undefined, false);
       }
 
       if(sign === '=' && value === ''){
@@ -6624,7 +6329,6 @@ Fancy.copyText = (text) => {
         me.filter(column, value, sign);
       }
     },
-
     appendFilterBarCell(columnIndex) {
       const me = this;
       const rowEl = me.filterBarInnerContainerEl;
@@ -6632,7 +6336,6 @@ Fancy.copyText = (text) => {
 
       rowEl.appendChild(cell);
     },
-
     clearFilter(column, sign) {
       const me = this;
       const store = me.store;
@@ -6666,10 +6369,28 @@ Fancy.copyText = (text) => {
 
       me.updateAfterFilter();
     },
-
     filter(column, value, sign = '=') {
       const me = this;
       const store = me.store;
+
+      switch (value){
+        case '=':
+        case '<':
+        case '>':
+        case '!=':
+        case '==':
+        case '!==':
+        case '_a':
+        case 'a_':
+        case 'regex':
+        case 'empty':
+        case '!empty':
+        case '+':
+        case '-':
+          if(String(sign).length >=2 ){
+            console.warn('FG-Grid: It looks like in method filter, value and sign have wrong argument positions');
+          }
+      }
 
       if(store.rowGroups.length){
         me.beforeGrouping();
@@ -6677,21 +6398,21 @@ Fancy.copyText = (text) => {
         me.afterGrouping();
         me.updateRowGroupAmount();
         me.updateHeaderCells();
+        me.filterBar && me.updateFilterBarCells();
         return;
       }
 
-      store.filter(column, value, sign);
+      store.filter(column, value, sign, me.filterBar === true);
       me.updateFiltersInColumns(column, value, sign);
       me.updateAfterFilter();
+      me.filterBar && me.updateFilterBarCells();
     },
-
     filterForRowGrouping(column, value, sign = '='){
       const me = this;
 
-      me.store.filterForRowGrouping(column, value, sign);
+      me.store.filterForRowGrouping(column, value, sign, me.filterBar === true);
       me.updateFiltersInColumns(column, value, sign);
     },
-
     updateFiltersInColumns(filterColumn, value, sign){
       this.columns.forEach(column => {
         if (column.id === filterColumn.id) {
@@ -6702,26 +6423,26 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     updateAfterFilter() {
       const me = this;
+      const scroller = me.scroller;
 
-      me.scroller.calcMaxScrollTop();
-      me.scroller.updateScrollTop();
-      me.scroller.calcViewRange();
-      me.scroller.setVerticalSize();
-      me.scroller.updateHorizontalScrollSize();
+      scroller.calcMaxScrollTop();
+      scroller.updateScrollTop();
+      scroller.calcViewRange();
+      scroller.setVerticalSize();
+      scroller.updateHorizontalScrollSize();
       me.updateVisibleHeight();
 
       me.renderVisibleRowsAfterFilter();
       me.store.memorizePrevRowIndexesMap();
       me.updateHeaderCells();
     },
-
     renderVisibleRowsAfterFilter() {
       const me = this;
-      const startRow = me.scroller.getStartRow();
-      const endRow = me.scroller.getEndRow();
+      const scroller = me.scroller;
+      const startRow = scroller.getStartRow();
+      const endRow = scroller.getEndRow();
 
       me.actualRowsIdSet = new Set();
 
@@ -6731,7 +6452,7 @@ Fancy.copyText = (text) => {
         const item = me.store.getItemByRowIndex(i);
 
         if (!item) {
-          console.warn(`Item with index equals to ${i} does not exist`);
+          console.warn(`FG-Grid: Item with index equals to ${i} does not exist`);
         } else {
           !me.renderedRowsIdMap.has(item.id) && me.renderRowOnPrevPosition(item, true);
           me.actualRowsIdSet.add(item.id);
@@ -6764,14 +6485,39 @@ Fancy.copyText = (text) => {
           }, 500);
         });
       });
+    },
+    updateFilterBarCells() {
+      const me = this;
+
+      let columnStart = me.scroller.columnViewStart,
+        columnEnd = me.scroller.columnViewEnd;
+
+      for (let i = columnStart; i <= columnEnd; i++) {
+        const column = me.columns[i];
+
+        if(column.hidden){
+          continue;
+        }
+
+        if (Object.entries(column.filters || {}).length) {
+          const filterField = column.filterField;
+          const filter = column.filters;
+
+          if(filterField.sign !== filter.sign){
+            if(!(filter.sign === '=' && filterField.sign === '')){
+              filterField.setSign(filter.sign);
+            }
+            filterField.setValue(filter.value, false);
+          }
+        }
+      }
     }
   };
 
   Object.assign(Grid.prototype, GridMixinFilter);
-
 })();
 
-(()=> {
+(() => {
   const {
     ROW_GROUP,
     ROW_GROUP_CELL_AMOUNT
@@ -6918,7 +6664,7 @@ Fancy.copyText = (text) => {
         const item = me.store.getItemByRowIndex(i);
 
         if (!item) {
-          console.warn(`Item with index equals to ${i} does not exist`);
+          console.warn(`FG-Grid: Item with index equals to ${i} does not exist`);
         } else {
           if (!me.renderedRowsIdMap.has(item.id)) {
             //me.renderRowOnPrevPosition(item, true);
@@ -7043,10 +6789,10 @@ Fancy.copyText = (text) => {
         });
       });
     },
-
     reConfigRowGroups(){
       const me = this;
       const store = me.store;
+      const scroller = me.scroller;
       let rowGroups = [];
 
       me.grouping = true;
@@ -7063,27 +6809,26 @@ Fancy.copyText = (text) => {
 
       store.reConfigRowGroups(rowGroups);
 
-      me.scroller.calcMaxScrollTop();
-      me.scroller.updateScrollTop();
-      me.scroller.calcViewRange();
-      me.scroller.setVerticalSize();
-      me.scroller.updateHorizontalScrollSize();
+      scroller.calcMaxScrollTop();
+      scroller.updateScrollTop();
+      scroller.calcViewRange();
+      scroller.setVerticalSize();
+      scroller.updateHorizontalScrollSize();
       me.updateVisibleHeight();
 
-      me.scroller.calcVisibleRows();
+      scroller.calcVisibleRows();
 
       me.renderVisibleRows();
-      me.store.memorizePrevRowIndexesMap();
+      store.memorizePrevRowIndexesMap();
 
       me.grouping = false;
     }
   };
 
   Object.assign(Grid.prototype, GridMixinRowGroup);
-
 })();
 
-(()=> {
+(() => {
   const {
     COLUMN_DRAGGING,
     ROW_GROUP_BAR,
@@ -7107,7 +6852,6 @@ Fancy.copyText = (text) => {
   /**
    * @mixin GridMixinRowGroupBar
    */
-
   const GridMixinRowGroupBar = {
     renderRowGroupBar() {
       const me = this;
@@ -7134,7 +6878,6 @@ Fancy.copyText = (text) => {
 
       me.renderRowGroupBarItems();
     },
-
     renderRowGroupBarItems(){
       const me = this;
 
@@ -7145,20 +6888,14 @@ Fancy.copyText = (text) => {
       });
       delete me.activeRowGroupBarItemEl;
     },
-
-    // Syntactic mouseenter because cursor is over dragging cell
+    // Syntactic mouseenter because the cursor is over dragging cell
     onRowGroupBarMouseEnter(){
-      const me = this;
-
-      me.addGroupInBar(me.columnDragging.column);
+      this.addGroupInBar(this.columnDragging.column);
     },
-
     addGroupInBar(column, isItemActive = true){
       const me = this;
       const rowGroupBarItemEl = me.generateRowGroupBarItemEl(column);
-      if(isItemActive){
-        rowGroupBarItemEl.classList.add(ROW_GROUP_BAR_ITEM_ACTIVE);
-      }
+      isItemActive && rowGroupBarItemEl.classList.add(ROW_GROUP_BAR_ITEM_ACTIVE);
 
       me.activeRowGroupBarItemEl = rowGroupBarItemEl;
       me.rowGroupBarItems = me.rowGroupBarItems || [];
@@ -7176,7 +6913,6 @@ Fancy.copyText = (text) => {
 
       me.rowGroupBarEmptyTextEl.style.setProperty('display', 'none');
     },
-
     generateRowGroupBarItemEl(column){
       const me = this;
 
@@ -7215,7 +6951,6 @@ Fancy.copyText = (text) => {
 
       return containerEl;
     },
-
     onRowGroupBarItemDragElMouseDown(event){
       const me = this;
       const groupItemEl = event.target.closest(`.${ROW_GROUP_BAR_ITEM_CONTAINER}`);
@@ -7224,10 +6959,7 @@ Fancy.copyText = (text) => {
 
       groupItemEl.classList.add(ROW_GROUP_BAR_ITEM_ACTIVE);
       me.activeRowGroupBarItemEl = groupItemEl;
-
-      if(me.isEditing){
-        me.hideActiveEditor();
-      }
+      me.isEditing && me.hideActiveEditor();
 
       me.columnDragging = {
         column,
@@ -7240,7 +6972,6 @@ Fancy.copyText = (text) => {
       };
 
       me.gridEl.classList.add(COLUMN_DRAGGING);
-
       me.onColumnDragMouseMoveFn = me.onColumnDragMouseMove.bind(this);
       document.body.addEventListener('mousemove', me.onColumnDragMouseMoveFn);
       document.addEventListener('mouseup', () => {
@@ -7256,7 +6987,7 @@ Fancy.copyText = (text) => {
           me.showColumn(columnDragging.column, true);
           //me.onRowGroupBarMouseLeave(event);
           me.removeGroupInBar(columnDragging.column);
-          setTimeout(()=>{
+          setTimeout(() => {
             me.reConfigRowGroups();
 
             if(me.store.rowGroups.length === 0 && me.$rowGroupColumn){
@@ -7267,7 +6998,7 @@ Fancy.copyText = (text) => {
           me.activeRowGroupBarItemEl.classList.remove(ROW_GROUP_BAR_ITEM_ACTIVE);
 
           if(changedRowGroupItemOrderIndex !== undefined && changedRowGroupItemOrderIndex !== originalRowGroupItemOrderIndex){
-            setTimeout(()=>{
+            setTimeout(() => {
               me.reConfigRowGroups();
             }, 1);
           }
@@ -7284,17 +7015,15 @@ Fancy.copyText = (text) => {
         once: true
       });
     },
-
     // Syntactic mouse leave because cursor is over dragging cell
     onRowGroupBarMouseLeave(){
       this.removeGroupInBar(this.columnDragging.column);
     },
-
     removeGroupInBar(column){
       const me = this;
 
       if(column){
-        const columnIndex = me.rowGroupBarItemColumns.findIndex((item)=>item.id === column.id);
+        const columnIndex = me.rowGroupBarItemColumns.findIndex((item) => item.id === column.id);
         const prevGroupItem = me.rowGroupBarItems.splice(columnIndex, 1)[0];
 
         me.rowGroupBarItemColumns.splice(columnIndex, 1);
@@ -7313,7 +7042,6 @@ Fancy.copyText = (text) => {
         me.rowGroupBarEmptyTextEl.style.setProperty('display', '');
       }
     },
-
     onRowGroupBarItemRemoveClick(event){
       const me = this;
       const groupItemEl = event.target.closest(`.${ROW_GROUP_BAR_ITEM_CONTAINER}`);
@@ -7341,17 +7069,13 @@ Fancy.copyText = (text) => {
         me.removeColumn(me.$rowGroupColumn);
       }
     },
-
     reSetRowGroupOrderIndex(){
-      const me = this;
-
-      me.rowGroupBarItems.forEach((item, index) => {
+      this.rowGroupBarItems.forEach((item, index) => {
         if(item.getAttribute('row-group-order-index') !== String(index)){
           item.setAttribute('row-group-order-index', index);
         }
       });
     },
-
     getRowGroupBarElRect() {
       const barRect = this.rowGroupBarEl.getBoundingClientRect();
 
@@ -7360,7 +7084,7 @@ Fancy.copyText = (text) => {
         y: barRect.y,
         bottomX: barRect.x + barRect.width,
         rightY: barRect.y + barRect.height
-      }
+      };
     },
 
     getRowGroupBarItemsRect(){
@@ -7404,10 +7128,9 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Grid.prototype, GridMixinRowGroupBar);
-
 })();
 
-(()=> {
+(() => {
   const {
     CELL,
     CELL_SELECTION,
@@ -7425,7 +7148,6 @@ Fancy.copyText = (text) => {
   /**
    * @mixin GridMixinSelection
    */
-
   const GridMixinSelection = {
     onRowCellSelectionClick(event) {
       const me = this;
@@ -7441,22 +7163,11 @@ Fancy.copyText = (text) => {
       const group = item.$rowGroupValue;
 
       store.selectRowItem(item, selected);
+      row.classList[selected? 'add' : 'remove' ](ROW_SELECTED);
 
-      if(selected){
-        row.classList.add(ROW_SELECTED);
-      } else {
-        row.classList.remove(ROW_SELECTED);
-      }
-
-      if(column.headerCheckboxSelection){
-       me.updateHeaderCheckboxSelection(column);
-      }
-
-      if(group){
-        me.updateRowGroupRowsAndCheckBoxes();
-      }
+      column.headerCheckboxSelection && me.updateHeaderCheckboxSelection(column);
+      group && me.updateRowGroupRowsAndCheckBoxes();
     },
-
     selectRow(cell){
       const me = this;
       const columnIndex = Number(cell.getAttribute('col-index'));
@@ -7470,26 +7181,11 @@ Fancy.copyText = (text) => {
       const rowCheckBoxes = row.querySelectorAll(`div.${CELL_SELECTION} input.${INPUT_CHECKBOX}`);
 
       store.selectRowItem(item, selected);
+      row.classList[selected?'add':'remove'](ROW_SELECTED);
+      rowCheckBoxes.forEach(checkBox => checkBox.checked = selected);
 
-      if(selected){
-        row.classList.add(ROW_SELECTED);
-        rowCheckBoxes.forEach(checkBox => {
-          checkBox.checked = true;
-        });
-      } else {
-        row.classList.remove(ROW_SELECTED);
-        rowCheckBoxes.forEach(checkBox => {
-          checkBox.checked = false;
-        });
-      }
-
-      if(column.headerCheckboxSelection){
-        me.updateHeaderCheckboxSelection(column);
-      }
-
-      if(group){
-        me.updateRowGroupRowsAndCheckBoxes();
-      }
+      column.headerCheckboxSelection && me.updateHeaderCheckboxSelection(column);
+      group && me.updateRowGroupRowsAndCheckBoxes();
     },
 
     onRowGroupCellSelectionClick(event){
@@ -7503,12 +7199,7 @@ Fancy.copyText = (text) => {
       const group = item.$rowGroupValue;
 
       store.selectGroupRowItems(item, selected);
-
-      if(selected){
-        row.classList.add(ROW_SELECTED);
-      } else {
-        row.classList.remove(ROW_SELECTED);
-      }
+      row.classList[selected?'add':'remove'](ROW_SELECTED);
 
       me.updateHeaderCheckboxesSelection();
 
@@ -7520,17 +7211,9 @@ Fancy.copyText = (text) => {
         }
 
         const childRowCheckBox = childRow.querySelector(`.${INPUT_CHECKBOX}`);
-
-        if(selected){
-          childRow.classList.add(ROW_SELECTED);
-          if(childRowCheckBox){
-            childRowCheckBox.checked = true;
-          }
-        } else {
-          childRow.classList.remove(ROW_SELECTED);
-          if(childRowCheckBox){
-            childRowCheckBox.checked = false;
-          }
+        childRow.classList[selected?'add':'remove'](ROW_SELECTED);
+        if(childRowCheckBox){
+          childRowCheckBox.checked = selected;
         }
       });
 
@@ -7539,7 +7222,6 @@ Fancy.copyText = (text) => {
         me.updateRowsAndCheckBoxes();
       }
     },
-
     updateHeaderCheckboxesSelection(){
       const me = this;
 
@@ -7550,7 +7232,6 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     updateRowGroupRowsAndCheckBoxes(){
       const me = this;
       const store = me.store;
@@ -7584,7 +7265,6 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     updateRowsAndCheckBoxes(){
       const me = this;
       const store = me.store;
@@ -7593,18 +7273,17 @@ Fancy.copyText = (text) => {
         const itemId = row.getAttribute('row-id');
         const item = store.idItemMap.get(itemId);
         if(!item){
-          console.error(`store.idItemMap does not contain ${itemId}`);
+          console.error(`FG-Grid: store.idItemMap does not contain ${itemId}`);
         }
         const selected = item.$selected;
         const checkBoxEl = row.querySelector(`.${CELL_SELECTION} .${INPUT_CHECKBOX}`);
+        row.classList[selected?'add':'remove'](ROW_SELECTED);
 
         if(selected){
-          row.classList.add(ROW_SELECTED);
           if(checkBoxEl){
             checkBoxEl.checked = true;
           }
         } else {
-          row.classList.remove(ROW_SELECTED);
           if(checkBoxEl){
             checkBoxEl.indeterminate = false;
             checkBoxEl.checked = false;
@@ -7612,7 +7291,6 @@ Fancy.copyText = (text) => {
         }
       });
     },
-
     onBodyCellMouseDown(event) {
       const me = this;
       const target = event.target;
@@ -7626,9 +7304,9 @@ Fancy.copyText = (text) => {
       me.active = true;
 
       if(me.activeCell){
-        const setActivateCell = ()=>{
+        const setActivateCell = () => {
           me.setActiveCell(cell);
-          requestAnimationFrame(()=> {
+          requestAnimationFrame(() => {
             document.addEventListener('mousedown', (event) => {
               if (!event.target.closest(`div.${BODY}`)) {
                 me.clearActiveCell();
@@ -7642,7 +7320,7 @@ Fancy.copyText = (text) => {
         };
 
         if(target.getAttribute('type') === 'checkbox'){
-          target.addEventListener('click', ()=>{
+          target.addEventListener('click', () => {
             setActivateCell();
           }, {
             once: true
@@ -7655,14 +7333,13 @@ Fancy.copyText = (text) => {
 
       if(me.selectingCells){
         me.isSelectingCells = true;
-        document.addEventListener('mouseup', ()=>{
+        document.addEventListener('mouseup', () => {
           delete me.isSelectingCells;
         }, {
           once: true
         });
       }
     },
-
     onBodyCellMouseEnter(event){
       const me = this;
       const target = event.target;
@@ -7683,22 +7360,22 @@ Fancy.copyText = (text) => {
       me.generateCellsSelectionRange();
       me.selectCellsFromRange();
     },
-
     setShiftCellUp(){
       const me = this;
+      const store = me.store;
 
       if(!me.activeCell || me.activeCellColumnIndex === undefined || me.activeCellRowId === undefined){
         return;
       }
 
-      const secondActiveCellRowIndex = me.store.idRowIndexesMap.get(me.secondActiveCellRowId);
-      const prevRowIndex = grid.store.getPrevVisibleRowIndex(secondActiveCellRowIndex);
+      const secondActiveCellRowIndex = store.idRowIndexesMap.get(me.secondActiveCellRowId);
+      const prevRowIndex = store.getPrevVisibleRowIndex(secondActiveCellRowIndex);
 
       if(prevRowIndex === undefined){
         return;
       }
 
-      const itemId = grid.store.getItemByRowIndex(prevRowIndex).id;
+      const itemId = store.getItemByRowIndex(prevRowIndex).id;
 
       me.secondActiveCell = me.getCell(prevRowIndex, me.secondActiveCellColumnIndex);
       me.secondActiveCellRowId = itemId;
@@ -7708,22 +7385,22 @@ Fancy.copyText = (text) => {
       me.generateCellsSelectionRange();
       me.selectCellsFromRange();
     },
-
     setShiftCellDown(){
       const me = this;
+      const store = me.store;
 
       if(!me.activeCell || me.activeCellColumnIndex === undefined || me.activeCellRowId === undefined){
         return;
       }
 
-      const secondActiveCellRowIndex = me.store.idRowIndexesMap.get(me.secondActiveCellRowId);
-      const nextRowIndex = grid.store.getNextVisibleRowIndex(secondActiveCellRowIndex);
+      const secondActiveCellRowIndex = store.idRowIndexesMap.get(me.secondActiveCellRowId);
+      const nextRowIndex = store.getNextVisibleRowIndex(secondActiveCellRowIndex);
 
       if(nextRowIndex === undefined){
         return;
       }
 
-      const itemId = grid.store.getItemByRowIndex(nextRowIndex).id;
+      const itemId = store.getItemByRowIndex(nextRowIndex).id;
 
       me.secondActiveCell = me.getCell(nextRowIndex, me.secondActiveCellColumnIndex);
       me.secondActiveCellRowId = itemId;
@@ -7733,16 +7410,16 @@ Fancy.copyText = (text) => {
       me.generateCellsSelectionRange();
       me.selectCellsFromRange();
     },
-
     setShiftCellLeft(){
       const me = this;
+      const store = me.store;
 
       if(!me.activeCell || me.activeCellColumnIndex === undefined || me.activeCellRowId === undefined){
         return;
       }
 
       const columnIndex = me.getPrevVisibleColumnIndex(me.secondActiveCellColumnIndex);
-      const rowIndex = grid.store.idRowIndexesMap.get(me.secondActiveCellRowId);
+      const rowIndex = store.idRowIndexesMap.get(me.secondActiveCellRowId);
 
       if(columnIndex === undefined){
         return;
@@ -7756,16 +7433,16 @@ Fancy.copyText = (text) => {
       me.generateCellsSelectionRange();
       me.selectCellsFromRange();
     },
-
     setShiftCellRight(){
       const me = this;
+      const store = me.store;
 
       if(!me.activeCell || me.activeCellColumnIndex === undefined || me.activeCellRowId === undefined){
         return;
       }
 
       const columnIndex = me.getNextVisibleColumnIndex(me.secondActiveCellColumnIndex);
-      const rowIndex = grid.store.idRowIndexesMap.get(me.secondActiveCellRowId);
+      const rowIndex = store.idRowIndexesMap.get(me.secondActiveCellRowId);
 
       if(columnIndex === undefined){
         return;
@@ -7779,7 +7456,6 @@ Fancy.copyText = (text) => {
       me.generateCellsSelectionRange();
       me.selectCellsFromRange();
     },
-
     clearActiveCell(){
       const me = this;
 
@@ -7791,14 +7467,10 @@ Fancy.copyText = (text) => {
       delete me.activeCellColumnIndex;
       delete me.activeCellColumn;
       delete me.activeCellRowId;
-
-      // if(me.$signalActiveCell){
-      //   me.$signalControllerActiveCell.abort();
-      // }
     },
-
     setActiveCell(cell){
       const me = this;
+      const scroller = me.scroller;
       const row = cell.closest(`.${ROW}`);
 
       const prevRowIndex = Number(me.activeCellRowEl?.getAttribute('row-index'));
@@ -7808,9 +7480,7 @@ Fancy.copyText = (text) => {
       const itemId = row.getAttribute('row-id');
       const column = me.columns[columnIndex];
 
-      if(me.selectionCellsRange){
-        me.clearSelectionRange();
-      }
+      me.selectionCellsRange && me.clearSelectionRange();
 
       me.activeCellEl?.classList.remove(ACTIVE_CELL);
       me.activeCellEl = cell;
@@ -7832,26 +7502,26 @@ Fancy.copyText = (text) => {
       const rowTop = Fancy.getTranslateY(row);
       const rowRect = row.getBoundingClientRect();
 
-      if(rect.height + me.scroller.scrollTop < rowTop + rowRect.height){
+      if(rect.height + scroller.scrollTop < rowTop + rowRect.height){
         const delta = newRowIndex - prevRowIndex;
-        me.scroller.deltaChange(-rowRect.height * delta);
+        scroller.deltaChange(-rowRect.height * delta);
       }
-      else if(me.scroller.scrollTop > rowTop){
+      else if(scroller.scrollTop > rowTop){
         const delta = prevRowIndex - newRowIndex;
-        me.scroller.deltaChange(delta * rowRect.height);
+        scroller.deltaChange(delta * rowRect.height);
       }
-      else if(rect.width + me.scroller.scrollLeft < column.left + column.width){
-        const delta = (column.left + column.width) - (rect.width + me.scroller.scrollLeft);
-        me.scroller.horizontalDeltaChange(-delta - me.scroller.scrollBarWidth - 2);
+      else if(rect.width + scroller.scrollLeft < column.left + column.width){
+        const delta = (column.left + column.width) - (rect.width + scroller.scrollLeft);
+        scroller.horizontalDeltaChange(-delta - scroller.scrollBarWidth - 2);
       }
-      else if(me.scroller.scrollLeft > column.left){
-        const delta = me.scroller.scrollLeft - column.left;
-        me.scroller.horizontalDeltaChange(delta + 2);
+      else if(scroller.scrollLeft > column.left){
+        const delta = scroller.scrollLeft - column.left;
+        scroller.horizontalDeltaChange(delta + 2);
       }
     },
-
     scrollToCell(cell){
       const me = this;
+      const scroller = me.scroller;
       const row = cell.closest(`.${ROW}`);
       const rect = me.bodyEl.getBoundingClientRect();
       const rowTop = Fancy.getTranslateY(row);
@@ -7859,42 +7529,39 @@ Fancy.copyText = (text) => {
       const columnIndex = Number(cell.getAttribute('col-index'));
       const column = me.columns[columnIndex];
 
-      if(rect.height + me.scroller.scrollTop < rowTop + rowRect.height){
+      if(rect.height + scroller.scrollTop < rowTop + rowRect.height){
         const delta = me.rowHeight;
-        me.scroller.deltaChange(-delta);
+        scroller.deltaChange(-delta);
       }
-      else if(me.scroller.scrollTop > rowTop){
+      else if(scroller.scrollTop > rowTop){
         const delta = me.rowHeight;
-        me.scroller.deltaChange(delta);
+        scroller.deltaChange(delta);
       }
-      else if(rect.width + me.scroller.scrollLeft < column.left + column.width){
-        const delta = (column.left + column.width) - (rect.width + me.scroller.scrollLeft);
-        me.scroller.horizontalDeltaChange(-delta - me.scroller.scrollBarWidth - 2);
+      else if(rect.width + scroller.scrollLeft < column.left + column.width){
+        const delta = (column.left + column.width) - (rect.width + scroller.scrollLeft);
+        scroller.horizontalDeltaChange(-delta - scroller.scrollBarWidth - 2);
       }
-      else if(me.scroller.scrollLeft > column.left){
-        const delta = me.scroller.scrollLeft - column.left;
-        me.scroller.horizontalDeltaChange(delta + 2);
+      else if(scroller.scrollLeft > column.left){
+        const delta = scroller.scrollLeft - column.left;
+        scroller.horizontalDeltaChange(delta + 2);
       }
     },
-
     hasActiveCell(){
       const me = this;
 
       return me.activeCellColumn !== undefined && me.activeCellRowId !== undefined && me.activeCellColumnIndex !== undefined;
     },
-
     scrollToNotVisibleNewActiveCell(newRowIndex, columnIndex){
       const me = this;
 
       const delta = me.scroller.scrollTop - (newRowIndex - 1) * me.rowHeight;
       me.$preventActiveCellRender = true;
       me.scroller.deltaChange(delta);
-      setTimeout(()=>{
+      setTimeout(() => {
         const cell = me.getCell(newRowIndex, columnIndex);
         cell && me.setActiveCell(cell);
       },0);
     },
-
     setActiveCellUp(){
       const me = this;
       const columnIndex = me.activeCellColumnIndex;
@@ -7918,7 +7585,6 @@ Fancy.copyText = (text) => {
         me.scrollToNotVisibleNewActiveCell(newRowIndex, columnIndex);
       }
     },
-
     setActiveCellDown(){
       const me = this;
       const columnIndex = me.activeCellColumnIndex;
@@ -7937,16 +7603,14 @@ Fancy.copyText = (text) => {
       }
 
       const cell = me.getCell(newRowIndex, columnIndex);
-      if(cell) {
+      if (cell) {
         me.setActiveCell(cell);
-      }
-      else {
+      } else {
         me.scrollToNotVisibleNewActiveCell(newRowIndex, columnIndex);
       }
 
       return cell;
     },
-
     setActiveCellLeft(){
       const me = this;
       const columnIndex = me.activeCellColumnIndex;
@@ -7961,14 +7625,12 @@ Fancy.copyText = (text) => {
       const cell = me.getCell(rowIndex, newColumnIndex);
       if(cell){
         me.setActiveCell(cell);
-      }
-      else {
+      } else {
         me.scrollToNotVisibleNewActiveCell(rowIndex, newColumnIndex);
       }
 
       return cell;
     },
-
     setActiveCellRight(){
       const me = this;
       const row = me.activeCellRowEl;
@@ -7983,14 +7645,12 @@ Fancy.copyText = (text) => {
       const cell = me.getCell(rowIndex, newColumnIndex);
       if(cell){
         me.setActiveCell(cell);
-      }
-      else {
+      } else {
         me.scrollToNotVisibleNewActiveCell(rowIndex, newColumnIndex);
       }
 
       return cell;
     },
-
     updateHeaderCheckboxSelection(column){
       const me = this;
       if(!column){
@@ -8021,7 +7681,6 @@ Fancy.copyText = (text) => {
         checkBoxEl.checked = false;
       }
     },
-
     onHeaderCheckboxSelectionClick(event){
       const me = this;
       const store = me.store;
@@ -8029,16 +7688,11 @@ Fancy.copyText = (text) => {
       const selected = inputEl.checked;
 
       store.selectAll(selected);
-
-      if(store.rowGroups.length){
-        me.updateRowGroupRowsAndCheckBoxes();
-      }
+      store.rowGroups.length && me.updateRowGroupRowsAndCheckBoxes();
       me.updateRowsAndCheckBoxes();
     },
-
     getSelection(){
-      const me = this;
-      const store = me.store;
+      const store = this.store;
       const items = [];
 
       store.selectedItemsMap.forEach(item => {
@@ -8049,19 +7703,18 @@ Fancy.copyText = (text) => {
 
       return items;
     },
-
     generateCellsSelectionRange(){
       const me = this;
-      const activeCellRowIndex = me.store.idRowIndexesMap.get(me.activeCellRowId);
-      const secondActiveCellRowIndex = me.store.idRowIndexesMap.get(me.secondActiveCellRowId);
+      const store = me.store;
+      const activeCellRowIndex = store.idRowIndexesMap.get(me.activeCellRowId);
+      const secondActiveCellRowIndex = store.idRowIndexesMap.get(me.secondActiveCellRowId);
       const rows = [];
       const columns = [];
 
       if(activeCellRowIndex <= secondActiveCellRowIndex){
         rows[0] = activeCellRowIndex;
         rows[1] = secondActiveCellRowIndex;
-      }
-      else {
+      } else {
         rows[0] = secondActiveCellRowIndex;
         rows[1] = activeCellRowIndex;
       }
@@ -8069,8 +7722,7 @@ Fancy.copyText = (text) => {
       if(me.activeCellColumnIndex <= me.secondActiveCellColumnIndex){
         columns[0] = me.activeCellColumnIndex;
         columns[1] = me.secondActiveCellColumnIndex;
-      }
-      else {
+      } else {
         columns[0] = me.secondActiveCellColumnIndex;
         columns[1] = me.activeCellColumnIndex;
       }
@@ -8080,7 +7732,6 @@ Fancy.copyText = (text) => {
         columns
       };
     },
-
     selectCellsFromRange(){
       const me = this;
       const selectedCells = me.bodyEl.querySelectorAll(`div.${CELL_SELECTED}`);
@@ -8122,7 +7773,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     isCellInSelectedRange(cell){
       const me = this;
       const columnIndex = Number(cell.getAttribute('col-index'));
@@ -8140,25 +7790,19 @@ Fancy.copyText = (text) => {
 
       return rowIndex >= rows[0] && rowIndex <= rows[1] && columnIndex >= columns[0] && columnIndex <= columns[1];
     },
-
     clearSelectionRange(){
-      const me = this;
-      const selectedCells = me.bodyEl.querySelectorAll(`div.${CELL_SELECTED}`);
+      const selectedCells = this.bodyEl.querySelectorAll(`div.${CELL_SELECTED}`);
 
-      selectedCells.forEach(cell => {
-        cell.classList.remove(CELL_SELECTED);
-      });
+      selectedCells.forEach(cell => cell.classList.remove(CELL_SELECTED));
 
-      delete me.selectionCellsRange;
+      delete this.selectionCellsRange;
     },
-
     copySelectedCells(){
       const me = this;
       const text = me.getTextFromSelectionRange();
 
       Fancy.copyText(text);
     },
-
     getTextFromSelectionRange(){
       const me = this;
       const {
@@ -8203,7 +7847,6 @@ Fancy.copyText = (text) => {
         const columnIndex = Number(me.activeCellEl.getAttribute('col-index'));
         const column = me.columns[columnIndex];
         const rowIndex = row.getAttribute('row-index');
-
         const value = item[column.index];
         const cellInner = getCellInner({
           item,
@@ -8239,7 +7882,6 @@ Fancy.copyText = (text) => {
 
       return data.map(row => row.join('\t')).join('\n');
     },
-
     insertCopiedCells(){
       const me = this;
       const textarea = document.createElement('textarea');
@@ -8277,7 +7919,7 @@ Fancy.copyText = (text) => {
         const activeRowIndex = Number(me.activeCellRowEl.getAttribute('row-index'));
         let rowOffset = 0;
 
-        data.forEach((dataRow, itemRowIndex)=>{
+        data.forEach((dataRow, itemRowIndex) => {
           const extraRowsOffset = getRowsOffSet(activeRowIndex + itemRowIndex + rowOffset);
           rowOffset += extraRowsOffset;
 
@@ -8292,7 +7934,7 @@ Fancy.copyText = (text) => {
 
           let columnIndex = me.activeCellColumnIndex - 1;
 
-          dataRow.forEach((value, itemColumnIndex)=>{
+          dataRow.forEach(value => {
             columnIndex = me.getNextVisibleColumnIndex(columnIndex);
 
             const column = me.columns[columnIndex];
@@ -8317,9 +7959,9 @@ Fancy.copyText = (text) => {
         });
       });
     },
-
     setBlankForSelectedCells(){
       const me = this;
+      const store = me.store;
       const {
         rows,
         columns
@@ -8346,7 +7988,7 @@ Fancy.copyText = (text) => {
         }
         const rowIndex = rowEl.getAttribute('row-index');
         const itemId = rowEl.getAttribute('row-id');
-        const item = me.store.idItemMap.get(itemId);
+        const item = store.idItemMap.get(itemId);
         const columnIndex = Number(me.activeCellEl.getAttribute('col-index'));
         const column = me.columns[columnIndex];
         const value = getCellSetterValue({
@@ -8357,7 +7999,7 @@ Fancy.copyText = (text) => {
           value: ''
         });
 
-        me.store.setById(itemId ,column.index, value);
+        store.setById(itemId ,column.index, value);
 
         me.activeCellEl.remove();
 
@@ -8370,7 +8012,7 @@ Fancy.copyText = (text) => {
 
       for(let i = rows[0];i<=rows[1];i++){
         const rowIndex = i;
-        let item = me.store.getItemByRowIndex(i);
+        let item = store.getItemByRowIndex(i);
         const rowEl = me.bodyEl.querySelector(`.${ROW}[row-index="${rowIndex}"]`);
 
         for(let j = columns[0];j<=columns[1];j++){
@@ -8385,7 +8027,7 @@ Fancy.copyText = (text) => {
             value: ''
           });
 
-          me.store.setById(item.id ,column.index, value);
+          store.setById(item.id ,column.index, value);
 
           if(!rowEl || !column){
             return;
@@ -8405,7 +8047,7 @@ Fancy.copyText = (text) => {
   Object.assign(Grid.prototype, GridMixinSelection);
 })();
 
-(()=> {
+(() => {
   const {
     DOWN,
     UP,
@@ -8450,9 +8092,7 @@ Fancy.copyText = (text) => {
           }
           break;
         case ESC:
-          if(!me.isEditing) {
-            me.destroyHeaderCellMenuList();
-          }
+          !me.isEditing && me.destroyHeaderCellMenuList();
           break;
         case SPACE:
           event.preventDefault();
@@ -8490,25 +8130,17 @@ Fancy.copyText = (text) => {
           }
           break;
         case LEFT:
-          if(!me.isEditing) {
-            me.onKeyLEFT(event.shiftKey);
-          }
+          !me.isEditing && me.onKeyLEFT(event.shiftKey);
           break;
         case RIGHT:
-          if(!me.isEditing) {
-            me.onKeyRIGHT(event.shiftKey);
-          }
+          !me.isEditing && me.onKeyRIGHT(event.shiftKey);
           break;
         case ENTER:
-          if(!me.isEditing){
-            me.onKeyENTER();
-          }
+          !me.isEditing && me.onKeyENTER();
           break;
         case BACKSPACE:
         case DELETE:
-          if(!me.isEditing){
-            me.setBlankForSelectedCells();
-          }
+          !me.isEditing && me.setBlankForSelectedCells();
           break;
         default:
           const code = event.code;
@@ -8610,11 +8242,9 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Grid.prototype, GridMixinKeyNavigation);
-
 })();
 
-(()=> {
-
+(() => {
   const {
     ANIMATE_CELLS_POSITION,
     COLUMN_DRAGGING,
@@ -8634,7 +8264,6 @@ Fancy.copyText = (text) => {
   /**
    * @mixin GridMixinColumnDrag
    */
-
   const GridMixinColumnDrag = {
     onColumnDragMouseMove(event){
       const me = this;
@@ -8727,13 +8356,11 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     createDragColumnCellEl(column){
       const cell = div([FAKE_COLUMN_CELL_DRAGGING, 'fg-theme-' + this.theme]);
 
       const textEl = span();
-      const cellText = column.title;
-      textEl.innerHTML = cellText;
+      textEl.innerHTML = column.title;
 
       const svgGroup = Fancy.svg.group;
       const groupLogoEl = span([SVG_ITEM, SVG_GROUP]);
@@ -8753,12 +8380,10 @@ Fancy.copyText = (text) => {
 
       return cell;
     },
-
-    isCursorInRowGroupBar({pageX, pageY}, barRect){
+    isCursorInRowGroupBar({ pageX, pageY }, barRect){
       return pageX < barRect.bottomX && pageX > barRect.x && pageY < barRect.rightY && pageY > barRect.y;
     },
-
-    isCursorInAnotherRowGroupBarItem({pageX}, barItemsRect){
+    isCursorInAnotherRowGroupBarItem({ pageX }, barItemsRect){
       if(barItemsRect.length === 0){
         return;
       }
@@ -8779,8 +8404,7 @@ Fancy.copyText = (text) => {
         return barItemsRect.length - 1;
       }
     },
-
-    isCursorInAnotherColumn({pageX}){
+    isCursorInAnotherColumn({ pageX }){
       const me = this;
       const headerRect = me.headerEl.getBoundingClientRect();
       const columnsViewRange = me.scroller.columnsViewRange;
@@ -8796,7 +8420,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     onColumnDragging(event){
       const me = this;
 
@@ -8814,7 +8437,6 @@ Fancy.copyText = (text) => {
         me.columnDragMouseDownColumnIndex = cursorInColumnIndex;
       }
     },
-
     moveColumn(columnIndex, toIndex){
       const me = this;
 
@@ -8859,10 +8481,9 @@ Fancy.copyText = (text) => {
   };
 
   Object.assign(Grid.prototype, GridMixinColumnDrag);
-
 })();
 
-(()=> {
+(() => {
   const {
     CELL,
     ROW,
@@ -8872,7 +8493,6 @@ Fancy.copyText = (text) => {
   /**
    * @mixin GridMixinEdit
    */
-
   const GridMixinEdit = {
     onBodyCellDBLClick(event){
       const me = this;
@@ -8881,7 +8501,6 @@ Fancy.copyText = (text) => {
 
       me.openEditorForCell(cell);
     },
-
     openEditorForCell(cell, startValue){
       const me = this;
       let columnIndex = Number(cell.getAttribute('col-index'));
@@ -8913,8 +8532,8 @@ Fancy.copyText = (text) => {
         valueBeforeEdit = value;
       }
 
-      const memorizeChange = (value)=>{
-        // Re-get cell on case of scroll
+      const memorizeChange = (value) => {
+        // Re-get cell on a case of scroll
         if(me.activeCellEl){
           cell = me.activeCellEl;
           row = cell.closest(`.${ROW}`);
@@ -8949,7 +8568,7 @@ Fancy.copyText = (text) => {
         if(column.setter){
           me.rowCellsUpdateWithColumnIndex(row);
         } else {
-          me.rowCellsUpdateWithColumnRender(row);
+          me.rowCellsUpdateWithColumnRender(row,false, false);
         }
 
         if(item.$rowGroupValue && column.agFn){
@@ -8970,8 +8589,10 @@ Fancy.copyText = (text) => {
         memorizeChange(value);
       }
 
+      const type = column.type || 'string';
+
       if(column.editorField){
-        switch (column.type){
+        switch (type){
           case 'string':
           case 'number':
           case 'date':
@@ -8982,7 +8603,7 @@ Fancy.copyText = (text) => {
             column.editorField.show({
               width: `${column.width}px`,
               left: `${column.left}px`,
-              transform: `translateY(${rowTop - 1}px)`,
+              transform: `translateY(${rowTop - 1}px)`
             });
             column.editorField.focus();
 
@@ -8990,12 +8611,12 @@ Fancy.copyText = (text) => {
             break;
         }
       } else {
-        switch(column.type){
+        switch(type){
           case 'string':
           case 'number':
           case 'date':
             me.setStatusEditing(true);
-            column.editorField = new Fancy[Fancy.capitalizeFirstLetter(`${column.type}Field`)]({
+            column.editorField = new Fancy[Fancy.capitalizeFirstLetter(`${type}Field`)]({
               renderTo: me.editorsContainerEl,
               valueBeforeEdit,
               value,
@@ -9027,7 +8648,7 @@ Fancy.copyText = (text) => {
 
                 if(activeCell === false){
                   me.$preventOpeningEditor = true;
-                  setTimeout(()=>{
+                  setTimeout(() => {
                     delete me.$preventOpeningEditor;
                   }, 100);
                 }
@@ -9046,7 +8667,6 @@ Fancy.copyText = (text) => {
         }
       }
     },
-
     hideActiveEditor(){
       const me = this;
 
@@ -9056,21 +8676,18 @@ Fancy.copyText = (text) => {
         me.setStatusEditing(false);
       }
     },
-
     setStatusEditing(value){
       const me = this;
 
       me.isEditing = value;
+      me.gridEl.classList[value? 'add' : 'remove'](EDITING);
 
       if(value){
-        me.gridEl.classList.add(EDITING);
         me.editingCell = me.activeCellEl;
       } else {
-        me.gridEl.classList.remove(EDITING);
         delete me.editingCell;
       }
     },
-
     rowCellsUpdateWithColumnIndex(row){
       const me = this;
       const rowIndex = row.getAttribute('row-index');
@@ -9090,8 +8707,7 @@ Fancy.copyText = (text) => {
         row.appendChild(cell);
       });
     },
-
-    rowCellsUpdateWithColumnRender(row, flash){
+    rowCellsUpdateWithColumnRender(row, flash, allowActiveCellSet = true){
       const me = this;
       const rowIndex = row.getAttribute('row-index');
       const itemId = row.getAttribute('row-id');
@@ -9105,7 +8721,7 @@ Fancy.copyText = (text) => {
           return;
         }
 
-        const newCell = me.createCell(rowIndex, columnIndex);
+        const newCell = me.createCell(rowIndex, columnIndex, allowActiveCellSet);
         if(cell.innerHTML === newCell.innerHTML){
           return;
         }
@@ -9118,11 +8734,11 @@ Fancy.copyText = (text) => {
           cellStyle.transition = 'background-color 2000ms';
           cellStyle.backgroundColor = me.flashChangesColors[me.store.selectedItemsMap.has(itemId)?1:0];
 
-          setTimeout(()=>{
+          setTimeout(() => {
             cellStyle.backgroundColor = '';
           });
 
-          setTimeout(()=>{
+          setTimeout(() => {
             cellStyle.transition = '';
             cellStyle.backgroundColor = '';
           }, 2000);
@@ -9130,7 +8746,6 @@ Fancy.copyText = (text) => {
         row.appendChild(cell);
       });
     },
-
     updateAfterAddRemove(){
       const me = this;
 
@@ -9171,11 +8786,11 @@ Fancy.copyText = (text) => {
           rows = [rows];
           break;
         case 'array':
-          rows = rows.map((value)=>{
+          rows = rows.map((value) => {
             if(typeof value === 'string'){
               return {
                 id: value
-              }
+              };
             }
 
             return value;
@@ -9190,110 +8805,102 @@ Fancy.copyText = (text) => {
   Object.assign(Grid.prototype, GridMixinEdit);
 })();
 
-(()=>{
-	const {
-		FIELD,
-		FIELD_INPUT
-	} = Fancy.cls;
+(() => {
+  const {
+    FIELD,
+    FIELD_INPUT
+  } = Fancy.cls;
 
-	const {
-		ENTER,
-		ESC
-	} = Fancy.key;
+  const {
+    ENTER,
+    ESC
+  } = Fancy.key;
 
-	const {
-		div,
-		input
-	} = Fancy;
+  const {
+    div,
+    input
+  } = Fancy;
 
-	class Field {
-		render() {
-			const me = this;
-			const el = div(FIELD, me.style);
+  class Field {
+    render() {
+      const me = this;
+      const el = div(FIELD, me.style);
 
-			delete me.style;
+      delete me.style;
 
-			if(typeof me.renderTo === 'string'){
-				me.renderTo = document.getElementById(me.renderTo);
-			}
+      if(typeof me.renderTo === 'string'){
+        me.renderTo = document.getElementById(me.renderTo);
+      }
 
-			me.container = me.renderTo;
+      me.container = me.renderTo;
 
-			const elInput = input(FIELD_INPUT);
-			if(me.type === 'date'){
-				elInput.type = 'date';
-			}
-			elInput.value = me.value;
-			me.input = elInput;
+      const elInput = input(FIELD_INPUT);
+      if(me.type === 'date'){
+        elInput.type = 'date';
+      }
+      elInput.value = me.value;
+      me.input = elInput;
 
-			el.appendChild(elInput);
-			me.el = el;
+      el.appendChild(elInput);
+      me.el = el;
 
-			me.container.appendChild(el);
-		}
+      me.container.appendChild(el);
+    }
+    ons() {
+      const me = this;
 
-		ons() {
-			const me = this;
+      // me.debounceInputFn = Fancy.debounce(me.onInput.bind(this), 300);
+      // me.input.addEventListener('input', me.debounceInputFn);
+      me.input.addEventListener('input', me.onInput.bind(me));
+      me.input.addEventListener('keydown', me.onKeyDown.bind(me));
+    }
+    onInput(event) {
+      const me = this;
+      const value = event.target.value;
 
-			// me.debounceInputFn = Fancy.debounce(me.onInput.bind(this), 300);
-			// me.input.addEventListener('input', me.debounceInputFn);
-			me.input.addEventListener('input', me.onInput.bind(me));
-			me.input.addEventListener('keydown', me.onKeyDown.bind(me));
-		}
+      me.onChange?.(value, true);
+    }
+    onKeyDown(event){
+      const me = this;
 
-		onInput(event) {
-			const me = this;
-			const value = event.target.value;
+      switch (event.keyCode) {
+        case ENTER:
+          const value = event.target.value;
+          me.onEnter?.(value);
+          break;
+        case ESC:
+          me.onESC?.();
+          break;
+      }
+    }
+    setValue(value) {
+      const me = this;
 
-			me.onChange?.(value, true);
-		}
+      me.input.value = value;
+      me.onChange?.(value, false);
+    }
+    focus(){
+      const me = this;
 
-		onKeyDown(event){
-			const me = this;
+      me.input.focus();
+    }
+    hide(){
+      const me = this;
 
-			switch (event.keyCode) {
-				case ENTER:
-					const value = event.target.value;
-					me.onEnter?.(value);
-					break;
-				case ESC:
-					me.onESC?.();
-					break;
-			}
-		}
+      me.el.style.display = 'none';
+    }
+    show(style){
+      const me = this;
 
-		setValue(value) {
-			const me = this;
+      me.el.style.display = '';
 
-			me.input.value = value;
-			me.onChange?.(value, false);
-		}
+      for(let p in style){
+        me.el.style[p] = style[p];
+      }
+    }
+  }
 
-		focus(){
-			const me = this;
-
-			me.input.focus();
-		}
-
-		hide(){
-			const me = this;
-
-			me.el.style.display = 'none';
-		}
-
-		show(style){
-			const me = this;
-
-			me.el.style.display = '';
-
-			for(let p in style){
-				me.el.style[p] = style[p];
-			}
-		}
-	}
-
-	Fancy.Field = Field;
-
+  Fancy.Field = Field;
 })();
 
 (() => {
@@ -9308,50 +8915,50 @@ Fancy.copyText = (text) => {
   } = Fancy.cls;
 
   const FancyIconSignPaths = {
-    'Clear': "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z",
-    'Contains': "M19,10H5V8H19V10M19,16H5V14H19V16Z",
-    'Not Contains': "M21,10H9V8H21V10M21,16H9V14H21V16M4,5H6V16H4V5M6,18V20H4V18H6Z",
-    'Equals': "M 10.56 10 L 1.508 10 L 1.508 8 L 10.56 8 L 10.56 10 M 10.56 16 L 1.508 16 L 1.508 14 L 10.56 14 L 10.56 16 Z M 22.009 10.01 L 12.984 10.01 L 12.984 8.01 L 22.009 8.01 L 22.009 10.01 M 22.009 16.01 L 12.984 16.01 L 12.984 14.01 L 22.009 14.01 L 22.009 16.01 Z",
-    'Not Equals': "M 12.368 10 L 5.449 10 L 5.449 8 L 12.368 8 L 12.368 10 M 12.368 16 L 5.449 16 L 5.449 14 L 12.368 14 L 12.368 16 Z M 23.009 10.01 L 15.05 10.01 L 15.05 8.01 L 23.009 8.01 L 23.009 10.01 M 23.009 16.01 L 15.05 16.01 L 15.05 14.01 L 23.009 14.01 L 23.009 16.01 Z M 2.585 4.076 L 2.575 13.265 L 0.54 13.277 L 0.55 4.087 L 2.585 4.076 M 6.653 13.252 L 6.621 13.255 L 6.649 13.243 L 6.616 13.239 L 6.653 13.252 Z M 2.569 15.074 L 2.559 17.22 L 0.524 17.223 L 0.534 15.077 L 2.569 15.074 M 6.637 17.217 L 6.605 17.218 L 6.633 17.215 L 6.6 17.214 L 6.637 17.217 Z",
-    'Empty': "M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z",
-    'Not Empty': "M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z",
-    'Starts with': "M11.14 4L6.43 16H8.36L9.32 13.43H14.67L15.64 16H17.57L12.86 4M12 6.29L14.03 11.71H9.96M4 18V15H2V20H22V18Z",
-    'Ends with': "M11.14 4L6.43 16H8.36L9.32 13.43H14.67L15.64 16H17.57L12.86 4M12 6.29L14.03 11.71H9.96M20 14V18H2V20H22V14Z",
-    'Regex': "M16,16.92C15.67,16.97 15.34,17 15,17C14.66,17 14.33,16.97 14,16.92V13.41L11.5,15.89C11,15.5 10.5,15 10.11,14.5L12.59,12H9.08C9.03,11.67 9,11.34 9,11C9,10.66 9.03,10.33 9.08,10H12.59L10.11,7.5C10.3,7.25 10.5,7 10.76,6.76V6.76C11,6.5 11.25,6.3 11.5,6.11L14,8.59V5.08C14.33,5.03 14.66,5 15,5C15.34,5 15.67,5.03 16,5.08V8.59L18.5,6.11C19,6.5 19.5,7 19.89,7.5L17.41,10H20.92C20.97,10.33 21,10.66 21,11C21,11.34 20.97,11.67 20.92,12H17.41L19.89,14.5C19.7,14.75 19.5,15 19.24,15.24V15.24C19,15.5 18.75,15.7 18.5,15.89L16,13.41V16.92H16V16.92M5,19A2,2 0 0,1 7,17A2,2 0 0,1 9,19A2,2 0 0,1 7,21A2,2 0 0,1 5,19H5Z",
-    'Greater Than': "M5.5,4.14L4.5,5.86L15,12L4.5,18.14L5.5,19.86L19,12L5.5,4.14Z",
-    'Less Than': "M18.5,4.14L19.5,5.86L8.97,12L19.5,18.14L18.5,19.86L5,12L18.5,4.14Z"
+    'Clear': 'M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z',
+    'Contains': 'M19,10H5V8H19V10M19,16H5V14H19V16Z',
+    'Not Contains': 'M21,10H9V8H21V10M21,16H9V14H21V16M4,5H6V16H4V5M6,18V20H4V18H6Z',
+    'Equals': 'M 10.56 10 L 1.508 10 L 1.508 8 L 10.56 8 L 10.56 10 M 10.56 16 L 1.508 16 L 1.508 14 L 10.56 14 L 10.56 16 Z M 22.009 10.01 L 12.984 10.01 L 12.984 8.01 L 22.009 8.01 L 22.009 10.01 M 22.009 16.01 L 12.984 16.01 L 12.984 14.01 L 22.009 14.01 L 22.009 16.01 Z',
+    'Not Equals': 'M 12.368 10 L 5.449 10 L 5.449 8 L 12.368 8 L 12.368 10 M 12.368 16 L 5.449 16 L 5.449 14 L 12.368 14 L 12.368 16 Z M 23.009 10.01 L 15.05 10.01 L 15.05 8.01 L 23.009 8.01 L 23.009 10.01 M 23.009 16.01 L 15.05 16.01 L 15.05 14.01 L 23.009 14.01 L 23.009 16.01 Z M 2.585 4.076 L 2.575 13.265 L 0.54 13.277 L 0.55 4.087 L 2.585 4.076 M 6.653 13.252 L 6.621 13.255 L 6.649 13.243 L 6.616 13.239 L 6.653 13.252 Z M 2.569 15.074 L 2.559 17.22 L 0.524 17.223 L 0.534 15.077 L 2.569 15.074 M 6.637 17.217 L 6.605 17.218 L 6.633 17.215 L 6.6 17.214 L 6.637 17.217 Z',
+    'Empty': 'M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z',
+    'Not Empty': 'M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z',
+    'Starts with': 'M11.14 4L6.43 16H8.36L9.32 13.43H14.67L15.64 16H17.57L12.86 4M12 6.29L14.03 11.71H9.96M4 18V15H2V20H22V18Z',
+    'Ends with': 'M11.14 4L6.43 16H8.36L9.32 13.43H14.67L15.64 16H17.57L12.86 4M12 6.29L14.03 11.71H9.96M20 14V18H2V20H22V14Z',
+    'Regex': 'M16,16.92C15.67,16.97 15.34,17 15,17C14.66,17 14.33,16.97 14,16.92V13.41L11.5,15.89C11,15.5 10.5,15 10.11,14.5L12.59,12H9.08C9.03,11.67 9,11.34 9,11C9,10.66 9.03,10.33 9.08,10H12.59L10.11,7.5C10.3,7.25 10.5,7 10.76,6.76V6.76C11,6.5 11.25,6.3 11.5,6.11L14,8.59V5.08C14.33,5.03 14.66,5 15,5C15.34,5 15.67,5.03 16,5.08V8.59L18.5,6.11C19,6.5 19.5,7 19.89,7.5L17.41,10H20.92C20.97,10.33 21,10.66 21,11C21,11.34 20.97,11.67 20.92,12H17.41L19.89,14.5C19.7,14.75 19.5,15 19.24,15.24V15.24C19,15.5 18.75,15.7 18.5,15.89L16,13.41V16.92H16V16.92M5,19A2,2 0 0,1 7,17A2,2 0 0,1 9,19A2,2 0 0,1 7,21A2,2 0 0,1 5,19H5Z',
+    'Greater Than': 'M5.5,4.14L4.5,5.86L15,12L4.5,18.14L5.5,19.86L19,12L5.5,4.14Z',
+    'Less Than': 'M18.5,4.14L19.5,5.86L8.97,12L19.5,18.14L18.5,19.86L5,12L18.5,4.14Z'
   };
 
   const FancyTextSign = {
-    'Clear': "=",
-    'Contains': "=",
-    'Not Contains': "!=",
-    'Equals': "==",
-    'Not Equals': "!==",
-    'Empty': "empty",
-    'Not Empty': "!empty",
-    'Starts with': "_a",
-    'Ends with': "a_",
-    'Regex': "regex",
-    'Greater Than': ">",
-    'Less Than': "<",
+    'Clear': '=',
+    'Contains': '=',
+    'Not Contains': '!=',
+    'Equals': '==',
+    'Not Equals': '!==',
+    'Empty': 'empty',
+    'Not Empty': '!empty',
+    'Starts with': 'a_',
+    'Ends with': '_a',
+    'Regex': 'regex',
+    'Greater Than': '>',
+    'Less Than': '<',
     'Positive': '+',
     'Negative': '-'
   };
 
   const FancySignText = {
-    '=': "Clear",
-    '=': "Contains",
-    '!=': "Not Contains",
-    '==': "Equals",
-    '!==': "Not Equals",
-    'empty': "Empty",
-    '!empty': "Not Empty",
-    '_a': "Starts with",
-    'a_': "Ends with",
-    'regex': "Regex",
-    '>': "Greater Than",
-    '<': "Less Than",
+    '=': 'Clear',
+    '=': 'Contains',
+    '!=': 'Not Contains',
+    '==': 'Equals',
+    '!==': 'Not Equals',
+    'empty': 'Empty',
+    '!empty': 'Not Empty',
+    'a_': 'Starts with',
+    '_a': 'Ends with',
+    'regex': 'Regex',
+    '>': 'Greater Than',
+    '<': 'Less Than',
     '+': 'Positive',
     '-': 'Negative'
   };
@@ -9364,9 +8971,7 @@ Fancy.copyText = (text) => {
   class FilterField {
     sign = '=';
     defaultSign = '=';
-
     value = '';
-
     constructor(config) {
       const me = this;
 
@@ -9375,7 +8980,6 @@ Fancy.copyText = (text) => {
       me.render();
       me.ons();
     }
-
     render() {
       const me = this;
       const el = div(FILTER_FIELD);
@@ -9405,7 +9009,6 @@ Fancy.copyText = (text) => {
 
       me.container.appendChild(el);
     }
-
     ons() {
       const me = this;
 
@@ -9413,9 +9016,13 @@ Fancy.copyText = (text) => {
       me.input.addEventListener('input', me.debouceInputFn);
       me.elSign.addEventListener('click', me.signClick.bind(this));
     }
-
     signClick() {
       const me = this;
+
+      if(!me.column.type){
+        console.warn('FG-Grid: To use column header filter, column type should be set');
+        return;
+      }
 
       if (!me.elComboList) {
         requestAnimationFrame(() => {
@@ -9426,7 +9033,6 @@ Fancy.copyText = (text) => {
         me.destroyComboList();
       }
     }
-
     onInput(event) {
       const me = this;
       const sign = me.sign || me.defaultSign;
@@ -9435,20 +9041,17 @@ Fancy.copyText = (text) => {
       !me.preventFire && me.onChange?.(value, sign, me.column, me.signWasChanged);
       delete me.signWasChanged;
     }
-
     hideAllOpenedComboList(){
       document.body.querySelectorAll(`.${FILTER_FIELD_LIST}`).forEach(el => {
         el.remove();
       });
     }
-
     destroyComboList() {
       const me = this;
 
       me.elComboList?.remove();
       delete me.elComboList;
     }
-
     showComboList() {
       const me = this;
       const elSignRect = me.elSign.getBoundingClientRect();
@@ -9508,16 +9111,12 @@ Fancy.copyText = (text) => {
       }).join('');
 
       el.addEventListener('click', me.onListClick.bind(this));
-
       document.body.appendChild(el);
-
       me.elComboList = el;
-
       me.onDocMouseDownFn = me.onDocMouseDown.bind(this);
 
       document.addEventListener('mousedown', me.onDocMouseDownFn);
     }
-
     onDocMouseDown(e) {
       const me = this;
 
@@ -9526,19 +9125,16 @@ Fancy.copyText = (text) => {
         me.destroyComboList();
       }
     }
-
     onListClick(e) {
       const me = this;
       const itemEl = e.target.closest(`.${FILTER_FIELD_LIST_ITEM}`);
       const sign = itemEl.getAttribute('sign');
 
       me.destroyComboList();
-
       me.setSign(sign);
       me.setValue('');
     }
-
-    setValue(value) {
+    setValue(value, fire = true) {
       const me = this;
       const sign = me.sign || me.defaultSign;
 
@@ -9553,10 +9149,9 @@ Fancy.copyText = (text) => {
           me.input.value = value;
       }
 
-      me.onChange?.(value, sign, me.column, me.signWasChanged);
+      fire && me.onChange?.(value, sign, me.column, me.signWasChanged);
       delete me.signWasChanged;
     }
-
     clearValue(preventFire = false) {
       const me = this;
 
@@ -9567,18 +9162,20 @@ Fancy.copyText = (text) => {
       me.setSign('Clear');
       delete me.preventFire;
     }
-
     setSign(sign) {
       const me = this;
       const prevSign = me.sign;
 
-      me.sign = FancyTextSign[sign];
+      if(FancySignText[sign]){
+        sign = FancySignText[sign];
+      }
+
+      me.sign = FancyTextSign[sign] || sign;
       if(prevSign !== me.sign){
         me.signWasChanged = true;
       }
       me.updateUI(sign);
     }
-
     updateUI(sign) {
       const me = this;
 
@@ -9622,7 +9219,6 @@ Fancy.copyText = (text) => {
         case 'Positive':
         case 'Negative':
           me.input.style.display = 'none';
-
           me.elText.innerHTML = sign;
           me.elText.style.display = 'block';
           break;
@@ -9634,15 +9230,12 @@ Fancy.copyText = (text) => {
   }
 
   Fancy.FilterField = FilterField;
-
 })();
 
 (() => {
-
   class StringField extends Fancy.Field {
     value = '';
     type = 'string';
-
     constructor(config) {
       super(config);
 
@@ -9655,15 +9248,12 @@ Fancy.copyText = (text) => {
   }
 
   Fancy.StringField = StringField;
-
 })();
 
 (() => {
-
   class NumberField extends Fancy.Field {
     value = '';
     type = 'number';
-
     constructor(config) {
       super(config);
 
@@ -9676,7 +9266,6 @@ Fancy.copyText = (text) => {
   }
 
   Fancy.NumberField = NumberField;
-
 })();
 
   return Fancy;

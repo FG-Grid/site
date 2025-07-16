@@ -1,4 +1,27 @@
-<h3>filter<sup>(column: object, value: mixed, operator: '<'|'>'|'<='|'>='|'='|'!='): void</sup></h3>
+<h3>filter<sup>(column: object, value: mixed, operator: '<'|'>'|'<='|'>='|'='|'!='|'=='|'!=='|'empty'|'!empty'|'a_'|'_a'|'regex'|'+'|'-'): void</sup></h3>
+
+<style>
+  table.filter-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+</style>
 
 <p>
   Add filter to grid<br>
@@ -6,8 +29,79 @@
 
 <h3>Filter operators</h3>
 <p>
-  There are several operators that possible to use in filter field.<br>
-  They are: <code>&lt;,&gt;,&lt;=,&gt;=,=,!=</code>
+  There are several operators that are possible to use in the filter field.<br>
+  They are:
+<table class="filter-table">
+  <thead>
+  <tr>
+    <th>Operator</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>&lt;</td>
+    <td>Less</td>
+  </tr>
+  <tr>
+    <td>&gt;</td>
+    <td>More</td>
+  </tr>
+  <tr>
+    <td>&lt;=</td>
+    <td>Less or equals</td>
+  </tr>
+  <tr>
+    <td>&gt;=</td>
+    <td>More or equals</td>
+  </tr>
+  <tr>
+    <td>=</td>
+    <td>Contains</td>
+  </tr>
+  <tr>
+    <td>==</td>
+    <td>Equals</td>
+  </tr>
+  <tr>
+    <td>!=</td>
+    <td>Does not contain</td>
+  </tr>
+  <tr>
+    <td>!==</td>
+    <td>Does not equal</td>
+  </tr>
+  <tr>
+    <td>empty</td>
+    <td>null, undefined, empty string</td>
+  </tr>
+  <tr>
+    <td>!empty</td>
+    <td>Is not one of null, undefined, empty string</td>
+  </tr>
+  <tr>
+    <td>a_</td>
+    <td>Starts with</td>
+  </tr>
+  <tr>
+    <td>_a</td>
+    <td>Ends with</td>
+  </tr>
+  <tr>
+    <td>regex</td>
+    <td>Follow regex rule</td>
+  </tr>
+  <tr>
+    <td>+</td>
+    <td>Positive</td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>Negative</td>
+  </tr>
+  </tbody>
+</table>
+
 </p>
 
 <p>The default operator is <code class="js">'='</code>.</p>

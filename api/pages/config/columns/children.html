@@ -1,0 +1,52 @@
+<h3>children</h3>
+<code class="type">Object[]</code>
+
+<p>Grid provides one level of column group.</p>
+
+<p><b>Example</b><p>
+<pre><code class="js">
+const columns = [{
+  index: 'price',
+  filter: true,
+  agFn: 'sum',
+  type: 'currency'
+},{
+  title: 'Main',
+  children: [{
+    index: 'brand',
+    type: 'string'
+  }, {
+    index: 'model',
+    type: 'string'
+  },{
+    index: 'year',
+    filter: true,
+    type: 'number'
+  }]
+},{
+  index: 'country',
+  type: 'string'
+},{
+  index: 'color',
+  filter: true,
+  type: 'string'
+},{
+  title: 'Tech',
+  children: [{
+    index: 'fuelType',
+    filter: true,
+    type: 'string'
+  },{
+    index: 'transmission',
+    type: 'string'
+  },{
+    index: 'electric',
+    type: 'boolean'
+  }]
+}]
+</code></pre>
+
+<p><b>Default</b><p>
+<pre><code class="js">
+undefined
+</code></pre>

@@ -149,6 +149,57 @@ columns: [{
 </api>
 
 <api>
+  <name><h4>children</h4><sup>Object[]</sup></name>
+  <bd>
+    <p>Grid provides one level of column group.</p>
+  </bd>
+  <example>
+<pre><code class="js">
+const columns = [{
+  index: 'price',
+  filter: true,
+  agFn: 'sum',
+  type: 'currency'
+},{
+  title: 'Main',
+  children: [{
+    index: 'brand',
+    type: 'string'
+  }, {
+    index: 'model',
+    type: 'string'
+  },{
+    index: 'year',
+    filter: true,
+    type: 'number'
+  }]
+},{
+  index: 'country',
+  type: 'string'
+},{
+  index: 'color',
+  filter: true,
+  type: 'string'
+},{
+  title: 'Tech',
+  children: [{
+    index: 'fuelType',
+    filter: true,
+    type: 'string'
+  },{
+    index: 'transmission',
+    type: 'string'
+  },{
+    index: 'electric',
+    type: 'boolean'
+  }]
+}]
+</code></pre>
+  </example>
+  <default>undefined</default>
+</api>
+
+<api>
   <name><h4>draggable</h4><sup>Boolean</sup></name>
   <bd><p>Allows column to be dragged.</p></bd>
   <example>
@@ -446,6 +497,17 @@ rowGroupOrder: 0,
   <example>
 <pre><code class="js">
 sortable: true,
+</code></pre>
+    <default>false</default>
+  </example>
+</api>
+
+<api>
+  <name><h4>sticky</h4><sup>Boolean</sup></name>
+  <bd><p>Makes column title sticky.</p></bd>
+  <example>
+<pre><code class="js">
+sticky: true,
 </code></pre>
     <default>false</default>
   </example>

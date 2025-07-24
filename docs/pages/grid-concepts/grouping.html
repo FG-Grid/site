@@ -1,8 +1,15 @@
 <h2>Grouping</h2>
 
-<h3>Enable grouping</h3>
 <p>
-  Add <code class="js">rowGroup</code> to column.
+  Grid provides 2 ways to enabling row grouping.<br>
+  The first one is to set property <code class="js">rowGroup</code> in column options.<br>
+  Another one is to enable row group bar and manually drag columns to it.<br>
+  Also mixed variant works with both column option and row group bar.<br>
+</p>
+
+<h3>Enable grouping over column</h3>
+<p>
+  Add the <code class="js">rowGroup</code> option to a column.
 </p>
 <pre><code class="js">
 new Grid({
@@ -66,7 +73,7 @@ new Grid({
 
 <h3>Row Group Column</h3>
 <p>
-  There is the way to provide row grouping column.<br>
+  There is a way to provide row grouping column.<br>
   It is not defined in <code class="js">columns</code>.
 </p>
 <pre><code class="js">
@@ -92,7 +99,7 @@ new Grid({
 
 <h3>Custom Row Group value</h3>
 <p>
-  There is the way to customize row grouping value.<br>
+  There is a way to customize row grouping value.<br>
 </p>
 <pre><code class="js">
 const countries = {
@@ -149,4 +156,37 @@ new Grid({
     el.appendChild(container);
   },
   ...
+</code></pre>
+
+<h3>Expanded row on start</h3>
+<p>
+  To expand row groups on render there is grid property <code class="js">rowGroupExpanded</code>.
+</p>
+
+<h5>Expand all groups</h5>
+<pre><code class="js">
+rowGroupExpanded: true
+</code></pre>
+
+<h5>Expand all groups</h5>
+<pre><code class="js">
+rowGroupExpanded: (groupName) => {
+  return true
+}
+</code></pre>
+
+<h5>Expand the list</h5>
+<pre><code class="js">
+rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
+</code></pre>
+
+<h5>Expand by condition</h5>
+<pre><code class="js">
+rowGroupExpanded: (groupName) => {
+  if(groupName.contains('Japan')){
+    return true;
+  }
+
+  return false;
+}
 </code></pre>

@@ -1,0 +1,89 @@
+<h2>Localization</h2>
+
+<p>
+  Grid supports localization.<br>
+  To enable it, provide localized strings for all displayed text.
+</p>
+
+<h4>Default lang words</h4>
+
+<pre><code class="js">
+const lang = {
+  group: 'Group',
+  groupBarDragEmpty: 'Drag columns here to generate row groups',
+  sign: {
+    clear: 'Clear',
+    contains: 'Contains',
+    notContains: 'Not Contains',
+    equals: 'Equals',
+    notEquals: 'Not Equals',
+    empty: 'Empty',
+    notEmpty: 'Not Empty',
+    startsWith: 'Starts with',
+    endsWith: 'Ends with',
+    regex: 'Regex',
+    greaterThan: 'Greater Than',
+    lessThan: 'Less Than',
+    positive: 'Positive',
+    negative: 'Negative'
+  }
+};
+</code></pre>
+
+<h4>Custom lang: German</h4>
+
+<pre><code class="js">
+const lang = {
+  group: 'Gruppe',
+  groupBarDragEmpty: 'Ziehe Spalten hierher, um Zeilengruppen zu erstellen',
+  sign: {
+    clear: 'Löschen',
+    contains: 'Enthält',
+    notContains: 'Enthält nicht',
+    equals: 'Gleich',
+    notEquals: 'Ungleich',
+    empty: 'Leer',
+    notEmpty: 'Nicht leer',
+    startsWith: 'Beginnt mit',
+    endsWith: 'Endet mit',
+    regex: 'Regex',
+    greaterThan: 'Größer als',
+    lessThan: 'Kleiner als',
+    positive: 'Positiv',
+    negative: 'Negativ'
+  }
+};
+
+new Grid({
+  lang: lang,
+  ...
+</code></pre>
+
+<h4>Custom lang: Spanish</h4>
+
+<pre><code class="js">
+const lang = {
+  group: 'Grupo',
+  groupBarDragEmpty: 'Arrastra columnas aquí para generar grupos de filas',
+  sign: {
+    clear: 'Limpiar',
+    contains: 'Contiene',
+    notContains: 'No contiene',
+    equals: 'Igual a',
+    notEquals: 'Distinto de',
+    empty: 'Vacío',
+    notEmpty: 'No vacío',
+    startsWith: 'Empieza con',
+    endsWith: 'Termina con',
+    regex: 'Regex',
+    greaterThan: 'Mayor que',
+    lessThan: 'Menor que',
+    positive: 'Positivo',
+    negative: 'Negativo'
+  }
+};
+
+new Grid({
+  lang: lang,
+  ...
+</code></pre>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FG Grid - Theme Dark</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=12"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=12" rel="stylesheet">
+
+  <link href="flag.css" rel="stylesheet">
+
+  <style>
+    :root,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+      font-family: -apple-system, "system-ui", "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+    }
+	
+	body {
+      background-color: rgb(29, 38, 52);
+    }
+
+	.flag-cell, .group-country-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .group-country-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+
+  <script src="data.js"></script>
+
+  <script>
+     const countries = {
+      "Australia": "au",
+      "Austria": "at",
+      "Belgium": "be",
+      "Canada": "ca",
+      "Denmark": "dk",
+      "Finland": "fi",
+      "France": "fr",
+      "Germany": "de",
+      "Hong Kong": "hk",
+      "Iceland": "",
+      "Ireland": "ie",
+      "Japan": "ja",
+      "Luxembourg": "lu",
+      "Netherlands": "nl",
+      "Norway": "no",
+      "San Marino": "",
+      "Singapore": "sg",
+      "South Korea": "kr",
+      "Sweden": "se",
+      "Switzerland": "ch",
+      "Taiwan": "",
+      "UK": "uk",
+      "USA": "us"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      new Grid({
+        renderTo: 'container',
+        theme: 'dark',
+        defaults: {
+          sortable: true,
+          editable: true
+        },
+        filterBar: true,
+        rowGroupBar: true,
+        rowGroupType: 'column',
+        rowGroupExpanded: true,
+        rowGroupColumn: {
+          title: 'Group',
+          width: 200,
+          checkboxSelection: true,
+          headerCheckboxSelection: true,
+          render(params){
+            const {
+              item
+            } = params;
+
+            if(!item.$isGroupRow){
+              return `${item.brand} ${item.model}`
+            }
+          }
+        },
+        columns: [{
+          type: 'order'
+        },{
+          title: 'Main',
+          children: [{
+            index: 'brand',
+            checkboxSelection: true,
+            headerCheckboxSelection: true,
+            type: 'string'
+          },{
+            index: 'model',
+            type: 'string'
+          }]
+        },{
+          index: 'price',
+          filter: true,
+          //agFn: 'sum',
+          agFn: 'avg',
+          type: 'currency'
+        },{
+          index: 'year',
+          filter: true,
+          type: 'number'
+        },{
+          index: 'country',
+          type: 'string',
+          //rowGroup: true,
+          render(params){
+            const {
+              cell,
+              value
+            } = params;
+            const flagCls = 'flag-' + countries[value];
+            cell.classList.add('flag-cell');
+
+            const spanFlagEl = document.createElement('span');
+            spanFlagEl.classList.add('flag', flagCls);
+            spanFlagEl.innerHTML = '&nbsp;';
+            cell.appendChild(spanFlagEl);
+
+            const textEl = document.createElement('span');
+            textEl.classList.add('country-text');
+            textEl.innerHTML = ` ${value}`;
+
+            cell.appendChild(textEl);
+          }
+        },{
+          index: 'color',
+          filter: true,
+          type: 'string'
+        },{
+          title: 'Tech',
+          children: [{
+            index: 'fuelType',
+            filter: true,
+            type: 'string'
+          },{
+            index: 'transmission',
+            type: 'string'
+          },{
+            index: 'electric',
+            type: 'boolean'
+          }]
+        }],
+        data: data,
+        height: 700
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div style="margin: 10px auto 10px;width: 1000px;">
+  <div style="position:relative;">
+    <div id="container" style="width: 1000px; height: 800px;"></div>
+  </div>
+</div>
+
+</body>
+</html>

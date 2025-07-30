@@ -1,0 +1,197 @@
+<h2>Theming</h2>
+
+<p>
+  Grid provides 3 themes out of the box: <code class="js">default</code>, <code class="js">air</code>, <code class="js">dark</code>.<br>
+  Also, you can design a custom theme.
+</p>
+
+<p>
+  Creating a custom theme is straightforward:<br>
+  <b>1</b> - Come up with a name for your theme (e.g., your company name, like <code class="js">Nike</code>).<br>
+  <b>2</b> - Use the default theme's CSS as a starting point.<br>
+  <b>3</b> - Override CSS variables and write additional custom CSS if needed.<br>
+  <b>4</b> - Include your CSS theme file on the page.<br>
+  <b>5</b> - Set the <code class="js">theme</code> property in the grid configuration to your theme name.
+</p>
+
+<p>
+  Let's study designing theme on how it was done dark theme.
+</p>
+
+<h4>Default theme code</h4>
+
+<pre><code class="css">
+.fg-theme-default {
+  --grid-border-color: #bdc3c7;
+  --grid-border-width: 1px;
+
+  --grid-header-bottom-color: #bdc3c7;
+  --grid-header-bottom-width: 1px;
+  --grid-header-background-color: #F5F7F7;
+  --grid-header-cell-color: rgba(0, 0, 0, 0.54);
+  --grid-header-cell-font-weight: 600;
+  --grid-header-cell-font-size: 12px;
+  --grid-header-cell-resize-background-color: #dde1e3;
+  --grid-header-cell-after-height: 50%;
+  --grid-header-cell-after-top: calc(50% - 50%*0.5);
+  --grid-header-cell-column-group-child-border-top-color: rgb(189, 195, 199);
+
+  --grid-body-background-color: white;
+  --grid-cell-line-height: 27px;
+  --grid-row-background-color: rgb(255, 255, 255);
+  --grid-row-border-bottom-width: 1px;
+  --grid-row-border-bottom-color: #d3dbe1;
+  --grid-row-odd-background-color: #fcfdfe;
+  --grid-row-hover-background-color: #ecf0f1;
+  --grid-row-selected-color: #E0E5E9;
+  --grid-row-group-expander-color: rgba(174, 183, 194, 0.12);
+  --grid-row-group-hover-expander-color: rgba(174, 183, 194, 0.25);
+  --grid-row-group-expander-hover-color: rgba(174, 183, 194, 0.35);
+  --grid-row-group-bar-logo-color: #888888;
+  --grid-group-level: 0;
+  --grid-row-group-level-size: 17px;
+  --grid-row-height: 28px;
+
+  --grid-cell-color: #888888;
+  --grid-cell-font-size: 12px;
+  --grid-cell-active-background-color: #E0E5E9;
+  --grid-cell-active-box-shadow-color: #B5B9C4;
+  --grid-cell-selected-background-color: #f1f6ff;
+  --grid-cell-order-background-color: rgb(245, 247, 247);
+  --grid-cell-order-border-right-color: rgb(189, 195, 199);
+
+  --filter-field-font-size: 12px;
+  --filter-field-cell-color: #888888;
+  --filter-field-sign-border-color: #b7b7b7;
+  --filter-field-input-border-color: #b7b7b7;
+  --filter-field-background-color: white;
+  --filter-field-sign-hover-background-color: #E8E8E8;
+  --filter-field-list-background-color: #ffffff;
+  --filter-field-list-border-color: #b7b7b7;
+  --filter-field-list-item-color: rgba(0, 0, 0, 0.54);
+  --filter-field-list-item-background-color: #E8E8E8;
+
+  --checkbox-color: #8E8E8E;
+
+  --svg-text-color: #888888;
+  --svg-filter-sign-color: #888888;
+  --svg-menu-color: #888888;
+  --svg-sort-color: #888888;
+  --svg-header-filter-color: rgba(0, 0, 0, 0.54);
+  --svg-expander-color: #888888;
+}
+</code></pre>
+
+<h4>Dark theme code</h4>
+<p>
+  This example shows the result after modifying CSS variables and overriding some default styles.
+</p>
+
+<pre><code class="css">
+.fg-theme-dark {
+  --grid-border-color: #FFFFFF26;
+  --grid-border-width: 1px;
+
+  --grid-header-bottom-color: #FFFFFF26;
+  --grid-header-bottom-width: 1px;
+  --grid-header-background-color: #2E3744;
+  --grid-header-cell-color: #FFFFFF99;
+  --grid-header-cell-font-weight: 600;
+  --grid-header-cell-font-size: 12px;
+  --grid-header-cell-resize-background-color: #FFFFFF26;
+  --grid-header-cell-after-height: 50%;
+  --grid-header-cell-after-top: calc(50% - 50%*0.5);
+  --grid-header-cell-column-group-child-border-top-color: #FFFFFF26;
+
+  --grid-body-background-color: rgb(31, 40, 54);
+  --grid-cell-line-height: 27px;
+  --grid-row-background-color: #1F2836;
+  --grid-row-border-bottom-width: 1px;
+  --grid-row-border-bottom-color: #FFFFFF26;
+  --grid-row-odd-background-color: #1F2836;
+  --grid-row-hover-background-color: #203145;
+  --grid-row-selected-color: #1F354C;
+
+  --grid-row-group-expander-color: rgba(174, 183, 194, 0.12);
+  --grid-row-group-hover-expander-color: rgba(174, 183, 194, 0.25);
+  --grid-row-group-expander-hover-color: rgba(174, 183, 194, 0.35);
+  --grid-row-group-bar-logo-color: #888888;
+  --grid-group-level: 0;
+  --grid-row-group-level-size: 17px;
+  --grid-row-height: 28px;
+
+  --grid-cell-color: #FFFFFF99;
+  --grid-cell-font-size: 12px;
+  --grid-cell-active-background-color: #203E5C;
+  --grid-cell-active-box-shadow-color: #2196f3;
+  --grid-cell-selected-background-color: color-mix(in srgb, transparent, #2196f3 20%);
+  --grid-cell-order-background-color: #2F3744;
+  --grid-cell-order-border-right-color: rgba(255, 255, 255, 0.15);
+
+  --filter-field-font-size: 12px;
+  --filter-field-cell-color: #888888;
+  --filter-field-sign-border-color: #FFFFFF26;
+  --filter-field-input-border-color: #FFFFFF26;
+  --filter-field-background-color: #1F2836;
+  --filter-field-sign-hover-background-color: color-mix(in srgb, transparent, #FFF 10%);
+  --filter-field-list-background-color: color-mix(in srgb, #1F2836, #FFF 3%);
+  --filter-field-list-border-color: color-mix(in srgb, transparent, #FFF 20%);
+  --filter-field-list-item-color: #FFFFFF99;
+  --filter-field-list-item-background-color: color-mix(in srgb, transparent, #2196f3 8%);
+
+  --checkbox-color: #626972;
+  --svg-text-color: #626972;
+  --svg-filter-sign-color: #FFFFFF99;
+  --svg-menu-color: white;
+  --svg-sort-color: white;
+  --svg-header-filter-color: white;
+  --svg-expander-color: #FFFFFF99;
+
+  .fg-filter-field-input {
+    border-left: 1px solid transparent;
+    color: white;
+    &:focus {
+      border: 1px solid #2196f3;
+    }
+  }
+
+  .fg-editors-container {
+    .fg-field {
+      input {
+        background-color: #1F2836;
+        color: white;
+        border: 1px solid #2196f3;
+        border-radius: 2px;
+        &:focus {
+          border: 2px solid #2196f3;
+          background-color: #2F3744;
+        }
+      }
+    }
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #626972;
+    cursor: pointer;
+    position: relative;
+  }
+
+  input[type="checkbox"]:checked, input[type="checkbox"]:indeterminate {
+    appearance: auto;
+  }
+
+  color-scheme: dark;
+}
+</code></pre>
+
+<h4>Using theme in Grid Options</h4>
+
+<pre><code class="js">
+new Grid({
+  theme: 'dark',
+</code></pre>

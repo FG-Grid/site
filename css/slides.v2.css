@@ -391,6 +391,7 @@ screen.swap img.active {
         height:auto;
         padding-right:15px;
         padding-bottom:30px;
+        padding-top: 20px !important;
     }
 
     slide.screen > ct {
@@ -431,7 +432,7 @@ screen.swap img.active {
         text-align:left;
         min-width:0;
     }
-	
+
 	#doc {
         width: 100% !important;
         height: auto;

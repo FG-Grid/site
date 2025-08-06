@@ -5,10 +5,10 @@
   <title>FG Grid - Row Grouping</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="/fg-grid/dist/fg-grid.min.js?_dc=10"></script>
-  <link href="/fg-grid/styles/fg-grid.css?_dc=10" rel="stylesheet">
+  <script src="/fg-grid/dist/fg-grid.js?_dc=11"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=11" rel="stylesheet">
 
-  <link href="flag.css" rel="stylesheet">
+  <link href="flag.css?_dc=1" rel="stylesheet">
 
   <style>
     :root,
@@ -204,6 +204,40 @@
             textEl.innerHTML = ` ${value}`;
 
             cell.appendChild(textEl);
+          },
+          editor: {
+            type: 'combo',
+            leftListRender(params){
+              const { item } = params;
+              const flagCls = 'flag-' + countries[item.text];
+
+              return `<span class="flag ${flagCls}">&nbsp;</span>`
+            },
+            items: [
+              { value: 'au', text: 'Australia' },
+              { value: 'at', text: 'Austria' },
+              { value: 'be', text: 'Belgium' },
+              { value: 'ca', text: 'Canada' },
+              { value: 'dk', text: 'Denmark' },
+              { value: 'fi', text: 'Finland' },
+              { value: 'fr', text: 'France' },
+              { value: 'de', text: 'Germany' },
+              { value: 'hk', text: 'Hong Kong' },
+              { value: 'ic', text: 'Iceland' },
+              { value: 'ie', text: 'Ireland' },
+              { value: 'ja', text: 'Japan' },
+              { value: 'lu', text: 'Luxembourg' },
+              { value: 'nl', text: 'Netherlands' },
+              { value: 'no', text: 'Norway' },
+              { value: 'sm', text: 'San Marino' },
+              { value: 'sg', text: 'Singapore' },
+              { value: 'kr', text: 'South Korea' },
+              { value: 'se', text: 'Sweden' },
+              { value: 'ch', text: 'Switzerland' },
+              { value: 'tw', text: 'Taiwan' },
+              { value: 'uk', text: 'UK' },
+              { value: 'us', text: 'USA' }
+            ]
           }
         },{
           index: 'color',
@@ -215,9 +249,18 @@
           type: 'string'
         },{
           index: 'transmission',
-          type: 'string'
+          type: 'string',
+          filter: true,
+          editor: {
+            type: 'combo',
+            items: [
+              { value: 'Automatic', text: 'Automatic' },
+              { value: 'Manual', text: 'Manual' }
+            ]
+          }
         },{
           index: 'electric',
+          filter: true,
           type: 'boolean'
         }],
         data: data

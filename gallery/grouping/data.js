@@ -168,7 +168,7 @@ let data = [{
     country: "Japan",
     year: 2021,
     fuelType: "Petrol",
-    electric: false,
+    electric: true,
     transmission: "Automatic"
   },
   {
@@ -201,7 +201,7 @@ let data = [{
     country: "UK",
     year: 2022,
     fuelType: "Diesel",
-    electric: false,
+    electric: true,
     transmission: "Automatic"
   },
   {
@@ -442,7 +442,7 @@ let data = [{
     country: "Germany",
     year: 2021,
     fuelType: "Diesel",
-    electric: false,
+    electric: true,
     transmission: "Automatic"
   },
   {

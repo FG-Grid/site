@@ -1,14 +1,14 @@
 let data = [{
-    brand: "Toyota",
-    model: "Camry",
-    price: 25000,
-    color: "Blue",
-    country: "Japan",
-    year: 2019,
-    fuelType: "Petrol",
-    electric: false,
-    transmission: "Automatic"
-  },
+  brand: "Toyota",
+  model: "Camry",
+  price: 25000,
+  color: "Blue",
+  country: "Japan",
+  year: 2019,
+  fuelType: "Petrol",
+  electric: false,
+  transmission: "Automatic"
+},
   {
     brand: "Honda",
     model: "Civic",
@@ -168,7 +168,7 @@ let data = [{
     country: "Japan",
     year: 2021,
     fuelType: "Petrol",
-    electric: false,
+    electric: true,
     transmission: "Automatic"
   },
   {
@@ -201,7 +201,7 @@ let data = [{
     country: "UK",
     year: 2022,
     fuelType: "Diesel",
-    electric: false,
+    electric: true,
     transmission: "Automatic"
   },
   {
@@ -442,7 +442,7 @@ let data = [{
     country: "Germany",
     year: 2021,
     fuelType: "Diesel",
-    electric: false,
+    electric: true,
     transmission: "Automatic"
   },
   {

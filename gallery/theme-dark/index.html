@@ -48,7 +48,7 @@
     }
   </style>
 
-  <script src="data.js"></script>
+  <script src="data.js?_dc=1"></script>
 
   <script>
      const countries = {
@@ -149,6 +149,40 @@
             textEl.innerHTML = ` ${value}`;
 
             cell.appendChild(textEl);
+          },
+          editor: {
+            type: 'combo',
+            leftListRender(params){
+              const { item } = params;
+              const flagCls = 'flag-' + countries[item.text];
+
+              return `<span class="flag ${flagCls}">&nbsp;</span>`
+            },
+            items: [
+              { value: 'au', text: 'Australia' },
+              { value: 'at', text: 'Austria' },
+              { value: 'be', text: 'Belgium' },
+              { value: 'ca', text: 'Canada' },
+              { value: 'dk', text: 'Denmark' },
+              { value: 'fi', text: 'Finland' },
+              { value: 'fr', text: 'France' },
+              { value: 'de', text: 'Germany' },
+              { value: 'hk', text: 'Hong Kong' },
+              { value: 'ic', text: 'Iceland' },
+              { value: 'ie', text: 'Ireland' },
+              { value: 'ja', text: 'Japan' },
+              { value: 'lu', text: 'Luxembourg' },
+              { value: 'nl', text: 'Netherlands' },
+              { value: 'no', text: 'Norway' },
+              { value: 'sm', text: 'San Marino' },
+              { value: 'sg', text: 'Singapore' },
+              { value: 'kr', text: 'South Korea' },
+              { value: 'se', text: 'Sweden' },
+              { value: 'ch', text: 'Switzerland' },
+              { value: 'tw', text: 'Taiwan' },
+              { value: 'uk', text: 'UK' },
+              { value: 'us', text: 'USA' }
+            ]
           }
         },{
           index: 'color',
@@ -165,7 +199,8 @@
             type: 'string'
           },{
             index: 'electric',
-            type: 'boolean'
+            type: 'boolean',
+            filter: true
           }]
         }],
         data: data,

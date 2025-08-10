@@ -5,8 +5,8 @@
   <title>FG Grid - Row Grouping</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="/fg-grid/dist/fg-grid.js?_dc=11"></script>
-  <link href="/fg-grid/styles/fg-grid.css?_dc=11" rel="stylesheet">
+  <script src="/fg-grid/dist/fg-grid.js?_dc=12"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=12" rel="stylesheet">
 
   <link href="flag.css?_dc=1" rel="stylesheet">
 
@@ -44,10 +44,10 @@
       gap: 5px;
     }
 
-    .group-country-text {
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  .group-country-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 	.img-container {
       border: 1px solid #bdc3c7;
@@ -176,13 +176,23 @@
           type: 'currency'
         },{
           index: 'year',
-          filter: true,
-          type: 'number'
+          type: 'number',
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
+          editor: {
+            type: 'combo'
+          }
         }, {
           index: 'country',
           rowGroup: true,
           rowGroupOrder: 0,
           type: 'string',
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
           getter(params){
             return params.item.country;
           },
@@ -212,37 +222,18 @@
               const flagCls = 'flag-' + countries[item.text];
 
               return `<span class="flag ${flagCls}">&nbsp;</span>`
-            },
-            items: [
-              { value: 'au', text: 'Australia' },
-              { value: 'at', text: 'Austria' },
-              { value: 'be', text: 'Belgium' },
-              { value: 'ca', text: 'Canada' },
-              { value: 'dk', text: 'Denmark' },
-              { value: 'fi', text: 'Finland' },
-              { value: 'fr', text: 'France' },
-              { value: 'de', text: 'Germany' },
-              { value: 'hk', text: 'Hong Kong' },
-              { value: 'ic', text: 'Iceland' },
-              { value: 'ie', text: 'Ireland' },
-              { value: 'ja', text: 'Japan' },
-              { value: 'lu', text: 'Luxembourg' },
-              { value: 'nl', text: 'Netherlands' },
-              { value: 'no', text: 'Norway' },
-              { value: 'sm', text: 'San Marino' },
-              { value: 'sg', text: 'Singapore' },
-              { value: 'kr', text: 'South Korea' },
-              { value: 'se', text: 'Sweden' },
-              { value: 'ch', text: 'Switzerland' },
-              { value: 'tw', text: 'Taiwan' },
-              { value: 'uk', text: 'UK' },
-              { value: 'us', text: 'USA' }
-            ]
+            }
           }
         },{
           index: 'color',
-          filter: true,
-          type: 'string'
+          type: 'string',
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
+          editor: {
+            type: 'combo'
+          }
         },{
           index: 'fuelType',
           filter: true,

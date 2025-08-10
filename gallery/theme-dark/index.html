@@ -112,10 +112,21 @@
             index: 'brand',
             checkboxSelection: true,
             headerCheckboxSelection: true,
-            type: 'string'
+            type: 'string',
+            filter: {
+              list: true,
+              defaultFilter: 'list'
+            },
+            editor: {
+              type: 'combo'
+            }
           },{
             index: 'model',
-            type: 'string'
+            type: 'string',
+            filter: true,
+            editor: {
+              type: 'combo'
+            }
           }]
         },{
           index: 'price',
@@ -126,11 +137,13 @@
         },{
           index: 'year',
           filter: true,
-          type: 'number'
+          type: 'number',
+          editor: {
+            type: 'combo'
+          }
         },{
           index: 'country',
           type: 'string',
-          //rowGroup: true,
           render(params){
             const {
               cell,
@@ -150,6 +163,10 @@
 
             cell.appendChild(textEl);
           },
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
           editor: {
             type: 'combo',
             leftListRender(params){
@@ -157,46 +174,34 @@
               const flagCls = 'flag-' + countries[item.text];
 
               return `<span class="flag ${flagCls}">&nbsp;</span>`
-            },
-            items: [
-              { value: 'au', text: 'Australia' },
-              { value: 'at', text: 'Austria' },
-              { value: 'be', text: 'Belgium' },
-              { value: 'ca', text: 'Canada' },
-              { value: 'dk', text: 'Denmark' },
-              { value: 'fi', text: 'Finland' },
-              { value: 'fr', text: 'France' },
-              { value: 'de', text: 'Germany' },
-              { value: 'hk', text: 'Hong Kong' },
-              { value: 'ic', text: 'Iceland' },
-              { value: 'ie', text: 'Ireland' },
-              { value: 'ja', text: 'Japan' },
-              { value: 'lu', text: 'Luxembourg' },
-              { value: 'nl', text: 'Netherlands' },
-              { value: 'no', text: 'Norway' },
-              { value: 'sm', text: 'San Marino' },
-              { value: 'sg', text: 'Singapore' },
-              { value: 'kr', text: 'South Korea' },
-              { value: 'se', text: 'Sweden' },
-              { value: 'ch', text: 'Switzerland' },
-              { value: 'tw', text: 'Taiwan' },
-              { value: 'uk', text: 'UK' },
-              { value: 'us', text: 'USA' }
-            ]
+            }
           }
         },{
           index: 'color',
-          filter: true,
-          type: 'string'
+          type: 'string',
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
+          editor: {
+            type: 'combo'
+          }
         },{
           title: 'Tech',
           children: [{
             index: 'fuelType',
             filter: true,
-            type: 'string'
+            type: 'string',
+            editor: {
+              type: 'combo'
+            }
           },{
             index: 'transmission',
-            type: 'string'
+            type: 'string',
+            filter: true,
+            editor: {
+              type: 'combo'
+            }
           },{
             index: 'electric',
             type: 'boolean',

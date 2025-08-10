@@ -144,7 +144,7 @@
       "USA": "us"
     };
 
-	let grid;
+	  let grid;
 
     document.addEventListener("DOMContentLoaded", () => {
       grid = new Grid({
@@ -159,10 +159,23 @@
           type: 'order'
         },{
           index: 'brand',
-          type: 'string'
+          type: 'string',
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
+          editor: {
+            type: 'combo'
+          }
         },{
           index: 'model',
-          type: 'string'
+          type: 'string',
+          filter: {
+            list: true
+          },
+          editor: {
+            type: 'combo'
+          }
         },{
           index: 'price',
           filter: true,
@@ -173,9 +186,15 @@
           }
         },{
           index: 'year',
-          filter: true,
-          type: 'number'
-        }, {
+          type: 'number',
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
+          editor: {
+            type: 'combo'
+          }
+        },{
           index: 'country',
           type: 'string',
           render(params){
@@ -197,6 +216,10 @@
 
             cell.appendChild(textEl);
           },
+          filter: {
+            list: true,
+            defaultFilter: 'list'
+          },
           editor: {
             type: 'combo',
             leftListRender(params){
@@ -204,41 +227,22 @@
               const flagCls = 'flag-' + countries[item.text];
 
               return `<span class="flag ${flagCls}">&nbsp;</span>`
-            },
-            items: [
-              { value: 'au', text: 'Australia' },
-              { value: 'at', text: 'Austria' },
-              { value: 'be', text: 'Belgium' },
-              { value: 'ca', text: 'Canada' },
-              { value: 'dk', text: 'Denmark' },
-              { value: 'fi', text: 'Finland' },
-              { value: 'fr', text: 'France' },
-              { value: 'de', text: 'Germany' },
-              { value: 'hk', text: 'Hong Kong' },
-              { value: 'ic', text: 'Iceland' },
-              { value: 'ie', text: 'Ireland' },
-              { value: 'ja', text: 'Japan' },
-              { value: 'lu', text: 'Luxembourg' },
-              { value: 'nl', text: 'Netherlands' },
-              { value: 'no', text: 'Norway' },
-              { value: 'sm', text: 'San Marino' },
-              { value: 'sg', text: 'Singapore' },
-              { value: 'kr', text: 'South Korea' },
-              { value: 'se', text: 'Sweden' },
-              { value: 'ch', text: 'Switzerland' },
-              { value: 'tw', text: 'Taiwan' },
-              { value: 'uk', text: 'UK' },
-              { value: 'us', text: 'USA' }
-            ]
+            }
           }
         },{
           index: 'color',
           filter: true,
-          type: 'string'
+          type: 'string',
+          editor: {
+            type: 'combo'
+          }
         },{
           index: 'fuelType',
           filter: true,
           type: 'string',
+          editor: {
+            type: 'combo'
+          },
           cellCls(params){
             if(params.value === 'Hybrid'){
               return ['eco'];
@@ -284,20 +288,20 @@
 	  worker.postMessage({ amount });
 
 	  worker.onmessage = function (e) {
-		if (e.data.type === 'progress') {
-		  elProgress.innerHTML = `Generated ${e.data.amountDone} data items...`;
-		  if(e.data.amountDone === amount - 1000){
-			elProgress.innerHTML = 'Finishing data generation...';
-		  }
-		  else{
-			elProgress.innerHTML = `Generated ${e.data.amountDone} data rows...`;
-		  }
+      if (e.data.type === 'progress') {
+        elProgress.innerHTML = `Generated ${e.data.amountDone} data items...`;
+        if(e.data.amountDone === amount - 1000){
+        elProgress.innerHTML = 'Finishing data generation...';
+        }
+        else{
+        elProgress.innerHTML = `Generated ${e.data.amountDone} data rows...`;
+        }
 
-		} else if (e.data.type === 'done') {
-		  elProgress.innerHTML = 'Processing and rendering...';
-		  grid.setData(e.data.data);
-		  elProgress.innerHTML = 'Done';
-		}
+      } else if (e.data.type === 'done') {
+        elProgress.innerHTML = 'Processing and rendering...';
+        grid.setData(e.data.data);
+        elProgress.innerHTML = 'Done';
+      }
 	  }
 	}
   </script>

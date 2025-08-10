@@ -113,7 +113,7 @@
         rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
         defaults: {
           sortable: true,
-		      editable: true
+		  editable: true
         },
         filterBar: true,
         rowGroupColumn: {
@@ -121,7 +121,7 @@
           width: 200,
           checkboxSelection: true,
           headerCheckboxSelection: true,
-		      editable: false,
+		  editable: false,
           render(params){
             const {
               item
@@ -160,8 +160,8 @@
           el.appendChild(container);
         },
         columns: [{
-		      type: 'order'
-		    },{
+		   type: 'order'
+		},{
           index: 'brand',
           rowGroup: true,
           type: 'string'
@@ -221,7 +221,7 @@
               const { item } = params;
               const flagCls = 'flag-' + countries[item.text];
 
-              return `<span class="flag ${flagCls}">&nbsp;</span>`
+              return `<span class="flag ${flagCls}">&nbsp;</span>`;
             }
           }
         },{

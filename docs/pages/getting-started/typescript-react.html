@@ -14,6 +14,7 @@ import type {Column} from 'fg-grid';
 Next, define an interface that describes your row data:<br>
 <pre><code class="js">
 interface IRow {
+  id?: string;
   brand: string;
   model: string;
   price: number;
@@ -87,7 +88,7 @@ const initialColumns: Column&lt;IRow&gt;[] = [{
   render(params) {
     console.log(params.item.id)
     console.log(params.column.title)
-    return params.item.id
+    return `&lt;b&gt;${params.item.id}&lt;/b&gt;`;
   }
 },{
   index: 'model',

@@ -202,6 +202,25 @@
   }
 
   domReady(function() {
+     const el = document.querySelector("[href='" + location.pathname + "']");
+
+     if (el) {
+       document.title = el.innerHTML + ' | Docs';
+       el.classList.add('active-item');
+
+       const closestLi = el.closest('li.doc-items');
+       if (closestLi) {
+         const sublist = closestLi.querySelector('ul');
+
+         document.querySelectorAll('.active ul').forEach(ul => slideUp(ul));
+         document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+
+         closestLi.classList.add('active');
+         sublist.style.display = 'block';
+       }
+     }
+
+
     document.addEventListener('click', function (e) {
       const trigger = e.target.closest('.doc-item, .doc-item-btn');
       if (!trigger) return;
@@ -215,7 +234,6 @@
         parent.classList.remove('active');
         if (sublist) slideUp(sublist);
       } else {
-        // Закрыть все активные
         document.querySelectorAll('.active ul').forEach(ul => slideUp(ul));
         document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
 
@@ -252,7 +270,7 @@
 
             const title = el.innerHTML + ' | Docs';
 
-            //history.pushState({}, title, dataTarget);
+            history.pushState({}, title, dataTarget);
             document.title = title;
             mc.scrollTop = 0;
 
@@ -264,18 +282,6 @@
             console.error('Error during loading page:', error);
           });
       });
-
-      const el = document.querySelector("[href='" + location.pathname + "']");
-      if (el) {
-        document.title = el.innerHTML + ' | Docs';
-        el.classList.add('active-item');
-
-        const closestLi = el.closest('li.doc-items');
-        if (closestLi) {
-          const link = closestLi.querySelector('a');
-          if (link) link.click();
-        }
-      }
     });
   });
 

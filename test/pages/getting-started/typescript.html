@@ -1,0 +1,139 @@
+<h2>TypeScript</h2>
+<p>
+  <span style="color:#A2CFE8;font-weight: bold;">FG-</span><span style="color:#088EC7;font-weight: bold;">Grid</span> provides support for TypeScript.<br>
+  In this section, we study how to use the library without any frameworks, but with TypeScript.<br>
+  For example, you can try using <a href="https://vite.dev/">Vite</a> with TypeScript.
+</p>
+
+<p>
+  One of the main benefits of using TypeScript is code autocompletion.<br>
+  To enable it, we need to import the generic type <code class="js">Column</code> from <b>fg-grid</b>:<br>
+<pre><code class="js">
+import type {Column} from 'fg-grid';
+</code></pre>
+Next, define an interface that describes your row data:<br>
+<pre><code class="js">
+interface IRow {
+  brand: string;
+  model: string;
+  price: number;
+  year: number;
+}
+</code></pre>
+
+Then use this interface with the generic type <code class="js">Column</code>:<br>
+<pre><code class="js">
+const columns: Column&lt;IRow&gt;[] = [{
+...
+</code></pre>
+
+You should also provide the same interface to the <code class="js">Grid</code> class, which also accepts a generic:<br>
+<pre><code class="js">
+new Grid&lt;IRow&gt;({
+...
+</code></pre>
+As a result, you’ll get full autocomplete support.<br>
+For example, in the <code class="js">rowStyle</code> function, <code class="js">params</code> will be typed, and you can access row data properties:
+<pre><code class="js">
+rowStyle: (params)=>{
+  // params.item.*
+  // params.column.*
+  if(Number(params.item.price) > 55000){
+    return {
+      'background-color': 'rgba(220, 107, 103, 0.2)'
+    }
+  }
+}
+</code></pre>
+</p>
+
+<h4>Full code sample</h4>
+
+<p>
+<pre><code class="html">
+// index.html
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Vite + TS + fg-grid&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+      &lt;div style=&quot;max-width: 700px; margin: 0 auto;&quot;&gt;
+        &lt;div id=&quot;container&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.ts&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<pre><code class="ts">
+// main.ts
+import 'fg-grid/styles/fg-grid.css';
+import {Grid} from 'fg-grid';
+import type {Column} from 'fg-grid';
+
+interface IRow {
+  brand: string;
+  model: string;
+  price: number;
+  year: number;
+}
+
+const data: IRow[] = [
+  { brand: "Lexus", model: "RX 350", price: 60000, year: 2021 },
+  { brand: "Lexus", model: "NX 300", price: 50000, year: 2023 },
+  { brand: "Toyota", model: "Land Cruiser Prado", price: 70000, year: 2022 },
+  { brand: "Toyota", model: "RAV4", price: 35000, year: 2023 },
+  { brand: "Volkswagen", model: "Tiguan", price: 38000, year: 2021 },
+  { brand: "Volkswagen", model: "Touareg", price: 75000, year: 2023 },
+  { brand: "Volkswagen", model: "Teramont", price: 60000, year: 2023 },
+  { brand: "Mazda", model: "CX-9", price: 45000, year: 2023 },
+  { brand: "Honda", model: "Pilot", price: 45000, year: 2023 },
+  { brand: "Nissan", model: "Pathfinder", price: 48000, year: 2022 },
+  { brand: "Hyundai", model: "Palisade", price: 50000, year: 2023 },
+  { brand: "Kia", model: "Sorento", price: 40000, year: 2023 },
+  { brand: "Ford", model: "Edge", price: 42000, year: 2021 },
+  { brand: "Chevrolet", model: "Traverse", price: 45000, year: 2023 }
+];
+
+const columns: Column&lt;IRow&gt;[] = [{
+  index: 'brand',
+  title: 'Brand',
+  type: 'string',
+  agFn: 'avg',
+},{
+  index: 'model',
+  title: 'Model',
+  type: 'string'
+},{
+  index: 'price',
+  title: 'Price',
+  type: 'currency'
+},{
+  index: 'year',
+  title: 'Year',
+  type: 'number'
+}]
+
+new Grid&lt;IRow&gt;({
+  renderTo: 'container',
+  data: data,
+  defaults: {
+    width: 100,
+    sortable: true
+  },
+  columns: columns,
+  rowStyle: (params)=>{
+    if(Number(params.item.price) > 55000){
+      return {
+        'background-color': 'rgba(220, 107, 103, 0.2)'
+      }
+    }
+  }
+});
+</code></pre>
+</p>

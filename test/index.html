@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" class="framed js no-touch history websockets video audio localstorage svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>FG-Grid Documentation</title>
+
+  <meta http-equiv="cleartype" content="on">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="/css/g.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/icons.v2.css">
+  <link rel="stylesheet" href="/css/base.v2.css">
+  <link rel="stylesheet" href="/css/layout.v2.css">
+  <link rel="stylesheet" href="/css/nav.v3.css">
+  <link rel="stylesheet" href="/css/slides.v2.css" charset="utf-8">
+
+  <script src="/js/jquery.min.js"></script>
+
+  <link href="/docs/doc.css?_dc=1" rel="stylesheet">
+
+  <!-- global styles -->
+  <link rel="stylesheet" href="/css/global.v4.css">
+
+  <link href="/css/guides.v3.css" rel="stylesheet" type="text/css">
+  <link href="/css/v2.css" rel="stylesheet" type="text/css">
+
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=9"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=9" rel="stylesheet">
+
+  <script>
+    document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:'+(window.innerHeight-55)+'px;} #mc{min-height:'+(window.innerHeight-255)+'px;}}</style>');
+  </script>
+  <style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:744px;} #mc{min-height:544px;}}</style>
+</head>
+<body id="body">
+<main class="fluid">
+<hd>
+  <nav>
+     <brand>
+       <a href="/" style="text-decoration:none;display: flex; align-items: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect height="12" width="12" x="2" y="2" ry="2" stroke-width="0" fill="#A2CFE8"></rect>
+            <rect height="12" width="12" x="16" y="2" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+            <rect height="12" width="12" x="2" y="16" rx="2"  stroke-width="0" fill="#A2CFE8"></rect>
+            <rect height="12" width="12" x="16" y="16" rx="2" stroke-width="0" fill="#A2CFE8"></rect>
+          </svg>
+
+          <span class="text-lg" style="color: rgba(255, 255, 255, .85); font-weight: 700; font-size: 21px;padding-left: 7px;">FG-</span>
+          <span class="text-lg" style="color: #A2CFE8; font-weight: 700; font-size: 21px;padding-left: 1px;">Grid</span>
+          <span class="text-lg" style="color: #A2CFE8; font-weight: 600; font-size: 12px;padding-left: 1px;padding-left: 4px;position: relative;top: 3px;">beta</span>
+       </a>
+     </brand>
+    <btn></btn>
+    <bd>
+      <ul style="float:left;margin-left:20px;">
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/api">API</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/FancyGrid/fg-grid">Support</a></li>
+      </ul>
+    </bd>
+  </nav>
+</hd>
+
+<bd id="mc" style=""><side data-sbar-dir="vertical" style="height: 700px;"><div class="sbar-track" style="display: none;"><div class="sbar-scrollbar"></div></div><div class="sbar-scroll-content"><div class="sbar-content">
+<div class="doc-tabs" style="height: 25px;background-color: #eee !important">
+  <div onclick="location.href='/docs/'" style="padding-top: 9px;padding-left: 39px;background-color: #1e8fc6 !important;color: rgba(255,255,255,.85);" class="tab-btn active" href="/support">Docs</div>
+  <div style="padding-top: 9px;padding-left: 48px;" onclick="location.href='/api/'" class="tab-btn" href="/api">API</div>
+</div>
+<ul class="all" style="padding-top:15px;">
+  <li class="doc-items">
+    <a href="#" class="doc-item">Getting Started</a>
+    <btn class="doc-item-btn"></btn>
+    <ul class="doc-sub-items" style="display: none;">
+      <li>
+        <a href="/docs/getting-started/installation">Installation grid</a>
+        <a href="/docs/getting-started/your-first-grid">Your first grid</a>
+        <a href="/docs/getting-started/react">React</a>
+        <a href="/docs/getting-started/typescript">TypeScript</a>
+        <a href="/docs/getting-started/typescript-react">TypeScript with React</a>
+      </li>
+    </ul>
+  </li>
+  <li class="doc-items">
+    <a href="#" class="doc-item">Grid Concepts</a>
+    <btn class="doc-item-btn"></btn>
+    <ul class="doc-sub-items" style="display: none;">
+      <li>
+        <a href="/docs/grid-concepts/understanding-fg-grid">Understanding FG-Grid</a>
+        <a href="/docs/grid-concepts/sizing">Sizing</a>
+        <a href="/docs/grid-concepts/columns">Columns</a>
+        <a href="/docs/grid-concepts/data">Data</a>
+        <a href="/docs/grid-concepts/sorting">Sorting</a>
+        <a href="/docs/grid-concepts/filtering">Filtering</a>
+        <a href="/docs/grid-concepts/grouping">Grouping</a>
+        <a href="/docs/grid-concepts/column-grouping">Column Grouping</a>
+		    <a href="/docs/grid-concepts/selection">Selection</a>
+        <a href="/docs/grid-concepts/cells-styling">Cells Styling</a>
+        <a href="/docs/grid-concepts/editing">Editing</a>
+        <a href="/docs/grid-concepts/localization">Localization</a>
+        <a href="/docs/grid-concepts/theming">Theming</a>
+        <a href="/docs/grid-concepts/methods">Methods</a>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+</div></div></side>
+<style>
+#body doc > hd {
+  display:none;
+}
+
+@media (max-width: 767px) {
+  #mc side {
+    display:none !important;
+  }
+  #body doc h4 {
+    font-size: 20px;
+    margin-top:20px;
+  }
+  #body doc h2+h4 {
+    margin-top:10px;
+  }
+  #body doc p {
+    font-size: 18px;
+  }
+}
+</style>
+<doc id="doc" class="text-left">
+<bd>
+</bd>
+
+</doc>
+</bd>
+</main>
+
+<script src="/js/markup.js"></script>
+<script src="/js/guides.v4.js"></script>
+
+<script src="/js/v2.js"></script>
+<script src="/js/common.v2.js"></script>
+<script src="/js/global.v3.js"></script>
+
+<script src="/js/highlight.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+<script>
+  var isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+
+  function slideUp(element, duration = 400) {
+    element.style.height = element.offsetHeight + 'px';
+    element.style.transition = `height ${duration}ms ease`;
+    element.offsetHeight; // принудительная перерисовка
+    element.style.overflow = 'hidden';
+    element.style.height = 0;
+
+    setTimeout(() => {
+      element.style.display = 'none';
+      element.style.removeProperty('height');
+      element.style.removeProperty('transition');
+      element.style.removeProperty('overflow');
+    }, duration);
+  }
+
+  function slideDown(element, duration = 400) {
+    element.style.removeProperty('display');
+    let display = window.getComputedStyle(element).display;
+    if (display === 'none') display = 'block';
+    element.style.display = display;
+
+    const height = element.scrollHeight;
+    element.style.height = 0;
+    element.style.overflow = 'hidden';
+    element.style.transition = `height ${duration}ms ease`;
+
+    requestAnimationFrame(() => {
+      element.style.height = height + 'px';
+    });
+
+    setTimeout(() => {
+      element.style.removeProperty('height');
+      element.style.removeProperty('transition');
+      element.style.removeProperty('overflow');
+    }, duration);
+  }
+
+  function domReady(fn) {
+    if (typeof fn === 'function') {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fn);
+      } else {
+        fn();
+      }
+    }
+  }
+
+  domReady(function() {
+    document.addEventListener('click', function (e) {
+      const trigger = e.target.closest('.doc-item, .doc-item-btn');
+      if (!trigger) return;
+
+      e.preventDefault();
+
+      const parent = trigger.parentElement;
+      const sublist = parent.querySelector('ul');
+
+      if (parent.classList.contains('active')) {
+        parent.classList.remove('active');
+        if (sublist) slideUp(sublist);
+      } else {
+        // Закрыть все активные
+        document.querySelectorAll('.active ul').forEach(ul => slideUp(ul));
+        document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+
+        parent.classList.add('active');
+        if (sublist) slideDown(sublist);
+      }
+    });
+
+    document.querySelectorAll('.doc-sub-items a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        if (isBot === false) {
+          e.preventDefault();
+        }
+        const dataTarget = this.getAttribute('href');
+        const el = this;
+
+        document.querySelectorAll('.active-item').forEach(item => {
+          item.classList.remove('active-item');
+        });
+
+        el.classList.add('active-item');
+
+        const path = dataTarget.replace(/\/docs/g, '');
+        const url = '/docs/pages' + (path || 'main') + '.html';
+
+        fetch(url).then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+          .then(html => {
+            document.querySelector('#doc bd').innerHTML = html;
+
+            const title = el.innerHTML + ' | Docs';
+
+            //history.pushState({}, title, dataTarget);
+            document.title = title;
+            mc.scrollTop = 0;
+
+            hljs.initHighlighting.called = false;
+            hljs.initHighlighting();
+            addCopyButton();
+          })
+          .catch(error => {
+            console.error('Error during loading page:', error);
+          });
+      });
+
+      const el = document.querySelector("[href='" + location.pathname + "']");
+      if (el) {
+        document.title = el.innerHTML + ' | Docs';
+        el.classList.add('active-item');
+
+        const closestLi = el.closest('li.doc-items');
+        if (closestLi) {
+          const link = closestLi.querySelector('a');
+          if (link) link.click();
+        }
+      }
+    });
+  });
+
+window.addEventListener('popstate', onUpdateDocInfo);
+domReady(onUpdateDocInfo);
+
+function onUpdateDocInfo() {
+  let dataTarget = location.pathname;
+  let el = document.querySelector("[href='" + location.pathname + "']");
+  let path = dataTarget.replace(/\/docs/g, '');
+
+  let elText;
+  if (el && el.innerHTML) {
+    elText = el.innerHTML + ' | Docs';
+  } else {
+    elText = 'FG-Grid Docs';
+    path = '/main';
+  }
+
+  const url = '/docs/pages' + (path || '/main' ) + '.html';
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.querySelector('#doc bd').innerHTML = html;
+      mc.scrollTop = 0;
+
+      document.title = elText;
+
+      hljs.initHighlighting.called = false;
+      hljs.initHighlighting();
+      addCopyButton();
+    })
+    .catch(error => {
+      console.error('Error during loading page:', error);
+    });
+}
+
+function addCopyButton(){
+  document.querySelectorAll('pre code').forEach(codeBlock => {
+    // Create a copy button
+    const copyButton = document.createElement('button');
+    copyButton.innerHTML = 'Copy';
+
+    // Style the button to appear inside the code block
+    Object.assign(copyButton.style, {
+      position: 'absolute',
+      top: '2px',
+      right: '6px',
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      color: '#888',
+      padding: '4px 0px',
+      cursor: 'pointer',
+      border: 'none',
+      fontSize: '12px',
+      fontWeight: 600
+    });
+
+    // Ensure the code block's parent is positioned properly for absolute positioning
+    codeBlock.parentElement.style.position = 'relative';
+    codeBlock.parentElement.appendChild(copyButton);
+
+    // Copy logic
+    copyButton.addEventListener('click', () => {
+      const codeText = codeBlock.textContent;
+      navigator.clipboard.writeText(codeText).then(() => {
+        copyButton.textContent = 'Copied!';
+        setTimeout(() => copyButton.innerHTML = 'Copy', 3000);
+      }).catch(err => {
+        console.error('Error copying text:', err);
+      });
+    });
+  });
+}
+addCopyButton();
+</script>
+
+<script src="/cookies-policy/gdpr.js"></script>
+</body></html>

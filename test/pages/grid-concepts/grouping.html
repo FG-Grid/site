@@ -1,0 +1,192 @@
+<h2>Grouping</h2>
+
+<p>
+  Grid provides 2 ways to enabling row grouping.<br>
+  The first one is to set property <code class="js">rowGroup</code> in column options.<br>
+  Another one is to enable row group bar and manually drag columns to it.<br>
+  Also mixed variant works with both column option and row group bar.<br>
+</p>
+
+<h3>Enable grouping over column</h3>
+<p>
+  Add the <code class="js">rowGroup</code> option to a column.
+</p>
+<pre><code class="js">
+new Grid({
+  renderTo: 'container',
+  defaults: {
+    sortable: true
+  },
+  columns: [{
+    index: 'brand',
+    rowGroup: true,
+    type: 'string'
+  },{
+    index: 'model',
+    rowGroup: true,
+    type: 'string'
+  },{
+    index: 'price',
+    type: 'currency'
+  },{
+    index: 'year',
+    type: 'number'
+  }, {
+    index: 'color',
+    type: 'string'
+  }, {
+    index: 'country',
+    type: 'string'
+  },{
+    index: 'fuelType',
+    type: 'string'
+  },{
+    index: 'year',
+    type: 'number'
+  },{
+    index: 'transmission',
+    type: 'string'
+  },{
+    index: 'electric',
+    type: 'boolean'
+  }],
+  data: data,
+  width: 700,
+  height: 700
+});
+</code></pre>
+
+<h3>Row Group Bar</h3>
+<pre><code class="js">
+new Grid({
+   rowGroupBar: true,
+  ...
+</code></pre>
+
+<h3>Row group type</h3>
+<p>
+  There are 2 row group types.<br>
+<code class="js">row</code> and <code class="js">column</code><br>
+  For <code class="js">row</code> group type, full row can have only group value.<br>
+  For <code class="js">column</code> group type, each column can have values and also use aggregations over column property agFn
+</p>
+
+<h3>Row Group Column</h3>
+<p>
+  There is a way to provide row grouping column.<br>
+  It is not defined in <code class="js">columns</code>.
+</p>
+<pre><code class="js">
+new Grid({
+  rowGroupColumn: {
+    title: 'Group',
+    width: 200,
+    checkboxSelection: true,
+    headerCheckboxSelection: true,
+    editable: false,
+    render(params){
+      const {
+        item
+      } = params;
+
+      if(!item.$isGroupRow){
+        return `${item.brand} ${item.model}`
+      }
+    }
+  },
+  ...
+</code></pre>
+
+<h3>Custom Row Group value</h3>
+<p>
+  There is a way to customize row grouping value.<br>
+</p>
+<pre><code class="js">
+const countries = {
+  "Australia": "au",
+  "Austria": "at",
+  "Belgium": "be",
+  "Canada": "ca",
+  "Denmark": "dk",
+  "Finland": "fi",
+  "France": "fr",
+  "Germany": "de",
+  "Hong Kong": "hk",
+  "Iceland": "",
+  "Ireland": "ie",
+  "Japan": "ja",
+  "Luxembourg": "lu",
+  "Netherlands": "nl",
+  "Norway": "no",
+  "San Marino": "",
+  "Singapore": "sg",
+  "South Korea": "kr",
+  "Sweden": "se",
+  "Switzerland": "ch",
+  "Taiwan": "",
+  "UK": "uk",
+  "USA": "us"
+}
+
+new Grid({
+  groupValueRender(params){
+    const {
+      el,
+      value
+    } = params;
+
+    if(!countries[value]){
+      return value;
+    }
+
+    const flagCls = 'flag-' + countries[value];
+    const container = document.createElement('span');
+    container.classList.add('group-country-container');
+
+    const flagEl = document.createElement('span');
+    flagEl.classList.add('flag', flagCls);
+    flagEl.innerHTML = '&nbsp;'
+    container.appendChild(flagEl);
+
+    const valueEl = document.createElement('span');
+    valueEl.classList.add('group-country-text');
+    valueEl.innerHTML = ` ${value}`;
+    container.appendChild(valueEl);
+
+    el.appendChild(container);
+  },
+  ...
+</code></pre>
+
+<h3>Expanded row on start</h3>
+<p>
+  To expand row groups on render there is grid property <code class="js">rowGroupExpanded</code>.
+</p>
+
+<h5>Expand all groups</h5>
+<pre><code class="js">
+rowGroupExpanded: true
+</code></pre>
+
+<h5>Expand all groups</h5>
+<pre><code class="js">
+rowGroupExpanded: (groupName) => {
+  return true
+}
+</code></pre>
+
+<h5>Expand the list</h5>
+<pre><code class="js">
+rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
+</code></pre>
+
+<h5>Expand by condition</h5>
+<pre><code class="js">
+rowGroupExpanded: (groupName) => {
+  if(groupName.contains('Japan')){
+    return true;
+  }
+
+  return false;
+}
+</code></pre>

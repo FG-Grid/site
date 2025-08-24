@@ -1,0 +1,54 @@
+<h2>Column Grouping</h2>
+
+<p>
+  Grid supports light column grouping with one level.<br>
+  To enable it, it requires to use option <code class="js">children</code> in columns.
+</p>
+
+<pre><code class="js">
+new Grid({
+  renderTo: 'container',
+  defaults: {
+    sortable: true
+  },
+  columns: [{
+    title: 'Main',
+    children: [{
+      index: 'brand',
+      rowGroup: true,
+      type: 'string'
+    },{
+      index: 'model',
+      rowGroup: true,
+      type: 'string'
+    }]
+  },{
+    title: 'Tech',
+    children: [{
+      index: 'fuelType',
+      type: 'string'
+    },{
+      index: 'transmission',
+      type: 'string'
+    },{
+      index: 'electric',
+      type: 'boolean'
+    }]
+  },{
+    index: 'price',
+    type: 'currency'
+  },{
+    index: 'year',
+    type: 'number'
+  }, {
+    index: 'color',
+    type: 'string'
+  }, {
+    index: 'country',
+    type: 'string'
+  }],
+  data: data,
+  width: 700,
+  height: 700
+});
+</code></pre>

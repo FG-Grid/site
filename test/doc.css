@@ -1,0 +1,88 @@
+.active a.doc-item {
+  color: #1e8fc6 !important;
+}
+
+.doc-item-btn {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 24px;
+  text-align: center;
+  color: #aaa;
+  right: 8px;
+  top: 8px;
+  background-color: transparent;
+  border-radius: 3px;
+  line-height: 24px;
+  font-family: entypo,sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+li btn:before {
+  content: "\e75e";
+}
+
+li.active btn:before {
+  content: "\e75c";
+}
+
+.doc-item-btn:hover {
+  color: #1e8fc6;
+  background-color: #f0f8fb;
+}
+
+.doc-sub-items li a {
+  color: #656565;
+  padding-left: 30px;
+  line-height: 36px;
+  font-weight: 500;
+  display: block;
+  transition: background-color .25s ease-in-out, color .25s ease-in-out, border-color .25s ease-in-out;
+}
+
+.doc-sub-items li a:hover {
+  color: #1e8fc6 !important;
+  text-decoration: none !important;
+  /*background: #f9f9f9 !important;*/
+  background-color: #E1E7ED !important;
+}
+
+.doc-items {
+  border-top: 1px solid #eaeaea;
+}
+
+.sbar-scroll-content .active-item {
+  background-color: #E1E7ED;
+}
+
+.params-list {
+  color: #758EAC;
+  list-style: square;
+  padding-left: 40px;
+  margin: 0px 0px 15px 0px;
+}
+
+.params-list span {
+  color: #555963;
+}
+
+api > name {
+  -webkit-touch-callout: initial;
+  user-select: initial;
+}
+
+.tab-btn {
+  background-color: #eee !important;
+  text-decoration: none;
+  float: left;
+  height: 40px;
+  width: 119px;
+  font-weight: 600;
+  color: #515559;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  text-decoration: none;
+}

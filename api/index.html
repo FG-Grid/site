@@ -739,10 +739,10 @@
                   <a href="/api/config/defaults" isobject="true">defaults</a>
                 </li>
                 <li class="" style="position: relative;">
-                  <a href="/api/config/defaultcolumnwidth" isobject="true">defaultColumnWidth</a>
+                  <a href="/api/config/defaultcolumnwidth" isnumber="true">defaultColumnWidth</a>
                 </li>
                 <li class="" style="position: relative;">
-                  <a href="/api/config/defaultrowgroupsort" isobject="true">defaultRowGroupSort</a>
+                  <a href="/api/config/defaultrowgroupsort" isstring="true">defaultRowGroupSort</a>
                 </li>
                 <li class="" style="position: relative;">
                   <a href="/api/config/editorenteraction" isstring="true">editorEnterAction</a>
@@ -1072,7 +1072,6 @@
 
       const url = '/api/pages' + dataTarget.replace(/\/api/g, '') + '.html';
 
-      console.log(url)
       fetch(url)
         .then(response => {
           if (!response.ok) {

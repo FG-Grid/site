@@ -11,19 +11,19 @@
 
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="../css/g.css">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/icons.v2.css">
-  <link rel="stylesheet" href="../css/base.v2.css">
-  <link rel="stylesheet" href="../css/layout.v2.css">
-  <link rel="stylesheet" href="../css/nav.v3.css">
-  <link rel="stylesheet" href="../css/slides.v2.css">
+  <link rel="stylesheet" href="/css/g.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/icons.v2.css">
+  <link rel="stylesheet" href="/css/base.v2.css">
+  <link rel="stylesheet" href="/css/layout.v2.css">
+  <link rel="stylesheet" href="/css/nav.v3.css">
+  <link rel="stylesheet" href="/css/slides.v2.css">
 
   <!-- global styles -->
-  <link rel="stylesheet" href="../css/global.v4.css">
+  <link rel="stylesheet" href="/css/global.v4.css">
 
-  <link href="../css/guides.v3.css" rel="stylesheet" type="text/css">
-  <link href="../css/v2.css" rel="stylesheet" type="text/css">
+  <link href="/css/guides.v3.css" rel="stylesheet" type="text/css">
+  <link href="/css/v2.css" rel="stylesheet" type="text/css">
 
   <script>
     document.write('<style>@media(min-width: 768px){slide[fullsize],ct[fullsize]{width:100%;height:' + (window.innerHeight - 55) + 'px;} #mc{min-height:' + (window.innerHeight - 255) + 'px;}}</style>');
@@ -941,7 +941,7 @@
   </bd>
 </main>
 
-<script src="../js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/fg-grid/styles/fg-grid.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/fg-grid/dist/fg-grid.min.js"></script>
@@ -1013,7 +1013,7 @@
             if (el && el.length && el[0].innerHTML !== undefined) {
               const title = el[0].innerHTML + ' | API';
 
-              //history.pushState({}, title, dataTarget);
+              history.pushState({}, title, dataTarget);
               document.title = title;
             }
             mc.scrollTop = 0;
@@ -1084,7 +1084,7 @@
 
           var title = el.innerHTML + ' | API';
 
-          //history.pushState({}, title, dataTarget);
+          history.pushState({}, title, dataTarget);
           document.title = title;
           mc.scrollTop = 0;
 

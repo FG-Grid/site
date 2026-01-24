@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FG Grid - Big Data Sample</title>
+  <title>Fancy Grid - Big Data Sample</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="/fg-grid/dist/fg-grid.min.js?_dc=17"></script>
-  <link href="/fg-grid/styles/fg-grid.css?_dc=17" rel="stylesheet">
+  <script src="generate-data.js?_dc=1"></script>
+
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=9"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=9" rel="stylesheet">
 
   <link href="flag.css" rel="stylesheet">
 
@@ -144,7 +146,7 @@
       "USA": "us"
     };
 
-	let grid;
+	  let grid;
 
     document.addEventListener("DOMContentLoaded", () => {
       grid = new Grid({
@@ -270,40 +272,27 @@
   </script>
 
   <script>
-	let worker;
+    const generateNewDate = (amount) => {
+      document.querySelector('.cars-dealer-title button.active').classList.remove('active');
+      document.getElementById(`btn-${amount}`).classList.add('active');
 
-	const generateNewDate = (amount) => {
-	  document.querySelector('.cars-dealer-title button.active').classList.remove('active');
-	  document.getElementById(`btn-${amount}`).classList.add('active');
+      const elProgress = document.getElementById('progress-generate');
 
-	  if (worker) {
-		worker.terminate();
-	  }
-
-	  const elProgress = document.getElementById('progress-generate');
-
-	  elProgress.innerHTML = `Starting data generation...`;
-	  elProgress.style.opacity = '1';
-	  worker = new Worker('generate-data.js');
-	  worker.postMessage({ amount });
-
-	  worker.onmessage = function (e) {
-      if (e.data.type === 'progress') {
-        elProgress.innerHTML = `Generated ${e.data.amountDone} data items...`;
-        if(e.data.amountDone === amount - 1000){
-        elProgress.innerHTML = 'Finishing data generation...';
-        }
-        else{
-        elProgress.innerHTML = `Generated ${e.data.amountDone} data rows...`;
-        }
-
-      } else if (e.data.type === 'done') {
-        elProgress.innerHTML = 'Processing and rendering...';
-        grid.setData(e.data.data);
-        elProgress.innerHTML = 'Done';
-      }
-	  }
-	}
+      elProgress.innerHTML = `Data generation...`;
+      elProgress.style.opacity = '1';
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+          const cars = generateData(amount);
+          elProgress.innerHTML = `Processing and rendering...`;
+          requestAnimationFrame(()=>{
+            requestAnimationFrame(()=>{
+              grid.setData(cars);
+              elProgress.innerHTML = `Done`;
+            })
+          })
+        })
+      })
+    }
   </script>
 </head>
 <body>

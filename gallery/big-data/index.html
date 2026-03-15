@@ -7,8 +7,8 @@
 
   <script src="generate-data.js?_dc=1"></script>
 
-  <script src="/fg-grid/dist/fg-grid.min.js?_dc=9"></script>
-  <link href="/fg-grid/styles/fg-grid.css?_dc=9" rel="stylesheet">
+  <script src="/fg-grid/dist/fg-grid.min.js?_dc=1"></script>
+  <link href="/fg-grid/styles/fg-grid.css?_dc=1" rel="stylesheet">
 
   <link href="flag.css" rel="stylesheet">
 
@@ -154,7 +154,7 @@
         rowGroupType: 'column',
         defaults: {
           sortable: true,
-		  editable: true
+		      editable: true
         },
         filterBar: true,
         columns: [{
@@ -162,6 +162,7 @@
         },{
           index: 'brand',
           type: 'string',
+          dataIndex: true,
           filter: {
             list: true,
             defaultFilter: 'list'
@@ -172,6 +173,7 @@
         },{
           index: 'model',
           type: 'string',
+          dataIndex: true,
           filter: {
             list: true
           },
@@ -183,12 +185,14 @@
           filter: true,
           agFn: 'sum',
           type: 'currency',
+          dataIndex: true,
           cellClsRules: {
             'high-price': params => params.value > 100000
           }
         },{
           index: 'year',
           type: 'number',
+          dataIndex: true,
           filter: {
             list: true,
             defaultFilter: 'list'
@@ -199,6 +203,7 @@
         },{
           index: 'country',
           type: 'string',
+          dataIndex: true,
           render(params){
             const {
               cell,
@@ -235,6 +240,7 @@
           index: 'color',
           filter: true,
           type: 'string',
+          dataIndex: true,
           editor: {
             type: 'combo'
           }
@@ -254,6 +260,7 @@
           index: 'transmission',
           type: 'string',
           filter: true,
+          dataIndex: true,
           editor: {
             type: 'combo',
             items: [
@@ -264,6 +271,7 @@
         },{
           index: 'electric',
           type: 'boolean',
+          dataIndex: true,
           filter: true
         }],
         data: data

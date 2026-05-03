@@ -1147,10 +1147,8 @@ Fancy.copyText = (text) => {
                 return a - b;
               });
               */
-              performance.now();
               N = data.length;
               const sortValues = new Int32Array(N);
-              t2 = performance.now();
               for (let i = 0; i < N; i++) {
                 let value;
 
@@ -1165,7 +1163,7 @@ Fancy.copyText = (text) => {
                 } else {
                   value = Number(value);
                   if (value > 2_147_483_647) value = 2_147_483_647;
-                  if (value < -2_147_483_648) value = -2_147_483_648;
+                  if (value < -2147483648) value = -2147483648;
                 }
 
                 sortValues[i] = value;
@@ -1295,7 +1293,7 @@ Fancy.copyText = (text) => {
                 } else {
                   value = Number(value);
                   if (value > 2_147_483_647) value = 2_147_483_647;
-                  if (value < -2_147_483_648) value = -2_147_483_648;
+                  if (value < -2147483648) value = -2147483648;
                 }
 
                 sortValues[i] = value;

@@ -5,7 +5,7 @@ let Grid$200;
 if(!IS_SERVER) {        
         
 const Fancy$1 = {
-  version: '1.0.7',
+  version: '1.0.8',
   isTouchDevice: 'ontouchstart' in window,
   gridIdSeed: 0,
   gridsMap: new Map(),
@@ -1169,7 +1169,7 @@ Fancy.copyText = (text) => {
                 } else {
                   value = Number(value);
                   if (value > 2_147_483_647) value = 2_147_483_647;
-                  if (value < -2147483648) value = -2147483648;
+                  if (value < -2_147_483_648) value = -2_147_483_648;
                 }
 
                 sortValues[i] = value;
@@ -1299,7 +1299,7 @@ Fancy.copyText = (text) => {
                 } else {
                   value = Number(value);
                   if (value > 2_147_483_647) value = 2_147_483_647;
-                  if (value < -2147483648) value = -2147483648;
+                  if (value < -2_147_483_648) value = -2_147_483_648;
                 }
 
                 sortValues[i] = value;

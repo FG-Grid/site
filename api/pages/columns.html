@@ -434,6 +434,37 @@ columns: [{
 </api>
 
 <api>
+  <name><h4>flex</h4><sup>Number</sup></name>
+  <bd>
+    <p>
+      Equivalent to <code class="js">flex-grow</code> in CSS.<br>
+      When <code class="js">flex</code> is set on one or more columns, any width value is ignored and instead<br>
+      the remaining free space in the grid is divided among flex columns in proportion to their flex value,<br>
+      so a column with <code class="js">flex: 2</code> will be twice the size as one with flex: 1.
+    </p>
+  </bd>
+  <example>
+<pre><code class="js">
+columns: [{
+  index: 'brand',
+  flex: 2
+},{
+  index: 'model',
+  flex: 1
+},{
+  index: 'year',
+  width: 100
+},{
+  index: 'price',
+  width: 100
+}]
+</code></pre>
+  </example>
+
+  <default>undefined</default>
+</api>
+
+<api>
   <name><h4>format</h4><sup>Function</sup></name>
   <bd>
     <p>It formats value before render.</p>

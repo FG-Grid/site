@@ -413,6 +413,27 @@ index: 'name',
 </api>
 
 <api>
+  <name><h4>menuVisibility</h4><sup>String</sup></name>
+  <bd>
+    <p>
+      It changes column header menu behavior.<br>
+      Values: 'hover', 'always'
+    </p>
+  </bd>
+  <example>
+<pre><code class="js">
+{
+  index: 'price',
+  type: 'currency',
+  width: 100,
+  menuVisibility: 'always'
+}
+</code></pre>
+  </example>
+  <default>'hover'</default>
+</api>
+
+<api>
   <name><h4>maxDecimal</h4><sup>Number</sup></name>
   <bd>
     <p>Special property that is used only for column with type <code class="js">currency</code>currency.</p>

@@ -127,32 +127,6 @@ columns: [{
 </api>
 
 <api>
-  <name><h4>draggable</h4><sup>Boolean</sup></name>
-  <bd><p>Allows column to be dragged.</p></bd>
-  <example>
-<pre><code class="js">
-draggable: false,
-</code></pre>
-    <default>true</default>
-  </example>
-</api>
-
-<api>
-  <name><h4>filter</h4><sup>Object</sup></name>
-  <bd>
-    <p>Enable column filter for filterBar.</p>
-  </bd>
-  <example>
-<pre><code class="js">
-filterBar: true,
-columns: [{
-  index: 'price',
-  filter: true,
-</code></pre>
-  </example>
-</api>
-
-<api>
   <name><h4>hidden</h4><sup>Boolean</sup></name>
   <bd><p>
     It hides column on start.<br>
@@ -206,24 +180,6 @@ columns: [{
 index: 'name',
     </code></pre>
   </example>
-</api>
-
-<api>
-  <name><h4>menu</h4><sup>Boolean</sup></name>
-  <bd><p>
-    It enables menu for columns.<br>
-  </p></bd>
-  <example>
-<pre><code class="js">
-{
-  index: 'price',
-  type: 'number',
-  width: 100,
-  menu: false
-}
-</code></pre>
-  </example>
-  <default>true</default>
 </api>
 
 <api>
@@ -306,17 +262,6 @@ render(params) {
   <example>
 <pre><code class="js">
 resizable: true,
-</code></pre>
-    <default>false</default>
-  </example>
-</api>
-
-<api>
-  <name><h4>sortable</h4><sup>Boolean</sup></name>
-  <bd><p>Enable column sorting.</p></bd>
-  <example>
-<pre><code class="js">
-sortable: true,
 </code></pre>
     <default>false</default>
   </example>

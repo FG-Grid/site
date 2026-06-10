@@ -113,7 +113,8 @@
         rowGroupExpanded: ['Japan', 'Japan/Toyota', 'Japan/Toyota/Camry', 'UK', 'Sweden'],
         defaults: {
           sortable: true,
-		  editable: true
+		      editable: true,
+          minListWidth: 190
         },
         filterBar: true,
         rowGroupColumn: {
@@ -121,7 +122,7 @@
           width: 200,
           checkboxSelection: true,
           headerCheckboxSelection: true,
-		  editable: false,
+		      editable: false,
           render(params){
             const {
               item

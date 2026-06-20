@@ -1,0 +1,408 @@
+<h3>Custom Components</h3>
+
+Grid provides a simple way to create custom components.<br>
+To do this, use the <b>render</b> property in the column definition.<br>
+
+<pre>
+  <code class="html" style="overflow-x: scroll;margin-top:-30px;">
+const data = [
+  {"brand":"Toyota","model":"Camry","price":25000,"color":"Blue","country":"Japan","year":2019,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Honda","model":"Civic","price":22000,"color":"Silver","country":"Japan","year":2020,"fuelType":"Hybrid","electric":true,"transmission":"Manual"},
+  {"brand":"BMW","model":"3 Series","price":40000,"color":"Black","country":"Germany","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Mercedes-Benz","model":"E-Class","price":55000,"color":"White","country":"Germany","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Ford","model":"Mustang","price":45000,"color":"Yellow","country":"USA","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Manual"},
+  {"brand":"Toyota","model":"Corolla","price":22000,"color":"White","country":"Japan","year":2022,"fuelType":"Hybrid","electric":true,"transmission":"Automatic"},
+  {"brand":"Honda","model":"Accord","price":28000,"color":"Silver","country":"Japan","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Volkswagen","model":"Golf","price":25000,"color":"Black","country":"Germany","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Manual"},
+  {"brand":"Mercedes-Benz","model":"C-Class","price":40000,"color":"Blue","country":"Germany","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Ford","model":"Focus","price":20000,"color":"Red","country":"USA","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Manual"},
+  {"brand":"Chevrolet","model":"Camaro","price":50000,"color":"Yellow","country":"USA","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Nissan","model":"Sentra","price":18000,"color":"Gray","country":"Japan","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"BMW","model":"5 Series","price":55000,"color":"Black","country":"Germany","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"},
+  {"brand":"Audi","model":"A4","price":45000,"color":"Silver","country":"Germany","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Hyundai","model":"Elantra","price":20000,"color":"Red","country":"South Korea","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Lexus","model":"RX","price":60000,"color":"Black","country":"Japan","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Volvo","model":"XC60","price":50000,"color":"Silver","country":"Sweden","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Kia","model":"Sorento","price":35000,"color":"Blue","country":"South Korea","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Jaguar","model":"XF","price":60000,"color":"Gray","country":"UK","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"},
+  {"brand":"Subaru","model":"Outback","price":30000,"color":"Green","country":"Japan","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Jeep","model":"Grand Cherokee","price":45000,"color":"White","country":"USA","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Mazda","model":"CX-5","price":35000,"color":"Red","country":"Japan","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Land Rover","model":"Range Rover Evoque","price":55000,"color":"Blue","country":"UK","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"},
+  {"brand":"Chevrolet","model":"Equinox","price":30000,"color":"Silver","country":"USA","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Audi","model":"Q5","price":50000,"color":"Black","country":"Germany","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"}
+]
+
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = new Grid({
+    renderTo: 'container',
+    data: data,
+    rowStyle(params){
+      if(params.item.fuelType === 'Hybrid'){
+        return {
+          'background-color': 'rgba(111, 178, 112, 0.2)'
+        }
+      }
+    },
+    columns: [{
+      type: 'order'
+    },{
+      title: 'Car',
+      width: 160,
+      checkboxSelection: true,
+      headerCheckboxSelection: true,
+      editable: true,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string',
+      render(params){
+        const brand = params.item.brand || 'No Brand';
+        const model = params.item.model || '';
+
+        return `${brand} ${model}`;
+      },
+      getter(params) {
+        const brand = params.item.brand || 'No Brand';
+        const model = params.item.model || '';
+
+        return `${brand} ${model}`;
+      },
+      setter(params) {
+        const [brand, ...rest] = params.newValue.split(' ');
+
+        params.item.brand = brand;
+        params.item.model = rest.join(' ');
+      }
+    },{
+      index: 'price',
+      editable: true,
+      filter: true,
+      type: 'currency'
+    },{
+      index: 'color',
+      editable: true,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string'
+    },{
+      index: 'country',
+      editable: true,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string'
+    },{
+      index: 'fuelType',
+      width: 120,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string',
+      render(params) {
+        const divValue = document.createElement('div');
+        const buttonRandom = document.createElement('button');
+
+        divValue.innerHTML = params.value;
+        buttonRandom.innerHTML = 'rand';
+
+        buttonRandom.addEventListener('click', () => {
+          const fuelTypes = ['Gasoline', 'Diesel', 'Hybrid'];
+          const randomIndex = Math.floor(Math.random() * fuelTypes.length);
+          const randomFuelType = fuelTypes[randomIndex];
+
+          grid.setById(params.item.id, {
+            fuelType: randomFuelType
+          });
+        })
+
+        params.cell.classList.add('fuel-cell');
+        params.cell.appendChild(divValue);
+        params.cell.appendChild(buttonRandom);
+      }
+    },{
+      index: 'year',
+      editable: false,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'number',
+      render: function(params) {
+        const buttonMinus = document.createElement('button');
+        const buttonPlus = document.createElement('button');
+        const divValue = document.createElement('div');
+
+        buttonMinus.addEventListener('click', () => {
+          grid.setById(params.item.id, {
+            year: params.value - 1
+          });
+        });
+
+        buttonPlus.addEventListener('click', () => {
+          grid.setById(params.item.id, {
+            year: params.value + 1
+          });
+        });
+
+        buttonMinus.innerHTML = '-';
+        buttonPlus.innerHTML = '+';
+        divValue.innerHTML = params.value;
+
+        params.cell.classList.add('year-cell');
+
+        params.cell.appendChild(buttonMinus);
+        params.cell.appendChild(divValue);
+        params.cell.appendChild(buttonPlus);
+      }
+    },{
+      index: 'transmission',
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      editable: true,
+      type: 'string'
+    },{
+      menu: false,
+      width: 70,
+      render(params){
+        const button = document.createElement('button');
+        button.innerHTML = `Delete`;
+        button.addEventListener('click', () => {
+          grid.remove(params.item)
+        });
+
+        params.cell.classList.add('delete-cell');
+        params.cell.appendChild(button);
+      }
+    }]
+  });
+});
+</code></pre>
+
+<div id="container-custom-components" style="width: 1100px;height: 700px;"></div>
+<style>
+  .delete-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      display: flex;
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 12px;
+      font-weight: 600;
+      background-color: #f5f7f7;
+      border: 1px solid #bdc3c7;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+  }
+
+  .year-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .fuel-cell {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .eco {
+    background-color: rgba(111, 178, 112, 0.2);
+  }
+</style>
+<script>
+var data = [
+  {"brand":"Toyota","model":"Camry","price":25000,"color":"Blue","country":"Japan","year":2019,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Honda","model":"Civic","price":22000,"color":"Silver","country":"Japan","year":2020,"fuelType":"Hybrid","electric":true,"transmission":"Manual"},
+  {"brand":"BMW","model":"3 Series","price":40000,"color":"Black","country":"Germany","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Mercedes-Benz","model":"E-Class","price":55000,"color":"White","country":"Germany","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Ford","model":"Mustang","price":45000,"color":"Yellow","country":"USA","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Manual"},
+  {"brand":"Toyota","model":"Corolla","price":22000,"color":"White","country":"Japan","year":2022,"fuelType":"Hybrid","electric":true,"transmission":"Automatic"},
+  {"brand":"Honda","model":"Accord","price":28000,"color":"Silver","country":"Japan","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Volkswagen","model":"Golf","price":25000,"color":"Black","country":"Germany","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Manual"},
+  {"brand":"Mercedes-Benz","model":"C-Class","price":40000,"color":"Blue","country":"Germany","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Ford","model":"Focus","price":20000,"color":"Red","country":"USA","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Manual"},
+  {"brand":"Chevrolet","model":"Camaro","price":50000,"color":"Yellow","country":"USA","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Nissan","model":"Sentra","price":18000,"color":"Gray","country":"Japan","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"BMW","model":"5 Series","price":55000,"color":"Black","country":"Germany","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"},
+  {"brand":"Audi","model":"A4","price":45000,"color":"Silver","country":"Germany","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Hyundai","model":"Elantra","price":20000,"color":"Red","country":"South Korea","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Lexus","model":"RX","price":60000,"color":"Black","country":"Japan","year":2021,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Volvo","model":"XC60","price":50000,"color":"Silver","country":"Sweden","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Kia","model":"Sorento","price":35000,"color":"Blue","country":"South Korea","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Jaguar","model":"XF","price":60000,"color":"Gray","country":"UK","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"},
+  {"brand":"Subaru","model":"Outback","price":30000,"color":"Green","country":"Japan","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Jeep","model":"Grand Cherokee","price":45000,"color":"White","country":"USA","year":2022,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Mazda","model":"CX-5","price":35000,"color":"Red","country":"Japan","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Land Rover","model":"Range Rover Evoque","price":55000,"color":"Blue","country":"UK","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"},
+  {"brand":"Chevrolet","model":"Equinox","price":30000,"color":"Silver","country":"USA","year":2023,"fuelType":"Petrol","electric":false,"transmission":"Automatic"},
+  {"brand":"Audi","model":"Q5","price":50000,"color":"Black","country":"Germany","year":2022,"fuelType":"Diesel","electric":false,"transmission":"Automatic"}
+]
+
+$(function(){
+  const grid = new Grid({
+    renderTo: 'container-custom-components',
+    data: data,
+    defaults: {
+      sortable: true
+    },
+    rowStyle(params){
+      if(params.item.fuelType === 'Hybrid'){
+        return {
+          'background-color': 'rgba(111, 178, 112, 0.2)'
+        }
+      }
+    },
+    columns: [{
+      type: 'order'
+    },{
+      title: 'Car',
+      width: 160,
+      checkboxSelection: true,
+      headerCheckboxSelection: true,
+      editable: true,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string',
+      render(params){
+        const brand = params.item.brand || 'No Brand';
+        const model = params.item.model || '';
+
+        return `${brand} ${model}`;
+      },
+      getter(params) {
+        const brand = params.item.brand || 'No Brand';
+        const model = params.item.model || '';
+
+        return `${brand} ${model}`;
+      },
+      setter(params) {
+        const [brand, ...rest] = params.newValue.split(' ');
+
+        params.item.brand = brand;
+        params.item.model = rest.join(' ');
+      }
+    },{
+      index: 'price',
+      editable: true,
+      filter: true,
+      type: 'currency'
+    },{
+      index: 'color',
+      editable: true,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string'
+    },{
+      index: 'country',
+      editable: true,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string'
+    },{
+      index: 'fuelType',
+      width: 120,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'string',
+      render(params) {
+        const divValue = document.createElement('div');
+        const buttonRandom = document.createElement('button');
+
+        divValue.innerHTML = params.value;
+        buttonRandom.innerHTML = 'rand';
+
+        buttonRandom.addEventListener('click', () => {
+          const fuelTypes = ['Gasoline', 'Diesel', 'Hybrid'];
+          const randomIndex = Math.floor(Math.random() * fuelTypes.length);
+          const randomFuelType = fuelTypes[randomIndex];
+
+          grid.setById(params.item.id, {
+            fuelType: randomFuelType
+          });
+        })
+
+        params.cell.classList.add('fuel-cell');
+        params.cell.appendChild(divValue);
+        params.cell.appendChild(buttonRandom);
+      }
+    },{
+      index: 'year',
+      editable: false,
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      type: 'number',
+      render: function(params) {
+        const buttonMinus = document.createElement('button');
+        const buttonPlus = document.createElement('button');
+        const divValue = document.createElement('div');
+
+        buttonMinus.addEventListener('click', () => {
+          grid.setById(params.item.id, {
+            year: params.value - 1
+          });
+        });
+
+        buttonPlus.addEventListener('click', () => {
+          grid.setById(params.item.id, {
+            year: params.value + 1
+          });
+        });
+
+        buttonMinus.innerHTML = '-';
+        buttonPlus.innerHTML = '+';
+        divValue.innerHTML = params.value;
+
+        params.cell.classList.add('year-cell');
+
+        params.cell.appendChild(buttonMinus);
+        params.cell.appendChild(divValue);
+        params.cell.appendChild(buttonPlus);
+      }
+    },{
+      index: 'transmission',
+      filter: {
+        list: true,
+        defaultFilter: 'list'
+      },
+      editable: true,
+      type: 'string'
+    },{
+      menu: false,
+      width: 70,
+      render(params){
+        const button = document.createElement('button');
+        button.innerHTML = `Delete`;
+        button.addEventListener('click', () => {
+          grid.remove(params.item)
+        });
+
+        params.cell.classList.add('delete-cell');
+        params.cell.appendChild(button);
+      }
+    }]
+  });
+});
+</script>
